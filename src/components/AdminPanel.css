@@ -1,0 +1,86 @@
+/* Admin Panel Styling */
+.admin-panel {
+  background-color: #0b132b;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 32px;
+}
+
+.admin-panel h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin: 0 0 20px 0;
+  border-bottom: 2px solid rgba(217, 188, 97, 0.2);
+  padding-bottom: 12px;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.users-table thead {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.06);
+}
+
+.users-table th {
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #94a3b8;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.users-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  color: #cbd5e1;
+}
+
+.users-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.role-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.role-badge.admin {
+  background-color: rgba(217, 188, 97, 0.15);
+  color: #d9bc61;
+}
+
+.role-badge.user {
+  background-color: rgba(100, 116, 139, 0.15);
+  color: #cbd5e1;
+}
+
+.role-toggle-btn {
+  padding: 6px 12px;
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.role-toggle-btn:hover {
+  background-color: rgba(59, 130, 246, 0.25);
+  color: #93c5fd;
+}

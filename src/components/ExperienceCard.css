@@ -1,0 +1,120 @@
+.experience-card {
+  background: #1e293b; /* කාඩ්පත සඳහා අඳුරු නිල් පැහැති පසුබිමක් (Dark Blue/Slate) */
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #334155; /* වටපිටාවට මඳක් සැහැල්ලු බෝඩර් එකක් */
+}
+
+.experience-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  border-color: #3b82f6;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px solid #3b82f6;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.avatar-letter {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.header-text h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #f8fafc; /* තනතුරේ නම සුදු පැහැයෙන් */
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+}
+
+.officer-name {
+  font-size: 0.9rem;
+  color: #94a3b8; /* නිලධාරියාගේ නම ලා අළු/නිල් පැහැයෙන් */
+  margin: 0;
+  font-weight: 600;
+}
+
+.card-body {
+  margin-bottom: 20px;
+}
+
+.org-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #60a5fa; /* ආයතන නාමය ලා නිල් පැහැයෙන් */
+  margin: 0 0 6px 0;
+}
+
+.service-years {
+  font-size: 0.85rem;
+  color: #fb923c; /* සේවා කාලය තැඹිලි පැහැයෙන් */
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.snippet {
+  font-size: 0.9rem;
+  color: #cbd5e1; /* විස්තරය හොඳින් පෙනෙන ලා පැහැයෙන් */
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 400;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #334155;
+  padding-top: 12px;
+}
+
+.type-badge {
+  background-color: #334155;
+  color: #38bdf8;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.read-more {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #38bdf8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.read-more:hover {
+  color: #60a5fa;
+  text-decoration: underline;
+}

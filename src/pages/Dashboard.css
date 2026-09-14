@@ -1,0 +1,332 @@
+/* Dashboard Layout Styles */
+.app-layout {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #0b0f19;
+  color: #f1f5f9;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.main-content {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #0b0f19;
+}
+
+.dashboard-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Custom Scrollbar for Smooth Navigation */
+.dashboard-main::-webkit-scrollbar {
+  width: 6px;
+}
+.dashboard-main::-webkit-scrollbar-track {
+  background: transparent;
+}
+.dashboard-main::-webkit-scrollbar-thumb {
+  background: rgba(249, 115, 22, 0.2);
+  border-radius: 4px;
+}
+.dashboard-main::-webkit-scrollbar-thumb:hover {
+  background: rgba(249, 115, 22, 0.4);
+}
+
+/* Hero Banner */
+.dashboard-banner {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.12), rgba(15, 23, 42, 0.8));
+  border: 1px solid rgba(249, 115, 22, 0.25);
+  border-radius: 18px;
+  padding: 36px;
+  position: relative;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.banner-badges {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.badge-orange {
+  background: rgba(249, 115, 22, 0.2);
+  color: #fb923c;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  font-size: 11px;
+  font-family: monospace;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-amber {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  font-size: 11px;
+  font-family: monospace;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dashboard-banner h2 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.02em;
+}
+
+.dashboard-description {
+  max-width: 800px;
+  color: #94a3b8;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Statistics Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.stat-card {
+  background-color: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.stat-card:hover {
+  border-color: rgba(249, 115, 22, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.15);
+}
+
+.stat-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-value {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #f97316;
+  line-height: 1;
+}
+
+.stat-icon {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* Categories Section */
+.categories-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.categories-section h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin: 0;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+/* Category Card Design with Clear Images */
+.category-card {
+  position: relative;
+  background-color: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 320px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.category-card:hover {
+  border-color: rgba(249, 115, 22, 0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px -8px rgba(249, 115, 22, 0.25);
+}
+
+.category-bg-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.category-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* පින්තූරය ඉතා පැහැදිලිව පෙනීමට opacity අගය වැඩිකර ඇත */
+  opacity: 0.75; 
+  transition: transform 0.6s ease, opacity 0.3s ease;
+}
+
+.category-card:hover .category-image {
+  transform: scale(1.08);
+  /* මවුස් එක ගෙන ගිය විට පින්තූරය තවත් පැහැදිලි වේ */
+  opacity: 0.9; 
+}
+
+.category-image-overlay {
+  position: absolute;
+  inset: 0;
+  /* පසුබිම් රූපය යටින් මනාව පෙනෙන පරිදි කළු ආවරණය සැහැල්ලු කර ඇත */
+  background: linear-gradient(to top, #0b0f19 20%, rgba(11, 15, 25, 0.6) 70%, rgba(11, 15, 25, 0.15) 100%);
+}
+
+/* Card Content Styling */
+.card-content {
+  position: relative;
+  z-index: 1;
+}
+
+.card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.card-icon-wrapper {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 10px;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+}
+
+.category-subtitle {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-family: monospace;
+}
+
+.category-card h4 {
+  margin: 0 0 10px 0;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.category-card p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.category-explore {
+  position: relative;
+  z-index: 1;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #f97316;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 0.25s ease;
+}
+
+.category-card:hover .category-explore {
+  transform: translateX(6px);
+}
+
+/* Admin Section */
+.admin-section {
+  margin-top: 10px;
+  background-color: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 28px;
+}
+
+/* Footer Styling */
+.dashboard-footer {
+  padding: 16px 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #64748b;
+  font-family: monospace;
+  background: #0b0f19;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1280px) {
+  .stats-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-main {
+    padding: 20px;
+    gap: 20px;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-banner h2 {
+    font-size: 1.75rem;
+  }
+}

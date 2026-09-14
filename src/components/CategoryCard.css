@@ -1,0 +1,45 @@
+/* Category Card Styling */
+.category-card {
+  background-color: rgba(15, 26, 51, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 140px;
+}
+
+.category-card:hover {
+  background-color: rgba(15, 26, 51, 0.8);
+  border-color: rgba(217, 188, 97, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(217, 188, 97, 0.1);
+}
+
+.card-content h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin: 0 0 8px 0;
+}
+
+.card-content p {
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.count-badge {
+  display: inline-block;
+  background-color: rgba(217, 188, 97, 0.1);
+  color: #d9bc61;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 12px;
+  width: fit-content;
+}
