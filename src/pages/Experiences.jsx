@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import TopHeader from "../components/TopHeader";
 import ExperienceCard from "../components/ExperienceCard";
@@ -12,6 +13,7 @@ import sunimalImg from "../assets/sunimal.jpeg";
 export default function Experiences() {
   const { locale } = useLocale();
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   const realExperiences = [
     {
@@ -75,6 +77,11 @@ export default function Experiences() {
       exp.organization.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const handleCardClick = (id) => {
+    // මෙතැනින් View Stories පිටුවට අදාළ ID එක සමඟ redirect කරයි
+    navigate(`/view-story/${id}`);
+  };
+
   return (
     <div className="app-layout">
       <Sidebar />
@@ -107,7 +114,13 @@ export default function Experiences() {
 
           <div className="experiences-grid">
             {filtered.map((exp) => (
-              <ExperienceCard key={exp.id} experience={exp} />
+              <div 
+                key={exp.id} 
+                onClick={() => handleCardClick(exp.id)} 
+                style={{ cursor: "pointer" }}
+              >
+                <ExperienceCard experience={exp} />
+              </div>
             ))}
           </div>
 

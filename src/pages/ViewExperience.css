@@ -1,0 +1,108 @@
+/* ප්‍රධාන පිටු සැකැස්ම සහ සිංහල අකුරු නිවැරදිව පෙන්වීමේ සැකසුම් */
+.app-layout {
+  display: flex;
+  height: 100vh;
+  background-color: #0b0f19;
+  font-family: "Noto Sans Sinhala", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* සිංහල අකුරු සහ පිල්ලම් එකිනෙක වැදීම වැළැක්වීමට සහ නිවැරදි පරතරය */
+body, p, span, h1, h2, h3, h4, h5, h6, a, button, input, label {
+  font-family: "Noto Sans Sinhala", sans-serif !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0.2px !important;
+}
+
+/* පිටු ප්‍රධාන කාඩ් පටය */
+.ve-card-container {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* රූප සටහන් (Slideshow) කොටස */
+.ve-slideshow-box {
+  background: #030712;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+.ve-image-preview {
+  width: 100%;
+  height: 360px;
+  background: #000;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ve-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.ve-nav-btn:hover {
+  background: rgba(245, 158, 11, 0.8);
+}
+
+/* ලැයිස්තු සහ විස්තර පෙළ */
+.ve-story-text {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #cbd5e1;
+  background: rgba(15, 23, 42, 0.6);
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.ve-action-item {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  line-height: 1.6;
+}
+
+.ve-lesson-box {
+  background: rgba(52, 211, 153, 0.05);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(52, 211, 153, 0.1);
+  font-size: 13px;
+  color: #d1fae5;
+  line-height: 1.6;
+}

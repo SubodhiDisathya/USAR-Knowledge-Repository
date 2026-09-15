@@ -8,6 +8,7 @@ import KnowledgeSection from "./pages/KnowledgeSection";
 import KnowledgeDetail from "./pages/KnowledgeDetail";
 import FirstAidMedical from "./pages/FirstAidMedical";
 import Experiences from "./pages/Experiences";
+import ViewExperience from "./pages/ViewExperience"; // ස්ක්‍රීන්ෂොට් එකේ ඇති නමට අනුව යාවත්කාලීන කරන ලදී
 import Search from "./pages/Search";
 import "./index.css";
 
@@ -28,7 +29,11 @@ function App() {
             <Route path="/knowledge/:slug" element={<Protected><KnowledgeDetail /></Protected>} />
             <Route path="/first-aid-medical" element={<Protected><FirstAidMedical /></Protected>} />
             <Route path="/knowledge/medical/:topicSlug" element={<Protected><FirstAidMedical /></Protected>} />
+            
+            {/* අත්දැකීම් සහ නිලධාරියාගේ විස්තර පෙන්වන Routes */}
             <Route path="/experiences" element={<Protected><Experiences /></Protected>} />
+            <Route path="/view-story/:id" element={<Protected><ViewExperience /></Protected>} />
+
             <Route path="/emergency-contacts" element={<Protected><KnowledgeSection section="contacts" /></Protected>} />
             <Route path="/others" element={<Protected><KnowledgeSection section="others" /></Protected>} />
             <Route path="/search" element={<Protected><Search /></Protected>} />
