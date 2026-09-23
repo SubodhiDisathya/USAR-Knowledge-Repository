@@ -12,6 +12,7 @@ const commonNote = {
 
 const topics = {
   "first-response": {
+    slug: "first-response",
     title: "First Response",
     sinhalaTitle: "පළමු ප්‍රතිචාරය",
     icon: "🚨",
@@ -43,6 +44,7 @@ const topics = {
     resourceUrl: "https://drive.google.com/file/d/1w1TnSUO6CQ55K9IZk3hSs7ZHtIJGIKbm/view?usp=sharing"
   },
   "disaster-environment": {
+    slug: "disaster-environment",
     title: "Disaster Environment",
     sinhalaTitle: "ආපදා පරිසරය",
     icon: "🌍",
@@ -61,6 +63,7 @@ const topics = {
     resourceUrl: "https://drive.google.com/file/d/1zZ7eagHTKq1zcXskR4pg6OtY_186XLaM/view?usp=sharing"
   },
   "incident-site-management": {
+    slug: "incident-site-management",
     title: "Incident Site Management",
     sinhalaTitle: "සිද්ධි ස්ථාන කළමනාකරණය",
     icon: "⚠️",
@@ -84,6 +87,7 @@ const topics = {
     resourceUrl: "https://drive.google.com/file/d/1ULZoJ-9uYiUw35_3WpwXgmwhSGRB4eKr/view?usp=sharing"
   },
   "search-operations": {
+    slug: "search-operations",
     title: "Search Operations",
     sinhalaTitle: "සෙවුම් මෙහෙයුම්",
     icon: "🔍",
@@ -109,6 +113,7 @@ const topics = {
     resourceUrl: "https://drive.google.com/file/d/1oXhsAzZfilELqfX4oR3CwGdY1ev9UxWI/view?usp=sharing"
   },
   "rescue-operations": {
+    slug: "rescue-operations",
     title: "Rescue Operations",
     sinhalaTitle: "ගලවා ගැනීමේ මෙහෙයුම්",
     icon: "🦺",
@@ -130,6 +135,91 @@ const topics = {
     resource: "Rescue Operations – Complete Guide",
     resourceKey: "rescueOperationsPDF",
     resourceUrl: "https://drive.google.com/file/d/1-nzWcCvoCv3Z9PW8Ddcq4lrvH_t1zRyI/view?usp=sharing"
+  },
+  "mass-casualty-incident": {
+    slug: "mass-casualty-incident",
+    title: "Mass Casualty Incident (MCI) Preparedness and Response Plan of CNTH Ragama",
+    sinhalaTitle: "මහා පරිමාණ හදිසි අනතුරු ප්‍රතිචාර සැලැස්ම - CNTH රාගම",
+    icon: "🚨",
+    heroImage: firstResponseImage,
+    heroAlt: "Mass Casualty Incident Response Plan CNTH Ragama",
+    description: "Mass Casualty Incident Response Plan 2025 for Colombo North Teaching Hospital (CNTH) Ragama - Short Summary covering key points, notification, triage, and management.",
+    sinhalaDescription: "කොළඹ උතුරු ශික්ෂණ රෝහලේ (රාගම) මහා පරිමාණ හදිසි අනතුරු ප්‍රතිචාර සැලැස්ම 2025 - ප්‍රධාන කරුණු, දැනුම්දීම්, රෝගී වර්ගීකරණය සහ කළමනාකරණය.",
+    keyHeading: "KEY INFORMATION | ප්‍රධාන තොරතුරු",
+    keyInformation: [
+      ["Highest-risk hazards", "Road/railway accident, fire, CBRNE, industrial accident, pandemic, structural damage."],
+      ["MCI Definition", "150+ non-trauma patients, 60+ trauma patients, or an epidemic with 300+ patients/day."],
+      ["Committee", "Chaired by the Director. MO Planning is the focal point (drills, training, meetings, records)."]
+    ],
+    processHeading: "NOTIFICATION AND ACTIVATION | දැනුම්දීම සහ ක්‍රියාත්මක කිරීම",
+    steps: [
+      ["📞", "Information Source", "Police post, telephone exchange, director, or reception."],
+      ["📋", "METHANE Format", "Incident type, magnitude, casualties, time/place, phone, transport, access roads."],
+      ["📢", "Activation Command", "Director tells the exchange 'ACTIVATE MCI RESPONSE PLAN'."],
+      ["👥", "Command Staff", "Director, on-call consultants, CNO, A&E Matron, AO, Security, Police post."]
+    ],
+    groups: [
+      { 
+        heading: "SECURITY AND CROWD CONTROL | ආරක්ෂාව සහ ජනකාන්ත පාලනය", 
+        items: [
+          ["👮", "Ragama Police", "Provide crowd control and security."],
+          ["🚪", "Gates Management", "All patients enter via main entrance. Gate 2 = exit. Relatives directed to Gate 2 / OPD information centre."],
+          ["🛡️", "Security Officers", "8 security officers deployed at gate, A&E, cordon, acute area, and mortuary gate."]
+        ] 
+      },
+      { 
+        heading: "STAFF JACKETS | කාර්ය මණ්ඩල හැඳුනුම් කබා", 
+        items: [
+          ["🔴", "Red", "Triage officers"],
+          ["🟣", "Purple", "Clinical Commander (Consultant Emergency Physician)"],
+          ["🔵", "Blue", "Doctors"],
+          ["🟢", "Green", "Nurses"],
+          ["🟡", "Yellow", "Minor staff"]
+        ] 
+      },
+      { 
+        heading: "TRIAGE AND PATIENT FLOW | රෝගී වර්ගීකරණය සහ ගලායාම", 
+        items: [
+          ["🔴", "Red (Immediate)", "A&E resus/acute → 5 resus teams (2 doctors, 1 nurse, 1 HA per team)."],
+          ["🟡", "Yellow (Delayed)", "SSU (PCU) → if over 50: Ward 20/CCU."],
+          ["🟢", "Green (Minor)", "Pre-casualty wards (1 doctor + 1 nurse per 5 patients)."],
+          ["⚫", "Black (Dead)", "Temporary body holding area (A&E) confirmed by JMO/MO."]
+        ] 
+      }
+    ],
+    safety: ["IMPORTANT NOTE | වැදගත් සටහන", "The safety of the rescue and medical team must always be considered during operations.", "මෙහෙයුම් අතරතුර සෑම විටම වෛද්‍ය සහ සහායක කණ්ඩායමේ ආරක්ෂාව තහවුරු කළ යුතුය."],
+    resource: "MCI Response Plan Complete Guide",
+    resourceKey: "mciResponsePDF",
+    resourceUrl: "https://drive.google.com/file/d/140aKs-65YF0By3aOZkYLgCi-RDzZ3xCp/view?usp=sharing"
+  },
+  "emt-basic-certificate": {
+    slug: "emt-basic-certificate",
+    title: "1990 Suwa Seriya EMT-Basic Training",
+    sinhalaTitle: "1990 සුව සැරිය EMT-මූලික පුහුණුව",
+    icon: "🚑",
+    heroImage: firstResponseImage,
+    heroAlt: "1990 Suwa Seriya EMT-Basic Training",
+    description: "Certificate course structure, modules, and operational guidelines.",
+    sinhalaDescription: "1990 සුව සැරිය ගිලන්රථ සේවය සහ සෞඛ්‍ය අමාත්‍යාංශය මඟින් පවත්වනු ලබන හදිසි වෛද්‍ය කාර්මික ශිල්පීන් සඳහා වන මූලික සහතික පත්‍ර පාඨමාලාව.",
+    keyHeading: "COURSE OVERVIEW | පාඨමාලා විස්තරය",
+    keyInformation: [
+      ["Course", "Certificate course for Emergency Medical Technicians (Basic), AdvCertParamedSc. Run by the 1990 Suwa Seriya Ambulance Service and Ministry of Health."],
+      ["Purpose", "To train EMTs who give pre-hospital emergency care, communicate with hospitals, transport patients rapidly, and help with disaster coordination."],
+      ["Entry criteria", "3 A/L passes in any stream; age below 35 at the closing date; three consecutive interviews."]
+    ],
+    processHeading: "CURRICULUM MODULES | විෂය මාලා මොඩියුල",
+    steps: [
+      ["📖", "Module 1: Preparatory", "මූලික සූදානම", "EMS system and Suwa Seriya, EMT well-being, infection control, medico-legal/ethics, and vital signs."],
+      ["🩺", "Module 2: Medical, Behavioural & Obstetrics", "වෛද්‍ය සහ ප්‍රසව විද්‍යාව", "Pharmacology, respiratory, cardiovascular (AED), diabetes, anaphylaxis, and obstetrics."],
+      ["🚑", "Module 3: Trauma", "තුවාල සහ අනතුරු කළමනාකරණය", "Bleeding and shock, soft tissue, musculoskeletal, head/spine, airway, and ventilation."],
+      ["📋", "Module 4: Patient Assessment", "රෝගී ඇගයීම", "Primary survey, focused history, exam (trauma and medical), and ongoing assessment."],
+      ["⚙️", "Module 5: Operations", "මෙහෙයුම් කටයුතු", "Ambulance operations, extrication, hazmat, incident management, and mass casualty/triage."],
+      ["🏥", "Module 6: Rotations", "රෝහල් සහ ගිලන්රථ පුහුණුව", "A&E/ETU, ambulance training, and minor clinical rotations (2 credits each)."]
+    ],
+    safety: ["ASSESSMENT & EXAM | විභාග සහ ඇගයීම්", "Exams consist of Part 1 (MCQs & OSCE) and Part 2 (Hospital/Ambulance rotations), requiring a pass mark of 50% and a grade of B- or better.", "විභාගය සමත් වීම සඳහා අවම වශයෙන් 50% ක ලකුණු ප්‍රමාණයක් සහ B- හෝ ඊට වැඩි ශ්‍රේණියක් ලබා ගත යුතුය."],
+    resource: "Suwa Seriya EMT-Basic Curriculum Summary",
+    resourceKey: "emtBasicPDF",
+    resourceUrl: "https://drive.google.com/file/d/1c8u_0_29OKQmZAIEPnysy4J-0yDiwb02/view?usp=sharing"
   }
 };
 

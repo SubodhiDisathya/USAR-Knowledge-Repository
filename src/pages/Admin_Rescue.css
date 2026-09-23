@@ -1,0 +1,228 @@
+/* Admin_Rescue.css */
+
+.ar-admin-wrapper {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 1050px;
+  margin: 32px auto;
+  color: #e2e8f0;
+  font-family: "Noto Sans Sinhala", sans-serif;
+}
+
+.ar-admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 16px;
+}
+
+.ar-admin-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 8px 0 4px 0;
+}
+
+.ar-admin-subtitle {
+  font-size: 14px;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.ar-back-link {
+  background: transparent;
+  border: none;
+  color: #38bdf8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0;
+  margin-bottom: 8px;
+}
+
+.ar-back-link:hover {
+  text-decoration: underline;
+}
+
+.ar-count-badge {
+  background: rgba(56, 189, 248, 0.1);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Missions Grid & Cards */
+.ar-missions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.ar-mission-card {
+  background: rgba(17, 24, 39, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ar-mission-card:hover {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateY(-3px);
+}
+
+.ar-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ar-mission-tag {
+  background: rgba(2, 132, 199, 0.15);
+  color: #38bdf8;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ar-status-badge {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ar-card-team {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.ar-card-info-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.ar-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 12px;
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #38bdf8;
+}
+
+/* Detail View Styles */
+.ar-detail-view-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ar-detail-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ar-detail-header-box {
+  background: rgba(30, 41, 59, 0.4);
+  border-left: 4px solid #38bdf8;
+  padding: 16px 20px;
+  border-radius: 0 8px 8px 0;
+}
+
+.ar-detail-header-box h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0 0 4px 0;
+}
+
+.ar-detail-header-box p {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.ar-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.ar-detail-item {
+  background: rgba(3, 7, 18, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.ar-detail-item.ar-full-width {
+  grid-column: span 2;
+}
+
+.ar-detail-item label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.ar-detail-item p {
+  font-size: 15px;
+  color: #f8fafc;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.ar-detail-actions {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 20px;
+}
+
+.ar-close-btn {
+  background: #38bdf8;
+  color: #030712;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ar-close-btn:hover {
+  background: #0ea5e9;
+}

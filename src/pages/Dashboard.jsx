@@ -26,7 +26,8 @@ import {
   Layers,
   FileText,
   Building,
-  Globe2
+  Globe2,
+  BookOpen
 } from "lucide-react";
 
 export default function Dashboard() {
@@ -37,7 +38,7 @@ export default function Dashboard() {
 
   const stats = [
     { label: t.knowledgeItems || "Knowledge Items", value: "126", icon: <FileText className="w-5 h-5 text-orange-400" /> },
-    { label: t.categoriesCount || "Categories", value: "5", icon: <Layers className="w-5 h-5 text-blue-400" /> },
+    { label: t.categoriesCount || "Categories", value: "6", icon: <Layers className="w-5 h-5 text-blue-400" /> },
     { label: t.fieldExperiences || "Field Stories", value: "34", icon: <Users className="w-5 h-5 text-purple-400" /> },
     { label: t.organizations || "Organizations", value: "12", icon: <Building className="w-5 h-5 text-emerald-400" /> },
     { label: t.languages || "Languages", value: "2", icon: <Globe2 className="w-5 h-5 text-rose-400" /> }
@@ -45,8 +46,9 @@ export default function Dashboard() {
 
   const categoryCards = [
     {
-      title: t.operationalGuidelines,
-      subtitle: "SOPs & PROCEDURES",
+      title: "Operational Guidelines & Modules",
+      titleSi: "මෙහෙයුම් මාර්ගෝපදේශ සහ මොඩියුල",
+      subtitle: "MODULES & PROCEDURES",
       description: "Access procedures, operational guidelines, search operations, rescue operations, and disaster response information.",
       descriptionSi: "ක්‍රියා පටිපාටි, මෙහෙයුම් මාර්ගෝපදේශ, සෙවුම් සහ ගලවා ගැනීමේ මෙහෙයුම් පිළිබඳ තොරතුරු වෙත ප්‍රවේශ වන්න.",
       icon: <ShieldAlert className="w-6 h-6 text-orange-400" />,
@@ -56,6 +58,7 @@ export default function Dashboard() {
     },
     {
       title: t.firstAidMedical,
+      titleSi: t.firstAidMedical,
       subtitle: "MEDICAL RESCUE",
       description: "Access essential medical rescue knowledge, patient assessment, treatment, handling, and emergency medical procedures.",
       descriptionSi: "වෛද්‍ය ගලවා ගැනීම, රෝගී ඇගයීම, ප්‍රතිකාර සහ හදිසි වෛද්‍ය ක්‍රියාමාර්ග පිළිබඳ දැනුම ලබා ගන්න.",
@@ -66,6 +69,7 @@ export default function Dashboard() {
     },
     {
       title: t.experiencesStories,
+      titleSi: t.experiencesStories,
       subtitle: "LESSONS & CASES",
       description: "Explore real-world rescue experiences, operational challenges, success stories, and critical lessons learned.",
       descriptionSi: "සැබෑ ගලවා ගැනීමේ අත්දැකීම්, මෙහෙයුම් අභියෝග සහ වැදගත් පාඩම් ගවේෂණය කරන්න.",
@@ -76,6 +80,7 @@ export default function Dashboard() {
     },
     {
       title: t.emergencyContacts,
+      titleSi: t.emergencyContacts,
       subtitle: "DIRECT CONTACTS",
       description: "Quickly access 593+ verified emergency response personnel, rescue units, and agency communication details.",
       descriptionSi: "තහවුරු කළ හදිසි ප්‍රතිචාර කාර්ය මණ්ඩලය, ගලවා ගැනීමේ ඒකක සහ ආයතනික සම්බන්ධතා වෙත ඉක්මනින් ප්‍රවේශ වන්න.",
@@ -85,7 +90,19 @@ export default function Dashboard() {
       bgImage: contactListImg
     },
     {
+      title: "Standard Operating Procedures (SOPs)",
+      titleSi: "සම්මත මෙහෙයුම් ක්‍රියා පටිපාටි (SOPs)",
+      subtitle: "STANDARD PROCEDURES",
+      description: "Access official standard operating procedures, safety protocols, and emergency response guidelines (including SOP 0067 117 Call Center Documentation).",
+      descriptionSi: "නිල සම්මත මෙහෙයුම් ක්‍රියා පටිපාටි, ආරක්ෂක நெறிமுறைகள் සහ හදිසි ප්‍රතිචාර මාර්ගෝපදේශ (SOP 0067 117 ඇමතුම් මැදිරි ක්‍රියාපටිපාටිය ඇතුළුව).",
+      icon: <BookOpen className="w-6 h-6 text-amber-400" />,
+      path: "/sops",
+      badgeColor: "bg-amber-500/20 text-amber-400 border border-amber-500/30",
+      bgImage: sopsImg
+    },
+    {
       title: t.others,
+      titleSi: t.others,
       subtitle: "RESOURCES",
       description: "Access general INSARAG information, international coordination, training resources, and additional knowledge.",
       descriptionSi: "INSARAG තොරතුරු, ජාත්‍යන්තර සම්බන්ධීකරණය සහ පුහුණු සම්පත් වෙත ප්‍රවේශ වන්න.",
@@ -165,7 +182,7 @@ export default function Dashboard() {
                     </div>
 
                     <h4>
-                      {cat.title}
+                      {locale === "si" ? cat.titleSi : cat.title}
                     </h4>
                     
                     <p>
@@ -189,7 +206,7 @@ export default function Dashboard() {
           )}
         </main>
 
-        {/* Bottom Footer Status (Updated with class name for proper styling) */}
+        {/* Bottom Footer Status */}
         <div className="dashboard-footer">
           <div className="flex items-center gap-2">
             <Radio className="w-3.5 h-3.5 text-emerald-500 animate-pulse" />

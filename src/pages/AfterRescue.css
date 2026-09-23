@@ -1,0 +1,181 @@
+/* AfterRescue.css */
+
+.ar-form-container {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 900px;
+  margin: 32px auto;
+  color: #e2e8f0;
+  font-family: "Noto Sans Sinhala", sans-serif;
+}
+
+.ar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 16px;
+}
+
+.ar-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.ar-subtitle {
+  font-size: 14px;
+  color: #94a3b8;
+  margin: 4px 0 0 0;
+}
+
+.ar-badge-draft {
+  background: rgba(245, 158, 11, 0.1);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ar-fieldset {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  background: rgba(17, 24, 39, 0.5);
+}
+
+.ar-legend {
+  font-size: 16px;
+  font-weight: 600;
+  color: #38bdf8;
+  padding: 0 8px;
+}
+
+.ar-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.ar-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ar-field.ar-full {
+  grid-column: span 2;
+}
+
+.ar-field label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #cbd5e1;
+}
+
+.ar-field input,
+.ar-field select,
+.ar-field textarea {
+  background: #030712;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #fff;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.ar-field input:focus,
+.ar-field select:focus,
+.ar-field textarea:focus {
+  outline: none;
+  border-color: #38bdf8;
+}
+
+.ar-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.ar-btn-primary {
+  background: #0284c7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.ar-btn-primary:hover {
+  background: #0369a1;
+}
+
+.ar-btn-outline {
+  background: transparent;
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.ar-btn-outline:hover {
+  background: rgba(56, 189, 248, 0.05);
+}
+
+.ar-btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ar-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+/* --- Added for Smooth Page Scrolling --- */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.app-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+  height: 100vh;
+  overflow-y: auto !important; /* පෝරමය උඩට පහළට ස්ක්‍රෝල් වීම සඳහා අත්‍යවශ්‍යයි */
+  background-color: #0b1326; /* යම් පසුබිම් වර්ණයක් සඳහා */
+  padding: 20px;
+  box-sizing: border-box;
+}

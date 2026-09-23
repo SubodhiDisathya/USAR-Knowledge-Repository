@@ -7,14 +7,6 @@ import { useLocale } from "../context/LocaleContext";
 import translations from "../i18n/translations";
 import topics, { commonNote } from "../data/knowledgeData";
 
-const relatedTopics = [
-  ["first-response", "🚨 First Response", "පළමු ප්‍රතිචාරය"],
-  ["disaster-environment", "🌍 Disaster Environment", "ආපදා පරිසරය"],
-  ["incident-site-management", "⚠️ Incident Site Management", "සිද්ධි ස්ථාන කළමනාකරණය"],
-  ["search-operations", "🔍 Search Operations", "සෙවුම් මෙහෙයුම්"],
-  ["rescue-operations", "🦺 Rescue Operations", "ගලවා ගැනීමේ මෙහෙයුම්"]
-];
-
 function BilingualText({ primary, secondary, locale, className = "" }) {
   return (
     <p className={className}>{locale === "si" && secondary ? secondary : primary}</p>
@@ -159,23 +151,6 @@ export default function KnowledgeDetail() {
                 <h2>{commonNote.title}</h2>
                 <p>{commonNote.body}</p>
                 <p className="detail-secondary">{commonNote.sinhala}</p>
-              </div>
-            </section>
-
-            <section className="related-section">
-              <div className="detail-section-heading">
-                <span className="detail-section-line" />
-                <h2>{t.relatedTopics}</h2>
-              </div>
-              <div className="related-grid">
-                {relatedTopics.filter(([relatedSlug]) => relatedSlug !== slug).map(([relatedSlug, title, sinhala]) => (
-                  <Link to={`/knowledge/${relatedSlug}`} className="related-card" key={relatedSlug}>
-                    <div>
-                      <h3>{locale === "si" ? sinhala : title.replace(/^[^ ]+ /, "")}</h3>
-                    </div>
-                    <ArrowRight size={18} />
-                  </Link>
-                ))}
               </div>
             </section>
           </div>
@@ -341,8 +316,7 @@ export default function KnowledgeDetail() {
           gap: 14px;
         }
 
-        .information-card,
-        .related-card {
+        .information-card {
           background: #111827;
           border: 1px solid rgba(255, 255, 255, 0.07);
           border-radius: 13px;
@@ -355,8 +329,7 @@ export default function KnowledgeDetail() {
           padding: 18px;
         }
 
-        .information-card:hover,
-        .related-card:hover {
+        .information-card:hover {
           border-color: rgba(249, 115, 22, 0.45);
           transform: translateY(-2px);
           transition: 180ms ease;
@@ -374,15 +347,13 @@ export default function KnowledgeDetail() {
           font-size: 18px;
         }
 
-        .information-card h3,
-        .related-card h3 {
+        .information-card h3 {
           color: #f1f5f9;
           font-size: 14px;
           line-height: 1.45;
         }
 
         .information-card p,
-        .related-card p,
         .process-body p,
         .resource-copy p,
         .knowledge-note p {
@@ -542,30 +513,6 @@ export default function KnowledgeDetail() {
 
         .knowledge-note h2 {
           color: #facc15;
-        }
-
-        .related-section {
-          margin-top: 38px;
-        }
-
-        .related-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-          gap: 12px;
-        }
-
-        .related-card {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 12px;
-          padding: 16px;
-          color: #f59e0b;
-          text-decoration: none;
-        }
-
-        .related-card p {
-          color: #94a3b8;
         }
 
         @media (max-width: 760px) {
