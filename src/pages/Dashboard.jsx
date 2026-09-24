@@ -11,9 +11,10 @@ import "./Dashboard.css";
 // Importing local images from assets folder
 import sopsImg from "../assets/SOPs.jpeg";
 import medicineImg from "../assets/medicine.jpeg";
-import sriLankaFloodImg from "../assets/Sri Lanka Flood 2025.jpeg";
+import pastImg from "../assets/stories.jpg";
 import contactListImg from "../assets/Contactlist.jpeg";
-import othersImg from "../assets/Others'.jpeg";
+import sopImg from "../assets/sop.jpg";
+import othersImg from "../assets/others.jpg";
 
 import { 
   ShieldAlert, 
@@ -76,7 +77,7 @@ export default function Dashboard() {
       icon: <Users className="w-6 h-6 text-purple-400" />,
       path: "/experiences",
       badgeColor: "bg-purple-500/20 text-purple-400 border border-purple-500/30",
-      bgImage: sriLankaFloodImg
+      bgImage: pastImg
     },
     {
       title: t.emergencyContacts,
@@ -98,7 +99,7 @@ export default function Dashboard() {
       icon: <BookOpen className="w-6 h-6 text-amber-400" />,
       path: "/sops",
       badgeColor: "bg-amber-500/20 text-amber-400 border border-amber-500/30",
-      bgImage: sopsImg
+      bgImage: sopImg
     },
     {
       title: t.others,

@@ -13,6 +13,10 @@ import AfterRescue from "./pages/AfterRescue";
 import Admin from "./pages/Admin"; 
 import AdminRescue from "./pages/Admin_Rescue";
 import Search from "./pages/Search";
+
+// EmergencyCon component eka import kala 👇
+import EmergencyCon from "./pages/EmergencyCon";
+
 import "./index.css";
 
 function Protected({ children }) {
@@ -32,25 +36,27 @@ function App() {
             {/* Operational Guidelines Route */}
             <Route path="/operational-guidelines" element={<Protected><KnowledgeSection section="operational" /></Protected>} />
             
-            {/* SOPs Route එක මෙතැනට අලුතින් එකතු කරන ලදී */}
+            {/* SOPs Route */}
             <Route path="/sops" element={<Protected><KnowledgeSection section="sops" /></Protected>} />
 
             <Route path="/knowledge/:slug" element={<Protected><KnowledgeDetail /></Protected>} />
             <Route path="/first-aid-medical" element={<Protected><FirstAidMedical /></Protected>} />
             <Route path="/knowledge/medical/:topicSlug" element={<Protected><FirstAidMedical /></Protected>} />
             
-            {/* අත්දැකීම් සහ නිලධාරියාගේ විස්තර පෙන්වන Routes */}
+            {/* Athdakim saha niladhariya visthara penwana Routes */}
             <Route path="/experiences" element={<Protected><Experiences /></Protected>} />
             <Route path="/view-story/:id" element={<Protected><ViewExperience /></Protected>} />
 
-            {/* After Rescue පෝරමයට අදාළ Route එක */}
+            {/* After Rescue Route */}
             <Route path="/after-rescue" element={<Protected><AfterRescue /></Protected>} />
 
-            {/* Admin පැනලයට අදාළ Routes */}
+            {/* Admin Routes */}
             <Route path="/admin" element={<Protected><Admin /></Protected>} />
             <Route path="/admin/rescue-reports" element={<Protected><AdminRescue /></Protected>} />
 
-            <Route path="/emergency-contacts" element={<Protected><KnowledgeSection section="contacts" /></Protected>} />
+            {/* Emergency Contacts Route eka EmergencyCon wetha wenas kala 👇 */}
+            <Route path="/emergency-contacts" element={<Protected><EmergencyCon /></Protected>} />
+            
             <Route path="/others" element={<Protected><KnowledgeSection section="others" /></Protected>} />
             <Route path="/search" element={<Protected><Search /></Protected>} />
             <Route path="*" element={<Navigate to="/knowledge-hub" replace />} />
