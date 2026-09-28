@@ -19,7 +19,7 @@ export default function Admin() {
           </div>
 
           <div className="admin-grid">
-            {/* Rescue Form Details Card - මෙන්න මෙතැන "/after-rescue" වෙනුවට "/admin/rescue-reports" ලෙස වෙනස් කරන ලදී */}
+            {/* Rescue Form Details Card */}
             <div className="admin-card" onClick={() => navigate("/admin/rescue-reports")}>
               <div className="card-icon blue">
                 <ClipboardList size={24} />
@@ -49,8 +49,8 @@ export default function Admin() {
               </div>
             </div>
 
-            {/* System Control Card */}
-            <div className="admin-card" onClick={() => alert("System settings & user permissions module coming soon!")}>
+            {/* System Control Card - මෙන්න මෙතැන alert එක වෙනුවට navigate එක දෙන ලදී */}
+            <div className="admin-card" onClick={() => navigate("/admin/security")}>
               <div className="card-icon purple">
                 <ShieldCheck size={24} />
               </div>

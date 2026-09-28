@@ -14,6 +14,9 @@ import Admin from "./pages/Admin";
 import AdminRescue from "./pages/Admin_Rescue";
 import Search from "./pages/Search";
 
+// SystemSecurity component එක මෙතන import කරන්න 👇
+import SystemSecurity from "./pages/SystemSecurity";
+
 // EmergencyCon component eka import kala 👇
 import EmergencyCon from "./pages/EmergencyCon";
 
@@ -53,6 +56,9 @@ function App() {
             {/* Admin Routes */}
             <Route path="/admin" element={<Protected><Admin /></Protected>} />
             <Route path="/admin/rescue-reports" element={<Protected><AdminRescue /></Protected>} />
+
+            {/* System Security & Roles Route එක මෙන්න මෙතනට දාන්න 👇 */}
+            <Route path="/admin/security" element={<Protected><SystemSecurity /></Protected>} />
 
             {/* Emergency Contacts Route eka EmergencyCon wetha wenas kala 👇 */}
             <Route path="/emergency-contacts" element={<Protected><EmergencyCon /></Protected>} />

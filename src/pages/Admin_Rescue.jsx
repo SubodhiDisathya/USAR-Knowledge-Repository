@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Calendar, MapPin, FileText, Loader2 } from "lucide-react";
+import { ArrowLeft, Calendar, MapPin, FileText, Loader2, Download } from "lucide-react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import "./Admin_Rescue.css";
@@ -29,6 +29,11 @@ export default function AdminRescue() {
 
     fetchMissions();
   }, []);
+
+  // Function to trigger Browser's Print dialog which allows saving as PDF
+  const handlePrintPDF = () => {
+    window.print();
+  };
 
   if (loading) {
     return (
@@ -96,14 +101,35 @@ export default function AdminRescue() {
             </>
           ) : (
             <div className="ar-detail-view-container">
-              <div className="ar-detail-top-bar">
+              <div className="ar-detail-top-bar" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <button 
                   onClick={() => setSelectedMission(null)} 
                   className="ar-back-link"
                 >
                   <ArrowLeft size={16} /> Back to Missions List
                 </button>
-                <span className="ar-status-badge">{selectedMission.rescueOutcome}</span>
+                
+                <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+                  <button 
+                    onClick={handlePrintPDF}
+                    style={{
+                      background: "#38bdf8",
+                      color: "#0f172a",
+                      border: "none",
+                      padding: "6px 12px",
+                      borderRadius: "6px",
+                      fontWeight: "600",
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      fontSize: "13px"
+                    }}
+                  >
+                    <Download size={16} /> Download as PDF
+                  </button>
+                  <span className="ar-status-badge">{selectedMission.rescueOutcome}</span>
+                </div>
               </div>
 
               <div className="ar-detail-header-box">

@@ -1,0 +1,173 @@
+.security-container {
+  padding: 30px;
+  background-color: #0b132b;
+  color: #ffffff;
+  width: 100%;
+  flex: 1;
+  height: 100%;
+  min-height: 100vh;
+  overflow-y: auto !important; /* පිටුව සාර්ථකව පහළට ස්ක්‍රෝල් වීමට මෙය අත්‍යවශ්‍ය වේ */
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.security-container h2 {
+  font-size: 28px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.security-subtitle {
+  color: #8d99ae;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.security-section {
+  background-color: #1c2541;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.security-section h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #48cae4;
+}
+
+/* Table එක පිළිවෙළට පෙන්වීමට */
+.security-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.security-table th, 
+.security-table td {
+  padding: 15px;
+  border-bottom: 1px solid #2b3a67;
+  vertical-align: middle;
+}
+
+.security-table th {
+  color: #8d99ae;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.security-table td {
+  font-size: 14px;
+  color: #ffffff;
+}
+
+/* Edit Button සහ Input styles */
+.edit-btn {
+  background-color: #00b4d8;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.edit-btn:hover {
+  background-color: #0077b6;
+}
+
+.edit-input {
+  background-color: #0b132b;
+  border: 1px solid #48cae4;
+  color: #ffffff;
+  padding: 8px 10px;
+  border-radius: 4px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.save-btn {
+  background-color: #2b9348;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-right: 5px;
+}
+
+.save-btn:hover {
+  background-color: #55a630;
+}
+
+.cancel-btn {
+  background-color: #d90429;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.cancel-btn:hover {
+  background-color: #ef233c;
+}
+
+/* Audit logs පෙන්වන කොටස */
+.logs-box {
+  background-color: #0b132b;
+  padding: 15px;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.log-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #1c2541;
+  font-size: 13px;
+}
+
+.log-user {
+  color: #48cae4;
+  font-weight: bold;
+}
+
+.log-time {
+  color: #8d99ae;
+  float: right;
+  font-size: 12px;
+}
+
+/* Add New Role Form Styles */
+.add-role-form {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.add-role-form .edit-input {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Role Dropdown Styles */
+.role-select {
+  background-color: #0b132b;
+  border: 1px solid #48cae4;
+  color: #ffffff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.role-select option {
+  background-color: #1c2541;
+  color: #ffffff;
+}
