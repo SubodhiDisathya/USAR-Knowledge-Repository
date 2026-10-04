@@ -169,6 +169,206 @@
   color: #fb923c;
 }
 
+.operational-language-toggle {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.operational-language-toggle button {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #94a3b8;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.operational-language-toggle button.active {
+  border-color: rgba(249, 115, 22, 0.4);
+  background: rgba(249, 115, 22, 0.12);
+  color: #fb923c;
+}
+
+.operational-sinhala {
+  font-family: "Noto Sans Sinhala", system-ui, sans-serif;
+}
+
+.operational-sinhala .hero-badge {
+  font-family: "Noto Sans Sinhala", monospace;
+}
+
+.operational-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 16px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #f59e0b;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.operational-back-button:hover {
+  color: #fbbf24;
+}
+
+.operational-card-button {
+  width: 100%;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.operational-sector-overview {
+  padding: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  background: linear-gradient(145deg, #101726 0%, #0c1220 100%);
+}
+
+.operational-sector-overview h2 {
+  margin: 0;
+  color: #f1f5f9;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.operational-sector-overview .operational-sector-title {
+  margin-bottom: 18px;
+  color: #fb923c;
+  font-size: 20px;
+}
+
+.operational-sector-overview p {
+  margin: 18px 0 0;
+  color: #cbd5e1;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.operational-training-material {
+  margin-top: 28px;
+}
+
+.operational-training-material .detail-section-heading {
+  margin-bottom: 16px;
+}
+
+.operational-training-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.operational-training-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 12px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  background: linear-gradient(145deg, #101726 0%, #0c1220 100%);
+}
+
+.operational-training-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(249, 115, 22, 0.25);
+  border-radius: 11px;
+  background: rgba(249, 115, 22, 0.1);
+  color: #fb923c;
+}
+
+.operational-training-card h3 {
+  align-self: center;
+  margin: 0;
+  color: #f1f5f9;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.operational-training-card a {
+  grid-column: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  color: #fb923c;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.operational-training-card a:hover {
+  color: #fbbf24;
+}
+
+.operational-sector-overview .operational-detailed-heading {
+  margin: 28px 0 0;
+}
+
+.operational-detailed-heading h2 {
+  margin: 0;
+  color: #f1f5f9;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.operational-sector-detail {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.operational-sector-detail h3 {
+  margin: 0;
+  color: #f1f5f9;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.operational-sector-detail p,
+.operational-sector-detail ul,
+.operational-sector-detail ol {
+  margin: 12px 0 0;
+  color: #cbd5e1;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.operational-sector-detail ul,
+.operational-sector-detail ol {
+  padding-left: 22px;
+}
+
+.operational-sector-detail li + li {
+  margin-top: 4px;
+}
+
+.operational-sector-detail ol li strong {
+  display: block;
+  color: #f1f5f9;
+  font-weight: 600;
+}
+
+.operational-sector-detail ol li span {
+  display: block;
+}
+
 @media (max-width: 768px) {
   .knowledge-hub-container {
     padding: 20px;
