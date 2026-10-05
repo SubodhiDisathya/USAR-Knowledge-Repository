@@ -6,7 +6,8 @@ import {
   LayoutDashboard,
   LogOut,
   ClipboardList,
-  ShieldCheck 
+  ShieldCheck,
+  Sparkles 
 } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { useLocale } from "../context/LocaleContext";
@@ -50,6 +51,11 @@ export default function Sidebar() {
         <NavLink to="/admin" className={({ isActive }) => `nav-item${isActive ? " active" : ""}`}>
           <ShieldCheck size={20} />
           <span>Admin</span>
+        </NavLink>
+
+        <NavLink to="/knowledge-assistant" className={({ isActive }) => `nav-item${isActive ? " active" : ""}`}>
+          <Sparkles size={20} />
+          <span>USAR Knowledge Assistant</span>
         </NavLink>
       </div>
 
