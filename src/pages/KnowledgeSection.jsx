@@ -796,28 +796,6 @@ export default function KnowledgeSection({ section }) {
                     <h2>{isSinhala ? "දළ විශ්ලේෂණය" : "Overview"}</h2>
                   </div>
                   <p>{selectedSector.overview[operationalLanguage]}</p>
-                  {selectedSector.documents?.length > 0 && (
-                    <section className="operational-training-material">
-                      <div className="detail-section-heading">
-                        <span className="detail-section-line" />
-                        <h2>{isSinhala ? "අදාළ පුහුණු ද්‍රව්‍ය" : "Related Training Material"}</h2>
-                      </div>
-                      <div className="operational-training-grid">
-                        {selectedSector.documents.map((document) => (
-                          <article className="operational-training-card" key={document.url}>
-                            <div className="operational-training-icon">
-                              <FileText size={20} />
-                            </div>
-                            <h3>{document.title[operationalLanguage]}</h3>
-                            <a href={document.url} target="_blank" rel="noopener noreferrer">
-                              <span>{document.label[operationalLanguage]}</span>
-                              <ExternalLink size={15} />
-                            </a>
-                          </article>
-                        ))}
-                      </div>
-                    </section>
-                  )}
                   {selectedSector.details[operationalLanguage]?.length > 0 && (
                     <div className="detail-section-heading operational-detailed-heading">
                       <span className="detail-section-line" />
@@ -845,6 +823,28 @@ export default function KnowledgeSection({ section }) {
                       )}
                     </section>
                   ))}
+                  {selectedSector.documents?.length > 0 && (
+                    <section className="operational-training-material">
+                      <div className="detail-section-heading">
+                        <span className="detail-section-line" />
+                        <h2>{isSinhala ? "අදාළ පුහුණු ද්‍රව්‍ය" : "Related Training Material"}</h2>
+                      </div>
+                      <div className="operational-training-grid">
+                        {selectedSector.documents.map((document) => (
+                          <article className="operational-training-card" key={document.url}>
+                            <div className="operational-training-icon">
+                              <FileText size={20} />
+                            </div>
+                            <h3>{document.title[operationalLanguage]}</h3>
+                            <a href={document.url} target="_blank" rel="noopener noreferrer">
+                              <span>{document.label[operationalLanguage]}</span>
+                              <ExternalLink size={15} />
+                            </a>
+                          </article>
+                        ))}
+                      </div>
+                    </section>
+                  )}
                 </section>
               ) : (
                 <div className="knowledge-cards-grid">
