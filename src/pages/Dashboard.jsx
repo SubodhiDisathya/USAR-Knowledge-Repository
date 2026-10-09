@@ -6,6 +6,7 @@ import AdminPanel from "../components/AdminPanel";
 import { useAuth } from "../context/AuthContext";
 import { useLocale } from "../context/LocaleContext";
 import translations from "../i18n/translations";
+import { fieldExperiences } from "../data/experienceData";
 import "./Dashboard.css";
 
 // Importing local images from assets folder
@@ -25,8 +26,6 @@ import {
   ArrowRight,
   Radio,
   Layers,
-  FileText,
-  Building,
   Globe2,
   BookOpen
 } from "lucide-react";
@@ -37,12 +36,11 @@ export default function Dashboard() {
   const t = translations[locale] || translations["en"];
   const navigate = useNavigate();
 
+  // Statistics configuration (Organizations removed, Categories set to 6)
   const stats = [
-    { label: t.knowledgeItems || "Knowledge Items", value: "126", icon: <FileText className="w-5 h-5 text-orange-400" /> },
-    { label: t.categoriesCount || "Categories", value: "6", icon: <Layers className="w-5 h-5 text-blue-400" /> },
-    { label: t.fieldExperiences || "Field Stories", value: "34", icon: <Users className="w-5 h-5 text-purple-400" /> },
-    { label: t.organizations || "Organizations", value: "12", icon: <Building className="w-5 h-5 text-emerald-400" /> },
-    { label: t.languages || "Languages", value: "2", icon: <Globe2 className="w-5 h-5 text-rose-400" /> }
+    { label: t.categoriesCount || "Categories", value: 6, icon: <Layers className="w-5 h-5 text-blue-400" /> },
+    { label: t.fieldExperiences || "Field Stories", value: fieldExperiences.length, icon: <Users className="w-5 h-5 text-purple-400" /> },
+    { label: t.languages || "Languages", value: Object.keys(translations).length, icon: <Globe2 className="w-5 h-5 text-rose-400" /> }
   ];
 
   const categoryCards = [
@@ -211,7 +209,7 @@ export default function Dashboard() {
         <div className="dashboard-footer">
           <div className="flex items-center gap-2">
             <Radio className="w-3.5 h-3.5 text-emerald-500 animate-pulse" />
-            <span>{t.systemOnline || "System Online"} • {t.secureEnvironment || "Secure USAR Environment"}</span>
+            <span>{t.systemOnline || "System Online"} | {t.secureEnvironment || "Secure USAR Environment"}</span>
           </div>
           <div>{t.versionText || "v2.4.0-production"}</div>
         </div>

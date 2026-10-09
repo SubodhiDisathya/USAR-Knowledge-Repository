@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { 
   Users, 
-  CloudRain, 
   LayoutDashboard,
   LogOut,
   ClipboardList,
@@ -34,12 +33,6 @@ export default function Sidebar() {
           <Users size={20} />
           <span>{t.experiencesStories || "Past Experiences & Stories"}</span>
         </NavLink>
-
-        {/* Rainfall Monitoring */}
-        <a href="#loading" onClick={(e) => { e.preventDefault(); alert("Rainfall Monitoring feature coming soon!"); }} className="nav-item" style={{ cursor: "pointer" }}>
-          <CloudRain size={20} />
-          <span>{t.rainfallMonitoring || "View automated Rainfall Monitoring"}</span>
-        </a>
 
         {/* After the Rescue Form */}
         <NavLink to="/after-rescue" className={({ isActive }) => `nav-item${isActive ? " active" : ""}`}>

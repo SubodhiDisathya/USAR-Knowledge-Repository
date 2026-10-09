@@ -8,8 +8,8 @@ import "./FirstAidMedical.css";
 
 const medicalDetails = {
   "basic-medical-rescue": {
-    title: "Basic Medical Rescue",
-    sinhalaTitle: "මූලික වෛද්‍ය ගලවා ගැනීම",
+    title: "6.1 Basic Medical Rescue",
+    sinhalaTitle: "6.1 මූලික වෛද්‍ය ගලවා ගැනීම",
     icon: <Stethoscope size={28} />,
     description: "Learn the basic actions for providing safe and appropriate assistance during an emergency.",
     sinhalaDescription: "හදිසි අවස්ථාවකදී ආරක්ෂිතව සහ සුදුසු ලෙස සහාය ලබාදීමේ මූලික පියවර ඉගෙන ගන්න.",
@@ -24,8 +24,8 @@ const medicalDetails = {
     ]
   },
   "scene-assessment": {
-    title: "Scene Assessment",
-    sinhalaTitle: "සිද්ධි ස්ථාන ඇගයීම",
+    title: "6.2 Scene Assessment",
+    sinhalaTitle: "6.2 සිද්ධි ස්ථාන ඇගයීම",
     icon: <Search size={28} />,
     description: "Check the scene systematically and make safety the first priority before approaching a patient.",
     sinhalaDescription: "රෝගියා වෙත ළඟාවීමට පෙර සිද්ධි ස්ථානය ක්‍රමානුකූලව පරීක්ෂා කර ආරක්ෂාවට ප්‍රමුඛත්වය දෙන්න.",
@@ -41,8 +41,8 @@ const medicalDetails = {
     ]
   },
   "patient-assessment": {
-    title: "Patient Assessment",
-    sinhalaTitle: "රෝගී තත්ත්ව ඇගයීම",
+    title: "6.3 Patient Assessment",
+    sinhalaTitle: "6.3 රෝගී තත්ත්ව ඇගයීම",
     icon: <Heart size={28} />,
     description: "Use calm communication and the AVPU method to make an initial assessment of the patient.",
     sinhalaDescription: "සන්සුන් සන්නිවේදනය සහ AVPU ක්‍රමය භාවිතයෙන් රෝගියාගේ මූලික තත්ත්ව ඇගයීම සිදු කරන්න.",
@@ -59,8 +59,8 @@ const medicalDetails = {
     ]
   },
   "patient-treatment": {
-    title: "Patient Treatment",
-    sinhalaTitle: "රෝගී ප්‍රතිකාර",
+    title: "6.4 Patient Treatment",
+    sinhalaTitle: "6.4 රෝගී ප්‍රතිකාර",
     icon: <Bandage size={28} />,
     description: "Recognize common injury warning signs and provide simplified basic responses while awaiting qualified help.",
     sinhalaDescription: "සුදුසුකම් ලත් සහාය ලැබෙන තෙක් සාමාන්‍ය තුවාලවල අනතුරු සංඥා හඳුනාගෙන සරල මූලික ප්‍රතිචාර ලබාදෙන්න.",
@@ -75,8 +75,8 @@ const medicalDetails = {
     ]
   },
   "patient-handling": {
-    title: "Patient Handling",
-    sinhalaTitle: "රෝගීන් හැසිරවීම",
+    title: "6.5 Patient Handling",
+    sinhalaTitle: "6.5 රෝගීන් හැසිරවීම",
     icon: <Ambulance size={28} />,
     description: "Use careful, coordinated movement practices that protect the patient's condition during rescue operations.",
     sinhalaDescription: "ගලවා ගැනීමේ මෙහෙයුම් අතරතුර රෝගියාගේ තත්ත්වය ආරක්ෂා කරන, සැලකිලිමත් සහ සම්බන්ධීකරණය කළ චලන ක්‍රම භාවිතා කරන්න.",
@@ -92,8 +92,8 @@ const medicalDetails = {
     ]
   },
   "respectful-handling-deceased": {
-    title: "Respectful Handling of Deceased Persons",
-    sinhalaTitle: "මියගිය පුද්ගලයන්ට ගෞරවනීය සැලකීම",
+    title: "6.6 Respectful Handling of Deceased Persons",
+    sinhalaTitle: "6.6 මියගිය පුද්ගලයන්ට ගෞරවනීය සැලකීම",
     icon: <UserX size={28} />,
     description: "Follow compassionate, safe, and respectful guidance when handling deceased persons.",
     sinhalaDescription: "මියගිය පුද්ගලයන් සමඟ කටයුතු කිරීමේදී කරුණාවන්ත, ආරක්ෂිත සහ ගෞරවනීය මාර්ගෝපදේශ අනුගමනය කරන්න.",
@@ -112,7 +112,7 @@ const medicalDetails = {
 
 const labels = {
   en: {
-    badge: "MEDICAL RESCUE",
+    badge: "MODULE 6: MEDICAL RESCUE",
     title: "First Aid & Medical",
     description: "Access essential medical rescue knowledge for emergency situations and disaster response.",
     overview: "TOPIC OVERVIEW",
@@ -127,7 +127,7 @@ const labels = {
     safetyText: "This content is simplified educational guidance. During actual emergencies, follow authorized medical protocols and instructions from qualified emergency or medical personnel."
   },
   si: {
-    badge: "වෛද්‍ය ගලවා ගැනීම",
+    badge: "මොඩියුලය 6: වෛද්‍ය ගලවා ගැනීම",
     title: "පළමු ප්‍රතිකාර සහ වෛද්‍ය",
     description: "හදිසි අවස්ථා සහ ආපදා ප්‍රතිචාර සඳහා අත්‍යවශ්‍ය වෛද්‍ය ගලවා ගැනීමේ දැනුම ලබා ගන්න.",
     overview: "මාතෘකා දළ විශ්ලේෂණය",
@@ -177,12 +177,12 @@ export default function FirstAidMedical() {
           {detail ? (
             <>
               <div className="detail-top-bar">
-                <button className="back-btn" onClick={() => navigate("/first-aid-medical")}>
+                <button className="back-btn" onClick={() => navigate("/knowledge/medical")}>
                   <ArrowLeft size={18} /> {text.back}
                 </button>
               </div>
               <section className="medical-hero detail-hero">
-                <div className="medical-badge">{text.overview}</div>
+                <div className="medical-badge">{text.badge}</div>
                 <div className="detail-title-flex">
                   <span className="detail-icon-box">{detail.icon}</span>
                   <h1>{locale === "si" ? detail.sinhalaTitle : detail.title}</h1>
