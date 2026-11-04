@@ -6,7 +6,8 @@ import {
   LogOut,
   ClipboardList,
   ShieldCheck,
-  Sparkles 
+  Sparkles,
+  CircleHelp
 } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { useLocale } from "../context/LocaleContext";
@@ -26,7 +27,7 @@ export default function Sidebar() {
         
         <NavLink to="/Dashboard" className={({ isActive }) => `nav-item${isActive ? " active" : ""}`}>
           <LayoutDashboard size={20} />
-          <span>{t.Dashboard || "Dashboard"}</span>
+          <span>{t.dashboard}</span>
         </NavLink>
 
         <NavLink to="/experiences" className={({ isActive }) => `nav-item${isActive ? " active" : ""}`}>
@@ -43,12 +44,17 @@ export default function Sidebar() {
         {/* Admin Feature */}
         <NavLink to="/admin" className={({ isActive }) => `nav-item${isActive ? " active" : ""}`}>
           <ShieldCheck size={20} />
-          <span>Admin</span>
+          <span>{t.adminPanel}</span>
         </NavLink>
 
         <NavLink to="/knowledge-assistant" className={({ isActive }) => `nav-item${isActive ? " active" : ""}`}>
           <Sparkles size={20} />
-          <span>USAR Knowledge Assistant</span>
+          <span>{t.knowledgeAssistant}</span>
+        </NavLink>
+
+        <NavLink to="/quiz" className={({ isActive }) => `nav-item${isActive ? " active" : ""}`}>
+          <CircleHelp size={20} />
+          <span>{t.trainingQuiz}</span>
         </NavLink>
       </div>
 

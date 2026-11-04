@@ -1,0 +1,1464 @@
+:root {
+  color-scheme: dark;
+  --page-bg: #090e18;
+  --surface: #101a2d;
+  --surface-soft: #111b2e;
+  --icon-bg: #182338;
+  --surface-info: #111b2e;
+  --sidebar-surface: rgba(224, 170, 26, 0.12);
+  --border: #202d43;
+  --border-strong: #344158;
+  --main-hover: #182338;
+  --search-bg: #0f172a;
+  --input-bg: #0f172a;
+  --header-bg: #0f172a;
+  --footer-bg: #0f172a;
+  --navy: #0b1220;
+  --teal: #edb83f;
+  --teal-hover: #d59b22;
+  --accent-fill: #dda719;
+  --accent-hover: #c28b10;
+  --amber: #edb83f;
+  --danger: #ef6b63;
+  --white: #ffffff;
+  --heading: #f8fafc;
+  --text: #e2e8f0;
+  --secondary: #aab6c8;
+  --muted: #94a3b8;
+  --button-text: #0b1220;
+  --button-hover-text: #0b1220;
+  --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  --overlay-start: rgba(9, 14, 24, 0.94);
+  --overlay-middle: rgba(9, 14, 24, 0.62);
+  --overlay-end: rgba(9, 14, 24, 0.16);
+  --sidebar-secondary: #cbd5e1;
+  --sidebar-accent: #dda719;
+  --sidebar-danger: #dc6b55;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --page-bg: #f4f6fa;
+  --surface: #ffffff;
+  --surface-soft: #f1f3f7;
+  --icon-bg: #fff7e6;
+  --surface-info: #fff7e6;
+  --sidebar-surface: rgba(154, 103, 0, 0.1);
+  --border: #e1e5ec;
+  --border-strong: #c9d0dc;
+  --main-hover: #fef3c7;
+  --search-bg: #f8fafc;
+  --input-bg: #f8fafc;
+  --header-bg: #ffffff;
+  --footer-bg: #f1f3f7;
+  --teal: #946200;
+  --teal-hover: #744b00;
+  --accent-fill: #d9a313;
+  --accent-hover: #b9850a;
+  --amber: #9a6700;
+  --danger: #d65b50;
+  --heading: #111827;
+  --text: #263244;
+  --secondary: #475569;
+  --muted: #64748b;
+  --button-text: #111827;
+  --button-hover-text: #111827;
+  --card-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --overlay-start: rgba(15, 23, 42, 0.86);
+  --overlay-middle: rgba(15, 23, 42, 0.52);
+  --overlay-end: rgba(15, 23, 42, 0.14);
+  --sidebar-secondary: #cbd5e1;
+  --sidebar-accent: #d9a313;
+  --sidebar-danger: #dc6b55;
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--text);
+}
+
+.app-layout,
+.app-layout .main-content,
+.knowledge-assistant-page,
+.knowledge-assistant-page .main-content {
+  background: var(--page-bg) !important;
+  color: var(--text);
+}
+
+.dashboard-main,
+.experiences-main,
+.search-main,
+.medical-container,
+.knowledge-hub-container,
+.knowledge-detail-main,
+.quiz-container,
+.security-container,
+.emergency-container,
+.view-experience-main,
+.knowledge-assistant-main {
+  background: var(--page-bg) !important;
+  color: var(--text) !important;
+}
+
+.login-container {
+  background: var(--page-bg) !important;
+}
+
+.sidebar {
+  background: var(--navy) !important;
+  border-color: var(--navy) !important;
+}
+
+.sidebar-header,
+.sidebar-section {
+  border-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+.sidebar-header h1,
+.sidebar .nav-item,
+.sidebar .system-online {
+  color: var(--white) !important;
+}
+
+.sidebar .nav-item:hover,
+.sidebar .nav-item.active {
+  background: var(--sidebar-surface) !important;
+  color: var(--navy) !important;
+  border-left-color: var(--sidebar-accent) !important;
+}
+
+.sidebar .category-badge,
+.sidebar .category-badge .count {
+  background: var(--sidebar-surface) !important;
+  border-color: var(--sidebar-accent) !important;
+  color: var(--navy) !important;
+}
+
+.top-header .search-wrapper {
+  background: var(--search-bg) !important;
+  color: var(--teal) !important;
+}
+
+.top-header .search-wrapper:focus-within {
+  background: var(--surface) !important;
+}
+
+.top-header,
+.dashboard-footer {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+
+.dashboard-footer {
+  background: var(--footer-bg) !important;
+  color: var(--text) !important;
+}
+
+.system-status {
+  color: var(--text) !important;
+}
+
+.search-wrapper,
+.search-wrapper:focus-within,
+.lang-toggle {
+  background: var(--surface-soft) !important;
+  border-color: var(--border) !important;
+  color: var(--white) !important;
+}
+
+.search-main .search-box,
+.search-main .search-box:focus-within,
+.experiences-main .filter-search,
+.emergency-container .search-box-wrapper,
+.emergency-container .search-input {
+  background: var(--search-bg) !important;
+}
+
+.top-header .search-input {
+  background: transparent !important;
+}
+
+.search-main .search-field {
+  background: transparent !important;
+}
+
+.search-main .search-box svg,
+.emergency-container .search-box-wrapper svg {
+  color: var(--teal) !important;
+}
+
+.search-input {
+  color: var(--text) !important;
+}
+
+.lang-toggle:hover {
+  background: var(--surface) !important;
+  border-color: var(--teal) !important;
+}
+
+.dashboard-main,
+.knowledge-assistant-main {
+  background: var(--page-bg) !important;
+}
+
+.dashboard-banner,
+.ka-header,
+.stat-card,
+.ka-chat-panel,
+.login-card,
+.login-card .input-wrapper,
+.admin-container,
+.admin-card,
+.ar-admin-wrapper,
+.ar-mission-card,
+.ar-detail-view-container,
+.ar-detail-header-box,
+.ar-detail-item,
+.ar-form-container,
+.ar-fieldset,
+.summary-card,
+.quick-filter-box,
+.contact-card,
+.detail-card,
+.phone-box,
+.filter-bar,
+.search-box,
+.result-item,
+.knowledge-hub-hero,
+.operational-sector-overview,
+.operational-training-card,
+.operational-sector-detail,
+.knowledge-card-item,
+.detail-introduction,
+.information-card,
+.related-card,
+.process-step,
+.resource-panel,
+.knowledge-note,
+.medical-hero,
+.step-card,
+.medical-card,
+.medical-resource-panel,
+.medical-safety-note,
+.medical-container .detail-hero,
+.quiz-hero,
+.quiz-choice-card,
+.quiz-question-card,
+.quiz-result,
+.quiz-safety-note,
+.quiz-feedback,
+.quiz-option,
+.security-section,
+.logs-box,
+.ve-card-container,
+.experience-card,
+.admin-panel,
+.knowledge-repository,
+.knowledge-form,
+.knowledge-card,
+.ka-message-bubble.assistant {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+  box-shadow: var(--card-shadow);
+}
+
+.dashboard-banner,
+.ka-header {
+  background: var(--surface) !important;
+}
+
+.dashboard-main .admin-section {
+  background: var(--surface) !important;
+}
+
+.app-layout input,
+.app-layout select,
+.app-layout textarea,
+.login-card input,
+.login-language-toggle,
+.filter-search,
+.filter-select,
+.search-field,
+.edit-input,
+.role-select,
+.ar-field input,
+.ar-field select,
+.ar-field textarea,
+.ka-text-input {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+
+.app-layout input:focus,
+.app-layout select:focus,
+.app-layout textarea:focus,
+.login-card input:focus,
+.filter-search:focus,
+.filter-select:focus,
+.edit-input:focus,
+.role-select:focus,
+.ar-field input:focus,
+.ar-field select:focus,
+.ar-field textarea:focus,
+.ka-text-input:focus {
+  border-color: var(--teal) !important;
+}
+
+.dashboard-banner,
+.dashboard-main h1,
+.dashboard-main h2,
+.dashboard-main h3,
+.dashboard-main h4,
+.admin-title,
+.admin-card .card-content h3,
+.ar-admin-title,
+.ar-detail-header-box h2,
+.ar-detail-item label,
+.ar-card-team,
+.ar-title,
+.header-text h3,
+.medical-container h1,
+.medical-container h2,
+.medical-container h3,
+.medical-container h4,
+.emergency-container .main-title,
+.emergency-container .section-title,
+.emergency-container .card-profile-info h3,
+.emergency-container .detail-header h2,
+.experiences-header h2,
+.search-header h2,
+.result-header h3,
+.medical-hero h1,
+.hero-title,
+.card-item-title,
+.detail-section-heading h2,
+.detail-content-section h2,
+.detail-content-section h3,
+.safety-panel h2,
+.resource-copy h2,
+.resource-copy h3,
+.knowledge-note h2,
+.quiz-hero h1,
+.quiz-selection h2,
+.quiz-choice-card h3,
+.quiz-question-card h2,
+.quiz-result h2,
+.quiz-safety-note h2,
+.security-container h2,
+.security-section h3,
+.knowledge-repository h2,
+.admin-panel h2,
+.knowledge-card h3,
+.information-card h3,
+.related-card h3,
+.process-body h3,
+.operational-sector-overview h2,
+.operational-sector-overview .operational-sector-title,
+.operational-training-card h3,
+.operational-detailed-heading h2,
+.operational-sector-detail h3,
+.step-info h3,
+.step-info h4,
+.medical-card h3,
+.login-card h1 {
+  color: var(--heading) !important;
+}
+
+.admin-subtitle,
+.admin-card .card-content p,
+.ar-admin-subtitle,
+.ar-card-info-row,
+.officer-name,
+.org-name,
+.snippet,
+.ar-detail-header-box p,
+.ar-detail-item p,
+.emergency-container .subtitle,
+.emergency-container .quick-filter-desc,
+.emergency-container .rank-sm,
+.emergency-container .role-sm,
+.emergency-container .location-text,
+.emergency-container .rank-text,
+.emergency-container .role-text,
+.emergency-container .detail-item .value,
+.emergency-container .phone-value,
+.experiences-header p,
+.search-header p,
+.result-snippet,
+.medical-hero p,
+.hero-description,
+.card-item-desc,
+.detail-introduction,
+.information-card,
+.related-card,
+.quiz-hero p,
+.quiz-choice-card p,
+.quiz-result p,
+.quiz-safety-note p,
+.quiz-feedback p,
+.security-subtitle,
+.security-table th,
+.security-table td,
+.users-table th,
+.users-table td,
+.knowledge-card p,
+.form-group label,
+.ar-field label,
+.login-card .subtitle,
+.form-options,
+.toggle-auth,
+.stat-label,
+.ka-subtitle,
+.ka-message-bubble.assistant,
+.ka-source-title,
+.ka-text-input::placeholder {
+  color: var(--secondary) !important;
+}
+
+a,
+.ar-back-link,
+.back-link,
+.detail-breadcrumb a,
+.detail-kicker,
+.resource-label,
+.result-link,
+.read-more,
+.card-action,
+.hero-sinhala-desc,
+.sinhala-sub,
+.forgot-link,
+.toggle-link,
+.ar-legend,
+.ar-card-footer,
+.operational-back-button,
+.operational-training-card a,
+.medical-resource-label,
+.learn-more,
+.quiz-score,
+.quiz-topic {
+  color: var(--teal);
+}
+
+.nav-item:hover,
+.nav-item.active,
+.language-toggle .active,
+.ka-language-toggle .active {
+  color: var(--teal) !important;
+}
+
+.status-dot,
+.online-dot,
+.system-online svg,
+.ar-status-badge,
+.quiz-option.correct,
+.quiz-feedback.is-correct,
+.quiz-result-icon,
+.available-status,
+.success-indicator {
+  color: var(--teal) !important;
+}
+
+.online-dot,
+.status-dot,
+.quiz-result-icon {
+  background-color: var(--teal) !important;
+}
+
+.status-dot,
+.online-dot,
+.system-online svg {
+  color: #4ade80 !important;
+}
+
+.status-dot,
+.online-dot {
+  background-color: #4ade80 !important;
+}
+
+.ar-status-badge,
+.quiz-option.correct,
+.quiz-feedback.is-correct,
+.quiz-result-icon,
+.available-status,
+.success-indicator {
+  color: #34d399 !important;
+}
+
+.quiz-result-icon {
+  background-color: rgba(16, 185, 129, 0.12) !important;
+}
+
+.category-subtitle,
+.dashboard-banner span,
+.hero-badge,
+.admin-badge,
+.ar-count-badge,
+.ar-mission-tag,
+.category-badge,
+.filter-btn,
+.result-category,
+.count-badge,
+.type-badge,
+.tag,
+.quiz-badge,
+.operational-language-toggle button.active,
+.role-badge.admin,
+.ka-related-question,
+.ka-source-card,
+.ka-suggestion-button {
+  background: var(--surface-soft) !important;
+  border-color: var(--border) !important;
+  color: var(--heading) !important;
+}
+
+.stat-value,
+.dashboard-main .stat-icon,
+.dashboard-main .stat-icon svg,
+.dashboard-main .category-card svg,
+.ka-eyebrow,
+.ka-related-label,
+.ka-avatar,
+.information-icon,
+.detail-section-line,
+.process-marker span,
+.step-emoji-box,
+.medical-icon-box,
+.operational-training-icon,
+.card-icon-wrapper,
+.card-action-indicator,
+.quiz-choice-icon,
+.quiz-choice-medical .quiz-choice-icon,
+.quiz-choice-mixed .quiz-choice-icon {
+  color: var(--teal) !important;
+}
+
+.information-icon,
+.detail-section-line,
+.process-marker span {
+  background: var(--teal) !important;
+  color: var(--white) !important;
+}
+
+.step-emoji-box,
+.medical-icon-box,
+.operational-training-icon,
+.card-icon-wrapper,
+.card-action-indicator,
+.quiz-choice-icon,
+.quiz-choice-medical .quiz-choice-icon,
+.quiz-choice-mixed .quiz-choice-icon {
+  background: var(--icon-bg) !important;
+  border-color: var(--border) !important;
+}
+
+.ar-btn-primary,
+.ar-close-btn,
+.quiz-primary-button,
+.submit-btn,
+.edit-btn,
+.role-toggle-btn,
+.btn-primary,
+.resource-button,
+.call-btn,
+.details-btn,
+.call-btn-large,
+.ka-send-button,
+.medical-container .view-doc-btn,
+.ka-send-button {
+  background-color: var(--accent-fill);
+  border-color: var(--accent-fill);
+  color: var(--button-text) !important;
+}
+
+.ar-btn-primary:hover,
+.ar-close-btn:hover,
+.quiz-primary-button:hover:not(:disabled),
+.submit-btn:hover:not(:disabled),
+.edit-btn:hover,
+.role-toggle-btn:hover,
+.btn-primary:hover:not(:disabled),
+.resource-button:hover,
+.call-btn:hover,
+.details-btn:hover,
+.call-btn-large:hover,
+.ka-send-button:hover {
+  background: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+  color: var(--button-text) !important;
+}
+
+.ar-btn-outline,
+.ar-btn-secondary,
+.quiz-secondary-button,
+.quiz-back-button,
+.medical-container .back-btn,
+.operational-language-toggle button,
+.filter-btn,
+.chip-btn,
+.quiz-option,
+.btn-secondary,
+.btn-google,
+.page-back-button {
+  background: var(--surface-soft) !important;
+  border-color: var(--border) !important;
+  color: var(--heading) !important;
+}
+
+.ar-btn-outline:hover,
+.ar-btn-secondary:hover,
+.quiz-secondary-button:hover,
+.quiz-back-button:hover,
+.medical-container .back-btn:hover,
+.filter-btn:hover,
+.chip-btn:hover,
+.page-back-button:hover {
+  background: var(--surface) !important;
+  border-color: var(--teal-hover) !important;
+  color: var(--white) !important;
+}
+
+.ka-send-button {
+  background: var(--teal) !important;
+}
+
+.ka-language-toggle,
+.ka-clear-button,
+.ka-suggestion-button,
+.ka-feedback-button {
+  background: var(--surface-soft) !important;
+  border-color: var(--border) !important;
+  color: var(--heading) !important;
+}
+
+.ka-message-bubble.user {
+  background: var(--surface-soft) !important;
+  border-color: var(--border) !important;
+  color: var(--heading) !important;
+}
+
+.ka-avatar,
+.ka-user-avatar {
+  background: var(--icon-bg) !important;
+  border-color: var(--border) !important;
+  color: var(--teal) !important;
+}
+
+.ka-typing-dots span {
+  background: var(--teal) !important;
+}
+
+.category-card .card-icon-wrapper {
+  background: var(--icon-bg) !important;
+  border-color: var(--border) !important;
+  color: var(--teal) !important;
+}
+
+.ka-feedback-button.active,
+.ka-related-question:hover,
+.ka-suggestion-button:hover,
+.knowledge-card-item:hover,
+.medical-card:hover,
+.step-card:hover,
+.operational-card-button:hover,
+.admin-card:hover,
+.ar-mission-card:hover,
+.contact-card:hover,
+.result-item:hover,
+.experience-card:hover {
+  background: var(--main-hover) !important;
+  border-color: var(--teal) !important;
+}
+
+.dashboard-main::-webkit-scrollbar-thumb,
+.sidebar::-webkit-scrollbar-thumb,
+.ka-chat-messages::-webkit-scrollbar-thumb,
+.experiences-main::-webkit-scrollbar-thumb,
+.search-main::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+}
+
+.dashboard-main::-webkit-scrollbar-thumb:hover,
+.ka-chat-messages::-webkit-scrollbar-thumb:hover,
+.experiences-main::-webkit-scrollbar-thumb:hover,
+.search-main::-webkit-scrollbar-thumb:hover {
+  background: var(--teal);
+}
+
+.ar-badge-draft,
+.medical-warning,
+.quick-filter-title,
+.quiz-badge.warning,
+.warning-status,
+.maintenance-status,
+.quiz-safety-note {
+  background: var(--surface-soft) !important;
+  border-color: var(--amber) !important;
+  color: var(--amber) !important;
+}
+
+.ar-badge-draft,
+.quick-filter-title,
+.warning-status,
+.maintenance-status {
+  color: var(--amber) !important;
+}
+
+.safety-panel,
+.error-message,
+.chip-clear-btn,
+.danger-status,
+.critical-status,
+.logout-btn {
+  background: var(--surface-soft) !important;
+  border-color: var(--danger) !important;
+  color: var(--danger) !important;
+}
+
+.logout-btn:hover,
+.chip-clear-btn:hover {
+  background: var(--danger) !important;
+  border-color: var(--danger) !important;
+  color: var(--white) !important;
+}
+
+.safety-panel h2,
+.safety-panel p,
+.medical-warning,
+.medical-warning p {
+  color: var(--danger) !important;
+}
+
+.quiz-option.correct {
+  background: var(--icon-bg) !important;
+  border-color: var(--teal) !important;
+  color: var(--teal) !important;
+}
+
+.quiz-option.incorrect,
+.quiz-feedback.is-incorrect {
+  background: var(--surface-soft) !important;
+  border-color: var(--danger) !important;
+  color: var(--danger) !important;
+}
+
+.quiz-progress-track {
+  background: var(--surface-soft) !important;
+}
+
+.quiz-progress-track span {
+  background: var(--teal) !important;
+}
+
+.role-badge.user,
+.quiz-option-letter {
+  background: var(--surface-soft) !important;
+  color: var(--white) !important;
+}
+
+.category-image-overlay {
+  background: linear-gradient(to top, var(--overlay-start) 15%, var(--overlay-middle) 65%, var(--overlay-end) 100%) !important;
+}
+
+.category-card h4,
+.category-card p,
+.category-card .card-icon-wrapper svg,
+.view-experience-main .ve-image-preview > div,
+.view-experience-main .ve-image-preview button {
+  color: var(--white) !important;
+}
+
+.view-experience-main .ve-image-preview {
+  background: var(--surface) !important;
+}
+
+.view-experience-main .ve-nav-btn,
+.view-experience-main .ve-image-preview button {
+  background: var(--header-bg) !important;
+}
+
+.view-experience-main .ve-image-caption {
+  background: linear-gradient(to top, var(--overlay-start), transparent) !important;
+}
+
+.view-experience-main h1,
+.view-experience-main h2,
+.view-experience-main h3 {
+  color: var(--heading) !important;
+}
+
+.view-experience-main p,
+.view-experience-main span {
+  color: var(--text) !important;
+}
+
+.view-experience-main button:not(.ve-nav-btn) {
+  color: var(--teal) !important;
+}
+
+.knowledge-hub-container [style*="background"],
+.knowledge-detail-main [style*="#111827"],
+.view-experience-main [style*="#111827"] {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+
+.view-experience-main [style*="#e2e8f0"],
+.view-experience-main [style*="#cbd5e1"],
+.view-experience-main [style*="#f8fafc"],
+.view-experience-main [style*="#f1f5f9"] {
+  color: var(--text) !important;
+}
+
+.view-experience-main .ve-image-preview [style*="linear-gradient"] {
+  color: var(--white) !important;
+}
+
+.dashboard-main .stat-icon {
+  background: var(--icon-bg) !important;
+}
+
+.dashboard-main .stat-card:hover,
+.dashboard-main .category-card:hover {
+  background-color: var(--main-hover) !important;
+  border-color: var(--teal) !important;
+}
+
+.dashboard-banner,
+.stat-card,
+.category-card,
+.admin-section {
+  border-color: var(--border) !important;
+  box-shadow: var(--card-shadow) !important;
+}
+
+.dashboard-main .category-explore {
+  color: var(--teal) !important;
+}
+
+.sidebar .nav-item,
+.sidebar .system-online {
+  color: var(--sidebar-secondary) !important;
+}
+
+.sidebar .sidebar-section h3 {
+  color: #dceffa !important;
+}
+
+.sidebar .nav-item:hover,
+.sidebar .nav-item.active {
+  color: var(--teal) !important;
+}
+
+.sidebar .nav-item svg {
+  color: var(--sidebar-secondary) !important;
+}
+
+.sidebar .nav-item:hover svg,
+.sidebar .nav-item.active svg,
+.sidebar .category-badge svg {
+  color: var(--teal) !important;
+}
+
+.sidebar .system-online svg {
+  color: var(--sidebar-secondary) !important;
+}
+
+.sidebar .sidebar-section h3 {
+  color: var(--sidebar-secondary) !important;
+}
+
+.sidebar .nav-item:hover,
+.sidebar .nav-item.active {
+  border-left-color: var(--sidebar-accent) !important;
+}
+
+.sidebar .online-dot {
+  background-color: var(--sidebar-accent) !important;
+}
+
+.sidebar .category-badge,
+.sidebar .category-badge .count {
+  border-color: var(--sidebar-accent) !important;
+  color: var(--teal) !important;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: var(--sidebar-accent) !important;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--sidebar-accent) !important;
+}
+
+.sidebar .logout-btn {
+  background: rgba(221, 167, 25, 0.1) !important;
+  border-color: rgba(221, 167, 25, 0.45) !important;
+  color: var(--teal) !important;
+}
+
+.sidebar .logout-btn:hover {
+  background: var(--accent-fill) !important;
+  border-color: var(--accent-fill) !important;
+  color: var(--button-text) !important;
+}
+
+.app-layout .main-content,
+.dashboard-main,
+.experiences-main,
+.search-main,
+.medical-container,
+.knowledge-hub-container,
+.knowledge-detail-main,
+.quiz-container,
+.security-container,
+.emergency-container,
+.view-experience-main,
+.knowledge-assistant-main {
+  color: var(--text) !important;
+}
+
+.top-header {
+  color: var(--white) !important;
+}
+
+.dashboard-footer {
+  color: var(--text) !important;
+}
+
+.dashboard-footer svg {
+  color: var(--teal) !important;
+}
+
+.search-wrapper,
+.search-wrapper svg {
+  color: var(--teal) !important;
+}
+
+.search-input,
+.search-field,
+.filter-search {
+  color: var(--white) !important;
+}
+
+.search-input::placeholder,
+.search-field::placeholder,
+.filter-search::placeholder,
+.ka-text-input::placeholder,
+.app-layout input::placeholder,
+.app-layout textarea::placeholder {
+  color: var(--muted) !important;
+}
+
+.top-header button svg,
+.dashboard-main button svg,
+.experiences-main button svg,
+.search-main button svg,
+.medical-container button svg,
+.knowledge-hub-container button svg,
+.knowledge-detail-main button svg,
+.quiz-container button svg,
+.security-container button svg,
+.emergency-container button svg,
+.view-experience-main button svg,
+.knowledge-assistant-main button svg {
+  color: inherit;
+}
+
+body .main-content h1,
+body .main-content h2,
+body .main-content h3,
+body .main-content h4,
+body .main-content h5,
+body .main-content h6 {
+  color: var(--heading) !important;
+}
+
+.top-header .search-input,
+.search-main .search-field {
+  color: var(--white) !important;
+}
+
+.top-header .search-input::placeholder,
+.search-main .search-field::placeholder {
+  color: var(--muted) !important;
+}
+
+.top-header .search-wrapper svg,
+.search-main .search-box svg {
+  color: var(--teal) !important;
+}
+
+.main-content button:focus-visible,
+.main-content a:focus-visible {
+  outline-color: var(--teal) !important;
+}
+
+.app-layout .main-content,
+.knowledge-assistant-page .main-content {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.top-header {
+  background: var(--header-bg) !important;
+  border-color: var(--border) !important;
+  color: var(--heading) !important;
+}
+
+.top-header .system-status {
+  color: var(--secondary) !important;
+}
+
+.top-header .search-wrapper,
+.top-header .search-wrapper:focus-within {
+  background: var(--input-bg) !important;
+  border-color: var(--border) !important;
+  color: var(--teal) !important;
+}
+
+.top-header .search-input {
+  background: transparent !important;
+  color: var(--heading) !important;
+}
+
+.top-header .search-input::placeholder,
+.search-main .search-field::placeholder,
+.app-layout .main-content input::placeholder,
+.app-layout .main-content textarea::placeholder {
+  color: var(--secondary) !important;
+}
+
+.dashboard-footer {
+  background: var(--footer-bg) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+
+.dashboard-footer svg {
+  color: var(--teal) !important;
+}
+
+.app-layout .main-content input,
+.app-layout .main-content select,
+.app-layout .main-content textarea,
+.knowledge-assistant-page .main-content input,
+.knowledge-assistant-page .main-content select,
+.knowledge-assistant-page .main-content textarea,
+.login-card input {
+  background: var(--input-bg) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+
+.top-header .search-input,
+.search-main .search-field {
+  background: transparent !important;
+}
+
+.top-header .search-input {
+  color: var(--heading) !important;
+}
+
+.search-main .search-field {
+  color: var(--heading) !important;
+}
+
+.app-layout .main-content h1,
+.app-layout .main-content h2,
+.app-layout .main-content h3,
+.app-layout .main-content h4,
+.app-layout .main-content h5,
+.app-layout .main-content h6,
+.knowledge-assistant-page .main-content h1,
+.knowledge-assistant-page .main-content h2,
+.knowledge-assistant-page .main-content h3,
+.knowledge-assistant-page .main-content h4,
+.knowledge-assistant-page .main-content h5,
+.knowledge-assistant-page .main-content h6 {
+  color: var(--heading) !important;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.app-layout .main-content p,
+.knowledge-assistant-page .main-content p {
+  line-height: 1.6;
+}
+
+.app-layout .main-content .category-card .card-icon-wrapper {
+  background: var(--icon-bg) !important;
+  border-color: var(--border) !important;
+  color: var(--teal) !important;
+}
+
+.app-layout .main-content .category-card .card-icon-wrapper svg {
+  color: var(--teal) !important;
+}
+
+.app-layout .main-content .category-subtitle,
+.app-layout .main-content .hero-badge,
+.app-layout .main-content .admin-badge,
+.app-layout .main-content .ar-count-badge,
+.app-layout .main-content .result-category,
+.app-layout .main-content .count-badge,
+.app-layout .main-content .type-badge,
+.app-layout .main-content .tag,
+.app-layout .main-content .quiz-badge,
+.app-layout .main-content .role-badge,
+.app-layout .main-content .quiz-option-letter {
+  color: var(--heading) !important;
+}
+
+.app-layout .main-content .theme-toggle,
+.app-layout .main-content .lang-toggle {
+  color: var(--teal) !important;
+}
+
+.app-layout .main-content .search-box svg,
+.app-layout .main-content .search-wrapper svg,
+.app-layout .main-content .search-box-wrapper svg {
+  color: var(--teal) !important;
+}
+
+.app-layout .main-content h1,
+.app-layout .main-content h2,
+.app-layout .main-content h3,
+.app-layout .main-content h4,
+.app-layout .main-content h5,
+.app-layout .main-content h6,
+.knowledge-assistant-page .main-content h1,
+.knowledge-assistant-page .main-content h2,
+.knowledge-assistant-page .main-content h3,
+.knowledge-assistant-page .main-content h4,
+.knowledge-assistant-page .main-content h5,
+.knowledge-assistant-page .main-content h6,
+.login-card h1 {
+  color: var(--heading) !important;
+}
+
+.app-layout .main-content h1,
+.knowledge-assistant-page .main-content h1 {
+  font-size: 2rem;
+}
+
+.app-layout .main-content h2,
+.knowledge-assistant-page .main-content h2 {
+  font-size: 1.5rem;
+}
+
+.app-layout .main-content h3,
+.knowledge-assistant-page .main-content h3 {
+  font-size: 1.25rem;
+}
+
+.app-layout .main-content h4,
+.knowledge-assistant-page .main-content h4 {
+  font-size: 1.1rem;
+}
+
+.app-layout .main-content .btn-primary,
+.app-layout .main-content .ar-btn-primary,
+.app-layout .main-content .quiz-primary-button,
+.app-layout .main-content .submit-btn,
+.app-layout .main-content .resource-button,
+.app-layout .main-content .call-btn,
+.app-layout .main-content .details-btn,
+.app-layout .main-content .call-btn-large,
+.app-layout .main-content .ka-send-button,
+.knowledge-assistant-page .main-content .ka-send-button {
+  color: var(--button-text) !important;
+}
+
+.app-layout .main-content .btn-primary:hover,
+.app-layout .main-content .ar-btn-primary:hover,
+.app-layout .main-content .quiz-primary-button:hover:not(:disabled),
+.app-layout .main-content .submit-btn:hover:not(:disabled),
+.app-layout .main-content .resource-button:hover,
+.app-layout .main-content .call-btn:hover,
+.app-layout .main-content .details-btn:hover,
+.app-layout .main-content .call-btn-large:hover,
+.app-layout .main-content .ka-send-button:hover,
+.knowledge-assistant-page .main-content .ka-send-button:hover {
+  color: var(--button-text) !important;
+}
+
+.app-layout .main-content .btn-primary,
+.app-layout .main-content .ar-btn-primary,
+.app-layout .main-content .quiz-primary-button,
+.app-layout .main-content .submit-btn,
+.app-layout .main-content .resource-button,
+.app-layout .main-content .call-btn,
+.app-layout .main-content .details-btn,
+.app-layout .main-content .call-btn-large,
+.app-layout .main-content .ka-send-button,
+.knowledge-assistant-page .main-content .ka-send-button {
+  background: var(--accent-fill) !important;
+  border-color: var(--accent-fill) !important;
+  color: var(--button-text) !important;
+  box-shadow: 0 4px 14px rgba(221, 167, 25, 0.16);
+}
+
+.app-layout .main-content .btn-primary:hover,
+.app-layout .main-content .ar-btn-primary:hover,
+.app-layout .main-content .quiz-primary-button:hover:not(:disabled),
+.app-layout .main-content .submit-btn:hover:not(:disabled),
+.app-layout .main-content .resource-button:hover,
+.app-layout .main-content .call-btn:hover,
+.app-layout .main-content .details-btn:hover,
+.app-layout .main-content .call-btn-large:hover,
+.app-layout .main-content .ka-send-button:hover,
+.knowledge-assistant-page .main-content .ka-send-button:hover {
+  background: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+  color: var(--button-hover-text) !important;
+  box-shadow: 0 5px 18px rgba(221, 167, 25, 0.24);
+}
+
+.app-layout .main-content .knowledge-card-item:hover,
+.app-layout .main-content .medical-card:hover,
+.app-layout .main-content .step-card:hover,
+.app-layout .main-content .operational-card-button:hover,
+.app-layout .main-content .admin-card:hover,
+.app-layout .main-content .ar-mission-card:hover,
+.app-layout .main-content .contact-card:hover,
+.app-layout .main-content .result-item:hover,
+.app-layout .main-content .experience-card:hover {
+  background: var(--main-hover) !important;
+  border-color: var(--teal) !important;
+}
+
+.knowledge-assistant-page {
+  background: #0b0f19 !important;
+  color: #f8fafc !important;
+}
+
+.knowledge-assistant-page .main-content,
+.knowledge-assistant-page .knowledge-assistant-main {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(11, 15, 25, 1)) !important;
+  color: #f8fafc !important;
+}
+
+.knowledge-assistant-page .ka-header {
+  border-color: rgba(148, 163, 184, 0.18) !important;
+  background: linear-gradient(135deg, rgba(221, 167, 25, 0.1), rgba(15, 23, 42, 0.85)) !important;
+}
+
+.knowledge-assistant-page .ka-eyebrow,
+.knowledge-assistant-page .ka-related-label,
+.knowledge-assistant-page .ka-language-toggle .active {
+  color: #edb83f !important;
+}
+
+.knowledge-assistant-page .ka-header-copy h2 {
+  color: #ffffff !important;
+}
+
+.knowledge-assistant-page .ka-subtitle,
+.knowledge-assistant-page .ka-section-label,
+.knowledge-assistant-page .ka-source-title-si {
+  color: #94a3b8 !important;
+}
+
+.knowledge-assistant-page .ka-language-toggle,
+.knowledge-assistant-page .ka-clear-button,
+.knowledge-assistant-page .ka-suggestion-button,
+.knowledge-assistant-page .ka-feedback-button {
+  border-color: rgba(148, 163, 184, 0.18) !important;
+  background: rgba(15, 23, 42, 0.8) !important;
+  color: #e2e8f0 !important;
+}
+
+.knowledge-assistant-page .ka-language-toggle:hover,
+.knowledge-assistant-page .ka-clear-button:hover,
+.knowledge-assistant-page .ka-suggestion-button:hover,
+.knowledge-assistant-page .ka-send-button:hover {
+  border-color: rgba(221, 167, 25, 0.4) !important;
+  box-shadow: 0 10px 16px -12px rgba(221, 167, 25, 0.3) !important;
+}
+
+.knowledge-assistant-page .ka-chat-panel {
+  border-color: rgba(148, 163, 184, 0.12) !important;
+  background: rgba(15, 23, 42, 0.65) !important;
+}
+
+.knowledge-assistant-page .ka-chat-messages::-webkit-scrollbar-thumb {
+  background: rgba(221, 167, 25, 0.22) !important;
+}
+
+.knowledge-assistant-page .ka-avatar {
+  border-color: rgba(221, 167, 25, 0.32) !important;
+  background: rgba(221, 167, 25, 0.12) !important;
+  color: #edb83f !important;
+}
+
+.knowledge-assistant-page .ka-user-avatar {
+  border-color: rgba(59, 130, 246, 0.22) !important;
+  background: rgba(59, 130, 246, 0.12) !important;
+  color: #93c5fd !important;
+}
+
+.knowledge-assistant-page .ka-message-bubble.assistant {
+  border-color: rgba(148, 163, 184, 0.12) !important;
+  background: rgba(15, 23, 42, 0.75) !important;
+  color: #e2e8f0 !important;
+}
+
+.knowledge-assistant-page .ka-message-bubble.assistant.fallback {
+  border-color: rgba(251, 191, 36, 0.22) !important;
+  background: rgba(69, 26, 3, 0.18) !important;
+}
+
+.knowledge-assistant-page .ka-message-bubble.user {
+  border-color: rgba(148, 163, 184, 0.12) !important;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.22), rgba(14, 116, 144, 0.18)) !important;
+  color: #f8fafc !important;
+}
+
+.knowledge-assistant-page .ka-related-questions,
+.knowledge-assistant-page .ka-feedback-row,
+.knowledge-assistant-page .ka-sources-list {
+  border-color: rgba(148, 163, 184, 0.12) !important;
+}
+
+.knowledge-assistant-page .ka-related-question {
+  border-color: rgba(221, 167, 25, 0.22) !important;
+  background: rgba(221, 167, 25, 0.05) !important;
+  color: #f0c45f !important;
+}
+
+.knowledge-assistant-page .ka-related-question:hover,
+.knowledge-assistant-page .ka-feedback-button.active {
+  border-color: rgba(221, 167, 25, 0.5) !important;
+  background: rgba(221, 167, 25, 0.16) !important;
+  color: #f0c45f !important;
+}
+
+.knowledge-assistant-page .ka-source-card {
+  border-color: rgba(221, 167, 25, 0.18) !important;
+  background: rgba(221, 167, 25, 0.04) !important;
+}
+
+.knowledge-assistant-page .ka-source-title {
+  color: #f8fafc !important;
+}
+
+.knowledge-assistant-page .ka-input-form {
+  border-color: rgba(148, 163, 184, 0.1) !important;
+  background: rgba(15, 23, 42, 0.86) !important;
+}
+
+.knowledge-assistant-page .main-content .ka-text-input {
+  border-color: rgba(148, 163, 184, 0.18) !important;
+  background: rgba(15, 23, 42, 0.9) !important;
+  color: #f8fafc !important;
+}
+
+.knowledge-assistant-page .main-content .ka-text-input:focus {
+  border-color: rgba(221, 167, 25, 0.55) !important;
+  box-shadow: 0 0 0 3px rgba(221, 167, 25, 0.12) !important;
+}
+
+.knowledge-assistant-page .main-content .ka-text-input::placeholder {
+  color: #94a3b8 !important;
+}
+
+.knowledge-assistant-page .main-content .ka-send-button {
+  border-color: var(--accent-fill) !important;
+  background: var(--accent-fill) !important;
+  color: #0b1220 !important;
+  box-shadow: 0 4px 14px rgba(221, 167, 25, 0.16);
+}
+
+.knowledge-assistant-page .main-content .ka-send-button:hover {
+  border-color: var(--accent-hover) !important;
+  background: var(--accent-hover) !important;
+  color: #0b1220 !important;
+  box-shadow: 0 5px 18px rgba(221, 167, 25, 0.24);
+}
+
+.knowledge-assistant-page .ka-typing-dots span {
+  background: var(--accent-fill) !important;
+}
+
+.dashboard-main .dashboard-banner {
+  padding: clamp(24px, 4vw, 40px) !important;
+}
+
+.dashboard-main .dashboard-banner-labels {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.dashboard-main .dashboard-banner .dashboard-banner-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 5px 11px !important;
+  border: 1px solid var(--teal) !important;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-fill) 14%, var(--surface)) !important;
+  color: var(--teal) !important;
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.dashboard-main .dashboard-banner .dashboard-banner-badge-secondary {
+  border-color: color-mix(in srgb, var(--accent-fill) 42%, var(--border)) !important;
+  background: color-mix(in srgb, var(--accent-fill) 8%, var(--surface)) !important;
+  color: var(--teal) !important;
+}
+
+.sidebar .nav-item.active {
+  background: var(--accent-fill) !important;
+  color: var(--button-text) !important;
+}
+
+.sidebar .nav-item.active svg {
+  color: var(--button-text) !important;
+}
+
+.sidebar .nav-item:not(.active):hover {
+  background: color-mix(in srgb, var(--accent-fill) 14%, transparent) !important;
+  color: var(--teal) !important;
+}
+
+.app-layout .main-content .quiz-primary-button,
+.app-layout .main-content .btn-primary,
+.app-layout .main-content .ar-btn-primary,
+.app-layout .main-content .submit-btn,
+.app-layout .main-content .resource-button,
+.app-layout .main-content .call-btn,
+.app-layout .main-content .details-btn,
+.app-layout .main-content .call-btn-large,
+.sidebar .logout-btn:hover {
+  background: var(--accent-fill) !important;
+  border-color: var(--accent-fill) !important;
+  color: var(--button-text) !important;
+}
+
+.dashboard-main .dashboard-banner h2 {
+  margin: 0 0 14px;
+  color: var(--heading) !important;
+  font-size: clamp(1.75rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.dashboard-main .dashboard-banner .dashboard-description {
+  max-width: 760px;
+  margin: 0;
+  color: var(--secondary) !important;
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  line-height: 1.75;
+}

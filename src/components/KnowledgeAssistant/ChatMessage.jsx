@@ -1,7 +1,7 @@
 import React from "react";
 import SourceCard from "./SourceCard";
 
-export default function ChatMessage({ message, onFeedback, onRelatedQuestion }) {
+export default function ChatMessage({ message, onFeedback, onRelatedQuestion, locale }) {
   const isUser = message.role === "user";
 
   return (
@@ -14,14 +14,14 @@ export default function ChatMessage({ message, onFeedback, onRelatedQuestion }) 
         {message.sources && message.sources.length > 0 && (
           <div className="ka-sources-list">
             {(message.sources || []).map((source, index) => (
-              <SourceCard key={`${source.en}-${index}`} title={source.en} titleSi={source.si} />
+              <SourceCard key={`${source.en}-${index}`} title={source.en} titleSi={source.si} locale={locale} />
             ))}
           </div>
         )}
 
         {!isUser && message.relatedQuestions && message.relatedQuestions.length > 0 && (
           <div className="ka-related-questions">
-            <p className="ka-related-label">Related questions</p>
+            <p className="ka-related-label">{locale === "si" ? "අදාළ ප්‍රශ්න" : "Related questions"}</p>
             <div className="ka-related-list">
               {message.relatedQuestions.map((question, index) => (
                 <button
@@ -43,7 +43,7 @@ export default function ChatMessage({ message, onFeedback, onRelatedQuestion }) 
               type="button"
               className={`ka-feedback-button ${message.feedback === "up" ? "active" : ""}`}
               onClick={() => onFeedback && onFeedback(message.id, "up")}
-              aria-label="Helpful answer"
+              aria-label={locale === "si" ? "ප්‍රයෝජනවත් පිළිතුරක්" : "Helpful answer"}
             >
               👍
             </button>
@@ -51,7 +51,7 @@ export default function ChatMessage({ message, onFeedback, onRelatedQuestion }) 
               type="button"
               className={`ka-feedback-button ${message.feedback === "down" ? "active" : ""}`}
               onClick={() => onFeedback && onFeedback(message.id, "down")}
-              aria-label="Not helpful answer"
+              aria-label={locale === "si" ? "ප්‍රයෝජනවත් නොවන පිළිතුරක්" : "Not helpful answer"}
             >
               👎
             </button>
@@ -59,7 +59,7 @@ export default function ChatMessage({ message, onFeedback, onRelatedQuestion }) 
         )}
       </div>
 
-      {isUser && <div className="ka-user-avatar">You</div>}
+      {isUser && <div className="ka-user-avatar">{locale === "si" ? "ඔබ" : "You"}</div>}
     </div>
   );
 }

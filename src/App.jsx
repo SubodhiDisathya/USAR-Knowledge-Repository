@@ -14,6 +14,7 @@ import Admin from "./pages/Admin";
 import AdminRescue from "./pages/Admin_Rescue";
 import Search from "./pages/Search";
 import KnowledgeAssistantPage from "./pages/KnowledgeAssistant";
+import Quiz from "./pages/Quiz";
 
 // SystemSecurity component එක මෙතන import කරන්න 👇
 import SystemSecurity from "./pages/SystemSecurity";
@@ -67,6 +68,7 @@ function App() {
             <Route path="/others" element={<Protected><KnowledgeSection section="others" /></Protected>} />
             <Route path="/search" element={<Protected><Search /></Protected>} />
             <Route path="/knowledge-assistant" element={<Protected><KnowledgeAssistantPage /></Protected>} />
+            <Route path="/quiz" element={<Protected><Quiz /></Protected>} />
             <Route path="*" element={<Navigate to="/knowledge-hub" replace />} />
           </Routes>
         </BrowserRouter>

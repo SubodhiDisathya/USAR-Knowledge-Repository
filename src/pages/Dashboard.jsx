@@ -27,7 +27,8 @@ import {
   Radio,
   Layers,
   Globe2,
-  BookOpen
+  BookOpen,
+  CircleHelp
 } from "lucide-react";
 
 export default function Dashboard() {
@@ -38,9 +39,9 @@ export default function Dashboard() {
 
   // Statistics configuration (Organizations removed, Categories set to 6)
   const stats = [
-    { label: t.categoriesCount || "Categories", value: 6, icon: <Layers className="w-5 h-5 text-blue-400" /> },
-    { label: t.fieldExperiences || "Field Stories", value: fieldExperiences.length, icon: <Users className="w-5 h-5 text-purple-400" /> },
-    { label: t.languages || "Languages", value: Object.keys(translations).length, icon: <Globe2 className="w-5 h-5 text-rose-400" /> }
+    { label: t.categoriesCount || "Categories", value: 6, icon: <Layers className="w-5 h-5 text-blue-600" /> },
+    { label: t.fieldExperiences || "Field Stories", value: fieldExperiences.length, icon: <Users className="w-5 h-5 text-blue-600" /> },
+    { label: t.languages || "Languages", value: Object.keys(translations).length, icon: <Globe2 className="w-5 h-5 text-blue-600" /> }
   ];
 
   const categoryCards = [
@@ -48,72 +49,90 @@ export default function Dashboard() {
       title: "Operational Guidelines & Modules",
       titleSi: "මෙහෙයුම් මාර්ගෝපදේශ සහ මොඩියුල",
       subtitle: "MODULES & PROCEDURES",
+      subtitleSi: "මොඩියුල සහ ක්‍රියාපටිපාටි",
       description: "Access procedures, operational guidelines, search operations, rescue operations, and disaster response information.",
       descriptionSi: "ක්‍රියා පටිපාටි, මෙහෙයුම් මාර්ගෝපදේශ, සෙවුම් සහ ගලවා ගැනීමේ මෙහෙයුම් පිළිබඳ තොරතුරු වෙත ප්‍රවේශ වන්න.",
-      icon: <ShieldAlert className="w-6 h-6 text-orange-400" />,
+      icon: <ShieldAlert className="w-6 h-6 text-blue-300" />,
       path: "/operational-guidelines",
-      badgeColor: "bg-orange-500/20 text-orange-400 border border-orange-500/30",
+      badgeColor: "bg-blue-100 text-blue-700 border border-blue-200",
       bgImage: sopsImg
     },
     {
       title: t.firstAidMedical,
       titleSi: t.firstAidMedical,
       subtitle: "MEDICAL RESCUE",
+      subtitleSi: "වෛද්‍ය ගලවාගැනීම්",
       description: "Access essential medical rescue knowledge, patient assessment, treatment, handling, and emergency medical procedures.",
       descriptionSi: "වෛද්‍ය ගලවා ගැනීම, රෝගී ඇගයීම, ප්‍රතිකාර සහ හදිසි වෛද්‍ය ක්‍රියාමාර්ග පිළිබඳ දැනුම ලබා ගන්න.",
-      icon: <Stethoscope className="w-6 h-6 text-blue-400" />,
+      icon: <Stethoscope className="w-6 h-6 text-blue-300" />,
       path: "/first-aid-medical",
-      badgeColor: "bg-blue-500/20 text-blue-400 border border-blue-500/30",
+      badgeColor: "bg-blue-100 text-blue-700 border border-blue-200",
       bgImage: medicineImg
     },
     {
       title: t.experiencesStories,
       titleSi: t.experiencesStories,
       subtitle: "LESSONS & CASES",
+      subtitleSi: "අත්දැකීම් සහ සිද්ධි",
       description: "Explore real-world rescue experiences, operational challenges, success stories, and critical lessons learned.",
       descriptionSi: "සැබෑ ගලවා ගැනීමේ අත්දැකීම්, මෙහෙයුම් අභියෝග සහ වැදගත් පාඩම් ගවේෂණය කරන්න.",
-      icon: <Users className="w-6 h-6 text-purple-400" />,
+      icon: <Users className="w-6 h-6 text-blue-300" />,
       path: "/experiences",
-      badgeColor: "bg-purple-500/20 text-purple-400 border border-purple-500/30",
+      badgeColor: "bg-blue-100 text-blue-700 border border-blue-200",
       bgImage: pastImg
     },
     {
       title: t.emergencyContacts,
       titleSi: t.emergencyContacts,
       subtitle: "DIRECT CONTACTS",
+      subtitleSi: "සෘජු සම්බන්ධතා",
       description: "Quickly access 593+ verified emergency response personnel, rescue units, and agency communication details.",
       descriptionSi: "තහවුරු කළ හදිසි ප්‍රතිචාර කාර්ය මණ්ඩලය, ගලවා ගැනීමේ ඒකක සහ ආයතනික සම්බන්ධතා වෙත ඉක්මනින් ප්‍රවේශ වන්න.",
-      icon: <PhoneCall className="w-6 h-6 text-rose-400" />,
+      icon: <PhoneCall className="w-6 h-6 text-blue-300" />,
       path: "/emergency-contacts",
-      badgeColor: "bg-rose-500/20 text-rose-400 border border-rose-500/30",
+      badgeColor: "bg-blue-100 text-blue-700 border border-blue-200",
       bgImage: contactListImg
     },
     {
       title: "Standard Operating Procedures (SOPs)",
       titleSi: "සම්මත මෙහෙයුම් ක්‍රියා පටිපාටි (SOPs)",
       subtitle: "STANDARD PROCEDURES",
+      subtitleSi: "සම්මත ක්‍රියාපටිපාටි",
       description: "Access official standard operating procedures, safety protocols, and emergency response guidelines (including SOP 0067 117 Call Center Documentation).",
       descriptionSi: "නිල සම්මත මෙහෙයුම් ක්‍රියා පටිපාටි, ආරක්ෂක நெறிமுறைகள் සහ හදිසි ප්‍රතිචාර මාර්ගෝපදේශ (SOP 0067 117 ඇමතුම් මැදිරි ක්‍රියාපටිපාටිය ඇතුළුව).",
-      icon: <BookOpen className="w-6 h-6 text-amber-400" />,
+      icon: <BookOpen className="w-6 h-6 text-blue-300" />,
       path: "/sops",
-      badgeColor: "bg-amber-500/20 text-amber-400 border border-amber-500/30",
+      badgeColor: "bg-blue-100 text-blue-700 border border-blue-200",
       bgImage: sopImg
     },
     {
       title: t.others,
       titleSi: t.others,
       subtitle: "RESOURCES",
+      subtitleSi: "සම්පත්",
       description: "Access general INSARAG information, international coordination, training resources, and additional knowledge.",
       descriptionSi: "INSARAG තොරතුරු, ජාත්‍යන්තර සම්බන්ධීකරණය සහ පුහුණු සම්පත් වෙත ප්‍රවේශ වන්න.",
-      icon: <Globe className="w-6 h-6 text-emerald-400" />,
+      icon: <Globe className="w-6 h-6 text-blue-300" />,
       path: "/others",
-      badgeColor: "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30",
+      badgeColor: "bg-blue-100 text-blue-700 border border-blue-200",
       bgImage: othersImg
+    },
+    {
+      title: "Training Quiz",
+      titleSi: "පුහුණු ප්‍රශ්නාවලිය",
+      subtitle: "TEST YOUR KNOWLEDGE",
+      subtitleSi: "ඔබේ දැනුම පරීක්ෂා කරන්න",
+      description: "Practice with questions from the operational modules and First Aid & Medical topics.",
+      descriptionSi: "මෙහෙයුම් මොඩියුල සහ පළමු ප්‍රතිකාර හා වෛද්‍ය මාතෘකා ඇසුරින් ප්‍රශ්නවලට පිළිතුරු දෙන්න.",
+      icon: <CircleHelp className="w-6 h-6 text-blue-300" />,
+      path: "/quiz",
+      badgeColor: "bg-blue-100 text-blue-700 border border-blue-200",
+      bgImage: sopImg
     }
   ];
 
   return (
-    <div className="app-layout">
+    <div className="app-layout dashboard-layout">
       <Sidebar />
       <div className="main-content">
         <TopHeader />
@@ -121,12 +140,12 @@ export default function Dashboard() {
           
           {/* Hero Banner Section */}
           <div className="dashboard-banner">
-            <div>
-              <span className="bg-orange-500/20 text-orange-400 border border-orange-500/30 text-[10px] font-mono px-2.5 py-0.5 rounded tracking-wide uppercase">
-                Sri Lanka USAR
+            <div className="dashboard-banner-labels">
+              <span className="dashboard-banner-badge">
+                {locale === "si" ? "ශ්‍රී ලංකා USAR" : "Sri Lanka USAR"}
               </span>
-              <span className="bg-amber-500/20 text-amber-400 border border-amber-500/30 text-[10px] font-mono px-2.5 py-0.5 rounded tracking-wide uppercase ml-2">
-                Emergency Response
+              <span className="dashboard-banner-badge dashboard-banner-badge-secondary">
+                {locale === "si" ? "හදිසි ප්‍රතිචාරය" : "Emergency Response"}
               </span>
             </div>
             <h2>
@@ -173,7 +192,7 @@ export default function Dashboard() {
                   <div className="card-content">
                     <div className="card-top-row">
                       <span className={`category-subtitle ${cat.badgeColor}`}>
-                        {cat.subtitle}
+                        {locale === "si" ? cat.subtitleSi : cat.subtitle}
                       </span>
                       <div className="card-icon-wrapper">
                         {cat.icon}

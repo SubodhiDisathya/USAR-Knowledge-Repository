@@ -3,13 +3,16 @@ import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import TopHeader from "../components/TopHeader";
 import ExperienceCard from "../components/ExperienceCard";
+import PageBackButton from "../components/PageBackButton";
 import { useLocale } from "../context/LocaleContext";
+import translations from "../i18n/translations";
 import { Filter } from "lucide-react";
 import { fieldExperiences } from "../data/experienceData";
 import "./Experiences.css";
 
 export default function Experiences() {
   const { locale } = useLocale();
+  const t = translations[locale] || translations.en;
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
@@ -31,16 +34,17 @@ export default function Experiences() {
       <div className="main-content">
         <TopHeader />
         <main className="experiences-main">
+          <PageBackButton />
           <div className="experiences-header">
-            <h2>{locale === "si" ? "මෙහෙයුම් අත්දැකීම් සහ නිලධාරීන්" : "Operational Experience & Officers"}</h2>
-            <p>{locale === "si" ? "ප්‍රවීණ නිලධාරීන්ගේ සේවා වාර්තා සහ ක්ෂේත්‍ර විශේෂඥතාව" : "Service records and field expertise from veteran officers"}</p>
+            <h2>{t.experienceHeading}</h2>
+            <p>{t.experienceDescription}</p>
           </div>
 
           <div className="filter-bar">
             <div className="search-section">
               <input
                 type="text"
-                placeholder={locale === "si" ? "නිලධාරියාගේ නම, තනතුර හෝ ඒකකය මඟින් සොයන්න..." : "Search by officer name, role or unit..."}
+                placeholder={t.experienceSearch}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="filter-search"
@@ -50,7 +54,7 @@ export default function Experiences() {
             <div className="filter-section">
               <button className="filter-btn">
                 <Filter size={18} />
-                {locale === "si" ? "පෙරහන් කරන්න" : "Filter"}
+                {t.filter}
               </button>
             </div>
           </div>
@@ -69,7 +73,7 @@ export default function Experiences() {
 
           {filtered.length === 0 && (
             <div className="no-results">
-              {locale === "si" ? "ගැලපෙන නිලධාරී වාර්තා කිසිවක් හමු නොවීය." : "No matching officer records found."}
+              {t.noExperienceRecords}
             </div>
           )}
         </main>

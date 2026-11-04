@@ -37,13 +37,13 @@ export default function AdminPanel() {
             <th>{t.name}</th>
             <th>{t.email}</th>
             <th>{t.role}</th>
-            <th>Action</th>
+            <th>{t.action}</th>
           </tr>
         </thead>
         <tbody>
           {users.map((user) => (
             <tr key={user.uid}>
-              <td>{user.displayName || "N/A"}</td>
+              <td>{user.displayName || t.notAvailable}</td>
               <td>{user.email}</td>
               <td>
                 <span className={`role-badge ${user.role}`}>{user.role}</span>

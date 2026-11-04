@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import TopHeader from "../components/TopHeader";
 import { useLocale } from "../context/LocaleContext";
-import { ArrowLeft, ArrowRight, PhoneCall, ShieldAlert, Cpu, FileText, CheckCircle2, ExternalLink } from "lucide-react";
+import PageBackButton from "../components/PageBackButton";
+import { ArrowLeft, ArrowRight, ShieldAlert, Cpu, FileText, CheckCircle2, ExternalLink } from "lucide-react";
 import "./KnowledgeSection.css";
 
 const trainingDocument = (fileId, titleEn, titleSi) => ({
@@ -557,11 +558,11 @@ const sectionContent = {
 };
 
 export default function KnowledgeSection({ section }) {
-  const { locale } = useLocale();
+  const { locale, setLocale } = useLocale();
   const content = sectionContent[section];
-  const [operationalLanguage, setOperationalLanguage] = React.useState("en");
   const [selectedModuleId, setSelectedModuleId] = React.useState(null);
   const [selectedSectorId, setSelectedSectorId] = React.useState(null);
+  const operationalLanguage = locale === "si" ? "si" : "en";
   const selectedModule = operationalModules.find((module) => module.id === selectedModuleId);
   const selectedSector = selectedModule?.sectors.find((sector) => sector.id === selectedSectorId);
   const isSinhala = operationalLanguage === "si";
@@ -587,13 +588,14 @@ export default function KnowledgeSection({ section }) {
           className={`knowledge-hub-container${section === "operational" && isSinhala ? " operational-sinhala" : ""}`}
           lang={section === "operational" ? operationalLanguage : undefined}
         >
+          <PageBackButton />
           
           {section === "sops" ? (
             <div className="sop-overview-container" style={{ color: "#f8fafc" }}>
               <div className="knowledge-hub-hero">
                 <div className="hero-badge">
                   <span className="badge-dot"></span>
-                  STANDARD OPERATING PROCEDURES
+                  {locale === "si" ? "සම්මත මෙහෙයුම් ක්‍රියාපටිපාටි" : "STANDARD OPERATING PROCEDURES"}
                 </div>
                 <h1 className="hero-title">
                   {locale === "si" ? "SOP 0067: 117 ඇමතුම් මැදිරි ක්‍රියාපටිපාටිය" : "SOP 0067: 117 Call Center Documentation"}
@@ -700,7 +702,7 @@ export default function KnowledgeSection({ section }) {
                     }}
                   >
                     <FileText size={20} />
-                    <span>{locale === "si" ? "නිල ලේඛනය බලන්න (View Official Document)" : "View Official Document"}</span>
+                    <span>{locale === "si" ? "නිල ලේඛනය බලන්න" : "View Official Document"}</span>
                     <ExternalLink size={18} />
                   </a>
                 </div>
@@ -714,7 +716,7 @@ export default function KnowledgeSection({ section }) {
                   type="button"
                   className={!isSinhala ? "active" : ""}
                   aria-pressed={!isSinhala}
-                  onClick={() => setOperationalLanguage("en")}
+                  onClick={() => setLocale("en")}
                 >
                   English
                 </button>
@@ -722,7 +724,7 @@ export default function KnowledgeSection({ section }) {
                   type="button"
                   className={isSinhala ? "active" : ""}
                   aria-pressed={isSinhala}
-                  onClick={() => setOperationalLanguage("si")}
+                  onClick={() => setLocale("si")}
                 >
                   සිංහල
                 </button>
@@ -882,7 +884,13 @@ export default function KnowledgeSection({ section }) {
               <div className="knowledge-hub-hero">
                 <div className="hero-badge">
                   <span className="badge-dot"></span>
-                  {content.kicker}
+                  {locale === "si" ? ({
+                    sops: "සම්මත ක්‍රියාපටිපාටි",
+                    medical: "වෛද්‍ය ගලවාගැනීම්",
+                    others: "අමතර සම්පත්",
+                    experiences: "අත්දැකීම් සහ සිද්ධි",
+                    contacts: "සෘජු සම්බන්ධතා"
+                  }[section] || content.kicker) : content.kicker}
                 </div>
                 <h1 className="hero-title">
                   {locale === "si" ? content.sinhalaTitle : content.title}
@@ -910,7 +918,7 @@ export default function KnowledgeSection({ section }) {
                           {locale === "si" ? card.sinhalaSubtitle : card.title}
                         </h3>
                         <p className="card-item-desc">
-                          {locale === "si" ? (card.sinhalaDesc || card.desc) : card.desc}
+                          {locale === "si" ? (card.sinhalaDesc || "විස්තරයක් නොමැත.") : card.desc}
                         </p>
                       </div>
 

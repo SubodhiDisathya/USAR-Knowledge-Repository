@@ -1,7 +1,7 @@
 import React from "react";
 import { SendHorizonal } from "lucide-react";
 
-export default function ChatInput({ value, onChange, onSubmit, placeholder }) {
+export default function ChatInput({ value, onChange, onSubmit, placeholder, locale }) {
   return (
     <form className="ka-input-form" onSubmit={onSubmit}>
       <input
@@ -10,11 +10,11 @@ export default function ChatInput({ value, onChange, onSubmit, placeholder }) {
         onChange={onChange}
         placeholder={placeholder}
         className="ka-text-input"
-        aria-label="Ask the USAR assistant"
+        aria-label={locale === "si" ? "USAR සහායකගෙන් විමසන්න" : "Ask the USAR assistant"}
       />
-      <button type="submit" className="ka-send-button" aria-label="Send message">
+      <button type="submit" className="ka-send-button" aria-label={locale === "si" ? "පණිවිඩය යවන්න" : "Send message"}>
         <SendHorizonal size={18} />
-        <span>{"Send"}</span>
+        <span>{locale === "si" ? "යවන්න" : "Send"}</span>
       </button>
     </form>
   );

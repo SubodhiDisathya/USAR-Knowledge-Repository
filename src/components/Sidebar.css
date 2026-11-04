@@ -4,8 +4,8 @@
   width: 280px;
   height: 100%;
   min-height: 0;
-  background-color: #0f1a33;
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: #ffffff;
+  border-right: 1px solid #dbeafe;
   display: flex;
   flex-direction: column;
   padding: 20px 0;
@@ -15,13 +15,13 @@
 
 .sidebar-header {
   padding: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .sidebar-header h1 {
   font-size: 24px;
   font-weight: 700;
-  color: #d9bc61;
+  color: #2563eb;
   margin: 0;
   letter-spacing: 2px;
 }
@@ -36,22 +36,22 @@
   align-items: center;
   gap: 12px;
   padding: 12px 20px;
-  color: #cbd5e1;
+  color: #475569;
   text-decoration: none;
   transition: all 0.3s ease;
   border-left: 3px solid transparent;
 }
 
 .nav-item:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  color: #d9bc61;
-  border-left-color: #d9bc61;
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  border-left-color: #60a5fa;
 }
 
 .nav-item.active {
-  background-color: rgba(217, 188, 97, 0.12);
-  color: #d9bc61;
-  border-left-color: #d9bc61;
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  border-left-color: #3b82f6;
 }
 
 .nav-item span {
@@ -61,7 +61,7 @@
 
 .sidebar-section {
   padding: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid #e2e8f0;
 }
 
 .sidebar-section h3 {
@@ -155,10 +155,10 @@
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-  background: rgba(217, 188, 97, 0.3);
+  background: #bfdbfe;
   border-radius: 3px;
 }
 
 .sidebar::-webkit-scrollbar-thumb:hover {
-  background: rgba(217, 188, 97, 0.5);
+  background: #60a5fa;
 }

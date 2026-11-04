@@ -8,7 +8,7 @@ import "./Login.css";
 
 export default function Login() {
   const { currentUser, authLoading, signup, login, signInWithGoogle, resetPassword } = useAuth();
-  const { locale } = useLocale();
+  const { locale, toggleLocale } = useLocale();
   const navigate = useNavigate();
   const t = translations[locale];
 
@@ -20,6 +20,21 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [showReset, setShowReset] = useState(false);
+
+  const getAuthError = (err) => {
+    if (locale !== "si") return err.message;
+    const messages = {
+      "auth/invalid-email": "විද්‍යුත් තැපැල් ලිපිනය නිවැරදි නොවේ.",
+      "auth/invalid-credential": "විද්‍යුත් තැපැල් ලිපිනය හෝ මුරපදය වැරදියි.",
+      "auth/email-already-in-use": "මෙම විද්‍යුත් තැපැල් ලිපිනය සඳහා දැනටමත් ගිණුමක් ඇත.",
+      "auth/weak-password": "වඩා ශක්තිමත් මුරපදයක් ඇතුළත් කරන්න.",
+      "auth/too-many-requests": "උත්සාහයන් ගණන වැඩියි. ටික වේලාවකින් නැවත උත්සාහ කරන්න.",
+      "auth/user-disabled": "මෙම ගිණුම අක්‍රිය කර ඇත.",
+      "auth/popup-closed-by-user": "Google පිවිසුම් කවුළුව වසා දමන ලදී.",
+      "auth/network-request-failed": "ජාල සම්බන්ධතාව පරීක්ෂා කර නැවත උත්සාහ කරන්න."
+    };
+    return messages[err.code] || "පිවිසීමට නොහැකි විය. ඔබගේ තොරතුරු පරීක්ෂා කර නැවත උත්සාහ කරන්න.";
+  };
 
   useEffect(() => {
     if (!authLoading && currentUser) {
@@ -39,7 +54,7 @@ export default function Login() {
     try {
       if (isRegister) {
         if (!displayName) {
-          setError("Display name is required");
+          setError(locale === "si" ? "පෙන්වන නම ඇතුළත් කිරීම අවශ්‍යයි." : "Display name is required");
           setLoading(false);
           return;
         }
@@ -49,7 +64,7 @@ export default function Login() {
       }
       navigate("/knowledge-hub", { replace: true });
     } catch (err) {
-      setError(err.message);
+      setError(getAuthError(err));
     } finally {
       setLoading(false);
     }
@@ -62,7 +77,7 @@ export default function Login() {
       await signInWithGoogle();
       navigate("/knowledge-hub", { replace: true });
     } catch (err) {
-      setError(err.message);
+      setError(getAuthError(err));
     } finally {
       setLoading(false);
     }
@@ -70,21 +85,24 @@ export default function Login() {
 
   async function handleReset() {
     if (!email) {
-      setError("Please enter your email");
+      setError(locale === "si" ? "කරුණාකර ඔබගේ විද්‍යුත් තැපැල් ලිපිනය ඇතුළත් කරන්න." : "Please enter your email");
       return;
     }
     try {
       await resetPassword(email);
-      alert("Password reset email sent!");
+      alert(t.resetEmailSent);
       setShowReset(false);
     } catch (err) {
-      setError(err.message);
+      setError(getAuthError(err));
     }
   }
 
   return (
     <div className="login-container">
       <div className="login-card">
+        <button type="button" className="login-language-toggle" onClick={toggleLocale}>
+          {locale === "si" ? "English" : "සිංහල"}
+        </button>
         <h1>{t.appTitle}</h1>
         <p className="subtitle">{t.usarKnowledge}</p>
 

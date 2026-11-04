@@ -9,6 +9,7 @@
 }
 
 .login-card {
+  position: relative;
   background-color: #0f1a33;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 16px;
@@ -16,6 +17,18 @@
   width: 100%;
   max-width: 420px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.login-language-toggle {
+  display: block;
+  margin: 0 0 12px auto;
+  border: 1px solid #334155;
+  border-radius: 7px;
+  padding: 6px 10px;
+  background: #172033;
+  color: #e2e8f0;
+  cursor: pointer;
+  font-size: 12px;
 }
 
 .login-card h1 {

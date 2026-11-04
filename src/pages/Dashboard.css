@@ -1,21 +1,21 @@
 /* Dashboard Layout Styles */
-.app-layout {
+.dashboard-layout.app-layout {
   display: flex;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-color: #0b0f19;
-  color: #f1f5f9;
+  background-color: #f4f8ff;
+  color: #1e293b;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-.main-content {
+.dashboard-layout .main-content {
   flex: 1;
   height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: #0b0f19;
+  background-color: #f8fbff;
 }
 
 .dashboard-main {
@@ -25,6 +25,7 @@
   display: flex;
   flex-direction: column;
   gap: 28px;
+  background-color: #f8fbff;
 }
 
 /* Custom Scrollbar for Smooth Navigation */
@@ -35,34 +36,34 @@
   background: transparent;
 }
 .dashboard-main::-webkit-scrollbar-thumb {
-  background: rgba(249, 115, 22, 0.2);
+  background: #bfdbfe;
   border-radius: 4px;
 }
 .dashboard-main::-webkit-scrollbar-thumb:hover {
-  background: rgba(249, 115, 22, 0.4);
+  background: #60a5fa;
 }
 
 /* Hero Banner */
 .dashboard-banner {
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.12), rgba(15, 23, 42, 0.8));
-  border: 1px solid rgba(249, 115, 22, 0.25);
+  background: linear-gradient(135deg, #ffffff, #eff6ff);
+  border: 1px solid #dbeafe;
   border-radius: 18px;
   padding: 36px;
   position: relative;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.14);
 }
 
 .dashboard-banner h2 {
   font-size: 2.25rem;
   font-weight: 800;
-  color: #ffffff;
+  color: #1e3a8a;
   margin: 0 0 12px 0;
   letter-spacing: -0.02em;
 }
 
 .dashboard-description {
   max-width: 800px;
-  color: #94a3b8;
+  color: #64748b;
   font-size: 1.05rem;
   line-height: 1.6;
   margin: 0;
@@ -76,8 +77,8 @@
 }
 
 .stat-card {
-  background-color: #111827;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #ffffff;
+  border: 1px solid #dbeafe;
   border-radius: 14px;
   padding: 18px 20px;
   display: flex;
@@ -85,13 +86,13 @@
   justify-content: space-between;
   gap: 10px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.06);
 }
 
 .stat-card:hover {
-  border-color: rgba(249, 115, 22, 0.4);
+  border-color: #93c5fd;
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.15);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.12);
 }
 
 .stat-card-header {
@@ -103,19 +104,19 @@
 .stat-value {
   font-size: 1.85rem;
   font-weight: 700;
-  color: #f97316;
+  color: #2563eb;
   line-height: 1;
 }
 
 .stat-icon {
-  background: rgba(255, 255, 255, 0.03);
+  background: #eff6ff;
   padding: 8px;
   border-radius: 8px;
 }
 
 .stat-label {
   font-size: 0.82rem;
-  color: #94a3b8;
+  color: #64748b;
   font-weight: 500;
 }
 
@@ -129,7 +130,7 @@
 .categories-section h3 {
   font-size: 1.35rem;
   font-weight: 700;
-  color: #f1f5f9;
+  color: #1e293b;
   margin: 0;
 }
 
@@ -142,8 +143,8 @@
 /* Category Card Design with Clear Images */
 .category-card {
   position: relative;
-  background-color: #111827;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #ffffff;
+  border: 1px solid #dbeafe;
   border-radius: 18px;
   padding: 28px;
   display: flex;
@@ -153,13 +154,13 @@
   cursor: pointer;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   min-height: 320px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 16px rgba(30, 58, 138, 0.08);
 }
 
 .category-card:hover {
-  border-color: rgba(249, 115, 22, 0.5);
+  border-color: #93c5fd;
   transform: translateY(-5px);
-  box-shadow: 0 12px 30px -8px rgba(249, 115, 22, 0.25);
+  box-shadow: 0 12px 30px -8px rgba(59, 130, 246, 0.2);
 }
 
 .category-bg-container {
@@ -184,7 +185,7 @@
 .category-image-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, #0b0f19 20%, rgba(11, 15, 25, 0.6) 70%, rgba(11, 15, 25, 0.15) 100%);
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.92) 15%, rgba(15, 23, 42, 0.55) 65%, rgba(15, 23, 42, 0.12) 100%);
 }
 
 /* Card Content Styling */
@@ -240,7 +241,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #f97316;
+  color: #93c5fd;
   font-size: 14px;
   font-weight: 600;
   transition: transform 0.25s ease;
@@ -253,8 +254,8 @@
 /* Admin Section */
 .admin-section {
   margin-top: 10px;
-  background-color: #111827;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #ffffff;
+  border: 1px solid #dbeafe;
   border-radius: 18px;
   padding: 28px;
 }
@@ -262,14 +263,14 @@
 /* Footer Styling */
 .dashboard-footer {
   padding: 16px 32px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid #dbeafe;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 12px;
   color: #64748b;
   font-family: monospace;
-  background: #0b0f19;
+  background: #ffffff;
 }
 
 /* Responsive Media Queries */

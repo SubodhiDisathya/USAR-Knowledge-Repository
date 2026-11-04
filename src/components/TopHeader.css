@@ -2,8 +2,8 @@
 .top-header {
   height: 64px;
   flex: 0 0 64px;
-  background-color: #0b132b;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: #ffffff;
+  border-bottom: 1px solid #dbeafe;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -24,7 +24,7 @@
   align-items: center;
   gap: 8px;
   font-size: 13px;
-  color: #cbd5e1;
+  color: #475569;
   font-weight: 500;
 }
 
@@ -55,27 +55,27 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background-color: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background-color: #f8fbff;
+  border: 1px solid #dbeafe;
   border-radius: 8px;
   padding: 0 12px;
   width: 100%;
   max-width: 400px;
   transition: all 0.3s ease;
-  color: #94a3b8;
+  color: #64748b;
 }
 
 .search-wrapper:focus-within {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-color: rgba(217, 188, 97, 0.3);
-  color: #cbd5e1;
+  background-color: #ffffff;
+  border-color: #93c5fd;
+  color: #334155;
 }
 
 .search-input {
   flex: 1;
   background: none;
   border: none;
-  color: #cbd5e1;
+  color: #334155;
   outline: none;
   font-size: 14px;
   padding: 10px 0;
@@ -89,7 +89,29 @@
   flex: 0 0 auto;
   min-width: 100px;
   display: flex;
+  align-items: center;
+  gap: 8px;
   justify-content: flex-end;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: var(--teal);
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: color-mix(in srgb, var(--teal) 12%, transparent);
+  border-color: var(--border);
 }
 
 .lang-toggle {
@@ -97,10 +119,10 @@
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
-  background-color: rgba(217, 188, 97, 0.1);
-  border: 1px solid rgba(217, 188, 97, 0.2);
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
   border-radius: 6px;
-  color: #d9bc61;
+  color: #1d4ed8;
   cursor: pointer;
   font-weight: 500;
   font-size: 13px;
@@ -108,10 +130,29 @@
 }
 
 .lang-toggle:hover {
-  background-color: rgba(217, 188, 97, 0.2);
-  border-color: rgba(217, 188, 97, 0.4);
+  background-color: #dbeafe;
+  border-color: #93c5fd;
 }
 
 .lang-toggle span {
   white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .top-header {
+    gap: 12px;
+    padding: 0 16px;
+  }
+
+  .header-left {
+    min-width: 0;
+  }
+
+  .header-right {
+    min-width: 0;
+  }
+
+  .lang-toggle {
+    padding: 8px 10px;
+  }
 }

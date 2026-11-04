@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Calendar, MapPin, FileText, Loader2, Download } from "lucide-react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import "./Admin_Rescue.css";
+import Sidebar from "../components/Sidebar";
+import TopHeader from "../components/TopHeader";
+import PageBackButton from "../components/PageBackButton";
+import { useLocale } from "../context/LocaleContext";
+import translations from "../i18n/translations";
 
 export default function AdminRescue() {
-  const navigate = useNavigate();
+  const { locale } = useLocale();
+  const t = translations[locale] || translations.en;
   const [selectedMission, setSelectedMission] = useState(null);
   const [missions, setMissions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -38,8 +43,10 @@ export default function AdminRescue() {
   if (loading) {
     return (
       <div className="app-layout">
+        <Sidebar />
         <div className="main-content" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "60vh", color: "#38bdf8" }}>
-          <Loader2 className="animate-spin" size={32} /> &nbsp; Loading Reports...
+          <TopHeader />
+          <Loader2 className="animate-spin" size={32} /> &nbsp; {t.loadingReports}
         </div>
       </div>
     );
@@ -47,24 +54,24 @@ export default function AdminRescue() {
 
   return (
     <div className="app-layout">
+      <Sidebar />
       <div className="main-content">
+        <TopHeader />
         <div className="ar-admin-wrapper">
+          {!selectedMission && <PageBackButton fallback="/admin" label={t.backAdminDashboard} />}
           
           {!selectedMission ? (
             <>
               <div className="ar-admin-header">
                 <div>
-                  <button onClick={() => navigate("/admin")} className="ar-back-link">
-                    <ArrowLeft size={16} /> Back to Admin Dashboard
-                  </button>
-                  <h1 className="ar-admin-title">Submitted Rescue Reports</h1>
-                  <p className="ar-admin-subtitle">Select any mission below to view its complete filled form details.</p>
+                  <h1 className="ar-admin-title">{t.submittedRescueReports}</h1>
+                  <p className="ar-admin-subtitle">{t.selectMission}</p>
                 </div>
-                <span className="ar-count-badge">{missions.length} Missions Found</span>
+                <span className="ar-count-badge">{missions.length} {t.missionsFound}</span>
               </div>
 
               {missions.length === 0 ? (
-                <p style={{ textAlign: "center", color: "#94a3b8", padding: "40px" }}>No rescue reports submitted yet.</p>
+                <p style={{ textAlign: "center", color: "#94a3b8", padding: "40px" }}>{t.noReports}</p>
               ) : (
                 <div className="ar-missions-grid">
                   {missions.map((mission) => (
@@ -91,7 +98,7 @@ export default function AdminRescue() {
                       </div>
 
                       <div className="ar-card-footer">
-                        <span>View Full Report</span>
+                        <span>{t.viewFullReport}</span>
                         <FileText size={16} />
                       </div>
                     </div>
@@ -106,7 +113,7 @@ export default function AdminRescue() {
                   onClick={() => setSelectedMission(null)} 
                   className="ar-back-link"
                 >
-                  <ArrowLeft size={16} /> Back to Missions List
+                  <ArrowLeft size={16} /> {t.backMissionsList}
                 </button>
                 
                 <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
@@ -126,55 +133,55 @@ export default function AdminRescue() {
                       fontSize: "13px"
                     }}
                   >
-                    <Download size={16} /> Download as PDF
+                    <Download size={16} /> {t.downloadPdf}
                   </button>
                   <span className="ar-status-badge">{selectedMission.rescueOutcome}</span>
                 </div>
               </div>
 
               <div className="ar-detail-header-box">
-                <h2>Mission Report Details: {selectedMission.missionId}</h2>
-                <p>Complete record submitted by {selectedMission.reportedBy || "Officer"}</p>
+                <h2>{t.missionReportDetails}: {selectedMission.missionId}</h2>
+                <p>{t.completeRecordBy} {selectedMission.reportedBy || (locale === "si" ? "නිලධාරී" : "Officer")}</p>
               </div>
 
               <div className="ar-detail-grid">
                 <div className="ar-detail-item">
-                  <label>Mission ID / Reference</label>
+                  <label>{t.missionIdReference}</label>
                   <p>{selectedMission.missionId}</p>
                 </div>
                 <div className="ar-detail-item">
-                  <label>Rescue Team Name</label>
+                  <label>{t.rescueTeamName}</label>
                   <p>{selectedMission.teamName}</p>
                 </div>
                 <div className="ar-detail-item">
-                  <label>Rescue Location</label>
+                  <label>{t.rescueLocation}</label>
                   <p>{selectedMission.rescueLocation}</p>
                 </div>
                 <div className="ar-detail-item">
-                  <label>Rescue Date</label>
+                  <label>{t.rescueDate}</label>
                   <p>{selectedMission.rescueDate}</p>
                 </div>
                 <div className="ar-detail-item">
-                  <label>Team Leader</label>
+                  <label>{t.teamLeader}</label>
                   <p>{selectedMission.teamLeader}</p>
                 </div>
                 <div className="ar-detail-item">
-                  <label>Number of People Rescued</label>
-                  <p style={{ color: "#38bdf8", fontWeight: "700" }}>{selectedMission.peopleRescued} Persons</p>
+                  <label>{t.peopleRescued}</label>
+                  <p style={{ color: "#38bdf8", fontWeight: "700" }}>{selectedMission.peopleRescued} {locale === "si" ? "දෙනෙකු" : "Persons"}</p>
                 </div>
                 <div className="ar-detail-item ar-full-width">
-                  <label>Resources & Equipment Used</label>
-                  <p>{selectedMission.resourcesUsed || "None specified"}</p>
+                  <label>{t.resourcesEquipmentUsed}</label>
+                  <p>{selectedMission.resourcesUsed || t.noneSpecified}</p>
                 </div>
                 <div className="ar-detail-item ar-full-width">
-                  <label>Mission Notes / Observations</label>
-                  <p>{selectedMission.missionNotes || "No notes provided"}</p>
+                  <label>{t.missionNotes}</label>
+                  <p>{selectedMission.missionNotes || t.noNotes}</p>
                 </div>
               </div>
 
               <div className="ar-detail-actions">
                 <button onClick={() => setSelectedMission(null)} className="ar-close-btn">
-                  Close & Return to List
+                  {t.closeReturnList}
                 </button>
               </div>
             </div>

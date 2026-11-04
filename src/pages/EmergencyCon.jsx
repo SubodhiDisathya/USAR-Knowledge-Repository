@@ -1,4 +1,9 @@
 import React, { useState } from 'react';
+import Sidebar from "../components/Sidebar";
+import TopHeader from "../components/TopHeader";
+import PageBackButton from "../components/PageBackButton";
+import { useLocale } from "../context/LocaleContext";
+import translations from "../i18n/translations";
 
 export const emergencySummary = {
   totalContacts: 593,
@@ -120,17 +125,71 @@ export const emergencyContacts = [
 ];
 
 export default function EmergencyCon() {
+  const { locale } = useLocale();
+  const t = translations[locale] || translations.en;
   const [selectedContact, setSelectedContact] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedOrg, setSelectedOrg] = useState('All Organizations');
   const [selectedRole, setSelectedRole] = useState('All Roles');
+  const displayText = (value) => {
+    if (locale !== "si") return value;
+    const translated = {
+      "Sri Lanka Navy": "ශ්‍රී ලංකා නාවික හමුදාව",
+      "Sri Lanka Army": "ශ්‍රී ලංකා යුද හමුදාව",
+      "Sri Lanka Air Force": "ශ්‍රී ලංකා ගුවන් හමුදාව",
+      "Fire & Rescue Services": "ගිනි නිවීමේ සහ ගලවාගැනීමේ සේවය",
+      "Disaster Management Centre": "ආපදා කළමනාකරණ මධ්‍යස්ථානය",
+      "Commander (SSD)": "කමාන්ඩර් (SSD)",
+      "Leading Seaman": "ප්‍රධාන නාවිකයා",
+      "Warrant Officer I": "වරෙන්තු නිලධාරී I",
+      Sergeant: "සාජන්ට්",
+      "Station Officer": "ස්ථාන භාර නිලධාරී",
+      "Training Officer": "පුහුණු නිලධාරී",
+      "Asst. Chief Fire Officer": "සහකාර ප්‍රධාන ගිනි නිලධාරී",
+      "Section Officer": "අංශ නිලධාරී",
+      "Senior Instructor": "ජ්‍යෙෂ්ඨ උපදේශක",
+      "Medical Officer": "වෛද්‍ය නිලධාරී",
+      "Flight Lieutenant": "ගුවන් හමුදා ලුතිනන්",
+      Corporal: "කෝප්‍රල්",
+      Instructor: "උපදේශක",
+      "USAR Instructor": "USAR උපදේශක",
+      "USAR Team Leader": "USAR කණ්ඩායම් නායක",
+      "Rescue Coordinator": "ගලවාගැනීම් සම්බන්ධීකාරක",
+      "Fire Training Instructor": "ගිනි නිවීමේ පුහුණු උපදේශක",
+      "Senior Operations Officer": "ජ්‍යෙෂ්ඨ මෙහෙයුම් නිලධාරී",
+      "Disaster Coordinator": "ආපදා සම්බන්ධීකාරක",
+      "Fire Fighter / Instructor": "ගිනි නිවන භට / උපදේශක",
+      "Emergency Medical Advisor": "හදිසි වෛද්‍ය උපදේශක",
+      "Air Rescue Coordinator": "ගුවන් ගලවාගැනීම් සම්බන්ධීකාරක",
+      "USAR Operator": "USAR මෙහෙයුම් සාමාජික",
+      NHQ: "නාවික හමුදා මූලස්ථානය",
+      "RABS HQ": "RABS මූලස්ථානය",
+      "Corps of Engineers": "ඉංජිනේරු බලකාය",
+      "USAR Unit Colombo": "කොළඹ USAR ඒකකය",
+      "Wellawatte Station": "වැල්ලවත්ත ස්ථානය",
+      "Colombo HQ": "කොළඹ මූලස්ථානය",
+      "ACFO Office": "සහකාර ප්‍රධාන ගිනි නිලධාරී කාර්යාලය",
+      "Kandy Regional Office": "මහනුවර ප්‍රාදේශීය කාර්යාලය",
+      "Training Division": "පුහුණු අංශය",
+      "Colombo DMC": "කොළඹ ආපදා කළමනාකරණ මධ්‍යස්ථානය",
+      "SLAF Katunayake": "කටුනායක ගුවන් හමුදා කඳවුර",
+      "Galle USAR Unit": "ගාල්ල USAR ඒකකය"
+    };
+    return translated[value] || value;
+  };
 
   const filteredContacts = emergencyContacts.filter(contact => {
-    const matchesSearch = 
-      contact.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      contact.rank.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      contact.organization.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      contact.unitLocation.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = [
+      contact.name,
+      contact.rank,
+      contact.organization,
+      contact.unitLocation,
+      contact.role,
+      displayText(contact.rank),
+      displayText(contact.organization),
+      displayText(contact.unitLocation),
+      displayText(contact.role)
+    ].some((value) => value.toLowerCase().includes(searchQuery.toLowerCase()));
     
     const matchesOrg = selectedOrg === 'All Organizations' || contact.organization.includes(selectedOrg);
     const matchesRole = selectedRole === 'All Roles' || contact.role.toLowerCase().includes(selectedRole.toLowerCase());
@@ -143,7 +202,12 @@ export default function EmergencyCon() {
   };
 
   return (
+    <div className="app-layout">
+      <Sidebar />
+      <div className="main-content">
+        <TopHeader />
     <div className="emergency-container">
+      <PageBackButton />
       <style>{`
         .emergency-container {
           width: 100%;
@@ -687,7 +751,7 @@ export default function EmergencyCon() {
             onClick={() => setSelectedContact(null)}
             className="back-btn"
           >
-            ← Back to Directory
+            ← {t.backToDirectory}
           </button>
 
           <div className="detail-card">
@@ -695,44 +759,44 @@ export default function EmergencyCon() {
               <div className="avatar-box">👤</div>
               <div>
                 <h2>{selectedContact.name}</h2>
-                <p className="rank-text">{selectedContact.rank}</p>
-                <p className="role-text">{selectedContact.role}</p>
+                <p className="rank-text">{displayText(selectedContact.rank)}</p>
+                <p className="role-text">{displayText(selectedContact.role)}</p>
               </div>
             </div>
 
             <div className="detail-grid">
               <div className="detail-item">
-                <span className="label">🏢 Organization</span>
-                <span className="value">{selectedContact.organization}</span>
+                <span className="label">🏢 {t.organization}</span>
+                <span className="value">{displayText(selectedContact.organization)}</span>
               </div>
               <div className="detail-item">
-                <span className="label">📍 Unit / Location</span>
-                <span className="value">{selectedContact.unitLocation}</span>
+                <span className="label">📍 {t.unitLocation}</span>
+                <span className="value">{displayText(selectedContact.unitLocation)}</span>
               </div>
               <div className="detail-item">
-                <span className="label">🎖️ Rank</span>
-                <span className="value">{selectedContact.rank}</span>
+                <span className="label">🎖️ {t.rank}</span>
+                <span className="value">{displayText(selectedContact.rank)}</span>
               </div>
               <div className="detail-item">
-                <span className="label">👤 Role</span>
-                <span className="value">{selectedContact.role}</span>
+                <span className="label">👤 {t.role}</span>
+                <span className="value">{displayText(selectedContact.role)}</span>
               </div>
             </div>
 
             <div className="phone-box">
-              <span className="label">📞 Primary Contact</span>
+              <span className="label">📞 {t.primaryContact}</span>
               <span className="phone-value">{selectedContact.phone}</span>
             </div>
 
             <div className="action-buttons">
               <a href={`tel:${selectedContact.phone}`} className="call-btn-large">
-                📞 Call Now
+                📞 {t.callNow}
               </a>
               <button 
-                onClick={() => alert("Added to Priority Contacts!")}
+                onClick={() => alert(t.addedPriorityContacts)}
                 className="priority-btn"
               >
-                ☆ Add to Priority Contacts
+                ☆ {t.addPriorityContacts}
               </button>
             </div>
           </div>
@@ -741,12 +805,12 @@ export default function EmergencyCon() {
         <div>
           {/* Header */}
           <div className="header-section">
-            <span className="badge">Emergency Directory</span>
+            <span className="badge">{t.emergencyDirectory}</span>
             <h1 className="main-title">
-              <span>📞</span> Emergency Contact Directory
+              <span>📞</span> {t.emergencyContactDirectory}
             </h1>
             <p className="subtitle">
-              Quickly find and contact emergency response personnel and organizations during rescue and emergency operations.
+              {t.emergencyDirectoryDescription}
             </p>
           </div>
 
@@ -755,47 +819,47 @@ export default function EmergencyCon() {
             <div className="summary-card">
               <div className="icon">👥</div>
               <div className="number">{emergencySummary.totalContacts}</div>
-              <div className="label">Total Contacts</div>
+              <div className="label">{t.totalContacts}</div>
             </div>
             <div className="summary-card">
               <div className="icon">⚓</div>
               <div className="number">{emergencySummary.navy}</div>
-              <div className="label">Sri Lanka Navy</div>
+              <div className="label">{displayText("Sri Lanka Navy")}</div>
             </div>
             <div className="summary-card">
               <div className="icon">🪖</div>
               <div className="number">{emergencySummary.army}</div>
-              <div className="label">Sri Lanka Army</div>
+              <div className="label">{displayText("Sri Lanka Army")}</div>
             </div>
             <div className="summary-card">
               <div className="icon">🚒</div>
               <div className="number">{emergencySummary.fire}</div>
-              <div className="label">Fire & Rescue</div>
+              <div className="label">{t.fireRescue}</div>
             </div>
             <div className="summary-card disaster-col">
               <div className="icon">🚨</div>
               <div className="number">{emergencySummary.disasterMgmt}</div>
-              <div className="label">Disaster Mgmt</div>
+              <div className="label">{t.disasterManagement}</div>
             </div>
           </div>
 
           {/* Quick Emergency Contact Filter Box */}
           <div className="quick-filter-box">
             <div className="quick-filter-title">
-              <span>🚨</span> Quick Emergency Contact
+              <span>🚨</span> {t.quickEmergencyContact}
             </div>
             <p className="quick-filter-desc">
-              Select the type of emergency support you need to find the right contacts immediately.
+              {t.quickContactDescription}
             </p>
             <div className="filter-chips">
-              <button onClick={() => handleQuickFilter('USAR')} className="chip-btn">🦺 USAR Rescue</button>
-              <button onClick={() => handleQuickFilter('Fire')} className="chip-btn">🚒 Fire & Rescue</button>
-              <button onClick={() => handleQuickFilter('Medical')} className="chip-btn">🏥 Medical Assistance</button>
-              <button onClick={() => handleQuickFilter('Navy')} className="chip-btn">⚓ Navy Support</button>
-              <button onClick={() => handleQuickFilter('Army')} className="chip-btn">🪖 Army Support</button>
-              <button onClick={() => handleQuickFilter('Disaster')} className="chip-btn">🚨 Disaster Management</button>
-              <button onClick={() => handleQuickFilter('Air Force')} className="chip-btn">✈️ Air Force Support</button>
-              <button onClick={() => { setSelectedOrg('All Organizations'); setSelectedRole('All Roles'); setSearchQuery(''); }} className="chip-clear-btn">✕ Clear Filter</button>
+              <button onClick={() => handleQuickFilter('USAR')} className="chip-btn">🦺 {t.usarRescue}</button>
+              <button onClick={() => handleQuickFilter('Fire')} className="chip-btn">🚒 {t.fireRescue}</button>
+              <button onClick={() => handleQuickFilter('Medical')} className="chip-btn">🏥 {t.medicalAssistance}</button>
+              <button onClick={() => handleQuickFilter('Navy')} className="chip-btn">⚓ {t.navySupport}</button>
+              <button onClick={() => handleQuickFilter('Army')} className="chip-btn">🪖 {t.armySupport}</button>
+              <button onClick={() => handleQuickFilter('Disaster')} className="chip-btn">🚨 {t.disasterManagementSupport}</button>
+              <button onClick={() => handleQuickFilter('Air Force')} className="chip-btn">✈️ {t.airForceSupport}</button>
+              <button onClick={() => { setSelectedOrg('All Organizations'); setSelectedRole('All Roles'); setSearchQuery(''); }} className="chip-clear-btn">✕ {t.clearFilter}</button>
             </div>
           </div>
 
@@ -805,7 +869,7 @@ export default function EmergencyCon() {
               <span className="search-icon">🔍</span>
               <input 
                 type="text"
-                placeholder="Search by Name, Rank, Organization, Unit or Location..."
+                placeholder={t.contactSearch}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="search-input"
@@ -816,30 +880,30 @@ export default function EmergencyCon() {
               onChange={(e) => setSelectedOrg(e.target.value)}
               className="dropdown-select"
             >
-              <option value="All Organizations">All Organizations</option>
-              <option value="Sri Lanka Navy">Sri Lanka Navy</option>
-              <option value="Sri Lanka Army">Sri Lanka Army</option>
-              <option value="Fire & Rescue">Fire & Rescue Services</option>
-              <option value="Disaster Management">Disaster Management Centre</option>
-              <option value="Sri Lanka Air Force">Sri Lanka Air Force</option>
+              <option value="All Organizations">{t.allOrganizations}</option>
+              <option value="Sri Lanka Navy">{displayText("Sri Lanka Navy")}</option>
+              <option value="Sri Lanka Army">{displayText("Sri Lanka Army")}</option>
+              <option value="Fire & Rescue">{displayText("Fire & Rescue Services")}</option>
+              <option value="Disaster Management">{displayText("Disaster Management Centre")}</option>
+              <option value="Sri Lanka Air Force">{displayText("Sri Lanka Air Force")}</option>
             </select>
             <select 
               value={selectedRole}
               onChange={(e) => setSelectedRole(e.target.value)}
               className="dropdown-select"
             >
-              <option value="All Roles">All Roles</option>
-              <option value="Instructor">Instructor</option>
-              <option value="Officer">Officer</option>
-              <option value="Coordinator">Coordinator</option>
-              <option value="Medical">Medical</option>
+              <option value="All Roles">{t.allRoles}</option>
+              <option value="Instructor">{t.instructor}</option>
+              <option value="Officer">{t.officer}</option>
+              <option value="Coordinator">{t.coordinator}</option>
+              <option value="Medical">{t.medical}</option>
             </select>
           </div>
 
           {/* Contact Directory Section Header */}
           <div className="directory-header-row">
-            <h2 className="section-title"><span>👥</span> Contact Directory</h2>
-            <span className="count-label">{filteredContacts.length} shown</span>
+            <h2 className="section-title"><span>👥</span> {t.contactDirectory}</h2>
+            <span className="count-label">{filteredContacts.length} {t.shown}</span>
           </div>
 
           {/* Contact Cards Grid */}
@@ -852,16 +916,16 @@ export default function EmergencyCon() {
                       <div className="avatar-sm">👤</div>
                       <div>
                         <h3>{contact.name}</h3>
-                        <p className="rank-sm">{contact.rank}</p>
-                        <p className="role-sm">{contact.role}</p>
+                        <p className="rank-sm">{displayText(contact.rank)}</p>
+                        <p className="role-sm">{displayText(contact.role)}</p>
                       </div>
                     </div>
                     <button className="star-btn">☆</button>
                   </div>
 
                   <div className="card-meta">
-                    <span>⚓ {contact.organization}</span>
-                    <span className="location-text">📍 {contact.unitLocation}</span>
+                    <span>⚓ {displayText(contact.organization)}</span>
+                    <span className="location-text">📍 {displayText(contact.unitLocation)}</span>
                   </div>
 
                   <div className="phone-badge">
@@ -871,10 +935,10 @@ export default function EmergencyCon() {
 
                 <div className="card-actions">
                   <a href={`tel:${contact.phone}`} className="call-btn" onClick={(e) => e.stopPropagation()}>
-                    📞 Call Now
+                    📞 {t.callNow}
                   </a>
                   <button onClick={() => setSelectedContact(contact)} className="details-btn">
-                    👁️ View Details
+                    👁️ {t.viewDetails}
                   </button>
                 </div>
               </div>
@@ -882,6 +946,8 @@ export default function EmergencyCon() {
           </div>
         </div>
       )}
+    </div>
+      </div>
     </div>
   );
 }

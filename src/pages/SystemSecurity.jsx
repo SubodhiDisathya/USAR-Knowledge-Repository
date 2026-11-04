@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import './SystemSecurity.css';
+import Sidebar from "../components/Sidebar";
+import TopHeader from "../components/TopHeader";
+import PageBackButton from "../components/PageBackButton";
+import { useLocale } from "../context/LocaleContext";
+import translations from "../i18n/translations";
 
 export default function SystemSecurity() {
+  const { locale } = useLocale();
+  const t = translations[locale] || translations.en;
   // Roles ලැයිස්තුව
   const [roles, setRoles] = useState([
     { id: 1, name: 'Administrator', permissions: 'Full Access (View, Edit, Delete)' },
@@ -28,6 +35,16 @@ export default function SystemSecurity() {
   // Role එකක් Edit කිරීම සඳහා states
   const [editingRoleId, setEditingRoleId] = useState(null);
   const [updatedPermissions, setUpdatedPermissions] = useState('');
+  const roleNames = {
+    Administrator: locale === "si" ? "පරිපාලක" : "Administrator",
+    "Rescue Officer": locale === "si" ? "ගලවාගැනීමේ නිලධාරී" : "Rescue Officer",
+    Viewer: locale === "si" ? "නිරීක්ෂක" : "Viewer"
+  };
+  const permissionNames = {
+    "Full Access (View, Edit, Delete)": locale === "si" ? "සම්පූර්ණ ප්‍රවේශය (බැලීම, සංස්කරණය, මැකීම)" : "Full Access (View, Edit, Delete)",
+    "View, Edit Reports": locale === "si" ? "වාර්තා බැලීම සහ සංස්කරණය" : "View, Edit Reports",
+    "View Only": locale === "si" ? "බැලීම පමණි" : "View Only"
+  };
 
   // අලුත් Role එකක් ඇඩ් කිරීම
   const handleAddRole = (e) => {
@@ -80,17 +97,22 @@ export default function SystemSecurity() {
   };
 
   return (
-    <div className="security-container">
-      <h2>System Security & Roles</h2>
-      <p className="security-subtitle">Configure access levels, permissions, user role assignments, and system audit logs.</p>
+    <div className="app-layout">
+      <Sidebar />
+      <div className="main-content">
+        <TopHeader />
+        <main className="security-container">
+      <PageBackButton fallback="/admin" label={locale === "si" ? "පරිපාලන පුවරුවට ආපසු" : "Back to Admin Dashboard"} />
+      <h2>{t.systemSecurityRoles}</h2>
+      <p className="security-subtitle">{t.systemSecuritySubtitle}</p>
 
       {/* 1. Add New Role Section */}
       <div className="security-section">
-        <h3>Add New System Role</h3>
+        <h3>{t.addSystemRole}</h3>
         <form onSubmit={handleAddRole} className="add-role-form">
           <input 
             type="text" 
-            placeholder="Role Name (e.g., Dispatcher)" 
+            placeholder={t.roleNamePlaceholder}
             value={newRoleName}
             onChange={(e) => setNewRoleName(e.target.value)}
             className="edit-input"
@@ -98,30 +120,30 @@ export default function SystemSecurity() {
           />
           <input 
             type="text" 
-            placeholder="Permissions (e.g., View, Create Reports)" 
+            placeholder={t.permissionsPlaceholder}
             value={newPermissions}
             onChange={(e) => setNewPermissions(e.target.value)}
             className="edit-input"
           />
-          <button type="submit" className="save-btn">Add Role</button>
+          <button type="submit" className="save-btn">{t.addRole}</button>
         </form>
       </div>
 
       {/* 2. Role-Based Access Control (RBAC) Table */}
       <div className="security-section">
-        <h3>Role-Based Access Control (RBAC)</h3>
+        <h3>{t.rbac}</h3>
         <table className="security-table">
           <thead>
             <tr>
-              <th>Role Name</th>
-              <th>Permissions</th>
-              <th>Actions</th>
+              <th>{t.roleName}</th>
+              <th>{t.permissions}</th>
+              <th>{t.actions}</th>
             </tr>
           </thead>
           <tbody>
             {roles.map((role) => (
               <tr key={role.id}>
-                <td>{role.name}</td>
+                <td>{roleNames[role.name] || role.name}</td>
                 <td>
                   {editingRoleId === role.id ? (
                     <input 
@@ -131,17 +153,17 @@ export default function SystemSecurity() {
                       className="edit-input"
                     />
                   ) : (
-                    role.permissions
+                    permissionNames[role.permissions] || role.permissions
                   )}
                 </td>
                 <td>
                   {editingRoleId === role.id ? (
                     <>
-                      <button className="save-btn" onClick={() => handleSavePermissions(role.id)}>Save</button>
-                      <button className="cancel-btn" onClick={() => setEditingRoleId(null)}>Cancel</button>
+                      <button className="save-btn" onClick={() => handleSavePermissions(role.id)}>{t.save}</button>
+                      <button className="cancel-btn" onClick={() => setEditingRoleId(null)}>{t.cancel}</button>
                     </>
                   ) : (
-                    <button className="edit-btn" onClick={() => handleEditClick(role)}>Edit</button>
+                    <button className="edit-btn" onClick={() => handleEditClick(role)}>{t.edit}</button>
                   )}
                 </td>
               </tr>
@@ -152,13 +174,13 @@ export default function SystemSecurity() {
 
       {/* 3. User Role Assignment Section */}
       <div className="security-section">
-        <h3>User Role Assignments</h3>
+        <h3>{t.userRoleAssignments}</h3>
         <table className="security-table">
           <thead>
             <tr>
-              <th>User Name</th>
-              <th>Email</th>
-              <th>Assigned Role</th>
+              <th>{t.userName}</th>
+              <th>{t.email}</th>
+              <th>{t.assignedRole}</th>
             </tr>
           </thead>
           <tbody>
@@ -173,7 +195,7 @@ export default function SystemSecurity() {
                     className="role-select"
                   >
                     {roles.map((r) => (
-                      <option key={r.id} value={r.name}>{r.name}</option>
+                      <option key={r.id} value={r.name}>{roleNames[r.name] || r.name}</option>
                     ))}
                   </select>
                 </td>
@@ -185,7 +207,7 @@ export default function SystemSecurity() {
 
       {/* 4. System Audit Logs Section */}
       <div className="security-section">
-        <h3>System Audit Logs</h3>
+        <h3>{t.auditLogs}</h3>
         <div className="logs-box">
           {auditLogs.map((log) => (
             <div key={log.id} className="log-item">
@@ -195,6 +217,8 @@ export default function SystemSecurity() {
             </div>
           ))}
         </div>
+      </div>
+        </main>
       </div>
     </div>
   );

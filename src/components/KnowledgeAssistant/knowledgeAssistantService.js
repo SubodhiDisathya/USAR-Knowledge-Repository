@@ -1,5 +1,13 @@
 import { knowledgeEntries } from "./mockKnowledge";
 
+const questionTranslations = {
+  "What are the main hazards during scene management?": "දර්ශන කළමනාකරණයේදී ඇතිවිය හැකි ප්‍රධාන අනතුරු මොනවාද?",
+  "How is a surface search conducted?": "මතුපිට සෙවීම සිදු කරන්නේ කෙසේද?",
+  "What are the basic shoring procedures?": "මූලික ශෝරින් ක්‍රියා පටිපාටි මොනවාද?",
+  "What safety precautions should be followed during lifting operations?": "උස් කිරීමේ මෙහෙයුම්වලදී අනුගමනය කළ යුතු ආරක්ෂක පියවර මොනවාද?",
+  "What should first responders do during the initial response?": "ආරම්භක ප්‍රතිචාරයේදී ප්‍රථම ප්‍රතිචාරකයින් කළ යුත්තේ කුමක්ද?"
+};
+
 export function searchKnowledge(query) {
   const normalizedQuery = (query || "").trim().toLowerCase();
 
@@ -25,7 +33,10 @@ export function searchKnowledge(query) {
 }
 
 export function generateResponse(query, locale = "en") {
-  const matches = searchKnowledge(query);
+  const englishQuery = locale === "si"
+    ? Object.entries(questionTranslations).find(([, translated]) => translated === query.trim())?.[0] || query
+    : query;
+  const matches = searchKnowledge(englishQuery);
 
   if (!matches.length) {
     const fallbackAnswer = {
@@ -41,11 +52,11 @@ export function generateResponse(query, locale = "en") {
         { en: "Operational Safety – Response Preparedness", si: "ක්‍රියාකාරී ආරක්ෂාව – ප්‍රතිචාර සූදානම" }
       ],
       matched: false,
-      relatedQuestions: [
+      relatedQuestions: ([
         "What are the main hazards during scene management?",
         "How is a surface search conducted?",
         "What should first responders do during the initial response?"
-      ]
+      ]).map((question) => locale === "si" ? questionTranslations[question] : question)
     };
   }
 
@@ -59,7 +70,9 @@ export function generateResponse(query, locale = "en") {
       si: source.si
     })),
     matched: true,
-    relatedQuestions: bestMatch.relatedQuestions || []
+    relatedQuestions: (bestMatch.relatedQuestions || []).map((question) =>
+      locale === "si" ? questionTranslations[question] || question : question
+    )
   };
 }
 

@@ -16,11 +16,11 @@ const medicalDetails = {
     resourceKey: "basicMedicalRescuePDF",
     resourceUrl: "https://drive.google.com/file/d/1EfBmHdSqimkeX0C1w-YojDjJd16GDSZn/view?usp=sharing",
     items: [
-      ["🛡️", "Safety First", "ආරක්ෂාව ප්‍රථමයෙන්", "Ensure personal safety before providing assistance."],
-      ["🔍", "Assess the Situation", "තත්ත්වය තක්සේරු කරන්න", "Assess the situation and identify immediate risks."],
-      ["👤", "Identify the Patient", "රෝගියා හඳුනාගන්න", "Identify the patient and their immediate needs."],
-      ["📞", "Get Help", "උදව් ලබාගන්න", "Call for additional help when it is needed."],
-      ["🩺", "Provide Basic Care", "මූලික සත්කාර ලබාදෙන්න", "Provide appropriate basic assistance without causing further harm."]
+      ["🛡️", "Safety First", "ආරක්ෂාව ප්‍රථමයෙන්", "Ensure personal safety before providing assistance.", "සහාය ලබා දීමට පෙර ඔබේ පෞද්ගලික ආරක්ෂාව තහවුරු කරගන්න."],
+      ["🔍", "Assess the Situation", "තත්ත්වය තක්සේරු කරන්න", "Assess the situation and identify immediate risks.", "තත්ත්වය තක්සේරු කර ක්ෂණික අවදානම් හඳුනාගන්න."],
+      ["👤", "Identify the Patient", "රෝගියා හඳුනාගන්න", "Identify the patient and their immediate needs.", "රෝගියා හඳුනාගෙන ඔහුට හෝ ඇයට වහාම අවශ්‍ය සහාය තීරණය කරන්න."],
+      ["📞", "Get Help", "උදව් ලබාගන්න", "Call for additional help when it is needed.", "අවශ්‍ය වූ විට අමතර සහාය කැඳවන්න."],
+      ["🩺", "Provide Basic Care", "මූලික සත්කාර ලබාදෙන්න", "Provide appropriate basic assistance without causing further harm.", "තවදුරටත් හානියක් සිදු නොවන පරිදි සුදුසු මූලික සහාය ලබා දෙන්න."]
     ]
   },
   "scene-assessment": {
@@ -33,11 +33,11 @@ const medicalDetails = {
     resourceUrl: "https://drive.google.com/file/d/1Itm299GxgoXpUvwi-9AY40IZTwqc-1xC/view?usp=sharing",
     warning: ["Never become another victim while trying to help someone.", "කෙනෙකුට උදව් කිරීමට උත්සාහ කරන අතරතුර තවත් විපතට පත් පුද්ගලයෙකු නොවන්න."],
     items: [
-      ["👤", "Your Safety", "ඔබේ ආරක්ෂාව", "Check your own safety before taking action."],
-      ["👥", "Team Safety", "කණ්ඩායමේ ආරක්ෂාව", "Keep the rescue team protected and coordinated."],
-      ["🧑", "Patient Safety", "රෝගියාගේ ආරක්ෂාව", "Protect the patient from further danger."],
-      ["⚠️", "Identify Hazards", "අවදානම් හඳුනාගන්න", "Identify hazards and check environmental conditions."],
-      ["🧤", "Use Protective Equipment", "ආරක්ෂක උපකරණ භාවිතා කරන්න", "Use appropriate protective equipment and ensure the area is safe."]
+      ["👤", "Your Safety", "ඔබේ ආරක්ෂාව", "Check your own safety before taking action.", "ක්‍රියා කිරීමට පෙර ඔබේම ආරක්ෂාව පරීක්ෂා කරන්න."],
+      ["👥", "Team Safety", "කණ්ඩායමේ ආරක්ෂාව", "Keep the rescue team protected and coordinated.", "ගලවාගැනීමේ කණ්ඩායම ආරක්ෂිතව සහ සම්බන්ධීකරණයෙන් තබාගන්න."],
+      ["🧑", "Patient Safety", "රෝගියාගේ ආරක්ෂාව", "Protect the patient from further danger.", "රෝගියා තවදුරටත් අනතුරට ලක්වීමෙන් ආරක්ෂා කරන්න."],
+      ["⚠️", "Identify Hazards", "අවදානම් හඳුනාගන්න", "Identify hazards and check environmental conditions.", "අවදානම් හඳුනාගෙන පරිසර තත්ත්ව පරීක්ෂා කරන්න."],
+      ["🧤", "Use Protective Equipment", "ආරක්ෂක උපකරණ භාවිතා කරන්න", "Use appropriate protective equipment and ensure the area is safe.", "සුදුසු ආරක්ෂක උපකරණ භාවිත කර ප්‍රදේශය ආරක්ෂිත බව තහවුරු කරන්න."]
     ]
   },
   "patient-assessment": {
@@ -49,13 +49,13 @@ const medicalDetails = {
     resourceKey: "patientAssessmentPDF",
     resourceUrl: "https://drive.google.com/file/d/1lWdK_EvzlZgSjaKp_yqSNoSRdVFX0M9B/view?usp=sharing",
     items: [
-      ["👁️", "Check for Hazards", "උපද්‍රව පරීක්ෂා කරන්න", "Check for hazards before approaching the patient."],
-      ["🗣️", "Communicate with the Patient", "රෝගියා සමඟ සන්නිවේදනය කරන්න", "Speak calmly and observe the patient's response."],
-      ["📞", "Call for Assistance", "සහාය ඉල්ලා සිටින්න", "Call for assistance when necessary."],
-      ["🟢", "A - Alert", "A - අවදියෙන්", "The patient is alert and aware."],
-      ["🔊", "V - Responds to Voice", "V - හඬට ප්‍රතිචාර දක්වයි", "The patient responds when spoken to."],
-      ["⚡", "P - Responds to Pain", "P - වේදනාවට ප්‍රතිචාර දක්වයි", "The patient responds to a pain stimulus."],
-      ["⚫", "U - Unresponsive", "U - ප්‍රතිචාර නොදක්වයි", "The patient does not respond."]
+      ["👁️", "Check for Hazards", "උපද්‍රව පරීක්ෂා කරන්න", "Check for hazards before approaching the patient.", "රෝගියා වෙත ළඟාවීමට පෙර අවදානම් පරීක්ෂා කරන්න."],
+      ["🗣️", "Communicate with the Patient", "රෝගියා සමඟ සන්නිවේදනය කරන්න", "Speak calmly and observe the patient's response.", "සන්සුන්ව කතා කර රෝගියාගේ ප්‍රතිචාරය නිරීක්ෂණය කරන්න."],
+      ["📞", "Call for Assistance", "සහාය ඉල්ලා සිටින්න", "Call for assistance when necessary.", "අවශ්‍ය වූ විට සහාය කැඳවන්න."],
+      ["🟢", "A - Alert", "A - අවදියෙන්", "The patient is alert and aware.", "රෝගියා අවදියෙන් සිටින අතර අවට තත්ත්වය පිළිබඳ දැනුවත්ය."],
+      ["🔊", "V - Responds to Voice", "V - හඬට ප්‍රතිචාර දක්වයි", "The patient responds when spoken to.", "කතා කළ විට රෝගියා ප්‍රතිචාර දක්වයි."],
+      ["⚡", "P - Responds to Pain", "P - වේදනාවට ප්‍රතිචාර දක්වයි", "The patient responds to a pain stimulus.", "වේදනා උත්තේජනයකට රෝගියා ප්‍රතිචාර දක්වයි."],
+      ["⚫", "U - Unresponsive", "U - ප්‍රතිචාර නොදක්වයි", "The patient does not respond.", "රෝගියා කිසිදු ප්‍රතිචාරයක් නොදක්වයි."]
     ]
   },
   "patient-treatment": {
@@ -67,11 +67,11 @@ const medicalDetails = {
     resourceKey: "patientTreatmentPDF",
     resourceUrl: "https://drive.google.com/file/d/1PvGu9HT-sk1sBcKLDhO63yFM07uYd2Vh/view?usp=sharing",
     items: [
-      ["🩸", "Bleeding", "රුධිර වහනය", "Warning signs: persistent heavy bleeding or signs of shock. Basic response: apply direct pressure and use appropriate bleeding-control methods."],
-      ["🦴", "Fractures", "අස්ථි බිඳීම්", "Warning signs: deformity, swelling, or inability to move. Basic response: immobilize or support the injury and do not attempt to straighten it."],
-      ["🔥", "Burns", "පිළිස්සීම්", "Warning signs: a large area, facial burns, or chemical exposure. Basic response: cool with clean running water and cover loosely. Do not apply creams."],
-      ["📌", "Impaled Objects", "ශරීරයට ඇතුළු වූ වස්තු", "Do not remove the object. Stabilize it and control surrounding bleeding."],
-      ["🦾", "Amputations", "අවයව වෙන්වීම්", "Control severe bleeding and protect and preserve the amputated part appropriately."]
+      ["🩸", "Bleeding", "රුධිර වහනය", "Warning signs: persistent heavy bleeding or signs of shock. Basic response: apply direct pressure and use appropriate bleeding-control methods.", "අනතුරු ලකුණු: අධික රුධිර වහනය දිගටම පැවතීම හෝ කම්පන තත්ත්වයක ලක්ෂණ. මූලික ප්‍රතිචාරය: තුවාලයට සෘජු පීඩනය යොදා සුදුසු රුධිර වහනය පාලන ක්‍රම භාවිත කරන්න."],
+      ["🦴", "Fractures", "අස්ථි බිඳීම්", "Warning signs: deformity, swelling, or inability to move. Basic response: immobilize or support the injury and do not attempt to straighten it.", "අනතුරු ලකුණු: විකෘති වීම, ඉදිමීම හෝ චලනය කිරීමට නොහැකි වීම. මූලික ප්‍රතිචාරය: තුවාල වූ කොටස නොසෙල්වෙන ලෙස ආධාර කරන්න; එය සෘජු කිරීමට උත්සාහ නොකරන්න."],
+      ["🔥", "Burns", "පිළිස්සීම්", "Warning signs: a large area, facial burns, or chemical exposure. Basic response: cool with clean running water and cover loosely. Do not apply creams.", "අනතුරු ලකුණු: විශාල ප්‍රදේශයක පිළිස්සීම්, මුහුණේ පිළිස්සීම් හෝ රසායනික ද්‍රව්‍යවලට නිරාවරණය වීම. මූලික ප්‍රතිචාරය: පිරිසිදු ගලායන ජලයෙන් සිසිල් කර ලිහිල්ව ආවරණය කරන්න. ක්‍රීම් වර්ග නොයොදන්න."],
+      ["📌", "Impaled Objects", "ශරීරයට ඇතුළු වූ වස්තු", "Do not remove the object. Stabilize it and control surrounding bleeding.", "ඇතුළු වී ඇති වස්තුව ඉවත් නොකරන්න. එය නොසෙල්වෙන ලෙස තබා අවට ඇති රුධිර වහනය පාලනය කරන්න."],
+      ["🦾", "Amputations", "අවයව වෙන්වීම්", "Control severe bleeding and protect and preserve the amputated part appropriately.", "දරුණු රුධිර වහනය පාලනය කර වෙන්වූ අවයවය සුදුසු ලෙස ආරක්ෂා කර තබන්න."]
     ]
   },
   "patient-handling": {
@@ -83,12 +83,12 @@ const medicalDetails = {
     resourceKey: "patientHandlingPDF",
     resourceUrl: "https://drive.google.com/file/d/1Tvak74xauHgEHQjnGUbQmYcnVfo8oD32/view?usp=sharing",
     items: [
-      ["🔍", "Assess Before Moving", "චලනය කිරීමට පෙර තක්සේරු කරන්න", "Assess the patient and the environment before moving."],
-      ["👐", "Use Appropriate Techniques", "සුදුසු ක්‍රම භාවිතා කරන්න", "Use appropriate lifting and moving techniques."],
-      ["👥", "Coordinate with the Rescue Team", "ගලවා ගැනීමේ කණ්ඩායම සමඟ සම්බන්ධීකරණය කරන්න", "Coordinate each movement with the rescue team."],
-      ["🛡️", "Protect the Patient's Condition", "රෝගියාගේ තත්ත්වය ආරක්ෂා කරන්න", "Protect the patient's condition during movement."],
-      ["🛠️", "Use Appropriate Equipment", "සුදුසු උපකරණ භාවිතා කරන්න", "Use appropriate equipment when available."],
-      ["⏸️", "Avoid Unnecessary Movement", "අනවශ්‍ය චලනයෙන් වළකින්න", "Avoid unnecessary movement of the patient."]
+      ["🔍", "Assess Before Moving", "චලනය කිරීමට පෙර තක්සේරු කරන්න", "Assess the patient and the environment before moving.", "රෝගියා චලනය කිරීමට පෙර ඔහුගේ හෝ ඇයගේ තත්ත්වය සහ අවට පරිසරය තක්සේරු කරන්න."],
+      ["👐", "Use Appropriate Techniques", "සුදුසු ක්‍රම භාවිතා කරන්න", "Use appropriate lifting and moving techniques.", "එසවීමේ සහ චලනය කිරීමේ සුදුසු ක්‍රම භාවිත කරන්න."],
+      ["👥", "Coordinate with the Rescue Team", "ගලවා ගැනීමේ කණ්ඩායම සමඟ සම්බන්ධීකරණය කරන්න", "Coordinate each movement with the rescue team.", "සෑම චලනයක්ම ගලවාගැනීමේ කණ්ඩායම සමඟ සම්බන්ධීකරණය කරන්න."],
+      ["🛡️", "Protect the Patient's Condition", "රෝගියාගේ තත්ත්වය ආරක්ෂා කරන්න", "Protect the patient's condition during movement.", "චලනය කරන අතරතුර රෝගියාගේ තත්ත්වය ආරක්ෂා කරන්න."],
+      ["🛠️", "Use Appropriate Equipment", "සුදුසු උපකරණ භාවිතා කරන්න", "Use appropriate equipment when available.", "ලබාගත හැකි විට සුදුසු උපකරණ භාවිත කරන්න."],
+      ["⏸️", "Avoid Unnecessary Movement", "අනවශ්‍ය චලනයෙන් වළකින්න", "Avoid unnecessary movement of the patient.", "රෝගියා අනවශ්‍ය ලෙස චලනය කිරීමෙන් වළකින්න."]
     ]
   },
   "respectful-handling-deceased": {
@@ -100,12 +100,12 @@ const medicalDetails = {
     resourceKey: "deceasedHandlingPDF",
     resourceUrl: "https://drive.google.com/file/d/1vhzshtTmy6gPY6B36Yo7u8WISph1Xnnv/view?usp=sharing",
     items: [
-      ["🕊️", "Handle with Dignity and Respect", "ගෞරවයෙන් සහ අභිමානයෙන් හසුරුවන්න", "Handle deceased persons with dignity and respect."],
-      ["🧤", "Use Appropriate PPE", "සුදුසු ආරක්ෂක උපකරණ භාවිතා කරන්න", "Use appropriate personal protective equipment."],
-      ["📋", "Maintain Proper Documentation", "නිසි ලේඛනගත කිරීම පවත්වාගන්න", "Maintain proper documentation."],
-      ["📍", "Record the Location Accurately", "ස්ථානය නිවැරදිව සටහන් කරන්න", "Record the location accurately."],
-      ["🤲", "Handle Respectfully and Carefully", "ගෞරවයෙන් සහ සැලකිල්ලෙන් හසුරුවන්න", "Handle respectfully and carefully."],
-      ["🌐", "Consider Cultural Sensitivity", "සංස්කෘතික සංවේදීතාව සලකා බලන්න", "Consider cultural sensitivity and local practices."]
+      ["🕊️", "Handle with Dignity and Respect", "ගෞරවයෙන් සහ අභිමානයෙන් හසුරුවන්න", "Handle deceased persons with dignity and respect.", "මියගිය පුද්ගලයන්ගේ ගෞරවය සහ අභිමානය රැකෙන අයුරින් කටයුතු කරන්න."],
+      ["🧤", "Use Appropriate PPE", "සුදුසු ආරක්ෂක උපකරණ භාවිතා කරන්න", "Use appropriate personal protective equipment.", "සුදුසු පුද්ගලික ආරක්ෂක උපකරණ භාවිත කරන්න."],
+      ["📋", "Maintain Proper Documentation", "නිසි ලේඛනගත කිරීම පවත්වාගන්න", "Maintain proper documentation.", "අදාළ තොරතුරු නිසි ලෙස ලේඛනගත කරන්න."],
+      ["📍", "Record the Location Accurately", "ස්ථානය නිවැරදිව සටහන් කරන්න", "Record the location accurately.", "ස්ථානය නිවැරදිව සටහන් කරන්න."],
+      ["🤲", "Handle Respectfully and Carefully", "ගෞරවයෙන් සහ සැලකිල්ලෙන් හසුරුවන්න", "Handle respectfully and carefully.", "ගෞරවයෙන් සහ සැලකිල්ලෙන් කටයුතු කරන්න."],
+      ["🌐", "Consider Cultural Sensitivity", "සංස්කෘතික සංවේදීතාව සලකා බලන්න", "Consider cultural sensitivity and local practices.", "සංස්කෘතික සංවේදීතාව සහ ප්‍රදේශයේ සම්ප්‍රදායන් සැලකිල්ලට ගන්න."]
     ]
   }
 };
@@ -192,12 +192,12 @@ export default function FirstAidMedical() {
               <section className="detail-content-section">
                 <h2 className="medical-section-heading"><CheckCircle size={20} /> {text.guidelines}</h2>
                 <div className="steps-grid">
-                  {detail.items.map(([icon, title, sinhalaTitle, description]) => (
+                  {detail.items.map(([icon, title, sinhalaTitle, description, sinhalaDescription]) => (
                     <article className="step-card" key={title}>
                       <div className="step-emoji-box">{icon}</div>
                       <div className="step-info">
                         <h3>{locale === "si" ? sinhalaTitle : title}</h3>
-                        <p>{locale === "si" ? sinhalaTitle : description}</p>
+                        <p>{locale === "si" ? sinhalaDescription : description}</p>
                       </div>
                     </article>
                   ))}

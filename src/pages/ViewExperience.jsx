@@ -348,7 +348,7 @@ export default function ViewExperience() {
       <Sidebar />
       <div className="main-content">
         <TopHeader />
-        <main style={{ flex: 1, overflowY: "auto", padding: "24px 32px 56px", background: "#0b0f19", color: "#fff" }}>
+        <main className="view-experience-main" style={{ flex: 1, overflowY: "auto", padding: "24px 32px 56px", background: "var(--page-bg)", color: "var(--text)" }}>
           
           <button 
             onClick={() => navigate(-1)} 
@@ -357,7 +357,7 @@ export default function ViewExperience() {
             <ArrowLeft size={16} /> {t[locale].back}
           </button>
 
-          <div style={{ background: "#111827", border: "1px solid rgba(255, 255, 255, 0.08)", borderRadius: "16px", padding: "32px", maxWidth: "900px", margin: "0 auto" }}>
+          <div className="ve-card-container" style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: "16px", padding: "32px", maxWidth: "900px", margin: "0 auto" }}>
             
             {/* Officer Header Info */}
             <div style={{ display: "flex", gap: "24px", alignItems: "center", flexWrap: "wrap", marginBottom: "24px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "24px" }}>
@@ -460,7 +460,7 @@ export default function ViewExperience() {
                       </span>
                     </div>
 
-                    <div style={{ position: "relative", background: "#000", borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", height: "360px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <div className="ve-image-preview" style={{ position: "relative", background: "#000", borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", height: "360px", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <img 
                         src={currentStory.storyImages[currentImageIndex].img} 
                         alt="Incident Visual" 
@@ -470,13 +470,13 @@ export default function ViewExperience() {
                       {/* Navigation Arrows */}
                       {currentStory.storyImages.length > 1 && (
                         <>
-                          <button 
+                          <button className="ve-nav-btn"
                             onClick={handlePrevImage}
                             style={{ position: "absolute", left: "12px", background: "rgba(0,0,0,0.6)", color: "#fff", border: "none", borderRadius: "50%", width: "36px", height: "36px", display: "grid", placeItems: "center", cursor: "pointer", transition: "background 0.2s" }}
                           >
                             <ChevronLeft size={20} />
                           </button>
-                          <button 
+                          <button className="ve-nav-btn"
                             onClick={handleNextImage}
                             style={{ position: "absolute", right: "12px", background: "rgba(0,0,0,0.6)", color: "#fff", border: "none", borderRadius: "50%", width: "36px", height: "36px", display: "grid", placeItems: "center", cursor: "pointer", transition: "background 0.2s" }}
                           >
@@ -486,7 +486,7 @@ export default function ViewExperience() {
                       )}
 
                       {/* Caption Overlay */}
-                      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "linear-gradient(to top, rgba(0,0,0,0.8), transparent)", padding: "16px 20px 10px", color: "#fff", fontSize: "13px", textAlign: "center" }}>
+                      <div className="ve-image-caption" style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "linear-gradient(to top, rgba(0,0,0,0.8), transparent)", padding: "16px 20px 10px", color: "#fff", fontSize: "13px", textAlign: "center" }}>
                         {currentStory.storyImages[currentImageIndex].caption}
                       </div>
                     </div>

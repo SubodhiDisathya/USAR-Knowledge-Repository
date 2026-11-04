@@ -1,7 +1,9 @@
 import React from "react";
+import { useLocale } from "../context/LocaleContext";
 import "./ExperienceCard.css";
 
 export default function ExperienceCard({ experience }) {
+  const { locale } = useLocale();
   const firstLetter = experience.responder ? experience.responder.charAt(0).toUpperCase() : "U";
 
   const getAvatarColor = (letter) => {
@@ -42,7 +44,7 @@ export default function ExperienceCard({ experience }) {
       <div className="card-footer">
         <span className="type-badge">{experience.type}</span>
         <a href="#" className="read-more">
-          Read More →
+          {locale === "si" ? "විස්තර කියවන්න" : "Read More"} →
         </a>
       </div>
     </div>

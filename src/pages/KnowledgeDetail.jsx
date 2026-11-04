@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight, ExternalLink, FileText, ShieldAlert } from "lucide-react";
+import { ArrowLeft, ExternalLink, FileText, ShieldAlert } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 import TopHeader from "../components/TopHeader";
 import { useLocale } from "../context/LocaleContext";
@@ -88,7 +88,7 @@ export default function KnowledgeDetail() {
               <span>/</span>
               <Link to="/operational-guidelines">{t.operationalGuidelines}</Link>
               <span>/</span>
-              <span>{topic.title}</span>
+              <span>{locale === "si" ? topic.sinhalaTitle : topic.title}</span>
             </nav>
           </div>
 
@@ -97,8 +97,8 @@ export default function KnowledgeDetail() {
             <div className="detail-hero-overlay" />
             <div className="detail-hero-content">
               <span className="detail-kicker">USAR KNOWLEDGE REPOSITORY</span>
-              <h1>{topic.icon} {topic.title}</h1>
-              <p className="detail-sinhala-title">{locale === "si" ? topic.sinhalaTitle : topic.title}</p>
+              <h1>{topic.icon} {locale === "si" ? topic.sinhalaTitle : topic.title}</h1>
+              {locale === "en" && <p className="detail-sinhala-title">{topic.sinhalaTitle}</p>}
             </div>
           </header>
 
@@ -148,9 +148,8 @@ export default function KnowledgeDetail() {
             <section className="knowledge-note">
               <span className="note-pin">📌</span>
               <div>
-                <h2>{commonNote.title}</h2>
-                <p>{commonNote.body}</p>
-                <p className="detail-secondary">{commonNote.sinhala}</p>
+                <h2>{locale === "si" ? "දැනුම් සටහන | වැදගත් දැනුම්දීම" : commonNote.title}</h2>
+                <p>{locale === "si" ? commonNote.sinhala : commonNote.body}</p>
               </div>
             </section>
           </div>
