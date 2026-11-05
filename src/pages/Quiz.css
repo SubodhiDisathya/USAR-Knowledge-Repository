@@ -234,10 +234,20 @@
   transition: border-color 0.2s ease, background 0.2s ease;
 }
 
-.quiz-option:hover:not(:disabled),
-.quiz-option.selected {
+.quiz-option:hover:not(:disabled) {
   border-color: #f97316;
   background: rgba(249, 115, 22, 0.08);
+}
+
+.quiz-option.selected {
+  border-color: rgba(245, 158, 11, 0.8);
+  background: rgba(245, 158, 11, 0.14);
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.12);
+}
+
+.quiz-option.selected .quiz-option-letter {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fcd34d;
 }
 
 .quiz-option:disabled {

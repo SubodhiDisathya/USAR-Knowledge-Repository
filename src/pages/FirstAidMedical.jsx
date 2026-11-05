@@ -9,7 +9,7 @@ import "./FirstAidMedical.css";
 const medicalDetails = {
   "basic-medical-rescue": {
     title: "6.1 Basic Medical Rescue",
-    sinhalaTitle: "6.1 මූලික වෛද්‍ය ගලවා ගැනීම",
+    sinhalaTitle: "6.1 ප්‍රථම වෛද්‍ය ප්‍රතිචාරය",
     icon: <Stethoscope size={28} />,
     description: "Learn the basic actions for providing safe and appropriate assistance during an emergency.",
     sinhalaDescription: "හදිසි අවස්ථාවකදී ආරක්ෂිතව සහ සුදුසු ලෙස සහාය ලබාදීමේ මූලික පියවර ඉගෙන ගන්න.",
@@ -128,10 +128,10 @@ const labels = {
   },
   si: {
     badge: "මොඩියුලය 6: වෛද්‍ය ගලවා ගැනීම",
-    title: "පළමු ප්‍රතිකාර සහ වෛද්‍ය",
-    description: "හදිසි අවස්ථා සහ ආපදා ප්‍රතිචාර සඳහා අත්‍යවශ්‍ය වෛද්‍ය ගලවා ගැනීමේ දැනුම ලබා ගන්න.",
+    title: "පළමු ප්‍රතිකාර සහ වෛද්‍ය ප්‍රතිචාර",
+    description: "හදිසි අවස්ථා සහ ආපදා ප්‍රතිචාර සඳහා අත්‍යවශ්‍ය ප්‍රථමාධාර සහ වෛද්‍ය ප්‍රතිචාර පිළිබඳ දැනුම ලබා ගන්න.",
     overview: "මාතෘකා දළ විශ්ලේෂණය",
-    back: "පළමු ප්‍රතිකාර සහ වෛද්‍ය වෙත ආපසු",
+    back: "පළමු ප්‍රතිකාර සහ වෛද්‍ය ප්‍රතිචාර වෙත ආපසු",
     learn: "තවත් කියවන්න",
     guidelines: "සරල අධ්‍යාපනික මාර්ගෝපදේශ",
     resource: "PDF / ඉදිරිපත් කිරීම",

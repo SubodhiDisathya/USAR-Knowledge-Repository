@@ -278,7 +278,7 @@ export const quizQuestionSets = {
   ],
   medical: [
     {
-      topic: { en: "6.1 Basic Medical Rescue", si: "6.1 මූලික වෛද්‍ය ගලවා ගැනීම" },
+      topic: { en: "6.1 Basic Medical Rescue", si: "6.1 ප්‍රථම වෛද්‍ය ප්‍රතිචාරය" },
       question: {
         en: "What should be done before providing assistance at an emergency scene?",
         si: "හදිසි සිද්ධි ස්ථානයක සහාය ලබාදීමට පෙර කළ යුත්තේ කුමක්ද?"

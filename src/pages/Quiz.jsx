@@ -87,7 +87,7 @@ const quizModules = [
   },
   {
     id: "module-6",
-    title: { en: "Module 6: First Aid & Medical", si: "මොඩියුලය 6: පළමු ප්‍රතිකාර සහ වෛද්‍ය" },
+    title: { en: "Module 6: First Aid & Medical", si: "මොඩියුලය 6: පළමු ප්‍රතිකාර සහ වෛද්‍ය ප්‍රතිචාර" },
     questions: quizQuestionSets.medical
   },
   {

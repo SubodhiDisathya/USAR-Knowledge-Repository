@@ -33,7 +33,7 @@ const si = {
   dashboard: "උපකරණ පුවරුව",
   knowledgeHub: "දැනුම් මධ්‍යස්ථානය",
   operationalGuidelines: "මෙහෙයුම් මාර්ගෝපදේශ සහ SOP",
-  firstAidMedical: "පළමු ප්‍රතිකාර සහ වෛද්‍ය",
+  firstAidMedical: "පළමු ප්‍රතිකාර සහ වෛද්‍ය ප්‍රතිචාර",
   others: "වෙනත් සම්පත්",
   experiencesStories: "පසුගිය අත්දැකීම් සහ කතා",
   emergencyContacts: "හදිසි සම්බන්ධතා",

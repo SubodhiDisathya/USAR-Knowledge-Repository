@@ -496,11 +496,11 @@ const sectionContent = {
   medical: {
     kicker: "MEDICAL RESCUE",
     title: "First Aid & Medical",
-    sinhalaTitle: "ප්‍රථමාධාර සහ වෛද්‍ය ප්‍රතිකාර",
+    sinhalaTitle: "පළමු ප්‍රතිකාර සහ වෛද්‍ය ප්‍රතිචාර",
     description: "Access essential medical rescue knowledge, patient assessment, treatment, handling, and emergency medical procedures.",
-    sinhalaDescription: "අත්‍යවශ්‍ය වෛද්‍ය ගලවා ගැනීමේ දැනුම, රෝගී ඇගයීම, ප්‍රතිකාර, රෝගීන් හැසිරවීම සහ හදිසි වෛද්‍ය ක්‍රියා පටිපාටි වෙත පිවිසෙන්න.",
+    sinhalaDescription: "අත්‍යවශ්‍ය ප්‍රථමාධාර සහ වෛද්‍ය ප්‍රතිචාර, රෝගී ඇගයීම, ප්‍රතිකාර, රෝගීන් හැසිරවීම සහ හදිසි වෛද්‍ය ක්‍රියා පටිපාටි පිළිබඳ දැනුම ලබා ගන්න.",
     cards: [
-      { slug: "basic-medical-rescue", title: "Basic Medical Rescue", sinhalaSubtitle: "මූලික වෛද්‍ය ගලවා ගැනීම", desc: "Learn the basic principles of providing medical assistance during an emergency.", sinhalaDesc: "හදිසි අවස්ථාවකදී වෛද්‍ය ආධාර සැපයීමේ මූලික ප්‍රතිපත්ති ඉගෙන ගන්න.", icon: "🩺" },
+      { slug: "basic-medical-rescue", title: "Basic Medical Rescue", sinhalaSubtitle: "ප්‍රථම වෛද්‍ය ප්‍රතිචාරය", desc: "Learn the basic principles of providing medical assistance during an emergency.", sinhalaDesc: "හදිසි අවස්ථාවකදී වෛද්‍ය ආධාර සැපයීමේ මූලික ප්‍රතිපත්ති ඉගෙන ගන්න.", icon: "🩺" },
       { slug: "scene-assessment", title: "Scene Assessment", sinhalaSubtitle: "සිද්ධි ස්ථාන ඇගයීම", desc: "Before helping a patient, carefully assess the surrounding environment.", sinhalaDesc: "රෝගියෙකුට උදව් කිරීමට පෙර අවට පරිසරය හොඳින් තක්සේරු කරන්න.", icon: "📋" },
       { slug: "patient-assessment", title: "Patient Assessment", sinhalaSubtitle: "රෝගී තත්ත්ව ඇගයීම", desc: "Learn how to assess a patient's condition and level of responsiveness.", sinhalaDesc: "රෝගියෙකුගේ තත්ත්වය සහ ප්‍රතිචාර දැක්වීමේ මට්ටම තක්සේරු කරන්නේ කෙසේදැයි ඉගෙන ගන්න.", icon: "❤️" },
       { slug: "patient-treatment", title: "Patient Treatment", sinhalaSubtitle: "රෝගී ප්‍රතිකාර", desc: "Access basic information about common injuries and emergency treatment priorities.", sinhalaDesc: "පොදු තුවාල සහ හදිසි ප්‍රතිකාර ප්‍රමුඛතා පිළිබඳ මූලික තොරතුරු ලබා ගන්න.", icon: "🩹" },
