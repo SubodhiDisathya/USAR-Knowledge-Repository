@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ClipboardList, Users, ShieldCheck, ArrowRight } from "lucide-react";
+import { ClipboardCheck, ClipboardList, Users, ShieldCheck, ArrowRight } from "lucide-react";
 import "./Admin.css";
 import Sidebar from "../components/Sidebar";
 import TopHeader from "../components/TopHeader";
@@ -70,6 +70,20 @@ export default function Admin() {
               </div>
               <div className="card-action">
                 <span>{t.configure}</span>
+                <ArrowRight size={18} />
+              </div>
+            </div>
+
+            <div className="admin-card" onClick={() => navigate("/admin/quiz-assignments")}>
+              <div className="card-icon blue">
+                <ClipboardCheck size={24} />
+              </div>
+              <div className="card-content">
+                <h3>{t.quizAssignments}</h3>
+                <p>{t.quizAssignmentsDescription}</p>
+              </div>
+              <div className="card-action">
+                <span>{t.manage}</span>
                 <ArrowRight size={18} />
               </div>
             </div>

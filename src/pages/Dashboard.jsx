@@ -6,14 +6,12 @@ import AdminPanel from "../components/AdminPanel";
 import { useAuth } from "../context/AuthContext";
 import { useLocale } from "../context/LocaleContext";
 import translations from "../i18n/translations";
-import { fieldExperiences } from "../data/experienceData";
 import "./Dashboard.css";
 
 // Importing local images from assets folder
 import sopsImg from "../assets/SOPs.jpeg";
 import medicineImg from "../assets/medicine.jpeg";
 import pastImg from "../assets/stories.jpg";
-import contactListImg from "../assets/Contactlist.jpeg";
 import sopImg from "../assets/sop.jpg";
 import othersImg from "../assets/others.jpg";
 
@@ -22,11 +20,8 @@ import {
   Stethoscope, 
   Globe, 
   Users, 
-  PhoneCall, 
   ArrowRight,
   Radio,
-  Layers,
-  Globe2,
   BookOpen,
   CircleHelp
 } from "lucide-react";
@@ -36,13 +31,6 @@ export default function Dashboard() {
   const { locale } = useLocale();
   const t = translations[locale] || translations["en"];
   const navigate = useNavigate();
-
-  // Statistics configuration (Organizations removed, Categories set to 6)
-  const stats = [
-    { label: t.categoriesCount || "Categories", value: 6, icon: <Layers className="w-5 h-5 text-blue-600" /> },
-    { label: t.fieldExperiences || "Field Stories", value: fieldExperiences.length, icon: <Users className="w-5 h-5 text-blue-600" /> },
-    { label: t.languages || "Languages", value: Object.keys(translations).length, icon: <Globe2 className="w-5 h-5 text-blue-600" /> }
-  ];
 
   const categoryCards = [
     {
@@ -80,18 +68,6 @@ export default function Dashboard() {
       path: "/experiences",
       badgeColor: "bg-blue-100 text-blue-700 border border-blue-200",
       bgImage: pastImg
-    },
-    {
-      title: t.emergencyContacts,
-      titleSi: t.emergencyContacts,
-      subtitle: "DIRECT CONTACTS",
-      subtitleSi: "සෘජු සම්බන්ධතා",
-      description: "Quickly access 593+ verified emergency response personnel, rescue units, and agency communication details.",
-      descriptionSi: "තහවුරු කළ හදිසි ප්‍රතිචාර කාර්ය මණ්ඩලය, ගලවා ගැනීමේ ඒකක සහ ආයතනික සම්බන්ධතා වෙත ඉක්මනින් ප්‍රවේශ වන්න.",
-      icon: <PhoneCall className="w-6 h-6 text-blue-300" />,
-      path: "/emergency-contacts",
-      badgeColor: "bg-blue-100 text-blue-700 border border-blue-200",
-      bgImage: contactListImg
     },
     {
       title: "Standard Operating Procedures (SOPs)",
@@ -149,26 +125,13 @@ export default function Dashboard() {
               </span>
             </div>
             <h2>
-              {t.appTitle || "USAR Knowledge Repository"}
+              {locale === "si" ? "USAR දැනුම එකතුව" : "USAR Knowledge Repository"}
             </h2>
             <p className="dashboard-description">
-              {locale === "si" ? "නාගරික සෙවීම් සහ ගලවා ගැනීමේ මෙහෙයුම් සඳහා හදිසි ප්‍රතිචාර දැනුම, මෙහෙයුම් මාර්ගෝපදේශ සහ ගලවා ගැනීමේ සම්පත් වෙත ප්‍රවේශ වන්න." : "Access important emergency response knowledge, operational guidelines, medical information, and rescue resources for Urban Search and Rescue operations."}
+              {locale === "si"
+                ? "නාගරික සෙවීම් සහ මුදා ගැනීමේ මෙහෙයුම් සඳහා හදිසි ප්‍රතිචාර දැනුම, මෙහෙයුම් මාර්ගෝපදේශ සහ මුදවා ගැනීමේ සම්පත් පිළිබඳ තොරතුරු ලබා ගන්න."
+                : "Learn about emergency-response knowledge, operational guidelines, and rescue resources for urban search and rescue operations."}
             </p>
-          </div>
-
-          {/* Quick Statistics Grid */}
-          <div className="stats-grid">
-            {stats.map((stat, i) => (
-              <div key={i} className="stat-card">
-                <div className="stat-card-header">
-                  <span className="stat-value">{stat.value}</span>
-                  <div className="stat-icon">
-                    {stat.icon}
-                  </div>
-                </div>
-                <span className="stat-label">{stat.label}</span>
-              </div>
-            ))}
           </div>
 
           {/* Core Knowledge Category Cards Grid */}
@@ -209,7 +172,7 @@ export default function Dashboard() {
                   </div>
 
                   <div className="category-explore">
-                    {t.explore || "Explore"} <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-4 h-4" />
                   </div>
                 </div>
               ))}

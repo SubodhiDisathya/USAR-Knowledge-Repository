@@ -543,17 +543,6 @@ const sectionContent = {
       { slug: "flood-rescue-2025", title: "Flood Rescue Operations 2025", sinhalaSubtitle: "ගංවතුර ගැලවාගැනීම් 2025", desc: "Case study and field insights from recent major flood response missions.", sinhalaDesc: "පසුගිය ප්‍රධාන ගංවතුර ප්‍රතිචාර මෙහෙයුම් වලින් ලබාගත් ක්ෂේත්‍ර නිරීක්ෂණ.", icon: "🌊" },
       { slug: "operational-challenges", title: "Operational Challenges", sinhalaSubtitle: "මෙහෙයුම් අභියෝග", desc: "Key lessons learned from complex urban rescue scenarios.", sinhalaDesc: "සංකීර්ණ නාගරික ගලවා ගැනීමේ අවස්ථාවන්ගෙන් ඉගෙනගත් ප්‍රධාන පාඩම්.", icon: "⚡" }
     ]
-  },
-  contacts: {
-    kicker: "DIRECT CONTACTS",
-    title: "Emergency Contact Directory",
-    sinhalaTitle: "හදිසි ඇමතුම් නාමාවලිය",
-    description: "Quickly access verified emergency response personnel, rescue units, and agency communication details.",
-    sinhalaDescription: "තහවුරු කරන ලද හදිසි ප්‍රතිචාර පිරිස්, ගලවා ගැනීමේ ඒකක සහ ආයතනික සන්නිවේදන විස්තර වෙත ඉක්මනින් පිවිසෙන්න.",
-    cards: [
-      { slug: "disaster-management-center", title: "Disaster Management Center", sinhalaSubtitle: "ආපදා කළමනාකරණ මධ්‍යස්ථානය", desc: "Direct coordination lines and control room numbers.", sinhalaDesc: "සෘජු සම්බන්ධීකරණ මාර්ග සහ පාලන මැදිරි දුරකථන අංක.", icon: "📞" },
-      { slug: "usar-unit-commanders", title: "USAR Unit Commanders", sinhalaSubtitle: "USAR ඒකක ආඥාපතිවරුන්", desc: "Primary contact list for team leaders and response squads.", sinhalaDesc: "කණ්ඩායම් නායකයින් සහ ප්‍රතිචාර කණ්ඩායම් සඳහා ප්‍රධාන සම්බන්ධතා ලැයිස්තුව.", icon: "👥" }
-    ]
   }
 };
 
@@ -888,8 +877,7 @@ export default function KnowledgeSection({ section }) {
                     sops: "සම්මත ක්‍රියාපටිපාටි",
                     medical: "වෛද්‍ය ගලවාගැනීම්",
                     others: "අමතර සම්පත්",
-                    experiences: "අත්දැකීම් සහ සිද්ධි",
-                    contacts: "සෘජු සම්බන්ධතා"
+                    experiences: "අත්දැකීම් සහ සිද්ධි"
                   }[section] || content.kicker) : content.kicker}
                 </div>
                 <h1 className="hero-title">

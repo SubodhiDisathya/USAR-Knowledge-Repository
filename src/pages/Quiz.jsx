@@ -1,9 +1,12 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, BookOpenCheck, CheckCircle2, CircleHelp, RotateCcw, ShieldAlert, XCircle } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 import TopHeader from "../components/TopHeader";
 import { useLocale } from "../context/LocaleContext";
-import { quizQuestionSets } from "../data/quizQuestions";
+import { useAuth } from "../context/AuthContext";
+import { collection, doc, onSnapshot, query, updateDoc, where } from "firebase/firestore";
+import { db, serverTimestamp } from "../firebase/firebaseConfig";
+import quizModules from "../data/quizModules";
 import "./Quiz.css";
 
 const quizLabels = {
@@ -30,7 +33,18 @@ const quizLabels = {
     retry: "Try Again",
     choose: "Choose a quiz",
     safety: "Learning reminder",
-    safetyText: "This quiz is for educational review only. In real incidents, follow authorized procedures and instructions from qualified personnel."
+    safetyText: "This quiz is for educational review only. In real incidents, follow authorized procedures and instructions from qualified personnel.",
+    assigned: "Quizzes assigned to you",
+    due: "Due",
+    status: "Status",
+    scoreLabel: "Score",
+    assignedStatus: "Assigned",
+    inProgressStatus: "In progress",
+    completedStatus: "Completed",
+    assignmentError: "Could not update your quiz assignment. Your quiz can still continue; please contact an administrator if this persists.",
+    assignmentLoadError: "Could not load your assigned quizzes. Please refresh the page or contact an administrator.",
+    startAssigned: "Start assigned quiz",
+    retryAssigned: "Retake quiz"
   },
   si: {
     badge: "දැනුම පරීක්ෂාව",
@@ -55,49 +69,23 @@ const quizLabels = {
     retry: "නැවත උත්සාහ කරන්න",
     choose: "ප්‍රශ්නාවලියක් තෝරන්න",
     safety: "අධ්‍යාපනික මතක් කිරීම",
-    safetyText: "මෙම ප්‍රශ්නාවලිය අධ්‍යාපනික සමාලෝචනය සඳහා පමණි. සැබෑ සිදුවීම්වලදී බලයලත් ක්‍රියාපටිපාටි සහ සුදුසුකම් ලත් නිලධාරීන්ගේ උපදෙස් අනුගමනය කරන්න."
+    safetyText: "මෙම ප්‍රශ්නාවලිය අධ්‍යාපනික සමාලෝචනය සඳහා පමණි. සැබෑ සිදුවීම්වලදී බලයලත් ක්‍රියාපටිපාටි සහ සුදුසුකම් ලත් නිලධාරීන්ගේ උපදෙස් අනුගමනය කරන්න.",
+    assigned: "ඔබට පවරා ඇති ප්‍රශ්නාවලි",
+    due: "අවසන් දිනය",
+    status: "තත්ත්වය",
+    scoreLabel: "ලකුණු",
+    assignedStatus: "පවරා ඇත",
+    inProgressStatus: "කරමින් පවතී",
+    completedStatus: "සම්පූර්ණයි",
+    assignmentError: "ප්‍රශ්නාවලි පැවරුම යාවත්කාලීන කළ නොහැකි විය. ඔබට ප්‍රශ්නාවලිය දිගටම කරගෙන යා හැක. මෙය දිගටම සිදුවුවහොත් පරිපාලකයෙකු අමතන්න.",
+    assignmentLoadError: "ඔබට පවරා ඇති ප්‍රශ්නාවලි පූරණය කළ නොහැකි විය. පිටුව නැවත පූරණය කරන්න හෝ පරිපාලකයෙකු අමතන්න.",
+    startAssigned: "පවරා ඇති ප්‍රශ්නාවලිය අරඹන්න",
+    retryAssigned: "නැවත කරන්න"
   }
 };
 
-const quizModules = [
-  {
-    id: "module-1",
-    title: { en: "Module 1: First Responder Programme", si: "මොඩියුලය 1: ප්‍රථම ප්‍රතිචාරක වැඩසටහන" },
-    questions: quizQuestionSets.operational.filter((question) => question.topic.en.startsWith("Module 1:"))
-  },
-  {
-    id: "module-2",
-    title: { en: "Module 2: The Rescue Environment", si: "මොඩියුලය 2: මුදාගැනීමේ පරිසරය" },
-    questions: quizQuestionSets.operational.filter((question) => question.topic.en.startsWith("Module 2:"))
-  },
-  {
-    id: "module-3",
-    title: { en: "Module 3: Scene Management", si: "මොඩියුලය 3: සිද්ධි ස්ථාන කළමනාකරණය" },
-    questions: quizQuestionSets.operational.filter((question) => question.topic.en.startsWith("Module 3:"))
-  },
-  {
-    id: "module-4",
-    title: { en: "Module 4: Search Module", si: "මොඩියුලය 4: සෙවීමේ මොඩියුලය" },
-    questions: quizQuestionSets.operational.filter((question) => question.topic.en.startsWith("Module 4:"))
-  },
-  {
-    id: "module-5",
-    title: { en: "Module 5: Rescue Module", si: "මොඩියුලය 5: මුදාගැනීමේ මොඩියුලය" },
-    questions: quizQuestionSets.operational.filter((question) => question.topic.en.startsWith("Module 5:"))
-  },
-  {
-    id: "module-6",
-    title: { en: "Module 6: First Aid & Medical", si: "මොඩියුලය 6: පළමු ප්‍රතිකාර සහ වෛද්‍ය ප්‍රතිචාර" },
-    questions: quizQuestionSets.medical
-  },
-  {
-    id: "module-7",
-    title: { en: "Module 7: Consolidation Exercise", si: "මොඩියුලය 7: සමස්ත කුසලතා ඒකාබද්ධ කිරීමේ අභ්‍යාසය" },
-    questions: quizQuestionSets.operational.filter((question) => question.topic.en.startsWith("Module 7:"))
-  }
-];
-
 export default function Quiz() {
+  const { currentUser } = useAuth();
   const { locale } = useLocale();
   const text = quizLabels[locale] || quizLabels.en;
   const language = locale === "si" ? "si" : "en";
@@ -107,6 +95,26 @@ export default function Quiz() {
   const [score, setScore] = useState(0);
   const [isAnswered, setIsAnswered] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
+  const [assignments, setAssignments] = useState([]);
+  const [assignmentError, setAssignmentError] = useState("");
+  const [selectedAssignment, setSelectedAssignment] = useState(null);
+
+  useEffect(() => {
+    if (!currentUser) return undefined;
+    const assignmentsQuery = query(collection(db, "quizAssignments"), where("userId", "==", currentUser.uid));
+    const unsubscribe = onSnapshot(
+      assignmentsQuery,
+      (snapshot) => {
+        setAssignments(snapshot.docs.map((assignmentDoc) => ({ id: assignmentDoc.id, ...assignmentDoc.data() })));
+        setAssignmentError("");
+      },
+      (error) => {
+        console.error("Error loading quiz assignments:", error);
+        setAssignmentError(text.assignmentLoadError);
+      }
+    );
+    return () => unsubscribe();
+  }, [currentUser, text.assignmentError, text.assignmentLoadError]);
 
   const questions = useMemo(() => {
     if (selectedQuiz === "mixed") return quizModules.flatMap((module) => module.questions);
@@ -115,13 +123,26 @@ export default function Quiz() {
 
   const question = questions[questionIndex];
 
-  function startQuiz(quizId) {
+  async function startQuiz(quizId, assignment = null) {
     setSelectedQuiz(quizId);
+    setSelectedAssignment(assignment);
     setQuestionIndex(0);
     setSelectedOption(null);
     setScore(0);
     setIsAnswered(false);
     setIsComplete(false);
+    setAssignmentError("");
+    if (assignment && assignment.status !== "completed") {
+      try {
+        await updateDoc(doc(db, "quizAssignments", assignment.id), {
+          status: "in_progress",
+          startedAt: serverTimestamp()
+        });
+      } catch (error) {
+        console.error("Error marking quiz assignment in progress:", error);
+        setAssignmentError(text.assignmentError);
+      }
+    }
   }
 
   function chooseAnotherQuiz() {
@@ -131,6 +152,8 @@ export default function Quiz() {
     setScore(0);
     setIsAnswered(false);
     setIsComplete(false);
+    setSelectedAssignment(null);
+    setAssignmentError("");
   }
 
   function checkAnswer() {
@@ -139,8 +162,22 @@ export default function Quiz() {
     setIsAnswered(true);
   }
 
-  function continueQuiz() {
+  async function continueQuiz() {
     if (questionIndex === questions.length - 1) {
+      if (selectedAssignment) {
+        try {
+          await updateDoc(doc(db, "quizAssignments", selectedAssignment.id), {
+            status: "completed",
+            score,
+            totalQuestions: questions.length,
+            percentage: Math.round((score / questions.length) * 100),
+            completedAt: serverTimestamp()
+          });
+        } catch (error) {
+          console.error("Error saving quiz assignment result:", error);
+          setAssignmentError(text.assignmentError);
+        }
+      }
       setIsComplete(true);
       return;
     }
@@ -165,6 +202,44 @@ export default function Quiz() {
 
           {!selectedQuiz ? (
             <section className="quiz-selection">
+              {assignments.length > 0 && (
+                <div className="quiz-assigned-section">
+                  <h2>{text.assigned}</h2>
+                  {assignments.map((assignment) => {
+                    const module = assignment.quizId === "mixed"
+                      ? { title: { en: "All Modules Quiz", si: "සියලුම මොඩියුල ප්‍රශ්නාවලිය" } }
+                      : quizModules.find((item) => item.id === assignment.quizId);
+                    if (!module) return null;
+                    const statusLabel = assignment.status === "completed"
+                      ? text.completedStatus
+                      : assignment.status === "in_progress"
+                        ? text.inProgressStatus
+                        : text.assignedStatus;
+                    return (
+                      <article className="quiz-assigned-card" key={assignment.id}>
+                        <div>
+                          <h3>{module.title[language]}</h3>
+                          <p>
+                            {text.status}: <span className={`quiz-assignment-status ${assignment.status || "assigned"}`}>{statusLabel}</span>
+                            {assignment.dueDate && <> · {text.due}: {new Date(`${assignment.dueDate}T00:00:00`).toLocaleDateString(language === "si" ? "si-LK" : "en-US")}</>}
+                            {assignment.status === "completed" && Number.isFinite(assignment.score) && (
+                              <> · {text.scoreLabel}: {assignment.score}/{assignment.totalQuestions}</>
+                            )}
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          className="quiz-primary-button"
+                          onClick={() => startQuiz(assignment.quizId, assignment)}
+                        >
+                          {assignment.status === "completed" ? text.retryAssigned : text.startAssigned} <ArrowRight size={17} />
+                        </button>
+                      </article>
+                    );
+                  })}
+                </div>
+              )}
+              {assignmentError && <p className="quiz-assignment-error" role="alert">{assignmentError}</p>}
               <h2>{text.choose}</h2>
               <div className="quiz-choice-grid">
                 {quizModules.map((module) => (
@@ -191,6 +266,7 @@ export default function Quiz() {
             </section>
           ) : isComplete ? (
             <section className="quiz-result">
+              {assignmentError && <p className="quiz-assignment-error" role="alert">{assignmentError}</p>}
               <div className="quiz-result-icon"><CheckCircle2 size={30} /></div>
               <h2>{text.resultTitle}</h2>
               <p>{text.resultMessage}</p>
@@ -207,6 +283,7 @@ export default function Quiz() {
             </section>
           ) : question ? (
             <section className="quiz-question-card">
+              {assignmentError && <p className="quiz-assignment-error" role="alert">{assignmentError}</p>}
               <div className="quiz-question-toolbar">
                 <button type="button" className="quiz-back-button" onClick={chooseAnotherQuiz}>
                   <ArrowLeft size={16} /> {text.back}

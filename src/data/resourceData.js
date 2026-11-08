@@ -17,8 +17,7 @@ export const categories = [
   { id: "operational", kicker: "OPERATIONAL GUIDANCE", icon: "🚨", title: "Operational Guidelines & SOPs", sinhalaTitle: "මෙහෙයුම් මාර්ගෝපදේශ සහ ක්‍රියා පටිපාටි", description: "Step-by-step operational knowledge for USAR response.", path: "/operational-guidelines" },
   { id: "medical", kicker: "MEDICAL RESCUE", icon: "🩺", title: "First Aid & Medical", sinhalaTitle: "පළමු ප්‍රතිකාර සහ වෛද්‍ය ප්‍රතිචාර", description: "Medical rescue learning resources and references.", path: "/first-aid-medical" },
   { id: "others", kicker: "REFERENCE RESOURCES", icon: "🌍", title: "Others", sinhalaTitle: "වෙනත් සම්පත්", description: "International coordination, training, and additional resources.", path: "/others" },
-  { id: "experiences", kicker: "CASE STUDIES", icon: "🧑‍🚒", title: "Past Experiences & Stories", sinhalaTitle: "පසුගිය අත්දැකීම් සහ කථා", description: "Contributor-approved lessons and field experiences.", path: "/experiences" },
-  { id: "contacts", kicker: "EMERGENCY DIRECTORY", icon: "📞", title: "Emergency Contacts", sinhalaTitle: "හදිසි ඇමතුම්", description: "Verified responder and agency contacts.", path: "/emergency-contacts" }
+  { id: "experiences", kicker: "CASE STUDIES", icon: "🧑‍🚒", title: "Past Experiences & Stories", sinhalaTitle: "පසුගිය අත්දැකීම් සහ කථා", description: "Contributor-approved lessons and field experiences.", path: "/experiences" }
 ];
 
 export const allTopics = [

@@ -93,7 +93,6 @@ body {
 .knowledge-detail-main,
 .quiz-container,
 .security-container,
-.emergency-container,
 .view-experience-main,
 .knowledge-assistant-main {
   background: var(--page-bg) !important;
@@ -169,9 +168,7 @@ body {
 
 .search-main .search-box,
 .search-main .search-box:focus-within,
-.experiences-main .filter-search,
-.emergency-container .search-box-wrapper,
-.emergency-container .search-input {
+.experiences-main .filter-search {
   background: var(--search-bg) !important;
 }
 
@@ -183,8 +180,7 @@ body {
   background: transparent !important;
 }
 
-.search-main .search-box svg,
-.emergency-container .search-box-wrapper svg {
+.search-main .search-box svg {
   color: var(--teal) !important;
 }
 
@@ -324,10 +320,6 @@ body {
 .medical-container h2,
 .medical-container h3,
 .medical-container h4,
-.emergency-container .main-title,
-.emergency-container .section-title,
-.emergency-container .card-profile-info h3,
-.emergency-container .detail-header h2,
 .experiences-header h2,
 .search-header h2,
 .result-header h3,
@@ -376,15 +368,6 @@ body {
 .snippet,
 .ar-detail-header-box p,
 .ar-detail-item p,
-.emergency-container .subtitle,
-.emergency-container .quick-filter-desc,
-.emergency-container .rank-sm,
-.emergency-container .role-sm,
-.emergency-container .location-text,
-.emergency-container .rank-text,
-.emergency-container .role-text,
-.emergency-container .detail-item .value,
-.emergency-container .phone-value,
 .experiences-header p,
 .search-header p,
 .result-snippet,
@@ -926,7 +909,6 @@ a,
 .knowledge-detail-main,
 .quiz-container,
 .security-container,
-.emergency-container,
 .view-experience-main,
 .knowledge-assistant-main {
   color: var(--text) !important;
@@ -973,7 +955,6 @@ a,
 .knowledge-detail-main button svg,
 .quiz-container button svg,
 .security-container button svg,
-.emergency-container button svg,
 .view-experience-main button svg,
 .knowledge-assistant-main button svg {
   color: inherit;
