@@ -119,8 +119,6 @@ const labels = {
     back: "Back to First Aid & Medical",
     learn: "Learn More",
     guidelines: "Simplified Educational Guidance",
-    resource: "PDF / Presentation",
-    resourceSubtitle: "Access the complete guide and detailed field reference documents for this topic.",
     viewDoc: "View Document",
     unavailable: "Resource not available yet",
     safety: "Safety Notice",
@@ -134,8 +132,6 @@ const labels = {
     back: "පළමු ප්‍රතිකාර සහ වෛද්‍ය ප්‍රතිචාර වෙත ආපසු",
     learn: "තවත් කියවන්න",
     guidelines: "සරල අධ්‍යාපනික මාර්ගෝපදේශ",
-    resource: "PDF / ඉදිරිපත් කිරීම",
-    resourceSubtitle: "මෙම මාතෘකාව සඳහා සම්පූර්ණ මාර්ගෝපදේශය සහ සවිස්තරාත්මක ක්ෂේත්‍ර යොමු ලේඛන වෙත පිවිසෙන්න.",
     viewDoc: "ලේඛනය බලන්න",
     unavailable: "සම්පත තවමත් නොමැත",
     safety: "ආරක්ෂක දැනුම්දීම",
@@ -146,10 +142,6 @@ const labels = {
 function ResourcePanel({ detail, text }) {
   return (
     <section className="medical-resource-panel">
-      <div className="medical-resource-copy">
-        <span className="medical-resource-label">{text.resource}</span>
-        <h2>{text.resourceSubtitle}</h2>
-      </div>
       {detail.resourceUrl ? (
         <a className="view-doc-btn" href={detail.resourceUrl} target="_blank" rel="noopener noreferrer">
           {text.viewDoc} <ExternalLink size={16} />
@@ -189,6 +181,7 @@ export default function FirstAidMedical() {
                 </div>
                 <p>{locale === "si" ? detail.sinhalaDescription : detail.description}</p>
               </section>
+              <ResourcePanel detail={detail} text={text} />
               <section className="detail-content-section">
                 <h2 className="medical-section-heading"><CheckCircle size={20} /> {text.guidelines}</h2>
                 <div className="steps-grid">
@@ -209,7 +202,6 @@ export default function FirstAidMedical() {
                   <p>{locale === "si" ? detail.warning[1] : detail.warning[0]}</p>
                 </section>
               )}
-              <ResourcePanel detail={detail} text={text} />
               <section className="medical-safety-note">
                 <ShieldAlert size={22} />
                 <div>

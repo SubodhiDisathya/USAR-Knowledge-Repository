@@ -4,7 +4,7 @@ import Sidebar from "../components/Sidebar";
 import TopHeader from "../components/TopHeader";
 import { useLocale } from "../context/LocaleContext";
 import PageBackButton from "../components/PageBackButton";
-import { ArrowLeft, ArrowRight, ShieldAlert, Cpu, FileText, CheckCircle2, ExternalLink } from "lucide-react";
+import { ArrowLeft, ArrowRight, ShieldAlert, Cpu, FileText, ExternalLink } from "lucide-react";
 import "./KnowledgeSection.css";
 
 const trainingDocument = (fileId, titleEn, titleSi) => ({
@@ -551,6 +551,7 @@ export default function KnowledgeSection({ section }) {
   const content = sectionContent[section];
   const [selectedModuleId, setSelectedModuleId] = React.useState(null);
   const [selectedSectorId, setSelectedSectorId] = React.useState(null);
+  const [selectedSopSection, setSelectedSopSection] = React.useState(null);
   const operationalLanguage = locale === "si" ? "si" : "en";
   const selectedModule = operationalModules.find((module) => module.id === selectedModuleId);
   const selectedSector = selectedModule?.sectors.find((sector) => sector.id === selectedSectorId);
@@ -577,125 +578,328 @@ export default function KnowledgeSection({ section }) {
           className={`knowledge-hub-container${section === "operational" && isSinhala ? " operational-sinhala" : ""}`}
           lang={section === "operational" ? operationalLanguage : undefined}
         >
-          <PageBackButton />
+          {(section !== "operational" || !selectedModule) && <PageBackButton />}
           
           {section === "sops" ? (
             <div className="sop-overview-container" style={{ color: "#f8fafc" }}>
               <div className="knowledge-hub-hero">
                 <div className="hero-badge">
                   <span className="badge-dot"></span>
-                  {locale === "si" ? "සම්මත මෙහෙයුම් ක්‍රියාපටිපාටි" : "STANDARD OPERATING PROCEDURES"}
+                  {locale === "si" ? "ජාතික මට්ටමේ ආපදා කළමනාකරණ ක්‍රියාපටිපාටි" : "NATIONAL DISASTER MANAGEMENT PROCEDURES"}
                 </div>
                 <h1 className="hero-title">
-                  {locale === "si" ? "SOP 0067: 117 ඇමතුම් මැදිරි ක්‍රියාපටිපාටිය" : "SOP 0067: 117 Call Center Documentation"}
+                  {locale === "si" ? "ශ්‍රී ලංකාවේ ජාතික මට්ටමේ ආපදා කළමනාකරණ SOP" : "National-Level Disaster Management SOPs – Sri Lanka"}
                 </h1>
                 <p className="hero-description" style={{ margin: 0 }}>
-                  {locale === "si" 
-                    ? "ආපදා කළමනාකරණ මධ්‍යස්ථානයේ (DMC) 117 ඇමතුම් මැදිරියේ දෛනික සහ හදිසි මෙහෙයුම් සඳහා වන තාක්ෂණික නොවන තොරතුරු අනුපිළිවෙළ සහ තාක්ෂණික බිඳවැටීම් කළමනාකරණ මාර්ගෝපදේශ." 
-                    : "Comprehensive operational guidelines for the Disaster Management Centre (DMC) 117 Call Center, covering non-technical information protocols and technical failure management."}
+                  {locale === "si"
+                    ? "ශ්‍රී ලංකාවේ ඒකාබද්ධ නාගරික සෙවීම් සහ මුදාගැනීම් (IU-SAR) කණ්ඩායම සඳහා වන දැනුම සහ මෙහෙයුම් තොරතුරු මධ්‍යගත කරන ද්වාරය."
+                    : "A centralized portal for Integrated Urban Search and Rescue (IU-SAR) operational information and knowledge in Sri Lanka."}
                 </p>
               </div>
 
               <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-                
-                <div style={{ background: "#111827", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "14px", padding: "24px" }}>
-                  <h3 style={{ fontSize: "18px", color: "#f97316", marginBottom: "12px", display: "flex", alignItems: "center", gap: "10px" }}>
-                    <FileText size={20} /> {locale === "si" ? "1. 117 ඇමතුම් මැදිරි සම්මත ක්‍රියාපටිපාටිය - අන්තර්ගතය" : "1. 117 Call Center Standard Operating Procedure - Content"}
-                  </h3>
-                  <p style={{ color: "#cbd5e1", fontSize: "14px", lineHeight: "1.6", margin: "0 0 10px 0" }}>
-                    {locale === "si" ? "මෙම ලේඛනය මඟින් 117 ඇමතුම් මැදිරියේ සියලුම දෛනික සහ හදිසි මෙහෙයුම් කටයුතු ප්‍රමිතිගත කර ඇත. මෙම ක්‍රියාපටිපාටිය ප්‍රධාන කොටස් 02 කින් සමන්විත වේ:" : "This document standardizes all daily and emergency operations of the 117 Call Center, divided into 2 main parts:"}
-                  </p>
-                  <ul style={{ paddingLeft: "20px", color: "#94a3b8", fontSize: "14px", lineHeight: "1.6", margin: 0 }}>
-                    <li>{locale === "si" ? "තාක්ෂණික නොවන සම්මත ක්‍රියාපටිපාටිය (සාමාන්‍ය තොරතුරු සහ ආපදා සහය)" : "Non-Technical Standard Operating Procedure (General info & Disaster support)"}</li>
-                    <li>{locale === "si" ? "තාක්ෂණික සම්මත ක්‍රියාපටිපාටිය (විදුලි බිඳවැටීම් සහ ජාල පද්ධති බිඳවැටීම්)" : "Technical Standard Operating Procedure (Power failures & Network system failures)"}</li>
-                  </ul>
-                </div>
+                {selectedSopSection ? (
+                  <>
+                    <button
+                      type="button"
+                      className="operational-back-button"
+                      onClick={() => setSelectedSopSection(null)}
+                    >
+                      <ArrowLeft size={16} />
+                      {locale === "si" ? "මාතෘකා දෙක වෙත ආපසු" : "Back to topics"}
+                    </button>
+                    <h2 className="operational-sector-title">
+                      {selectedSopSection === "non-technical"
+                        ? locale === "si" ? "IU-SAR මෙහෙයුම් සහ දැනුම් කළමනාකරණ ද්වාරය" : "Sri Lanka Integrated USAR Operations & Knowledge Management Portal"
+                        : locale === "si" ? "ජාතික මට්ටමේ ආපදා කළමනාකරණ SOP" : "National-Level Disaster Management SOPs"}
+                    </h2>
+                  </>
+                ) : (
+                  <div className="knowledge-cards-grid">
+                    <button
+                      type="button"
+                      className="knowledge-card-item operational-card-button"
+                      onClick={() => setSelectedSopSection("non-technical")}
+                    >
+                      <div className="card-header-row">
+                        <div className="card-icon-wrapper"><ShieldAlert size={22} /></div>
+                        <span className="card-action-indicator"><ArrowRight size={16} /></span>
+                      </div>
+                      <div className="card-body-content">
+                        <h3 className="card-item-title">
+                          {locale === "si" ? "IU-SAR මෙහෙයුම් සහ දැනුම් කළමනාකරණ ද්වාරය" : "Sri Lanka Integrated USAR Operations & Knowledge Management Portal"}
+                        </h3>
+                        <p>{locale === "si" ? "ව්‍යාපෘති දළ විශ්ලේෂණය, අරමුණු සහ වෙබ් අඩවියේ ප්‍රධාන අංශ." : "Project overview, objectives, and the main sections of the portal."}</p>
+                      </div>
+                      <div className="card-footer-link">
+                        <span>{locale === "si" ? "විස්තර බලන්න" : "View overview"}</span>
+                        <ArrowRight size={14} style={{ marginLeft: "6px" }} />
+                      </div>
+                    </button>
+                    <button
+                      type="button"
+                      className="knowledge-card-item operational-card-button"
+                      onClick={() => setSelectedSopSection("technical")}
+                    >
+                      <div className="card-header-row">
+                        <div className="card-icon-wrapper"><Cpu size={22} /></div>
+                        <span className="card-action-indicator"><ArrowRight size={16} /></span>
+                      </div>
+                      <div className="card-body-content">
+                        <h3 className="card-item-title">
+                          {locale === "si" ? "ජාතික මට්ටමේ ආපදා කළමනාකරණ SOP" : "National-Level Disaster Management SOPs"}
+                        </h3>
+                        <p>{locale === "si" ? "ආපදා වර්ග, ආපදා අදියර අනුව DMC වගකීම් සහ අදාළ පාර්ශ්වකරුවන්." : "Disaster categories, DMC responsibilities across disaster stages, and key stakeholders."}</p>
+                      </div>
+                      <div className="card-footer-link">
+                        <span>{locale === "si" ? "විස්තර බලන්න" : "View overview"}</span>
+                        <ArrowRight size={14} style={{ marginLeft: "6px" }} />
+                      </div>
+                    </button>
+                  </div>
+                )}
 
-                <div style={{ background: "#111827", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "14px", padding: "24px" }}>
-                  <h3 style={{ fontSize: "18px", color: "#60a5fa", marginBottom: "12px", display: "flex", alignItems: "center", gap: "10px" }}>
-                    <ShieldAlert size={20} /> {locale === "si" ? "2. තාක්ෂණික නොවන සම්මත ක්‍රියාපටිපාටිය (Non-Technical SOP)" : "2. Non-Technical Standard Operating Procedure"}
-                  </h3>
-                  <p style={{ color: "#cbd5e1", fontSize: "14px", lineHeight: "1.6", margin: "0 0 10px 0" }}>
-                    {locale === "si" ? "මහජනතාවගෙන් ලැබෙන ආපදා තොරතුරු සඳහා ප්‍රතිචාර දැක්වීම අදියර 02 කට බෙදා ඇත:" : "Public disaster information response is divided into 2 levels:"}
-                  </p>
-                  <ul style={{ paddingLeft: "20px", color: "#94a3b8", fontSize: "14px", lineHeight: "1.6", margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
-                    <li><strong>{locale === "si" ? "අදියර 01 (Level 01) - සාමාන්‍ය තොරතුරු:" : "Level 01 - General Info:"}</strong> {locale === "si" ? "කාලගුණ අනාවැකි, පූර්ව අනතුරු ඇඟවීම් සහ දුරකථන අංක වැනි ක්ෂණිකව ලබාදිය හැකි නිශ්චිත දත්ත ලබා දීම." : "Providing weather forecasts, early warnings, and specific contact details."}</li>
-                    <li><strong>{locale === "si" ? "අදියර 02 (Level 02) - හදිසි මෙහෙයුම් සහ සහය:" : "Level 02 - Emergency & Relief:"}</strong> {locale === "si" ? "හදිසි තොරතුරු හදිසි මෙහෙයුම් මැදිරියේ (EOC) රාජකාරීභාර නිලධාරියා වෙත ලබා දීම සහ අධ්‍යක්ෂ (මෙහෙයුම්) හා අධ්‍යක්ෂ ජෙනරාල් දැනුවත් කිරීම තහවුරු කිරීම. සියලුම ක්‍රියාදාමයන් දෛනික තත්ත්ව වාර්තා පොතේ (Daily Occurrence Book - DOB) අනිවාර්යයෙන් ලේඛනගත කළ යුතුය." : "Forwarding urgent matters to EOC Duty Officer, notifying Director Operations and Director General, and logging in the Daily Occurrence Book (DOB)."}</li>
-                  </ul>
-                </div>
+                {selectedSopSection === "non-technical" && (
+                  <div className="operational-sector-overview">
+                    <h2>{locale === "si" ? "ව්‍යාපෘති දළ විශ්ලේෂණය" : "Project Overview"}</h2>
+                    <p>
+                      {locale === "si"
+                        ? "ශ්‍රී ලංකාවේ ඒකාබද්ධ නාගරික සෙවීම් සහ මුදාගැනීම් (IU-SAR) කණ්ඩායමේ සම්මත මෙහෙයුම් ක්‍රියාපටිපාටි (SOP) සංවිධානය කර ඒවාට පහසුවෙන් ප්‍රවේශ වීමට නිර්මාණය කළ මධ්‍යගත වෙබ් ද්වාරයකි. සක්‍රීය කිරීම, යෙදවීම, මෙහෙයුම් ක්‍රියාපටිපාටි, ආයතනික සම්බන්ධීකරණය, කණ්ඩායම් සංයුතිය, උපකරණ, ආරක්ෂාව, සිද්ධි වාර්තාකරණය සහ පුහුණු අවශ්‍යතා පිළිබඳ තොරතුරු මෙහි ව්‍යුහගතව සපයයි."
+                        : "A centralized web-based portal designed to organize and provide access to the Integrated Urban Search and Rescue (IU-SAR) Team SOP in Sri Lanka. It structures information about USAR activation, deployment, operational procedures, agency coordination, team composition, equipment, safety, incident reporting, and training requirements."}
+                    </p>
 
-                <div style={{ background: "#111827", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "14px", padding: "24px" }}>
-                  <h3 style={{ fontSize: "18px", color: "#34d399", marginBottom: "12px", display: "flex", alignItems: "center", gap: "10px" }}>
-                    <Cpu size={20} /> {locale === "si" ? "3. තාක්ෂණික කටයුතු යථා තත්වයට පත් කිරීම (Technical SOP & Failure Management)" : "3. Technical Restoration & Failure Management"}
-                  </h3>
-                  <p style={{ color: "#cbd5e1", fontSize: "14px", lineHeight: "1.6", margin: "0 0 10px 0" }}>
-                    {locale === "si" ? "විදුලිබලය විසන්ධි වීම සහ ජාල පද්ධති අක්‍රිය වීම වැනි අවස්ථාවන් සඳහා ගත යුතු ක්‍රියාමාර්ග:" : "Actions to take during power cuts and system failures:"}
-                  </p>
-                  <ul style={{ paddingLeft: "20px", color: "#94a3b8", fontSize: "14px", lineHeight: "1.6", margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
-                    <li>{locale === "si" ? "පළමු මිනිත්තු 10 ඇතුළත: ස්විච් බෝඩ් පරීක්ෂාව, ප්‍රධාන විදුලි ජනක යන්ත්‍රය (Generator) පරීක්ෂා කිරීම සහ සහකාර අධ්‍යක්ෂ (සන්නිවේදන) දැනුවත් කිරීම." : "Within the first 10 minutes: Switchboard inspection, generator check, and notifying Assistant Director (Communication)."}</li>
-                    <li>{locale === "si" ? "මිනිත්තු 20 සිට 30 දක්වා: දුරකථන ජාලය CDMA වෙත හෝ E-Mobitel වෙත මාරු කිරීම, සහ ලංකා ටෙලිකොම් ආයතනය වෙත දැනුම් දීම." : "Within 20-30 minutes: Diverting calls to CDMA or E-Mobitel networks, and requesting telecom restoration."}</li>
-                    <li>{locale === "si" ? "ජංගම දුරකථන 10 ක් නිරන්තරයෙන් ආරෝපණය කර මැදිරිය තුළ තබා ගත යුතු අතර, එහි ක්‍රියාකාරීත්වය දෛනිකව තහවුරු කළ යුතුය." : "10 mobile phones must be kept charged inside the center with daily operational checks."}</li>
-                  </ul>
-                </div>
+                    <div className="detail-section-heading operational-detailed-heading">
+                      <span className="detail-section-line" />
+                      <h2>{locale === "si" ? "ප්‍රධාන අරමුණු" : "Main Objectives"}</h2>
+                    </div>
+                    <ul>
+                      {(locale === "si"
+                        ? [
+                            "USAR මෙහෙයුම් තොරතුරු මධ්‍යගත කිරීම.",
+                            "සම්මත මෙහෙයුම් ක්‍රියාපටිපාටි (SOP) වෙත ප්‍රවේශය වැඩිදියුණු කිරීම.",
+                            "ආයතන අතර දැනුම හුවමාරුවට සහාය වීම.",
+                            "සිද්ධි වාර්තා සහ මෙහෙයුම් වාර්තා සංවිධානය කිරීම.",
+                            "ආරක්ෂාව සහ පුහුණු මාර්ගෝපදේශ වෙත ප්‍රවේශය සැපයීම."
+                          ]
+                        : [
+                            "Centralize USAR operational information.",
+                            "Improve access to Standard Operating Procedures.",
+                            "Support inter-agency knowledge sharing.",
+                            "Organize incident reports and operational records.",
+                            "Provide access to safety and training guidelines."
+                          ]).map((objective) => <li key={objective}>{objective}</li>)}
+                    </ul>
 
-                <div style={{ background: "#111827", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "14px", padding: "24px" }}>
-                  <h3 style={{ fontSize: "18px", color: "#facc15", marginBottom: "12px", display: "flex", alignItems: "center", gap: "10px" }}>
-                    <CheckCircle2 size={20} /> {locale === "si" ? "4. පද්ධති ප්‍රවාහ සටහන් සාරාංශය (Flow Charts Summary)" : "4. Flow Charts Summary"}
-                  </h3>
-                  <p style={{ color: "#cbd5e1", fontSize: "14px", lineHeight: "1.6", margin: "0 0 10px 0" }}>
-                    {locale === "si" ? "• තොරතුරු වාර්තාකරණ ප්‍රවාහය: මහජනතාව ➔ 117 ඇමතුම් මැදිරිය (Level 01 සාමාන්‍ය තොරතුරු / Level 02 හදිසි සහය සඳහා EOC ➔ D-EOC ➔ DG-DMC)." : "• Information Reporting Flow: General Public ➔ 117 Call Center (Level 01 General / Level 02 Assistance via EOC ➔ D-EOC ➔ DG-DMC)."}
-                  </p>
-                  <p style={{ color: "#cbd5e1", fontSize: "14px", lineHeight: "1.6", margin: 0 }}>
-                    {locale === "si" ? "• ඇමතුම් මැදිරි අසමත් වීමේ ප්‍රවාහය: ගැටළුව හඳුනා ගැනීම (Power/System Fault) ➔ Duty Officer / AD COM දැනුවත් කිරීම ➔ මිනිත්තු 10-30 ඇතුළත Call Forwarding සහ CDMA/Mobile වෙත යොමු කිරීම." : "• Call Center Failure Flow: Problem Identification (Power/System Fault) ➔ Notify Duty Officer / AD COM ➔ Call Forwarding to CDMA/Mobile within 10-30 minutes."}
-                  </p>
-                </div>
+                    <div className="detail-section-heading operational-detailed-heading">
+                      <span className="detail-section-line" />
+                      <h2>{locale === "si" ? "ප්‍රධාන වෙබ් අඩවි අංශ" : "Main Website Sections"}</h2>
+                    </div>
+                    <ol>
+                      {(locale === "si"
+                        ? [
+                            "උපකරණ පුවරුව",
+                            "SOP පුස්තකාලය",
+                            "සක්‍රීය කිරීම සහ යෙදවීම",
+                            "USAR මෙහෙයුම්",
+                            "ආයතනික සම්බන්ධීකරණය",
+                            "කණ්ඩායම් සංයුතිය",
+                            "උපකරණ සහ සැපයුම්",
+                            "ආරක්ෂාව සහ වෛද්‍ය සේවා",
+                            "සිද්ධි වාර්තා",
+                            "පුහුණුව සහ අභ්‍යාස"
+                          ]
+                        : [
+                            "Dashboard",
+                            "SOP Library",
+                            "Activation & Deployment",
+                            "USAR Operations",
+                            "Agency Coordination",
+                            "Team Composition",
+                            "Equipment & Logistics",
+                            "Safety & Medical",
+                            "Incident Reports",
+                            "Training & Exercises"
+                          ]).map((item) => <li key={item}>{item}</li>)}
+                    </ol>
+                  </div>
+                )}
 
-                <div style={{ 
-                  background: "linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(17, 24, 39, 0.9))", 
-                  border: "1px solid rgba(249, 115, 22, 0.3)", 
-                  borderRadius: "16px", 
-                  padding: "30px", 
-                  display: "flex", 
-                  flexDirection: "column", 
-                  alignItems: "center", 
-                  justifyContent: "center", 
-                  gap: "16px",
-                  textAlign: "center",
-                  marginTop: "10px"
-                }}>
-                  <h3 style={{ fontSize: "20px", fontWeight: "700", color: "#ffffff", margin: 0 }}>
-                    {locale === "si" ? "සම්පූර්ණ නිල ලේඛනය (Official Document)" : "Full Official Document"}
-                  </h3>
-                  <p style={{ color: "#94a3b8", fontSize: "14px", maxWidth: "600px", margin: 0, lineHeight: "1.5" }}>
-                    {locale === "si" 
-                      ? "මෙම SOP 0067 ලේඛනයේ අඩංගු සියලුම පිටු, සටහන් සහ අතිරේක විස්තර Google Drive හරහා සම්පූර්ණයෙන් නරඹන්න." 
-                      : "View all pages, notes, and supplementary details of the SOP 0067 document via Google Drive."}
-                  </p>
-                  <a 
-                    href="https://drive.google.com/file/d/1WiZY9dpmUso8kzwOOZiv45kyHQLharTe/view?usp=sharing" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "10px",
-                      background: "linear-gradient(135deg, #f97316, #ea580c)",
-                      color: "#ffffff",
-                      padding: "14px 28px",
-                      borderRadius: "12px",
-                      textDecoration: "none",
-                      fontWeight: "600",
-                      fontSize: "15px",
-                      boxShadow: "0 6px 20px rgba(249, 115, 22, 0.4)",
-                      transition: "transform 0.2s ease, box-shadow 0.2s ease"
-                    }}
-                  >
-                    <FileText size={20} />
-                    <span>{locale === "si" ? "නිල ලේඛනය බලන්න" : "View Official Document"}</span>
-                    <ExternalLink size={18} />
-                  </a>
-                </div>
+                {selectedSopSection === "technical" && (
+                  <div className="operational-sector-overview">
+                    <h2>{locale === "si" ? "ආපදා කාණ්ඩ" : "Main Disaster Categories Covered"}</h2>
+                    <p>
+                      {locale === "si"
+                        ? "ජාතික මට්ටමේ විවිධ ආපදා කළමනාකරණය සඳහා DMC හි කාර්යභාරය මෙම ක්‍රියාපටිපාටි මඟින් විස්තර කෙරේ."
+                        : "The document describes DMC procedures for managing a range of disaster types at the national level."}
+                    </p>
+                    <ol>
+                      {(locale === "si"
+                        ? [
+                            "ගුවන් අනතුරු සහ ගුවන් ප්‍රහාර",
+                            "රසායනික අනතුරු",
+                            "සිවිල් හෝ අභ්‍යන්තර ගැටුම්",
+                            "වෙරළ ඛාදනය",
+                            "සුළි කුණාටු",
+                            "වේලි කැඩීම්",
+                            "නියඟ",
+                            "භූමිකම්පා",
+                            "වසංගත",
+                            "පිපිරීම්",
+                            "ගිනි සහ වන ගිනි",
+                            "ගංවතුර",
+                            "කාර්මික ආපදා",
+                            "නායයෑම්",
+                            "අකුණු සහ ගිගුරුම් සහිත වැසි",
+                            "මිනිසා විසින් ඇති කරන ආපදා",
+                            "සාගරික අනතුරු",
+                            "න්‍යෂ්ටික සහ විකිරණ අනතුරු",
+                            "තෙල් කාන්දුවීම්",
+                            "සුනාමි"
+                          ]
+                        : [
+                            "Air hazards and air raids",
+                            "Chemical accidents",
+                            "Civil or internal strife",
+                            "Coastal erosion",
+                            "Cyclones",
+                            "Dam breaches",
+                            "Droughts",
+                            "Earthquakes",
+                            "Epidemics",
+                            "Explosions",
+                            "Fires and forest fires",
+                            "Floods",
+                            "Industrial disasters",
+                            "Landslides",
+                            "Lightning and thunderstorms",
+                            "Manmade disasters",
+                            "Maritime hazards",
+                            "Nuclear and radiological hazards",
+                            "Oil spills",
+                            "Tsunamis"
+                          ]).map((category) => <li key={category}>{category}</li>)}
+                    </ol>
 
+                    <div className="detail-section-heading operational-detailed-heading">
+                      <span className="detail-section-line" />
+                      <h2>{locale === "si" ? "ආපදා අදියර අනුව DMC වගකීම්" : "DMC Responsibilities by Disaster Stage"}</h2>
+                    </div>
+                    <section className="operational-sector-detail">
+                      <h3>{locale === "si" ? "ආපදාවට පෙර" : "Before"}</h3>
+                      <p>
+                        {locale === "si"
+                          ? "ආපදා අනතුරු ඇඟවීම් ලබාගෙන තහවුරු කිරීම, තොරතුරු රැස් කිරීම, අවදානම් නිරීක්ෂණය කිරීම, අදාළ බලධාරීන් දැනුවත් කිරීම සහ අවදානමට ලක්විය හැකි ප්‍රජාවන්ට අනතුරු ඇඟවීම් බෙදාහැරීම."
+                          : "Receive and verify disaster warnings, collect information, monitor risks, inform relevant authorities, and disseminate warnings to vulnerable communities."}
+                      </p>
+                    </section>
+                    <section className="operational-sector-detail">
+                      <h3>{locale === "si" ? "ආපදාව අතරතුර" : "During"}</h3>
+                      <p>
+                        {locale === "si"
+                          ? "අදාළ ආයතන සමඟ සම්බන්ධීකරණය, ආපදා තත්ත්වය නිරීක්ෂණය, තත්ත්ව වාර්තා රැස් කිරීම, සෙවීම් සහ මුදාගැනීමේ මෙහෙයුම් සම්බන්ධීකරණය සහ හදිසි සම්පත් යෙදවීම."
+                          : "Coordinate with relevant agencies, monitor the disaster situation, collect situation reports, coordinate search and rescue operations, and mobilize emergency resources."}
+                      </p>
+                    </section>
+                    <section className="operational-sector-detail">
+                      <h3>{locale === "si" ? "ආපදාවෙන් පසු" : "After"}</h3>
+                      <p>
+                        {locale === "si"
+                          ? "ප්‍රකෘතිමත් වීමේ තත්ත්වය නිරීක්ෂණය, සහන බෙදාහැරීම සම්බන්ධීකරණය, හානි සහ පාඩු ඇගයීම්වලට සහාය වීම, පුනරුත්ථාපන කටයුතු සම්බන්ධීකරණය සහ පාර්ශ්වකරුවන් වෙත යාවත්කාලීන තොරතුරු සන්නිවේදනය."
+                          : "Monitor recovery, coordinate relief distribution, support damage and loss assessments, coordinate rehabilitation activities, and communicate updates to stakeholders."}
+                      </p>
+                    </section>
+
+                    <div className="detail-section-heading operational-detailed-heading">
+                      <span className="detail-section-line" />
+                      <h2>{locale === "si" ? "ප්‍රධාන ආයතන සහ පාර්ශ්වකරුවන්" : "Key Organizations and Stakeholders"}</h2>
+                    </div>
+                    <ul>
+                      {(locale === "si"
+                        ? [
+                            "ආපදා කළමනාකරණ මධ්‍යස්ථානය (DMC)",
+                            "දිස්ත්‍රික් ලේකම්වරු",
+                            "දිස්ත්‍රික් ආපදා කළමනාකරණ සම්බන්ධීකරණ ඒකක (DDMCU)",
+                            "ත්‍රිවිධ හමුදාව සහ පොලිසිය",
+                            "රාජ්‍ය ආයතන",
+                            "රාජ්‍ය නොවන සහ ජාත්‍යන්තර රාජ්‍ය නොවන සංවිධාන (NGO/INGO)",
+                            "එක්සත් ජාතීන්ගේ සංවිධාන",
+                            "ජාතික ආපදා කළමනාකරණ සම්බන්ධීකරණ කමිටුව (NDMCC)",
+                            "ආපදා කළමනාකරණ විෂය භාර අමාත්‍යාංශය",
+                            "අදාළ මාධ්‍ය ආයතන"
+                          ]
+                        : [
+                            "Disaster Management Centre (DMC)",
+                            "District Secretaries",
+                            "District Disaster Management Coordinating Units (DDMCUs)",
+                            "Military and Police",
+                            "Government institutions",
+                            "NGOs and INGOs",
+                            "United Nations Organizations",
+                            "National Disaster Management Coordinating Committee (NDMCC)",
+                            "Ministry responsible for Disaster Management",
+                            "Relevant media organizations"
+                          ]).map((stakeholder) => <li key={stakeholder}>{stakeholder}</li>)}
+                    </ul>
+                  </div>
+                )}
+
+                {selectedSopSection && (
+                  <section className="operational-training-material">
+                    <div className="detail-section-heading">
+                      <span className="detail-section-line" />
+                      <h2>{locale === "si" ? "අදාළ ලේඛන" : "Related Documents"}</h2>
+                    </div>
+                    <div className="operational-training-grid">
+                      {selectedSopSection === "non-technical" ? (
+                        <article className="operational-training-card">
+                          <div className="operational-training-icon">
+                            <FileText size={20} />
+                          </div>
+                          <h3>Sri Lanka Integrated USAR Operations & Knowledge Management Portal</h3>
+                          <a
+                            href="https://drive.google.com/file/d/1cabC1cPVK-mxew38B_wrme9d0RkF2Rvu/view?usp=sharing"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <span>{locale === "si" ? "ද්වාර ලේඛනය බලන්න" : "View Portal Document"}</span>
+                            <ExternalLink size={15} />
+                          </a>
+                        </article>
+                      ) : (
+                        <>
+                          <article className="operational-training-card">
+                            <div className="operational-training-icon">
+                              <FileText size={20} />
+                            </div>
+                            <h3>{locale === "si" ? "ජාතික මට්ටමේ ආපදා කළමනාකරණ SOP — English" : "National-Level Disaster Management SOP — English"}</h3>
+                            <a
+                              href="https://drive.google.com/file/d/1VD6H2MxvjuucMDUqM63PEYcdISzA-sPn/view?usp=sharing"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <span>English PDF</span>
+                              <ExternalLink size={15} />
+                            </a>
+                          </article>
+                          <article className="operational-training-card">
+                            <div className="operational-training-icon">
+                              <FileText size={20} />
+                            </div>
+                            <h3>{locale === "si" ? "ජාතික මට්ටමේ ආපදා කළමනාකරණ SOP — සිංහල" : "National-Level Disaster Management SOP — Sinhala"}</h3>
+                            <a
+                              href="https://drive.google.com/file/d/1KoNjaPsnubhVSjKlWRsMXdmbVdzhBbSG/view?usp=sharing"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <span>සිංහල PDF</span>
+                              <ExternalLink size={15} />
+                            </a>
+                          </article>
+                        </>
+                      )}
+                    </div>
+                  </section>
+                )}
               </div>
             </div>
           ) : section === "operational" && content ? (

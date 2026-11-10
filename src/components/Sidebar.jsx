@@ -25,7 +25,7 @@ export default function Sidebar() {
 
       <div className="sidebar-nav">
         
-        <NavLink to="/Dashboard" className={({ isActive }) => `nav-item${isActive ? " active" : ""}`}>
+        <NavLink to="/knowledge-hub" className={({ isActive }) => `nav-item${isActive ? " active" : ""}`}>
           <LayoutDashboard size={20} />
           <span>{t.dashboard}</span>
         </NavLink>
@@ -38,7 +38,7 @@ export default function Sidebar() {
         {/* After the Rescue Form */}
         <NavLink to="/after-rescue" className={({ isActive }) => `nav-item${isActive ? " active" : ""}`}>
           <ClipboardList size={20} />
-          <span>{t.afterRescueForm || "After the Rescue Form"}</span>
+          <span>{t.afterRescueForm || " Rescue Report"}</span>
         </NavLink>
 
         {/* Admin Feature */}

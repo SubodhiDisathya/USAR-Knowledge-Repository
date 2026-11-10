@@ -86,7 +86,7 @@ const en = {
   ,sendReset: "Send Reset Email"
   ,experienceSearch: "Search by officer name, role or unit..."
   ,filter: "Filter"
-  ,experienceHeading: "Operational Experience & Officers"
+  ,experienceHeading: "Operational Experience of Officers"
   ,experienceDescription: "Service records and field expertise from veteran officers"
   ,noExperienceRecords: "No matching officer records found."
   ,action: "Action"

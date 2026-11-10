@@ -34,10 +34,10 @@ export default function Dashboard() {
 
   const categoryCards = [
     {
-      title: "Operational Guidelines & Modules",
-      titleSi: "මෙහෙයුම් මාර්ගෝපදේශ සහ මොඩියුල",
-      subtitle: "MODULES & PROCEDURES",
-      subtitleSi: "මොඩියුල සහ ක්‍රියාපටිපාටි",
+      title: "",
+      titleSi: "",
+      subtitle: "OPERATIONS GUIDELINES & MODULES",
+      subtitleSi: "මෙහෙයුම් මාර්ගෝපදේශ සහ මොඩියුල",
       description: "Access procedures, operational guidelines, search operations, rescue operations, and disaster response information.",
       descriptionSi: "ක්‍රියා පටිපාටි, මෙහෙයුම් මාර්ගෝපදේශ, සෙවුම් සහ ගලවා ගැනීමේ මෙහෙයුම් පිළිබඳ තොරතුරු වෙත ප්‍රවේශ වන්න.",
       icon: <ShieldAlert className="w-6 h-6 text-blue-300" />,
@@ -46,9 +46,10 @@ export default function Dashboard() {
       bgImage: sopsImg
     },
     {
-      title: t.firstAidMedical,
+     
       titleSi: t.firstAidMedical,
-      subtitle: "MEDICAL RESCUE",
+      hideTitle: true,
+      subtitle: "FIRST AID & MEDICAL",
       subtitleSi: "වෛද්‍ය ගලවාගැනීම්",
       description: "Access essential medical rescue knowledge, patient assessment, treatment, handling, and emergency medical procedures.",
       descriptionSi: "වෛද්‍ය ගලවා ගැනීම, රෝගී ඇගයීම, ප්‍රතිකාර සහ හදිසි වෛද්‍ය ක්‍රියාමාර්ග පිළිබඳ දැනුම ලබා ගන්න.",
@@ -58,8 +59,9 @@ export default function Dashboard() {
       bgImage: medicineImg
     },
     {
-      title: t.experiencesStories,
+     
       titleSi: t.experiencesStories,
+      hideTitle: true,
       subtitle: "LESSONS & CASES",
       subtitleSi: "අත්දැකීම් සහ සිද්ධි",
       description: "Explore real-world rescue experiences, operational challenges, success stories, and critical lessons learned.",
@@ -70,22 +72,23 @@ export default function Dashboard() {
       bgImage: pastImg
     },
     {
-      title: "Standard Operating Procedures (SOPs)",
-      titleSi: "සම්මත මෙහෙයුම් ක්‍රියා පටිපාටි (SOPs)",
-      subtitle: "STANDARD PROCEDURES",
-      subtitleSi: "සම්මත ක්‍රියාපටිපාටි",
+      
+      titleSi: "",
+      subtitle: "STANDARD OPERATING PROCEDUREs",
+      subtitleSi: "සම්මත මෙහෙයුම් ක්‍රියාපටිපාටි (SOPs)",
       description: "Access official standard operating procedures, safety protocols, and emergency response guidelines (including SOP 0067 117 Call Center Documentation).",
-      descriptionSi: "නිල සම්මත මෙහෙයුම් ක්‍රියා පටිපාටි, ආරක්ෂක நெறிமுறைகள் සහ හදිසි ප්‍රතිචාර මාර්ගෝපදේශ (SOP 0067 117 ඇමතුම් මැදිරි ක්‍රියාපටිපාටිය ඇතුළුව).",
+      descriptionSi: "නිල සම්මත මෙහෙයුම් ක්‍රියා පටිපාටි, ආරක්ෂක  සහ හදිසි ප්‍රතිචාර මාර්ගෝපදේශ (SOP 0067 117 ඇමතුම් මැදිරි ක්‍රියාපටිපාටිය ඇතුළුව).",
       icon: <BookOpen className="w-6 h-6 text-blue-300" />,
       path: "/sops",
       badgeColor: "bg-blue-100 text-blue-700 border border-blue-200",
       bgImage: sopImg
     },
     {
-      title: t.others,
+     
       titleSi: t.others,
-      subtitle: "RESOURCES",
-      subtitleSi: "සම්පත්",
+      hideTitle: true,
+      subtitle: "OTHER RESOURCES",
+      subtitleSi: " වෙනත් සම්පත්",
       description: "Access general INSARAG information, international coordination, training resources, and additional knowledge.",
       descriptionSi: "INSARAG තොරතුරු, ජාත්‍යන්තර සම්බන්ධීකරණය සහ පුහුණු සම්පත් වෙත ප්‍රවේශ වන්න.",
       icon: <Globe className="w-6 h-6 text-blue-300" />,
@@ -94,12 +97,12 @@ export default function Dashboard() {
       bgImage: othersImg
     },
     {
-      title: "Training Quiz",
-      titleSi: "පුහුණු ප්‍රශ්නාවලිය",
+      title: "",
+      titleSi: "",
       subtitle: "TEST YOUR KNOWLEDGE",
       subtitleSi: "ඔබේ දැනුම පරීක්ෂා කරන්න",
-      description: "Practice with questions from the operational modules and First Aid & Medical topics.",
-      descriptionSi: "මෙහෙයුම් මොඩියුල සහ පළමු ප්‍රතිකාර හා වෛද්‍ය මාතෘකා ඇසුරින් ප්‍රශ්නවලට පිළිතුරු දෙන්න.",
+      description: "Training Quiz - Practice with questions from the operational modules and First Aid & Medical topics.",
+      descriptionSi: "පුහුණු ප්‍රශ්නාවලිය - මෙහෙයුම් මොඩියුල සහ පළමු ප්‍රතිකාර හා වෛද්‍ය මාතෘකා ඇසුරින් ප්‍රශ්නවලට පිළිතුරු දෙන්න.",
       icon: <CircleHelp className="w-6 h-6 text-blue-300" />,
       path: "/quiz",
       badgeColor: "bg-blue-100 text-blue-700 border border-blue-200",
@@ -118,14 +121,12 @@ export default function Dashboard() {
           <div className="dashboard-banner">
             <div className="dashboard-banner-labels">
               <span className="dashboard-banner-badge">
-                {locale === "si" ? "ශ්‍රී ලංකා USAR" : "Sri Lanka USAR"}
+                {locale === "si" ? "ශ්‍රී ලංකා USAR සහ හදිසි ප්‍රතිචාරය" : "Sri Lanka USAR & Emergency Response"}
               </span>
-              <span className="dashboard-banner-badge dashboard-banner-badge-secondary">
-                {locale === "si" ? "හදිසි ප්‍රතිචාරය" : "Emergency Response"}
-              </span>
+              
             </div>
             <h2>
-              {locale === "si" ? "USAR දැනුම එකතුව" : "USAR Knowledge Repository"}
+              {locale === "si" ? "USAR දැනුම් එකතුව" : "USAR Knowledge Repository"}
             </h2>
             <p className="dashboard-description">
               {locale === "si"
@@ -162,9 +163,11 @@ export default function Dashboard() {
                       </div>
                     </div>
 
-                    <h4>
-                      {locale === "si" ? cat.titleSi : cat.title}
-                    </h4>
+                    {!cat.hideTitle && (
+                      <h4>
+                        {locale === "si" ? cat.titleSi : cat.title}
+                      </h4>
+                    )}
                     
                     <p>
                       {locale === "si" ? cat.descriptionSi : cat.description}
