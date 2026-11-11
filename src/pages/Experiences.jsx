@@ -19,8 +19,11 @@ export default function Experiences() {
   const filtered = fieldExperiences.filter(
     (exp) =>
       exp.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (exp.titleSi || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
       exp.responder.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      exp.organization.toLowerCase().includes(searchQuery.toLowerCase())
+      (exp.responderSi || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
+      exp.organization.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (exp.organizationSi || "").toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const handleCardClick = (id) => {

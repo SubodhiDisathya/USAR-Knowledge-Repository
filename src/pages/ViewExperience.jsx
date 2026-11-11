@@ -8,6 +8,12 @@ import "./ViewExperience.css";
 
 import ranjanImg from "../assets/ranjan.png";
 import sunimalImg from "../assets/sunimal.jpeg";
+import sathyarajanImg from "../assets/sathyarajan.jpeg";
+import leadingSeamanImg from "../assets/leading-seaman.jpeg";
+import ditwahRescueBoatImg from "../assets/ditwah-rescue-boat.jpeg";
+import ditwahFloodedBusImg from "../assets/ditwah-flooded-bus.jpeg";
+import ditwahBoatEvacuationImg from "../assets/ditwah-boat-evacuation.jpeg";
+import ditwahFloodedRoadImg from "../assets/ditwah-flooded-road.jpeg";
 import pipelineImg from "../assets/Pipline.png";
 import newspaperImg from "../assets/Newspaper.jpeg";
 
@@ -36,6 +42,7 @@ export default function ViewExperience() {
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedStoryIndex, setSelectedStoryIndex] = useState(0);
+  const localize = (english, sinhala) => locale === "si" ? sinhala : english;
 
   const t = {
     en: {
@@ -306,6 +313,222 @@ export default function ViewExperience() {
       snippet: locale === "si" ? "දක්ෂ මෙහෙයුම් සේවකයන් බිහි කිරීමට කැප වූ ජ්‍යෙෂ්ඨ පුහුණු උපදේශක." : "Senior Training Instructor in Fire Fighting.",
       type: locale === "si" ? "ගිනි නිවීම" : "Fire Fighting",
       location: locale === "si" ? "කොළඹ" : "Colombo"
+    },
+    {
+      id: 6,
+      title: localize("Leading Seaman – Sri Lanka Navy", "ප්‍රධාන නාවික භට – ශ්‍රී ලංකා නාවික හමුදාව"),
+      responder: localize("Leading Seaman", "ප්‍රධාන නාවික භට"),
+      organization: localize("Sri Lanka Navy", "ශ්‍රී ලංකා නාවික හමුදාව"),
+      year: "2025",
+      snippet: localize(
+        "Led boat-based flood rescues in the Kalawa Oya area during Cyclone Ditwah, helping evacuate 69 people.",
+        "දිට්වා සුළි කුණාටුව අතරතුර කලාව ඔය ප්‍රදේශයේ බෝට්ටු මඟින් සිදු කළ ගංවතුර ගලවාගැනීමේ මෙහෙයුම්වලට එක්වී පුද්ගලයන් 69 දෙනෙකු ආරක්ෂිත ස්ථාන වෙත ඉවත් කිරීමට දායක විය."
+      ),
+      type: localize("Flood Water Rescue", "ගංවතුරෙන් ජල ගලවාගැනීම"),
+      location: localize("Kalawa Oya Area, Sri Lanka", "කලාව ඔය ප්‍රදේශය, ශ්‍රී ලංකාව"),
+      image: leadingSeamanImg,
+      imagePosition: "center 15%",
+      storyDetailsList: [
+        {
+          incidentTitle: localize("Flood Rescue Operation During Cyclone Ditwah", "දිට්වා සුළි කුණාටුව අතරතුර ගංවතුරෙන් මුදාගැනීමේ මෙහෙයුම"),
+          incidentYear: "2025",
+          incidentType: localize("Flood Water Rescue / Boat-Based Rescue", "ගංවතුරෙන් ජල ගලවාගැනීම / බෝට්ටු මඟින් මුදාගැනීම"),
+          storyImages: [
+            {
+              img: ditwahFloodedBusImg,
+              caption: localize("People stranded on a bus surrounded by floodwaters.", "ගංවතුරෙන් වටවූ බස් රථයක රැඳී සිටින ජනතාව.")
+            },
+            {
+              img: ditwahRescueBoatImg,
+              caption: localize("Navy rescue boat operating in floodwaters.", "ගංවතුර අතරතුර මෙහෙයුම් සිදු කරන නාවික හමුදා ගලවාගැනීමේ බෝට්ටුව.")
+            },
+            {
+              img: ditwahBoatEvacuationImg,
+              caption: localize("Rescue personnel evacuating people by boat.", "බෝට්ටුවක් මඟින් ජනතාව ආරක්ෂිත ස්ථාන වෙත ගෙන යන ගලවාගැනීමේ නිලධාරීන්.")
+            },
+            {
+              img: ditwahFloodedRoadImg,
+              caption: localize("Floodwaters surrounding a bus and nearby road.", "බස් රථයක් සහ ඒ අවට මාර්ගය ගංවතුරෙන් යටවී ඇති ආකාරය.")
+            }
+          ],
+          storyText: localize(
+            "During 27–29 November 2025, Sri Lanka experienced severe flooding due to Cyclone Ditwah. At approximately 8:30 AM on 28 November, Sri Lanka Navy personnel were deployed to the Kalawa Oya area. The team carried out boat-based rescues and helped evacuate 69 people stranded by rising floodwaters, moving them towards safety. Rescue activities continued as the emergency developed.",
+            "2025 නොවැම්බර් 27–29 දිනවල දිට්වා සුළි කුණාටුව හේතුවෙන් ශ්‍රී ලංකාවේ දැඩි ගංවතුර තත්ත්වයක් ඇති විය. නොවැම්බර් 28 වැනිදා පෙරවරු 8.30ට පමණ නාවික හමුදා සාමාජිකයන් කලාව ඔය ප්‍රදේශයට යොදවනු ලැබීය. බෝට්ටු මඟින් සිදු කළ මෙහෙයුම්වලදී ඉහළ යන ගංවතුරට කොටුවී සිටි පුද්ගලයන් 69 දෙනෙකු මුදාගෙන ආරක්ෂිත ස්ථාන වෙත ගෙන යාමට කණ්ඩායම දායක විය. හදිසි තත්ත්වය වර්ධනය වූ අතරතුර ගලවාගැනීමේ කටයුතු ද අඛණ්ඩව සිදු කෙරිණි."
+          ),
+          challenges: [
+            localize("Rising floodwater levels and strong currents.", "ගංවතුර මට්ටම ඉහළ යාම සහ ප්‍රබල ජල ධාරා පැවතීම."),
+            localize("People stranded in flood-affected areas.", "ගංවතුරෙන් පීඩාවට පත් ප්‍රදේශවල පුද්ගලයන් කොටුවී සිටීම."),
+            localize("Difficult access to affected locations.", "පීඩාවට පත් ස්ථාන වෙත ළඟා වීමේ අපහසුතා."),
+            localize("Risks to rescue personnel during water-based operations.", "ජලය තුළ සිදු කරන මෙහෙයුම්වලදී ගලවාගැනීමේ සාමාජිකයන්ට ඇති අවදානම්."),
+            localize("The need to coordinate as conditions changed rapidly.", "තත්ත්වය වේගයෙන් වෙනස් වන විට මෙහෙයුම් සම්බන්ධීකරණය කිරීමේ අවශ්‍යතාව.")
+          ],
+          actions: [
+            localize("Deployed Navy rescue personnel to the affected area.", "නාවික හමුදා ගලවාගැනීමේ සාමාජිකයන් පීඩාවට පත් ප්‍රදේශයට යෙදවීම."),
+            localize("Conducted boat-based rescue operations.", "බෝට්ටු මඟින් ගලවාගැනීමේ මෙහෙයුම් සිදු කිරීම."),
+            localize("Rescued 69 stranded individuals.", "කොටුවී සිටි පුද්ගලයන් 69 දෙනෙකු මුදාගැනීම."),
+            localize("Transported rescued people towards safe locations.", "මුදාගත් පුද්ගලයන් ආරක්ෂිත ස්ථාන වෙත රැගෙන යාම."),
+            localize("Continued rescue activities as the flood situation developed.", "ගංවතුර තත්ත්වය වර්ධනය වූ අතරතුර ගලවාගැනීමේ කටයුතු අඛණ්ඩව සිදු කිරීම.")
+          ],
+          lessons: [
+            localize("Early deployment of rescue teams is important during floods.", "ගංවතුරකදී ගලවාගැනීමේ කණ්ඩායම් කල්තියා යෙදවීම වැදගත්ය."),
+            localize("Boat-based rescue capability is essential in inaccessible areas.", "ළඟා වීමට අපහසු ප්‍රදේශවල බෝට්ටු මඟින් මුදාගැනීමේ හැකියාව අත්‍යවශ්‍යය."),
+            localize("Coordination between emergency response agencies is important.", "හදිසි ප්‍රතිචාර ආයතන අතර සම්බන්ධීකරණය වැදගත්ය."),
+            localize("Rescue personnel must be prepared for rapidly changing water conditions.", "ජල තත්ත්වය වේගයෙන් වෙනස් වීමට ගලවාගැනීමේ සාමාජිකයන් සූදානම්ව සිටිය යුතුය."),
+            localize("Timely evacuation can protect people stranded by floodwaters.", "නියමිත වේලාවට ඉවත් කිරීමෙන් ගංවතුරට කොටුවූ පුද්ගලයන්ගේ ආරක්ෂාව තහවුරු කළ හැකිය.")
+          ],
+          recommendations: [
+            localize("Strengthen inter-agency coordination during flood rescue operations.", "ගංවතුර ගලවාගැනීමේ මෙහෙයුම්වලදී ආයතන අතර සම්බන්ධීකරණය ශක්තිමත් කිරීම."),
+            localize("Conduct regular flood rescue training and practical exercises.", "ගංවතුර ගලවාගැනීම පිළිබඳ නිතිපතා පුහුණු සහ ප්‍රායෝගික අභ්‍යාස පැවැත්වීම."),
+            localize("Ensure suitable rescue boats and safety equipment are available.", "සුදුසු ගලවාගැනීමේ බෝට්ටු සහ ආරක්ෂක උපකරණ සපයා ඇති බව තහවුරු කිරීම."),
+            localize("Improve early identification of people in flood-prone and isolated areas.", "ගංවතුර අවදානම් සහ හුදෙකලා ප්‍රදේශවල සිටින පුද්ගලයන් කල්තියා හඳුනාගැනීම වැඩිදියුණු කිරීම."),
+            localize("Strengthen communication and information sharing between rescue teams.", "ගලවාගැනීමේ කණ්ඩායම් අතර සන්නිවේදනය සහ තොරතුරු හුවමාරුව ශක්තිමත් කිරීම.")
+          ]
+        }
+      ]
+    },
+    {
+      id: 7,
+      title: localize("Police Constable – No. 103984", "පොලිස් කොස්තාපල් – අංක 103984"),
+      responder: localize("Police Constable No. 103984", "පොලිස් කොස්තාපල් අංක 103984"),
+      organization: localize("Sri Lanka Police", "ශ්‍රී ලංකා පොලිසිය"),
+      year: "2025",
+      snippet: localize(
+        "Responded to an emergency at the Mahaweli River in Katugastota and rescued a young woman.",
+        "කටුගස්තොට මහවැලි ගඟේ සිදුවූ ජීවිත අවදානම් හදිසි අවස්ථාවකට වහා ප්‍රතිචාර දක්වා තරුණ කාන්තාවක් බේරාගත්තේය."
+      ),
+      type: localize("Water Rescue & Life Saving", "ජල ගලවාගැනීම සහ ජීවිතාරක්ෂාව"),
+      location: localize("Katugastota", "කටුගස්තොට"),
+      storyDetailsList: [
+        {
+          incidentTitle: localize("Emergency Water Rescue and Life-Saving Operation", "හදිසි ජල ගලවාගැනීමේ සහ ජීවිතාරක්ෂක මෙහෙයුම"),
+          incidentYear: "2025",
+          incidentType: localize("Water Rescue / Emergency Response", "ජල ගලවාගැනීම / හදිසි ප්‍රතිචාර"),
+          storyText: localize(
+            "A police officer responded promptly after a young woman entered the Mahaweli River during a suicide attempt. The officer carried out rescue actions and successfully brought her to safety.",
+            "තරුණ කාන්තාවක් සිය දිවි හානි කර ගැනීමට උත්සාහ කරමින් මහවැලි ගඟට පැන්න අවස්ථාවේදී පොලිස් නිලධාරියෙකු වහා ප්‍රතිචාර දැක්වීය. නිලධාරියා ගලවාගැනීමේ ක්‍රියාමාර්ග ගෙන ඇයව සාර්ථකව ආරක්ෂිත ස්ථානයකට ගෙන ආවේය."
+          ),
+          challenges: [
+            localize("Responding to a life-threatening emergency.", "ජීවිතයට තර්ජනයක් වූ හදිසි අවස්ථාවකට ප්‍රතිචාර දැක්වීම."),
+            localize("Protecting the victim's safety during the rescue.", "ගලවාගැනීමේදී විපතට පත් කාන්තාවගේ ආරක්ෂාව තහවුරු කිරීම."),
+            localize("Acting quickly under pressure to prevent loss of life.", "ජීවිත හානියක් වැළැක්වීම සඳහා පීඩනය යටතේ කඩිනමින් ක්‍රියා කිරීම.")
+          ],
+          actions: [
+            localize("Responded immediately to the incident.", "සිදුවීමට වහා ප්‍රතිචාර දැක්වීම."),
+            localize("Carried out rescue actions to save the victim.", "විපතට පත් කාන්තාව බේරාගැනීම සඳහා ගලවාගැනීමේ ක්‍රියාමාර්ග ගැනීම."),
+            localize("Successfully rescued the young woman.", "තරුණ කාන්තාව සාර්ථකව බේරාගැනීම.")
+          ],
+          lessons: [
+            localize("Immediate response is essential in life-threatening situations.", "ජීවිතයට තර්ජනයක් වූ අවස්ථාවලදී වහා ප්‍රතිචාර දැක්වීම අත්‍යවශ්‍යය."),
+            localize("Quick decision-making can save lives.", "කඩිනමින් තීරණ ගැනීමෙන් ජීවිත බේරාගත හැකිය."),
+            localize("Police officers play an important role in emergency rescue operations.", "හදිසි ගලවාගැනීමේ මෙහෙයුම්වලදී පොලිස් නිලධාරීන්ට වැදගත් කාර්යභාරයක් ඇත.")
+          ],
+          recommendations: [
+            localize("Provide additional water rescue training for police officers.", "පොලිස් නිලධාරීන්ට අමතර ජල ගලවාගැනීමේ පුහුණුව ලබාදීම."),
+            localize("Improve access to water rescue equipment.", "ජල ගලවාගැනීමේ උපකරණ ලබාගැනීමේ පහසුකම් වැඩිදියුණු කිරීම."),
+            localize("Strengthen coordination between police and emergency response teams.", "පොලිසිය සහ හදිසි ප්‍රතිචාර කණ්ඩායම් අතර සම්බන්ධීකරණය ශක්තිමත් කිරීම.")
+          ]
+        }
+      ]
+    },
+    {
+      id: 8,
+      title: localize("Warrant Officer – Air Communicator", "වාරන්ට් නිලධාරී – ගුවන් සන්නිවේදක"),
+      responder: "Warrant Officer N. Sathyarajan",
+      organization: localize("Sri Lanka Air Force – Communication Unit", "ශ්‍රී ලංකා ගුවන් හමුදාව – සන්නිවේදන ඒකකය"),
+      year: "2025",
+      snippet: localize(
+        "Supported emergency response through operational communications, coordination, and information sharing.",
+        "හදිසි ප්‍රතිචාර මෙහෙයුම්වලදී සන්නිවේදනය පවත්වාගෙන යාමට, කණ්ඩායම් සම්බන්ධීකරණයට සහ මෙහෙයුම් තොරතුරු හුවමාරු කිරීමට දායක විය."
+      ),
+      type: localize("Emergency Communications", "හදිසි සන්නිවේදන"),
+      location: "",
+      image: sathyarajanImg,
+      storyDetailsList: [
+        {
+          incidentTitle: localize("Air Communication and Coordination in Emergency Response", "හදිසි ප්‍රතිචාරයේ ගුවන් සන්නිවේදනය සහ සම්බන්ධීකරණය"),
+          incidentYear: "2025",
+          incidentType: localize("Emergency Communications", "හදිසි සන්නිවේදන"),
+          storyText: localize(
+            "Warrant Officer N. Sathyarajan contributed to emergency response operations through his air communication expertise. His responsibilities included supporting communications, maintaining coordination, and facilitating the exchange of operational information during emergencies.",
+            "වාරන්ට් නිලධාරී එන්. සත්‍යරාජන් සිය ගුවන් සන්නිවේදන විශේෂඥතාව මඟින් හදිසි ප්‍රතිචාර මෙහෙයුම්වලට දායක විය. හදිසි අවස්ථාවලදී සන්නිවේදනයට සහාය වීම, සම්බන්ධීකරණය පවත්වාගෙන යාම සහ මෙහෙයුම් තොරතුරු හුවමාරුව පහසු කිරීම ඔහුගේ වගකීම්වලට ඇතුළත් විය."
+          ),
+          challenges: [
+            localize("Maintaining effective communication during emergency operations.", "හදිසි මෙහෙයුම් අතරතුර ඵලදායී සන්නිවේදනය පවත්වාගෙන යාම."),
+            localize("Supporting information exchange between operational personnel.", "මෙහෙයුම් සාමාජිකයන් අතර තොරතුරු හුවමාරුවට සහාය වීම."),
+            localize("Addressing communication difficulties during field activities.", "ක්ෂේත්‍ර කටයුතුවලදී ඇතිවන සන්නිවේදන අපහසුතා විසඳීම."),
+            localize("Ensuring accurate and timely information for coordination.", "සම්බන්ධීකරණය සඳහා නිවැරදි තොරතුරු නියමිත වේලාවට ලබාදීම තහවුරු කිරීම.")
+          ],
+          actions: [
+            localize("Supported emergency communication activities.", "හදිසි සන්නිවේදන කටයුතුවලට සහාය වීම."),
+            localize("Assisted in maintaining communication between operational teams.", "මෙහෙයුම් කණ්ඩායම් අතර සන්නිවේදනය පවත්වාගෙන යාමට සහාය වීම."),
+            localize("Facilitated the exchange of important operational information.", "වැදගත් මෙහෙයුම් තොරතුරු හුවමාරු කිරීම පහසු කිරීම."),
+            localize("Contributed communication expertise to emergency response activities.", "සන්නිවේදන විශේෂඥතාව හදිසි ප්‍රතිචාර කටයුතු සඳහා යොදාගැනීම.")
+          ],
+          lessons: [
+            localize("Reliable communication is essential for successful emergency response.", "සාර්ථක හදිසි ප්‍රතිචාරයක් සඳහා විශ්වාසදායක සන්නිවේදනය අත්‍යවශ්‍යය."),
+            localize("Timely information sharing improves coordination.", "නියමිත වේලාවට තොරතුරු හුවමාරු කිරීමෙන් සම්බන්ධීකරණය වැඩිදියුණු වේ."),
+            localize("Communication personnel play a vital role in supporting rescue teams.", "ගලවාගැනීමේ කණ්ඩායම්වලට සහාය වීමේදී සන්නිවේදන නිලධාරීන්ට තීරණාත්මක කාර්යභාරයක් ඇත."),
+            localize("Effective communication improves operational safety and decision-making.", "ඵලදායී සන්නිවේදනය මෙහෙයුම් ආරක්ෂාව සහ තීරණ ගැනීම වැඩිදියුණු කරයි.")
+          ],
+          recommendations: [
+            localize("Improve emergency communication systems and equipment.", "හදිසි සන්නිවේදන පද්ධති සහ උපකරණ වැඩිදියුණු කිරීම."),
+            localize("Conduct regular communication training and exercises.", "සන්නිවේදනය පිළිබඳ නිතිපතා පුහුණු සහ අභ්‍යාස පැවැත්වීම."),
+            localize("Establish reliable backup communication methods.", "විශ්වාසදායක විකල්ප සන්නිවේදන ක්‍රම ස්ථාපිත කිරීම."),
+            localize("Strengthen communication coordination among emergency response agencies.", "හදිසි ප්‍රතිචාර ආයතන අතර සන්නිවේදන සම්බන්ධීකරණය ශක්තිමත් කිරීම.")
+          ]
+        }
+      ]
+    },
+    {
+      id: 9,
+      title: localize("Corporal – SO/336219", "කෝප්‍රල් – SO/336219"),
+      responder: "W.M.V.M. Bandara",
+      organization: localize("Emergency Response / Rescue Team", "හදිසි ප්‍රතිචාර / ගලවාගැනීමේ කණ්ඩායම"),
+      year: "2022",
+      snippet: localize(
+        "Contributed to an emergency rescue operation involving scene assessment, risk management, and coordination.",
+        "සිදුවීම් ස්ථානය තක්සේරු කිරීම, අවදානම් කළමනාකරණය සහ කණ්ඩායම් සම්බන්ධීකරණය ඇතුළත් හදිසි ගලවාගැනීමේ මෙහෙයුමකට දායක විය."
+      ),
+      type: localize("Emergency Rescue Operations", "හදිසි ගලවාගැනීමේ මෙහෙයුම්"),
+      location: "",
+      storyDetailsList: [
+        {
+          incidentTitle: localize("Emergency Rescue Operation", "හදිසි ගලවාගැනීමේ මෙහෙයුම"),
+          incidentYear: "2022",
+          incidentType: localize("Emergency Rescue / Incident Response", "හදිසි ගලවාගැනීම / සිදුවීම් ප්‍රතිචාර"),
+          storyText: localize(
+            "An emergency incident required assistance from the response team. Personnel assessed the situation and risks, coordinated the available response, and carried out rescue and safety procedures to assist the affected person. The exact incident date and location are not clear from the available information and should be verified.",
+            "හදිසි සිදුවීමකට ප්‍රතිචාර කණ්ඩායමේ සහාය අවශ්‍ය විය. කණ්ඩායමේ සාමාජිකයන් තත්ත්වය සහ අවදානම් තක්සේරු කර, ලබාගත හැකි ප්‍රතිචාරය සම්බන්ධීකරණය කර, පීඩාවට පත් පුද්ගලයාට සහාය වීම සඳහා ගලවාගැනීමේ සහ ආරක්ෂක ක්‍රියාමාර්ග ගත්හ. ලබා දී ඇති තොරතුරුවලින් සිදුවීමේ නිශ්චිත දිනය සහ ස්ථානය පැහැදිලි නොවන බැවින් ඒවා තහවුරු කළ යුතුය."
+          ),
+          challenges: [
+            localize("Managing an emergency under difficult conditions.", "දුෂ්කර තත්ත්වයන් යටතේ හදිසි අවස්ථාව කළමනාකරණය කිරීම."),
+            localize("Identifying risks to the affected person and rescue personnel.", "පීඩාවට පත් පුද්ගලයාට සහ ගලවාගැනීමේ සාමාජිකයන්ට ඇති අවදානම් හඳුනාගැනීම."),
+            localize("Carrying out rescue activities safely and efficiently.", "ගලවාගැනීමේ කටයුතු ආරක්ෂිතව සහ කාර්යක්ෂමව සිදු කිරීම."),
+            localize("Coordinating the response team and available resources.", "ප්‍රතිචාර කණ්ඩායම සහ ලබාගත හැකි සම්පත් සම්බන්ධීකරණය කිරීම.")
+          ],
+          actions: [
+            localize("Responded after receiving information about the emergency.", "හදිසි සිදුවීම පිළිබඳ තොරතුරු ලැබුණු පසු ප්‍රතිචාර දැක්වීම."),
+            localize("Assessed the scene and identified potential hazards.", "සිදුවීම් ස්ථානය තක්සේරු කර ඇතිවිය හැකි අනතුරු හඳුනාගැනීම."),
+            localize("Coordinated with relevant emergency response personnel.", "අදාළ හදිසි ප්‍රතිචාර සාමාජිකයන් සමඟ සම්බන්ධීකරණය කිරීම."),
+            localize("Carried out necessary rescue and safety procedures.", "අවශ්‍ය ගලවාගැනීමේ සහ ආරක්ෂක ක්‍රියා පටිපාටි ක්‍රියාත්මක කිරීම."),
+            localize("Provided assistance to the affected person.", "පීඩාවට පත් පුද්ගලයාට සහාය ලබාදීම.")
+          ],
+          lessons: [
+            localize("Quick response is essential in emergency situations.", "හදිසි අවස්ථාවලදී කඩිනම් ප්‍රතිචාරය අත්‍යවශ්‍යය."),
+            localize("Scene assessment helps prevent further injuries.", "සිදුවීම් ස්ථානය තක්සේරු කිරීමෙන් තවදුරටත් තුවාල සිදුවීම වළක්වාගත හැකිය."),
+            localize("Teamwork and effective communication are vital during rescue operations.", "ගලවාගැනීමේ මෙහෙයුම්වලදී කණ්ඩායම් ක්‍රියාකාරිත්වය සහ ඵලදායී සන්නිවේදනය ඉතා වැදගත්ය."),
+            localize("Rescue personnel must follow appropriate safety procedures.", "ගලවාගැනීමේ සාමාජිකයන් සුදුසු ආරක්ෂක ක්‍රියා පටිපාටි අනුගමනය කළ යුතුය."),
+            localize("Suitable equipment and preparation improve rescue efficiency.", "සුදුසු උපකරණ සහ සූදානම ගලවාගැනීමේ කාර්යක්ෂමතාව වැඩිදියුණු කරයි.")
+          ],
+          recommendations: [
+            localize("Conduct regular emergency rescue training and practical exercises.", "හදිසි ගලවාගැනීම පිළිබඳ නිතිපතා පුහුණු සහ ප්‍රායෝගික අභ්‍යාස පැවැත්වීම."),
+            localize("Ensure suitable rescue equipment is available and maintained.", "සුදුසු ගලවාගැනීමේ උපකරණ ලබාගත හැකි බවත් ඒවා නඩත්තු කර ඇති බවත් තහවුරු කිරීම."),
+            localize("Improve coordination and communication between response teams.", "ප්‍රතිචාර කණ්ඩායම් අතර සම්බන්ධීකරණය සහ සන්නිවේදනය වැඩිදියුණු කිරීම."),
+            localize("Carry out risk assessments before starting rescue operations.", "ගලවාගැනීමේ මෙහෙයුම් ආරම්භ කිරීමට පෙර අවදානම් තක්සේරු කිරීම."),
+            localize("Review previous incidents to improve future procedures.", "අනාගත ක්‍රියා පටිපාටි වැඩිදියුණු කිරීම සඳහා පෙර සිදුවීම් සමාලෝචනය කිරීම.")
+          ]
+        }
+      ]
     }
   ];
 
@@ -362,7 +585,7 @@ export default function ViewExperience() {
             {/* Officer Header Info */}
             <div style={{ display: "flex", gap: "24px", alignItems: "center", flexWrap: "wrap", marginBottom: "24px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "24px" }}>
               {officer.image ? (
-                <img src={officer.image} alt={officer.responder} style={{ width: "100px", height: "100px", borderRadius: "50%", objectFit: "cover", border: "2px solid #f59e0b" }} />
+                <img src={officer.image} alt={officer.responder} style={{ width: "100px", height: "100px", borderRadius: "50%", objectFit: "cover", objectPosition: officer.imagePosition || "center", border: "2px solid #f59e0b" }} />
               ) : (
                 <div style={{ width: "100px", height: "100px", borderRadius: "50%", background: "rgba(245, 158, 11, 0.1)", display: "grid", placeItems: "center", color: "#f59e0b", fontSize: "32px", fontWeight: "bold" }}>
                   {officer.responder.charAt(0)}

@@ -25,11 +25,6 @@ export default function AfterRescue() {
     peopleRescued: "",
     rescueOutcome: "",
     rescuedPersonDetails: "",
-    medicalAssistance: "",
-    handoverDestination: "",
-    handoverDetails: "",
-    equipmentUsed: "",
-    challengesFaced: "",
     whatWentWell: "",
     lessonsLearned: "",
     recommendations: "",
@@ -56,7 +51,7 @@ export default function AfterRescue() {
 
       alert(t.reportSubmitted);
       
-      // සේව් වූ පසු ඇමින් පුවරුවට හෝ රිපෝර්ට් ලැයිස්තුවට යොමු කිරීම (අවශ්‍ය නම් පමණක් වෙනස් කරගන්න)
+      // සේව් වූ පසු ඇමින් පුවරුවට හෝ රිපෝර්ට් ලැයිස්තුවට යොමු කිරීම
       navigate("/admin/rescue-reports");
 
     } catch (error) {
@@ -77,11 +72,6 @@ export default function AfterRescue() {
       peopleRescued: "",
       rescueOutcome: "",
       rescuedPersonDetails: "",
-      medicalAssistance: "",
-      handoverDestination: "",
-      handoverDetails: "",
-      equipmentUsed: "",
-      challengesFaced: "",
       whatWentWell: "",
       lessonsLearned: "",
       recommendations: "",
@@ -155,40 +145,6 @@ export default function AfterRescue() {
                 <div className="ar-field ar-full">
                   <label>{locale === "si" ? "ගලවාගත් පුද්ගලයාගේ විස්තර" : "Rescued Person Details"}</label>
                   <textarea name="rescuedPersonDetails" value={formData.rescuedPersonDetails} onChange={handleChange} rows="3" placeholder={locale === "si" ? "ගලවාගත් පුද්ගලයා පිළිබඳ විස්තර ඇතුළත් කරන්න..." : "Provide rescued person details..."}></textarea>
-                </div>
-              </div>
-            </fieldset>
-
-            {/* Medical & Handover Details */}
-            <fieldset className="ar-fieldset">
-              <legend className="ar-legend">{t.medicalHandoverDetails}</legend>
-              <div className="ar-grid-2">
-                <div className="ar-field ar-full">
-                  <label>{t.medicalAssistanceProvided}</label>
-                  <textarea name="medicalAssistance" value={formData.medicalAssistance} onChange={handleChange} rows="2" placeholder={t.medicalAidDetails}></textarea>
-                </div>
-                <div className="ar-field">
-                  <label>{t.handoverDestination}</label>
-                  <input type="text" name="handoverDestination" value={formData.handoverDestination} onChange={handleChange} placeholder={t.hospitalDestination} />
-                </div>
-                <div className="ar-field">
-                  <label>{t.handoverDetails}</label>
-                  <input type="text" name="handoverDetails" value={formData.handoverDetails} onChange={handleChange} placeholder={t.handoverPersonnelTime} />
-                </div>
-              </div>
-            </fieldset>
-
-            {/* Resources & Operation Summary */}
-            <fieldset className="ar-fieldset">
-              <legend className="ar-legend">{t.resourcesOperationSummary}</legend>
-              <div className="ar-grid-2">
-                <div className="ar-field ar-full">
-                  <label>{t.equipmentResourcesUsed}</label>
-                  <textarea name="equipmentUsed" value={formData.equipmentUsed} onChange={handleChange} rows="2" placeholder={t.listEquipment}></textarea>
-                </div>
-                <div className="ar-field ar-full">
-                  <label>{t.challengesFaced}</label>
-                  <textarea name="challengesFaced" value={formData.challengesFaced} onChange={handleChange} rows="2" placeholder={t.mentionChallenges}></textarea>
                 </div>
               </div>
             </fieldset>

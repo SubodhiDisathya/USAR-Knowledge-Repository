@@ -26,7 +26,9 @@ function InformationGrid({ heading, items, locale }) {
             <span className="information-icon">{item[0]}</span>
             <div>
               <h3>{locale === "si" && item[2] ? item[2] : item[1]}</h3>
-              {locale === "en" && item[3] && <p>{item[3]}</p>}
+              {((locale === "si" && item[4]) || (locale === "en" && item[3])) && (
+                <p>{locale === "si" ? item[4] : item[3]}</p>
+              )}
             </div>
           </article>
         ))}
@@ -53,11 +55,37 @@ function ProcessTimeline({ heading, steps, locale }) {
                 <span className="process-icon">{step[0]}</span>
                 <h3>{locale === "si" ? step[2] : step[1]}</h3>
               </div>
-              {locale === "en" && <p>{step[3]}</p>}
+              {((locale === "si" && step[4]) || (locale === "en" && step[3])) && (
+                <p>{locale === "si" ? step[4] : step[3]}</p>
+              )}
             </div>
           </article>
         ))}
       </div>
+    </section>
+  );
+}
+
+function ResourcePanel({ topic, locale, translations, prominent = false }) {
+  return (
+    <section className={`resource-panel${prominent ? " resource-panel-prominent" : ""}`}>
+      <div className="resource-icon"><FileText size={24} /></div>
+      <div className="resource-copy">
+        <span className="resource-label">
+          {prominent ? (locale === "si" ? "PDF ලේඛනය" : "PDF DOCUMENT") : translations.additionalResources}
+        </span>
+        {!prominent && <h2>{locale === "si" ? "ලේඛනය" : "Document"}</h2>}
+        <h3>{locale === "si" && topic.resourceSinhala ? topic.resourceSinhala : topic.resource}</h3>
+        {!prominent && <p>{translations.resourceDescription}</p>}
+      </div>
+      {topic.resourceUrl ? (
+        <a href={topic.resourceUrl} target="_blank" rel="noopener noreferrer" className="resource-button">
+          <ExternalLink size={16} />
+          {locale === "si" ? "ලේඛනය බලන්න" : "View Document"}
+        </a>
+      ) : (
+        <span className="resource-button resource-unavailable">{translations.resourceUnavailable || "Resource not available yet"}</span>
+      )}
     </section>
   );
 }
@@ -92,23 +120,36 @@ export default function KnowledgeDetail() {
             </nav>
           </div>
 
-          <header className="detail-hero">
-            <img src={topic.heroImage} alt={topic.heroAlt} />
-            <div className="detail-hero-overlay" />
-            <div className="detail-hero-content">
-              <span className="detail-kicker">USAR KNOWLEDGE REPOSITORY</span>
-              <h1>{topic.icon} {locale === "si" ? topic.sinhalaTitle : topic.title}</h1>
-              {locale === "en" && <p className="detail-sinhala-title">{topic.sinhalaTitle}</p>}
-            </div>
-          </header>
+          {topic.hideHeroBanner ? (
+            <header className="detail-title-only">
+              <h1>{locale === "si" ? topic.sinhalaTitle : topic.title}</h1>
+              {locale === "en" && topic.sinhalaTitle !== topic.title && !topic.hideEnglishSubtitle && (
+                <p className="detail-sinhala-title">{topic.sinhalaTitle}</p>
+              )}
+            </header>
+          ) : (
+            <header className="detail-hero">
+              <img src={topic.heroImage} alt={topic.heroAlt} />
+              <div className="detail-hero-overlay" />
+              <div className="detail-hero-content">
+                {!topic.hideHeroKicker && <span className="detail-kicker">USAR KNOWLEDGE REPOSITORY</span>}
+                <h1>{!topic.hideHeroIcon && `${topic.icon} `}{locale === "si" ? topic.sinhalaTitle : topic.title}</h1>
+                {locale === "en" && topic.sinhalaTitle !== topic.title && <p className="detail-sinhala-title">{topic.sinhalaTitle}</p>}
+              </div>
+            </header>
+          )}
 
           <div className="detail-content">
+            {topic.resourceBeforeContent && (
+              <ResourcePanel topic={topic} locale={locale} translations={t} prominent />
+            )}
+
             <section className="detail-introduction">
               <BilingualText primary={topic.description} secondary={topic.sinhalaDescription} locale={locale} />
             </section>
 
             {topic.keyInformation && (
-              <InformationGrid locale={locale} heading={locale === "si" ? topic.keyHeading.split(" | ")[1] : topic.keyHeading.split(" | ")[0]} items={topic.keyInformation.map((item) => ["•", item[0], item[1]])} />
+              <InformationGrid locale={locale} heading={locale === "si" ? topic.keyHeading.split(" | ")[1] : topic.keyHeading.split(" | ")[0]} items={topic.keyInformation.map((item) => item.length === 2 ? ["•", item[0], item[1]] : item)} />
             )}
 
             {topic.processHeading && <ProcessTimeline locale={locale} heading={locale === "si" ? topic.processHeading.split(" | ")[1] : topic.processHeading.split(" | ")[0]} steps={topic.steps} />}
@@ -127,23 +168,9 @@ export default function KnowledgeDetail() {
               </section>
             )}
 
-            <section className="resource-panel">
-              <div className="resource-icon"><FileText size={24} /></div>
-              <div className="resource-copy">
-                <span className="resource-label">{t.additionalResources}</span>
-                <h2>{locale === "si" ? "ලේඛනය" : "Document"}</h2>
-                <h3>{topic.resource}</h3>
-                <p>{t.resourceDescription}</p>
-              </div>
-              {topic.resourceUrl ? (
-                <a href={topic.resourceUrl} target="_blank" rel="noopener noreferrer" className="resource-button">
-                  <ExternalLink size={16} />
-                  {locale === "si" ? "ලේඛනය බලන්න" : "View Document"}
-                </a>
-              ) : (
-                <span className="resource-button resource-unavailable">{t.resourceUnavailable || "Resource not available yet"}</span>
-              )}
-            </section>
+            {!topic.resourceBeforeContent && (
+              <ResourcePanel topic={topic} locale={locale} translations={t} />
+            )}
 
             <section className="knowledge-note">
               <span className="note-pin">📌</span>
@@ -204,10 +231,26 @@ export default function KnowledgeDetail() {
         }
 
         .detail-hero,
+        .detail-title-only,
         .detail-content {
           max-width: 1120px;
           margin-left: auto;
           margin-right: auto;
+        }
+
+        .detail-title-only {
+          padding: 18px 0 0;
+        }
+
+        .detail-title-only h1 {
+          color: #f8fafc;
+          font-size: clamp(26px, 3.5vw, 38px);
+          line-height: 1.2;
+          margin: 0;
+        }
+
+        .detail-title-only .detail-sinhala-title {
+          margin-top: 8px;
         }
 
         .detail-hero {
@@ -450,6 +493,14 @@ export default function KnowledgeDetail() {
         .resource-panel {
           background: rgba(30, 41, 59, 0.75);
           border: 1px solid rgba(96, 165, 250, 0.25);
+        }
+
+        .resource-panel-prominent {
+          align-items: center;
+          margin-top: 0;
+          margin-bottom: 24px;
+          background: linear-gradient(110deg, rgba(30, 58, 88, 0.9), rgba(17, 24, 39, 0.95));
+          border-color: rgba(96, 165, 250, 0.45);
         }
 
         .resource-icon {

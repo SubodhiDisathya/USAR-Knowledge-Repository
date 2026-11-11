@@ -593,7 +593,7 @@ export default function KnowledgeSection({ section }) {
                 <p className="hero-description" style={{ margin: 0 }}>
                   {locale === "si"
                     ? "ශ්‍රී ලංකාවේ ඒකාබද්ධ නාගරික සෙවීම් සහ මුදාගැනීම් (IU-SAR) කණ්ඩායම සඳහා වන දැනුම සහ මෙහෙයුම් තොරතුරු මධ්‍යගත කරන ද්වාරය."
-                    : "A centralized portal for Integrated Urban Search and Rescue (IU-SAR) operational information and knowledge in Sri Lanka."}
+                    : "A centralized portal for Integrated Urban Search and Rescue (USAR) operational information and knowledge in Sri Lanka."}
                 </p>
               </div>
 
@@ -610,7 +610,7 @@ export default function KnowledgeSection({ section }) {
                     </button>
                     <h2 className="operational-sector-title">
                       {selectedSopSection === "non-technical"
-                        ? locale === "si" ? "IU-SAR මෙහෙයුම් සහ දැනුම් කළමනාකරණ ද්වාරය" : "Sri Lanka Integrated USAR Operations & Knowledge Management Portal"
+                        ? locale === "si" ? "ශ්‍රී ලංකා ඒකාබද්ධ USAR මෙහෙයුම්" : "Sri Lanka Integrated USAR Operations"
                         : locale === "si" ? "ජාතික මට්ටමේ ආපදා කළමනාකරණ SOP" : "National-Level Disaster Management SOPs"}
                     </h2>
                   </>
@@ -627,7 +627,7 @@ export default function KnowledgeSection({ section }) {
                       </div>
                       <div className="card-body-content">
                         <h3 className="card-item-title">
-                          {locale === "si" ? "IU-SAR මෙහෙයුම් සහ දැනුම් කළමනාකරණ ද්වාරය" : "Sri Lanka Integrated USAR Operations & Knowledge Management Portal"}
+                          {locale === "si" ? "ශ්‍රී ලංකා ඒකාබද්ධ USAR මෙහෙයුම්" : "Sri Lanka Integrated USAR Operations"}
                         </h3>
                         <p>{locale === "si" ? "ව්‍යාපෘති දළ විශ්ලේෂණය, අරමුණු සහ වෙබ් අඩවියේ ප්‍රධාන අංශ." : "Project overview, objectives, and the main sections of the portal."}</p>
                       </div>
@@ -657,6 +657,63 @@ export default function KnowledgeSection({ section }) {
                       </div>
                     </button>
                   </div>
+                )}
+
+                {selectedSopSection && (
+                  <section className="operational-training-material sector-training-material">
+                    <div className="detail-section-heading">
+                      <span className="detail-section-line" />
+                      <h2>{locale === "si" ? "අදාළ ලේඛන" : "Related Documents"}</h2>
+                    </div>
+                    <div className="operational-training-grid">
+                      {selectedSopSection === "non-technical" ? (
+                        <article className="operational-training-card document-only">
+                          <div className="operational-training-icon">
+                            <FileText size={20} />
+                          </div>
+                          <a
+                            href="https://drive.google.com/file/d/1cabC1cPVK-mxew38B_wrme9d0RkF2Rvu/view?usp=sharing"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <span>{locale === "si" ? "ලේඛනය බලන්න" : "View Document"}</span>
+                            <ExternalLink size={15} />
+                          </a>
+                        </article>
+                      ) : (
+                        <>
+                          <article className="operational-training-card">
+                            <div className="operational-training-icon">
+                              <FileText size={20} />
+                            </div>
+                            <h3>{locale === "si" ? "ජාතික මට්ටමේ ආපදා කළමනාකරණ SOP — English" : "National-Level Disaster Management SOP — English"}</h3>
+                            <a
+                              href="https://drive.google.com/file/d/1VD6H2MxvjuucMDUqM63PEYcdISzA-sPn/view?usp=sharing"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <span>English PDF</span>
+                              <ExternalLink size={15} />
+                            </a>
+                          </article>
+                          <article className="operational-training-card">
+                            <div className="operational-training-icon">
+                              <FileText size={20} />
+                            </div>
+                            <h3>{locale === "si" ? "ජාතික මට්ටමේ ආපදා කළමනාකරණ SOP — සිංහල" : "National-Level Disaster Management SOP — Sinhala"}</h3>
+                            <a
+                              href="https://drive.google.com/file/d/1KoNjaPsnubhVSjKlWRsMXdmbVdzhBbSG/view?usp=sharing"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <span>සිංහල PDF</span>
+                              <ExternalLink size={15} />
+                            </a>
+                          </article>
+                        </>
+                      )}
+                    </div>
+                  </section>
                 )}
 
                 {selectedSopSection === "non-technical" && (
@@ -843,63 +900,6 @@ export default function KnowledgeSection({ section }) {
                   </div>
                 )}
 
-                {selectedSopSection && (
-                  <section className="operational-training-material">
-                    <div className="detail-section-heading">
-                      <span className="detail-section-line" />
-                      <h2>{locale === "si" ? "අදාළ ලේඛන" : "Related Documents"}</h2>
-                    </div>
-                    <div className="operational-training-grid">
-                      {selectedSopSection === "non-technical" ? (
-                        <article className="operational-training-card">
-                          <div className="operational-training-icon">
-                            <FileText size={20} />
-                          </div>
-                          <h3>Sri Lanka Integrated USAR Operations & Knowledge Management Portal</h3>
-                          <a
-                            href="https://drive.google.com/file/d/1cabC1cPVK-mxew38B_wrme9d0RkF2Rvu/view?usp=sharing"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <span>{locale === "si" ? "ද්වාර ලේඛනය බලන්න" : "View Portal Document"}</span>
-                            <ExternalLink size={15} />
-                          </a>
-                        </article>
-                      ) : (
-                        <>
-                          <article className="operational-training-card">
-                            <div className="operational-training-icon">
-                              <FileText size={20} />
-                            </div>
-                            <h3>{locale === "si" ? "ජාතික මට්ටමේ ආපදා කළමනාකරණ SOP — English" : "National-Level Disaster Management SOP — English"}</h3>
-                            <a
-                              href="https://drive.google.com/file/d/1VD6H2MxvjuucMDUqM63PEYcdISzA-sPn/view?usp=sharing"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <span>English PDF</span>
-                              <ExternalLink size={15} />
-                            </a>
-                          </article>
-                          <article className="operational-training-card">
-                            <div className="operational-training-icon">
-                              <FileText size={20} />
-                            </div>
-                            <h3>{locale === "si" ? "ජාතික මට්ටමේ ආපදා කළමනාකරණ SOP — සිංහල" : "National-Level Disaster Management SOP — Sinhala"}</h3>
-                            <a
-                              href="https://drive.google.com/file/d/1KoNjaPsnubhVSjKlWRsMXdmbVdzhBbSG/view?usp=sharing"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <span>සිංහල PDF</span>
-                              <ExternalLink size={15} />
-                            </a>
-                          </article>
-                        </>
-                      )}
-                    </div>
-                  </section>
-                )}
               </div>
             </div>
           ) : section === "operational" && content ? (
@@ -986,6 +986,28 @@ export default function KnowledgeSection({ section }) {
               ) : selectedSector ? (
                 <section className="operational-sector-overview">
                   <h2 className="operational-sector-title">{selectedSector.title[operationalLanguage]}</h2>
+                  {selectedSector.documents?.length > 0 && (
+                    <section className="operational-training-material sector-training-material">
+                      <div className="detail-section-heading">
+                        <span className="detail-section-line" />
+                        <h2>{isSinhala ? "අදාළ පුහුණු ද්‍රව්‍ය" : "Related Training Material"}</h2>
+                      </div>
+                      <div className="operational-training-grid">
+                        {selectedSector.documents.map((document) => (
+                          <article className="operational-training-card" key={document.url}>
+                            <div className="operational-training-icon">
+                              <FileText size={20} />
+                            </div>
+                            <h3>{document.title[operationalLanguage]}</h3>
+                            <a href={document.url} target="_blank" rel="noopener noreferrer">
+                              <span>{document.label[operationalLanguage]}</span>
+                              <ExternalLink size={15} />
+                            </a>
+                          </article>
+                        ))}
+                      </div>
+                    </section>
+                  )}
                   <div className="detail-section-heading">
                     <span className="detail-section-line" />
                     <h2>{isSinhala ? "දළ විශ්ලේෂණය" : "Overview"}</h2>
@@ -1018,28 +1040,6 @@ export default function KnowledgeSection({ section }) {
                       )}
                     </section>
                   ))}
-                  {selectedSector.documents?.length > 0 && (
-                    <section className="operational-training-material">
-                      <div className="detail-section-heading">
-                        <span className="detail-section-line" />
-                        <h2>{isSinhala ? "අදාළ පුහුණු ද්‍රව්‍ය" : "Related Training Material"}</h2>
-                      </div>
-                      <div className="operational-training-grid">
-                        {selectedSector.documents.map((document) => (
-                          <article className="operational-training-card" key={document.url}>
-                            <div className="operational-training-icon">
-                              <FileText size={20} />
-                            </div>
-                            <h3>{document.title[operationalLanguage]}</h3>
-                            <a href={document.url} target="_blank" rel="noopener noreferrer">
-                              <span>{document.label[operationalLanguage]}</span>
-                              <ExternalLink size={15} />
-                            </a>
-                          </article>
-                        ))}
-                      </div>
-                    </section>
-                  )}
                 </section>
               ) : (
                 <div className="knowledge-cards-grid">

@@ -138,65 +138,83 @@ const topics = {
   },
   "mass-casualty-incident": {
     slug: "mass-casualty-incident",
-    title: "Mass Casualty Incident (MCI) Preparedness and Response Plan of CNTH Ragama",
-    sinhalaTitle: "මහා පරිමාණ හදිසි අනතුරු ප්‍රතිචාර සැලැස්ම - CNTH රාගම",
+    title: "Hospital Coordination and Casualty Management",
+    sinhalaTitle: "රෝහල් සම්බන්ධීකරණය සහ අනතුරු කළමනාකරණය",
     icon: "🚨",
+    hideHeroBanner: true,
+    hideHeroKicker: true,
+    hideHeroIcon: true,
+    hideEnglishSubtitle: true,
     heroImage: firstResponseImage,
     heroAlt: "Mass Casualty Incident Response Plan CNTH Ragama",
-    description: "Mass Casualty Incident Response Plan 2025 for Colombo North Teaching Hospital (CNTH) Ragama - Short Summary covering key points, notification, triage, and management.",
-    sinhalaDescription: "කොළඹ උතුරු ශික්ෂණ රෝහලේ (රාගම) මහා පරිමාණ හදිසි අනතුරු ප්‍රතිචාර සැලැස්ම 2025 - ප්‍රධාන කරුණු, දැනුම්දීම්, රෝගී වර්ගීකරණය සහ කළමනාකරණය.",
+    description: "A coordinated response framework to support rescue and the safe transfer of trapped and injured people to hospital.",
+    sinhalaDescription: "සිරවී සිටින සහ තුවාල ලැබූ පුද්ගලයන් මුදාගෙන ආරක්ෂිතව රෝහලට යොමු කිරීම සඳහා සම්බන්ධීකරණය කළ ප්‍රතිචාර රාමුවක්.",
     keyHeading: "KEY INFORMATION | ප්‍රධාන තොරතුරු",
     keyInformation: [
-      ["Highest-risk hazards", "Road/railway accident, fire, CBRNE, industrial accident, pandemic, structural damage."],
-      ["MCI Definition", "150+ non-trauma patients, 60+ trauma patients, or an epidemic with 300+ patients/day."],
-      ["Committee", "Chaired by the Director. MO Planning is the focal point (drills, training, meetings, records)."]
+      ["⚠️", "Relevant Hazards", "අදාළ උපද්‍රව", "Building collapse, structural damage, earthquakes, explosions, fires, and industrial accidents.", "ගොඩනැගිලි කඩා වැටීම්, ව්‍යුහාත්මක හානි, භූමිකම්පා, පිපිරීම්, ගිනිගැනීම් සහ කාර්මික අනතුරු."],
+      ["🎯", "Main Objective", "ප්‍රධාන අරමුණ", "Support the rescue and safe transfer of trapped and injured victims to hospital.", "සිරවී සිටින සහ තුවාල ලැබූ පුද්ගලයන් මුදාගෙන ආරක්ෂිතව රෝහලට යොමු කිරීමට සහාය වීම."],
+      ["🤝", "Coordination", "සම්බන්ධීකරණය", "Coordinate USAR teams, emergency medical services, police, and hospital response teams.", "USAR කණ්ඩායම්, හදිසි වෛද්‍ය සේවා, පොලීසිය සහ රෝහල් ප්‍රතිචාර කණ්ඩායම් අතර සම්බන්ධීකරණය." ]
     ],
-    processHeading: "NOTIFICATION AND ACTIVATION | දැනුම්දීම සහ ක්‍රියාත්මක කිරීම",
+    processHeading: "NOTIFICATION AND ACTIVATION | දැනුම්දීම සහ සක්‍රීය කිරීම",
     steps: [
-      ["📞", "Information Source", "Police post, telephone exchange, director, or reception."],
-      ["📋", "METHANE Format", "Incident type, magnitude, casualties, time/place, phone, transport, access roads."],
-      ["📢", "Activation Command", "Director tells the exchange 'ACTIVATE MCI RESPONSE PLAN'."],
-      ["👥", "Command Staff", "Director, on-call consultants, CNO, A&E Matron, AO, Security, Police post."]
+      ["📞", "Receive Incident Information", "සිද්ධිය පිළිබඳ තොරතුරු ලබාගැනීම", "Receive information from emergency services or relevant authorities.", "හදිසි සේවා හෝ අදාළ බලධාරීන්ගෙන් සිද්ධිය පිළිබඳ තොරතුරු ලබාගන්න."],
+      ["📋", "Collect Incident Details", "සිද්ධියේ විස්තර රැස් කිරීම", "Record the location, incident type, possible hazards, and estimated number of casualties.", "සිද්ධියේ ස්ථානය, වර්ගය, ඇතිවිය හැකි උපද්‍රව සහ ඇස්තමේන්තුගත තුවාලකරුවන්ගේ සංඛ්‍යාව සටහන් කරගන්න."]
     ],
     groups: [
-      { 
-        heading: "SECURITY AND CROWD CONTROL | ආරක්ෂාව සහ ජනකාන්ත පාලනය", 
+      {
+        heading: "METHANE INCIDENT REPORT | METHANE සිද්ධි වාර්තාව",
         items: [
-          ["👮", "Ragama Police", "Provide crowd control and security."],
-          ["🚪", "Gates Management", "All patients enter via main entrance. Gate 2 = exit. Relatives directed to Gate 2 / OPD information centre."],
-          ["🛡️", "Security Officers", "8 security officers deployed at gate, A&E, cordon, acute area, and mortuary gate."]
-        ] 
+          ["🚨", "M — Major incident declared", "M — ප්‍රධාන සිද්ධියක් ප්‍රකාශ කිරීම", "", ""],
+          ["📍", "E — Exact location", "E — නිශ්චිත ස්ථානය", "", ""],
+          ["📝", "T — Type of incident", "T — සිද්ධියේ වර්ගය", "", ""],
+          ["⚠️", "H — Hazards present or potential", "H — පවතින හෝ ඇතිවිය හැකි උපද්‍රව", "", ""],
+          ["🚧", "A — Access to the scene", "A — සිද්ධි ස්ථානයට ප්‍රවේශය", "", ""],
+          ["👥", "N — Number of casualties", "N — තුවාලකරුවන්ගේ සංඛ්‍යාව", "", ""],
+          ["🚑", "E — Emergency services present or required", "E — පැමිණ සිටින හෝ අවශ්‍ය හදිසි සේවා", "", ""]
+        ]
       },
-      { 
-        heading: "STAFF JACKETS | කාර්ය මණ්ඩල හැඳුනුම් කබා", 
+      {
+        heading: "SECURITY AND ACCESS MANAGEMENT | ආරක්ෂාව සහ ප්‍රවේශ කළමනාකරණය",
         items: [
-          ["🔴", "Red", "Triage officers"],
-          ["🟣", "Purple", "Clinical Commander (Consultant Emergency Physician)"],
-          ["🔵", "Blue", "Doctors"],
-          ["🟢", "Green", "Nurses"],
-          ["🟡", "Yellow", "Minor staff"]
-        ] 
+          ["👮", "Coordinate with Police", "පොලීසිය සමඟ සම්බන්ධීකරණය", "Coordinate traffic and crowd control with the Police.", "රථවාහන සහ ජනකාය පාලනය සඳහා පොලීසිය සමඟ සම්බන්ධීකරණය කරන්න."],
+          ["🚑", "Keep Access Routes Clear", "ප්‍රවේශ මාර්ග විවෘතව තබාගැනීම", "Keep routes clear for ambulances and emergency response vehicles.", "ගිලන් රථ සහ හදිසි ප්‍රතිචාර වාහන සඳහා මාර්ග විවෘතව තබාගන්න."],
+          ["⛔", "Restrict Unauthorized Access", "අවසර නොලත් ප්‍රවේශය සීමා කිරීම", "Restrict unauthorized access to incident and treatment areas.", "සිද්ධි ස්ථානයට සහ ප්‍රතිකාර ප්‍රදේශවලට අවසර නොලත් පුද්ගලයන් ඇතුළුවීම සීමා කරන්න."],
+          ["🦺", "Protect Response Personnel", "ප්‍රතිචාර කාර්ය මණ්ඩලයට ආරක්ෂිත ප්‍රවේශය", "Ensure safe access for rescue and medical personnel.", "ගලවාගැනීමේ සහ වෛද්‍ය කාර්ය මණ්ඩලයට ආරක්ෂිතව ප්‍රවේශ විය හැකි බව තහවුරු කරන්න."]
+        ]
       },
-      { 
-        heading: "TRIAGE AND PATIENT FLOW | රෝගී වර්ගීකරණය සහ ගලායාම", 
+      {
+        heading: "STAFF IDENTIFICATION | කාර්ය මණ්ඩල හඳුනාගැනීම",
         items: [
-          ["🔴", "Red (Immediate)", "A&E resus/acute → 5 resus teams (2 doctors, 1 nurse, 1 HA per team)."],
-          ["🟡", "Yellow (Delayed)", "SSU (PCU) → if over 50: Ward 20/CCU."],
-          ["🟢", "Green (Minor)", "Pre-casualty wards (1 doctor + 1 nurse per 5 patients)."],
-          ["⚫", "Black (Dead)", "Temporary body holding area (A&E) confirmed by JMO/MO."]
-        ] 
+          ["🔴", "Red — Triage Officers", "රතු — රෝගී වර්ගීකරණ නිලධාරීන්", "", ""],
+          ["🟣", "Purple — Clinical Commander", "දම් — සායනික අණදෙන නිලධාරී", "", ""],
+          ["🔵", "Blue — Doctors", "නිල් — වෛද්‍යවරුන්", "", ""],
+          ["🟢", "Green — Nurses", "කොළ — හෙදියන්", "", ""],
+          ["🟡", "Yellow — Minor Staff", "කහ — සහායක කාර්ය මණ්ඩලය", "", ""]
+        ]
+      },
+      {
+        heading: "TRIAGE AND PATIENT MANAGEMENT | රෝගී වර්ගීකරණය සහ කළමනාකරණය",
+        items: [
+          ["🔴", "Red — Immediate", "රතු — වහාම ප්‍රතිකාර අවශ්‍ය", "Requires immediate medical attention.", "වහාම වෛද්‍ය ප්‍රතිකාර අවශ්‍ය වේ."],
+          ["🟡", "Yellow — Delayed", "කහ — ප්‍රමාද කළ හැකි", "Requires medical treatment but can wait.", "වෛද්‍ය ප්‍රතිකාර අවශ්‍ය නමුත් යම් කාලයක් බලා සිටිය හැකිය."],
+          ["🟢", "Green — Minor", "කොළ — සුළු තුවාල", "Has minor injuries and is able to walk.", "සුළු තුවාල ඇති අතර ඇවිදීමට හැකිය."],
+          ["⚫", "Black — Dead / Expectant", "කළු — මියගිය / දිවි ගලවාගැනීම අපේක්ෂා කළ නොහැකි", "Deceased or unlikely to survive given the severity of injuries and available resources.", "මියගොස් ඇති හෝ තුවාලවල බරපතළකම සහ පවතින සම්පත් අනුව දිවි ගලවාගැනීමේ හැකියාව අඩු පුද්ගලයන්."]
+        ]
       }
     ],
-    safety: ["IMPORTANT NOTE | වැදගත් සටහන", "The safety of the rescue and medical team must always be considered during operations.", "මෙහෙයුම් අතරතුර සෑම විටම වෛද්‍ය සහ සහායක කණ්ඩායමේ ආරක්ෂාව තහවුරු කළ යුතුය."],
     resource: "MCI Response Plan Complete Guide",
+    resourceSinhala: "බහු-තුවාල සිදුවීම් (MCI) සඳහා ප්‍රතිචාර සැලැස්ම - සම්පූර්ණ මාර්ගෝපදේශය",
     resourceKey: "mciResponsePDF",
-    resourceUrl: "https://drive.google.com/file/d/140aKs-65YF0By3aOZkYLgCi-RDzZ3xCp/view?usp=sharing"
+    resourceUrl: "https://drive.google.com/file/d/140aKs-65YF0By3aOZkYLgCi-RDzZ3xCp/view?usp=sharing",
+    resourceBeforeContent: true
   },
   "emt-basic-certificate": {
     slug: "emt-basic-certificate",
     title: "1990 Suwa Seriya EMT-Basic Training",
     sinhalaTitle: "1990 සුව සැරිය EMT-මූලික පුහුණුව",
     icon: "🚑",
+    hideHeroBanner: true,
+    hideEnglishSubtitle: true,
     heroImage: firstResponseImage,
     heroAlt: "1990 Suwa Seriya EMT-Basic Training",
     description: "Certificate course structure, modules, and operational guidelines.",
@@ -216,10 +234,10 @@ const topics = {
       ["⚙️", "Module 5: Operations", "මෙහෙයුම් කටයුතු", "Ambulance operations, extrication, hazmat, incident management, and mass casualty/triage."],
       ["🏥", "Module 6: Rotations", "රෝහල් සහ ගිලන්රථ පුහුණුව", "A&E/ETU, ambulance training, and minor clinical rotations (2 credits each)."]
     ],
-    safety: ["ASSESSMENT & EXAM | විභාග සහ ඇගයීම්", "Exams consist of Part 1 (MCQs & OSCE) and Part 2 (Hospital/Ambulance rotations), requiring a pass mark of 50% and a grade of B- or better.", "විභාගය සමත් වීම සඳහා අවම වශයෙන් 50% ක ලකුණු ප්‍රමාණයක් සහ B- හෝ ඊට වැඩි ශ්‍රේණියක් ලබා ගත යුතුය."],
     resource: "Suwa Seriya EMT-Basic Curriculum Summary",
     resourceKey: "emtBasicPDF",
-    resourceUrl: "https://drive.google.com/file/d/1c8u_0_29OKQmZAIEPnysy4J-0yDiwb02/view?usp=sharing"
+    resourceUrl: "https://drive.google.com/file/d/1c8u_0_29OKQmZAIEPnysy4J-0yDiwb02/view?usp=sharing",
+    resourceBeforeContent: true
   }
 };
 

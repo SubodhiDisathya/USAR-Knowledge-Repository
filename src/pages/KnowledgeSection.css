@@ -259,6 +259,57 @@
   margin-top: 28px;
 }
 
+.sector-training-material {
+  margin: 0 0 30px;
+  padding: 22px;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(14, 116, 144, 0.2), rgba(15, 23, 42, 0.94) 72%);
+  box-shadow: 0 12px 28px rgba(2, 132, 199, 0.1);
+}
+
+.sector-training-material .detail-section-heading {
+  margin: 0 0 16px;
+}
+
+.sector-training-material .detail-section-heading h2 {
+  color: #bae6fd;
+}
+
+.sector-training-material .operational-training-card {
+  border-color: rgba(125, 211, 252, 0.24);
+  background: linear-gradient(145deg, rgba(15, 39, 59, 0.96), rgba(12, 24, 40, 0.98));
+}
+
+.sector-training-material .operational-training-card.document-only {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.sector-training-material .operational-training-icon {
+  border-color: rgba(56, 189, 248, 0.38);
+  background: rgba(14, 165, 233, 0.14);
+  color: #7dd3fc;
+}
+
+.sector-training-material .operational-training-card a {
+  justify-self: start;
+  margin-top: 0;
+  padding: 9px 13px;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  border-radius: 9px;
+  background: rgba(2, 132, 199, 0.18);
+  color: #7dd3fc;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.sector-training-material .operational-training-card a:hover {
+  border-color: rgba(125, 211, 252, 0.7);
+  background: rgba(2, 132, 199, 0.32);
+  color: #e0f2fe;
+}
+
 .operational-training-material .detail-section-heading {
   margin-bottom: 16px;
 }
