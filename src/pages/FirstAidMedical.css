@@ -175,39 +175,31 @@
 
 /* Steps Grid & Cards */
 .steps-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .step-card {
-  background-color: #1e293b;
-  border: 1px solid #334155;
-  border-radius: 12px;
-  padding: 24px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 0;
+  padding: 18px 0;
   display: flex;
-  gap: 18px;
+  gap: 16px;
   align-items: flex-start;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.step-card:hover {
-  border-color: #475569;
-  transform: translateY(-2px);
-  background-color: #243044;
 }
 
 .step-emoji-box {
-  width: 44px;
-  height: 44px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 21px;
   flex-shrink: 0;
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .step-info h4 {
@@ -218,10 +210,10 @@
 }
 
 .step-info h3 {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
   color: #ffffff;
-  margin: 0 0 4px 0;
+  margin: 0 0 6px 0;
 }
 
 .si-text {
@@ -233,10 +225,10 @@
 }
 
 .step-info p {
-  font-size: 13.5px;
-  color: #94a3b8;
+  font-size: 15px;
+  color: #cbd5e1;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.65;
 }
 
 /* Main Grid Layout */
@@ -264,10 +256,12 @@
 }
 
 .medical-card:hover {
-  transform: translateY(-4px);
   border-color: #475569;
-  box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.4);
-  background-color: #243044;
+}
+
+.medical-card:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 3px;
 }
 
 .card-top {
@@ -295,7 +289,6 @@
 }
 
 .medical-card:hover .card-arrow {
-  transform: translateX(4px);
   color: #ffffff;
 }
 

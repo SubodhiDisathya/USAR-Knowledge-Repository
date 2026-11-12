@@ -43,6 +43,7 @@ const quizLabels = {
     completedStatus: "Completed",
     assignmentError: "Could not update your quiz assignment. Your quiz can still continue; please contact an administrator if this persists.",
     assignmentLoadError: "Could not load your assigned quizzes. Please refresh the page or contact an administrator.",
+    customQuizLoadError: "Could not load additional training quizzes. Please refresh the page.",
     startAssigned: "Start assigned quiz",
     retryAssigned: "Retake quiz"
   },
@@ -79,6 +80,7 @@ const quizLabels = {
     completedStatus: "සම්පූර්ණයි",
     assignmentError: "ප්‍රශ්නාවලි පැවරුම යාවත්කාලීන කළ නොහැකි විය. ඔබට ප්‍රශ්නාවලිය දිගටම කරගෙන යා හැක. මෙය දිගටම සිදුවුවහොත් පරිපාලකයෙකු අමතන්න.",
     assignmentLoadError: "ඔබට පවරා ඇති ප්‍රශ්නාවලි පූරණය කළ නොහැකි විය. පිටුව නැවත පූරණය කරන්න හෝ පරිපාලකයෙකු අමතන්න.",
+    customQuizLoadError: "අමතර පුහුණු ප්‍රශ්නාවලි පූරණය කළ නොහැකි විය. පිටුව නැවත පූරණය කරන්න.",
     startAssigned: "පවරා ඇති ප්‍රශ්නාවලිය අරඹන්න",
     retryAssigned: "නැවත කරන්න"
   }
@@ -98,6 +100,8 @@ export default function Quiz() {
   const [assignments, setAssignments] = useState([]);
   const [assignmentError, setAssignmentError] = useState("");
   const [selectedAssignment, setSelectedAssignment] = useState(null);
+  const [customQuizModules, setCustomQuizModules] = useState([]);
+  const [customQuizError, setCustomQuizError] = useState("");
 
   useEffect(() => {
     if (!currentUser) return undefined;
@@ -116,10 +120,53 @@ export default function Quiz() {
     return () => unsubscribe();
   }, [currentUser, text.assignmentError, text.assignmentLoadError]);
 
+  useEffect(() => {
+    const unsubscribe = onSnapshot(
+      collection(db, "customQuizzes"),
+      (snapshot) => {
+        setCustomQuizModules(snapshot.docs.map((quizDoc) => {
+          const data = quizDoc.data();
+          const title = {
+            en: data.title?.en || "",
+            si: data.title?.si || data.title?.en || ""
+          };
+          return {
+            id: `custom-${quizDoc.id}`,
+            title,
+            questions: (data.questions || []).map((item) => ({
+              topic: { en: item.topic?.en || title.en, si: item.topic?.si || item.topic?.en || title.si },
+              question: { en: item.question?.en || "", si: item.question?.si || item.question?.en || "" },
+              options: (item.options || []).map((option) => ({
+                en: option.en || "",
+                si: option.si || option.en || ""
+              })),
+              answerIndex: item.answerIndex,
+              explanation: {
+                en: item.explanation?.en || "",
+                si: item.explanation?.si || item.explanation?.en || ""
+              }
+            }))
+          };
+        }));
+        setCustomQuizError("");
+      },
+      (error) => {
+        console.error("Error loading custom training quizzes:", error);
+        setCustomQuizError(text.customQuizLoadError);
+      }
+    );
+    return () => unsubscribe();
+  }, [text.customQuizLoadError]);
+
+  const availableQuizModules = useMemo(
+    () => [...quizModules, ...customQuizModules],
+    [customQuizModules]
+  );
+
   const questions = useMemo(() => {
     if (selectedQuiz === "mixed") return quizModules.flatMap((module) => module.questions);
-    return quizModules.find((module) => module.id === selectedQuiz)?.questions || [];
-  }, [selectedQuiz]);
+    return availableQuizModules.find((module) => module.id === selectedQuiz)?.questions || [];
+  }, [availableQuizModules, selectedQuiz]);
 
   const question = questions[questionIndex];
 
@@ -208,7 +255,7 @@ export default function Quiz() {
                   {assignments.map((assignment) => {
                     const module = assignment.quizId === "mixed"
                       ? { title: { en: "All Modules Quiz", si: "සියලුම මොඩියුල ප්‍රශ්නාවලිය" } }
-                      : quizModules.find((item) => item.id === assignment.quizId);
+                      : availableQuizModules.find((item) => item.id === assignment.quizId);
                     if (!module) return null;
                     const statusLabel = assignment.status === "completed"
                       ? text.completedStatus
@@ -240,9 +287,10 @@ export default function Quiz() {
                 </div>
               )}
               {assignmentError && <p className="quiz-assignment-error" role="alert">{assignmentError}</p>}
+              {customQuizError && <p className="quiz-assignment-error" role="alert">{customQuizError}</p>}
               <h2>{text.choose}</h2>
               <div className="quiz-choice-grid">
-                {quizModules.map((module) => (
+                {availableQuizModules.map((module) => (
                   <article className="quiz-choice-card" key={module.id}>
                     <div className="quiz-choice-icon"><CircleHelp size={24} /></div>
                     <h3>{module.title[language]}</h3>
@@ -293,9 +341,9 @@ export default function Quiz() {
               <div className="quiz-progress-track" aria-label={`${Math.round(progress)}%`}>
                 <span style={{ width: `${progress}%` }} />
               </div>
-              <span className="quiz-topic">{question.topic[language]}</span>
-              <h2>{question.question[language]}</h2>
-              <div className="quiz-options" role="group" aria-label={question.question[language]}>
+              <span className="quiz-topic">{question.topic[language] || question.topic.en}</span>
+              <h2>{question.question[language] || question.question.en}</h2>
+              <div className="quiz-options" role="group" aria-label={question.question[language] || question.question.en}>
                 {question.options.map((option, index) => {
                   const isCorrectOption = isAnswered && index === question.answerIndex;
                   const isWrongSelection = isAnswered && index === selectedOption && index !== question.answerIndex;
@@ -309,7 +357,7 @@ export default function Quiz() {
                       aria-pressed={selectedOption === index}
                     >
                       <span className="quiz-option-letter">{String.fromCharCode(65 + index)}</span>
-                      <span>{option[language]}</span>
+                      <span>{option[language] || option.en}</span>
                       {isCorrectOption && <CheckCircle2 size={19} />}
                       {isWrongSelection && <XCircle size={19} />}
                     </button>
@@ -322,7 +370,7 @@ export default function Quiz() {
                   {selectedOption === question.answerIndex ? <CheckCircle2 size={20} /> : <XCircle size={20} />}
                   <div>
                     <strong>{selectedOption === question.answerIndex ? text.correct : text.incorrect}</strong>
-                    <p>{question.explanation[language]}</p>
+                    <p>{question.explanation[language] || question.explanation.en}</p>
                   </div>
                 </div>
               )}

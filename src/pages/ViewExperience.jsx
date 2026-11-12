@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, Award, Briefcase, MapPin, AlertTriangle, CheckCircle, Lightbulb, Shield, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, Award, Briefcase, MapPin, AlertTriangle, CheckCircle, Lightbulb, Shield, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase/firebaseConfig";
 import Sidebar from "../components/Sidebar";
 import TopHeader from "../components/TopHeader";
 import { useLocale } from "../context/LocaleContext";
@@ -42,12 +44,49 @@ export default function ViewExperience() {
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedStoryIndex, setSelectedStoryIndex] = useState(0);
+  const [publishedExperienceResult, setPublishedExperienceResult] = useState({
+    id: null,
+    experience: null,
+    error: false
+  });
   const localize = (english, sinhala) => locale === "si" ? sinhala : english;
+
+  useEffect(() => {
+    if (!id.startsWith("published-")) {
+      return undefined;
+    }
+
+    let active = true;
+    const fetchPublishedExperience = async () => {
+      try {
+        const experienceId = id.slice("published-".length);
+        const snapshot = await getDoc(doc(db, "operationalExperiences", experienceId));
+        if (active) {
+          setPublishedExperienceResult({
+            id,
+            experience: snapshot.exists() ? snapshot.data() : null,
+            error: false
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching published operational experience:", error);
+        if (active) {
+          setPublishedExperienceResult({ id, experience: null, error: true });
+        }
+      }
+    };
+
+    fetchPublishedExperience();
+    return () => {
+      active = false;
+    };
+  }, [id]);
 
   const t = {
     en: {
       back: "Back to Experiences",
       notFound: "Officer record not found",
+      loadFailed: "Could not load this operational experience.",
       goBack: "Go Back",
       roleUnit: "Role / Unit",
       location: "Location",
@@ -65,6 +104,7 @@ export default function ViewExperience() {
     si: {
       back: "ආපසු අත්දැකීම් වෙත",
       notFound: "නිලධාරියාගේ වාර්තාව හමු නොවීය",
+      loadFailed: "මෙම මෙහෙයුම් අත්දැකීම ලබාගත නොහැක.",
       goBack: "පසුපසට යන්න",
       roleUnit: "තනතුර / ඒකකය",
       location: "ස්ථානය",
@@ -531,6 +571,90 @@ export default function ViewExperience() {
       ]
     }
   ];
+
+  const isPublishedRoute = id.startsWith("published-");
+  const publishedExperienceLoading = isPublishedRoute && publishedExperienceResult.id !== id;
+  const publishedExperience = publishedExperienceResult.id === id ? publishedExperienceResult.experience : null;
+  const publishedExperienceError = publishedExperienceResult.id === id && publishedExperienceResult.error;
+
+  if (isPublishedRoute) {
+    if (publishedExperienceLoading) {
+      return (
+        <div className="app-layout">
+          <Sidebar />
+          <div className="main-content">
+            <TopHeader />
+            <div style={{ padding: "40px", color: "#cbd5e1", textAlign: "center" }}>
+              <Loader2 className="animate-spin" size={24} />
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    if (!publishedExperience || publishedExperienceError) {
+      return (
+        <div className="app-layout">
+          <Sidebar />
+          <div className="main-content">
+            <TopHeader />
+            <div style={{ padding: "40px", color: "#fff", textAlign: "center" }}>
+              <h2>{publishedExperienceError ? t[locale].loadFailed : t[locale].notFound}</h2>
+              <button onClick={() => navigate(-1)} style={{ marginTop: "20px", padding: "10px 20px", background: "#f59e0b", border: "none", borderRadius: "6px", cursor: "pointer", fontWeight: "bold" }}>
+                {t[locale].goBack}
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    const detailSections = [
+      [t[locale].theStory, publishedExperience.missionNotes],
+      [t[locale].actions, publishedExperience.whatWentWell],
+      [t[locale].lessons, publishedExperience.lessonsLearned],
+      [t[locale].recommendations, publishedExperience.recommendations]
+    ].filter(([, value]) => value);
+
+    return (
+      <div className="app-layout">
+        <Sidebar />
+        <div className="main-content">
+          <TopHeader />
+          <main className="view-experience-main" style={{ flex: 1, overflowY: "auto", padding: "24px 32px 56px", background: "var(--page-bg)", color: "var(--text)" }}>
+            <button
+              onClick={() => navigate(-1)}
+              style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "transparent", border: "none", color: "#f59e0b", cursor: "pointer", fontSize: "14px", fontWeight: "600", marginBottom: "20px" }}
+            >
+              <ArrowLeft size={16} /> {t[locale].back}
+            </button>
+            <div className="ve-card-container" style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: "16px", padding: "32px", maxWidth: "900px", margin: "0 auto" }}>
+              <div style={{ marginBottom: "24px", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: "24px" }}>
+                <span style={{ color: "#f59e0b", fontFamily: "monospace", fontSize: "12px", fontWeight: "700" }}>
+                  {publishedExperience.year} {publishedExperience.missionId && `• ${publishedExperience.missionId}`}
+                </span>
+                <h1 style={{ fontSize: "26px", margin: "8px 0 4px", color: "#f8fafc" }}>{publishedExperience.title}</h1>
+                <p style={{ color: "#94a3b8", fontSize: "15px", margin: 0 }}>
+                  {publishedExperience.responder} - {publishedExperience.organization}
+                </p>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px", marginBottom: "28px", background: "rgba(255,255,255,0.02)", padding: "16px", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.04)" }}>
+                <p><strong>{t[locale].location}: </strong>{publishedExperience.location || t[locale].location}</p>
+                <p><strong>{t[locale].expertise}: </strong>{publishedExperience.type}</p>
+                {publishedExperience.rescueDate && <p><strong>{t[locale].rescueDate}: </strong>{publishedExperience.rescueDate}</p>}
+              </div>
+              {detailSections.map(([heading, content]) => (
+                <section key={heading} style={{ background: "rgba(255,255,255,0.02)", padding: "20px", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.04)", marginBottom: "16px" }}>
+                  <h3 style={{ fontSize: "16px", color: "#f1f5f9", margin: "0 0 12px" }}>{heading}</h3>
+                  <p style={{ color: "#cbd5e1", fontSize: "14px", lineHeight: "1.6", margin: 0, whiteSpace: "pre-line" }}>{content}</p>
+                </section>
+              ))}
+            </div>
+          </main>
+        </div>
+      </div>
+    );
+  }
 
   const officer = realExperiences.find((item) => item.id === parseInt(id));
 

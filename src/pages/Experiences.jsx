@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase/firebaseConfig";
 import Sidebar from "../components/Sidebar";
 import TopHeader from "../components/TopHeader";
 import ExperienceCard from "../components/ExperienceCard";
@@ -14,9 +16,29 @@ export default function Experiences() {
   const { locale } = useLocale();
   const t = translations[locale] || translations.en;
   const [searchQuery, setSearchQuery] = useState("");
+  const [publishedExperiences, setPublishedExperiences] = useState([]);
+  const [loadError, setLoadError] = useState("");
   const navigate = useNavigate();
 
-  const filtered = fieldExperiences.filter(
+  useEffect(() => {
+    const fetchPublishedExperiences = async () => {
+      try {
+        const snapshot = await getDocs(collection(db, "operationalExperiences"));
+        setPublishedExperiences(snapshot.docs.map((experienceDoc) => ({
+          id: `published-${experienceDoc.id}`,
+          ...experienceDoc.data()
+        })));
+      } catch (error) {
+        console.error("Error fetching published operational experiences:", error);
+        setLoadError(t.experienceFetchFailed);
+      }
+    };
+
+    fetchPublishedExperiences();
+  }, [t.experienceFetchFailed]);
+
+  const allExperiences = [...publishedExperiences, ...fieldExperiences];
+  const filtered = allExperiences.filter(
     (exp) =>
       exp.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       (exp.titleSi || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -73,6 +95,8 @@ export default function Experiences() {
               </div>
             ))}
           </div>
+
+          {loadError && <p className="experience-load-error" role="alert">{loadError}</p>}
 
           {filtered.length === 0 && (
             <div className="no-results">

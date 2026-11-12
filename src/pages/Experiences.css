@@ -116,6 +116,12 @@
   font-size: 14px;
 }
 
+.experience-load-error {
+  color: #fca5a5;
+  font-size: 14px;
+  text-align: center;
+}
+
 /* Scrollbar */
 .experiences-main::-webkit-scrollbar {
   width: 8px;

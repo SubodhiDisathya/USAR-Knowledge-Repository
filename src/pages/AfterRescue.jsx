@@ -43,7 +43,7 @@ export default function AfterRescue() {
     setLoading(true);
 
     try {
-      // Firebase Firestore වලට ඩේටා සේව් කිරීම
+      // Save data to Firebase Firestore
       await addDoc(collection(db, "rescueReports"), {
         ...formData,
         createdAt: new Date()
@@ -51,7 +51,7 @@ export default function AfterRescue() {
 
       alert(t.reportSubmitted);
       
-      // සේව් වූ පසු ඇමින් පුවරුවට හෝ රිපෝර්ට් ලැයිස්තුවට යොමු කිරීම
+      // Redirect to admin panel or report list after saving
       navigate("/admin/rescue-reports");
 
     } catch (error) {
@@ -94,7 +94,11 @@ export default function AfterRescue() {
               <h1 className="ar-title">{t.afterRescueReport}</h1>
               <p className="ar-subtitle">{t.dmcEmergencyResponse}</p>
             </div>
-            <span className="ar-badge-draft">{locale === "si" ? (formData.reportStatus === "Submitted" ? "ඉදිරිපත් කර ඇත" : "කෙටුම්පත") : formData.reportStatus}</span>
+            <span className="ar-badge-draft">
+              {locale === "si" 
+                ? (formData.reportStatus === "Submitted" ? "ඉදිරිපත් කර ඇත" : "කෙටුම්පත") 
+                : formData.reportStatus}
+            </span>
           </div>
 
           <form onSubmit={handleSubmit}>

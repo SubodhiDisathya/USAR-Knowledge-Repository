@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { ArrowLeft, Calendar, MapPin, FileText, Loader2, Download } from "lucide-react";
-import { collection, getDocs } from "firebase/firestore";
+import { ArrowLeft, Calendar, MapPin, FileText, Loader2, Download, Send, Check, Trash2 } from "lucide-react";
+import { collection, doc, getDocs, serverTimestamp, writeBatch } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import "./Admin_Rescue.css";
 import Sidebar from "../components/Sidebar";
@@ -15,6 +15,8 @@ export default function AdminRescue() {
   const [selectedMission, setSelectedMission] = useState(null);
   const [missions, setMissions] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [publishing, setPublishing] = useState(false);
+  const [publishError, setPublishError] = useState("");
 
   useEffect(() => {
     const fetchMissions = async () => {
@@ -38,6 +40,85 @@ export default function AdminRescue() {
   // Function to trigger Browser's Print dialog which allows saving as PDF
   const handlePrintPDF = () => {
     window.print();
+  };
+
+  const handlePublishExperience = async () => {
+    if (!selectedMission || !selectedMission.lessonsLearned?.trim()) {
+      setPublishError(t.publishRequiresLessons);
+      return;
+    }
+
+    setPublishing(true);
+    setPublishError("");
+    try {
+      const reportRef = doc(db, "rescueReports", selectedMission.id);
+      const experienceRef = doc(db, "operationalExperiences", selectedMission.id);
+      const batch = writeBatch(db);
+
+      batch.set(experienceRef, {
+        missionId: selectedMission.missionId || "",
+        title: selectedMission.missionId
+          ? `${t.missionReportDetails}: ${selectedMission.missionId}`
+          : t.operationalExperience,
+        responder: selectedMission.teamLeader || selectedMission.reportedBy || selectedMission.teamName || t.rescueTeamName,
+        organization: selectedMission.teamName || t.rescueTeamName,
+        year: selectedMission.rescueDate?.slice(0, 4) || "",
+        snippet: selectedMission.lessonsLearned.trim(),
+        type: selectedMission.rescueOutcome || t.rescueReport,
+        location: selectedMission.rescueLocation || "",
+        rescueDate: selectedMission.rescueDate || "",
+        missionNotes: selectedMission.missionNotes || "",
+        whatWentWell: selectedMission.whatWentWell || "",
+        lessonsLearned: selectedMission.lessonsLearned.trim(),
+        recommendations: selectedMission.recommendations || "",
+        publishedAt: serverTimestamp()
+      });
+      batch.update(reportRef, {
+        publishedToExperiences: true,
+        experiencePublishedAt: serverTimestamp()
+      });
+      await batch.commit();
+
+      const updatedMission = { ...selectedMission, publishedToExperiences: true };
+      setSelectedMission(updatedMission);
+      setMissions((currentMissions) =>
+        currentMissions.map((mission) => mission.id === updatedMission.id ? updatedMission : mission)
+      );
+    } catch (error) {
+      console.error("Error publishing rescue report as an operational experience:", error);
+      setPublishError(t.publishExperienceFailed);
+    } finally {
+      setPublishing(false);
+    }
+  };
+
+  const handleRemoveExperience = async () => {
+    if (!selectedMission) return;
+
+    setPublishing(true);
+    setPublishError("");
+    try {
+      const reportRef = doc(db, "rescueReports", selectedMission.id);
+      const experienceRef = doc(db, "operationalExperiences", selectedMission.id);
+      const batch = writeBatch(db);
+
+      batch.delete(experienceRef);
+      batch.update(reportRef, {
+        publishedToExperiences: false
+      });
+      await batch.commit();
+
+      const updatedMission = { ...selectedMission, publishedToExperiences: false };
+      setSelectedMission(updatedMission);
+      setMissions((currentMissions) =>
+        currentMissions.map((mission) => mission.id === updatedMission.id ? updatedMission : mission)
+      );
+    } catch (error) {
+      console.error("Error removing operational experience from the site:", error);
+      setPublishError(t.removeExperienceFailed);
+    } finally {
+      setPublishing(false);
+    }
   };
 
   if (loading) {
@@ -177,9 +258,55 @@ export default function AdminRescue() {
                   <label>{t.missionNotes}</label>
                   <p>{selectedMission.missionNotes || t.noNotes}</p>
                 </div>
+                {selectedMission.whatWentWell && (
+                  <div className="ar-detail-item ar-full-width">
+                    <label>{t.whatWentWell}</label>
+                    <p>{selectedMission.whatWentWell}</p>
+                  </div>
+                )}
+                {selectedMission.lessonsLearned && (
+                  <div className="ar-detail-item ar-full-width">
+                    <label>{t.lessonsLearned}</label>
+                    <p>{selectedMission.lessonsLearned}</p>
+                  </div>
+                )}
+                {selectedMission.recommendations && (
+                  <div className="ar-detail-item ar-full-width">
+                    <label>{t.recommendationsFuture}</label>
+                    <p>{selectedMission.recommendations}</p>
+                  </div>
+                )}
               </div>
 
               <div className="ar-detail-actions">
+                {publishError && <p className="ar-publish-error" role="alert">{publishError}</p>}
+                {selectedMission.publishedToExperiences ? (
+                  <>
+                    <span className="ar-published-status"><Check size={16} /> {t.publishedToExperiences}</span>
+                    <button
+                      onClick={handleRemoveExperience}
+                      className="ar-remove-publish-btn"
+                      disabled={publishing}
+                    >
+                      {publishing ? <Loader2 className="animate-spin" size={16} /> : <Trash2 size={16} />}
+                      {publishing ? t.removingExperience : t.removeFromSite}
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    {!selectedMission.lessonsLearned?.trim() && (
+                      <p className="ar-publish-hint">{t.publishRequiresLessons}</p>
+                    )}
+                    <button
+                      onClick={handlePublishExperience}
+                      className="ar-publish-btn"
+                      disabled={publishing || !selectedMission.lessonsLearned?.trim()}
+                    >
+                      {publishing ? <Loader2 className="animate-spin" size={16} /> : <Send size={16} />}
+                      {publishing ? t.publishingExperience : t.publishToExperiences}
+                    </button>
+                  </>
+                )}
                 <button onClick={() => setSelectedMission(null)} className="ar-close-btn">
                   {t.closeReturnList}
                 </button>

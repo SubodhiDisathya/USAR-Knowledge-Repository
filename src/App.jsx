@@ -59,7 +59,7 @@ function App() {
 
             {/* System Security & Roles Route එක මෙන්න මෙතනට දාන්න 👇 */}
             <Route path="/admin/security" element={<Protected><SystemSecurity /></Protected>} />
-            <Route path="/admin/quiz-assignments" element={<ProtectedRoute requiredRole="admin"><AdminQuizAssignments /></ProtectedRoute>} />
+            <Route path="/admin/quiz-assignments" element={<Protected><AdminQuizAssignments /></Protected>} />
 
             <Route path="/others" element={<Protected><KnowledgeSection section="others" /></Protected>} />
             <Route path="/search" element={<Protected><Search /></Protected>} />
