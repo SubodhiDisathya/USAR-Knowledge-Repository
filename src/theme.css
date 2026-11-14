@@ -104,8 +104,8 @@ body {
 }
 
 .sidebar {
-  background: var(--navy) !important;
-  border-color: var(--navy) !important;
+  background: #121b2b !important;
+  border-color: #243147 !important;
 }
 
 .sidebar-header,
@@ -1448,4 +1448,340 @@ body .main-content h6 {
   color: var(--secondary) !important;
   font-size: clamp(1rem, 1.5vw, 1.1rem);
   line-height: 1.75;
+}
+
+:root[data-theme="light"] .knowledge-hub-hero,
+:root[data-theme="light"] .knowledge-card-item,
+:root[data-theme="light"] .operational-sector-overview,
+:root[data-theme="light"] .operational-training-card,
+:root[data-theme="light"] .sector-training-material,
+:root[data-theme="light"] .operational-sector-detail,
+:root[data-theme="light"] .detail-introduction,
+:root[data-theme="light"] .information-card,
+:root[data-theme="light"] .related-card,
+:root[data-theme="light"] .process-step,
+:root[data-theme="light"] .resource-panel,
+:root[data-theme="light"] .knowledge-note,
+:root[data-theme="light"] .medical-hero,
+:root[data-theme="light"] .medical-card,
+:root[data-theme="light"] .medical-resource-panel,
+:root[data-theme="light"] .medical-safety-note,
+:root[data-theme="light"] .knowledge-detail-main .detail-hero,
+:root[data-theme="light"] .security-section,
+:root[data-theme="light"] .logs-box,
+:root[data-theme="light"] .experience-card,
+:root[data-theme="light"] .quiz-assigned-card {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+  box-shadow: var(--card-shadow);
+}
+
+:root[data-theme="light"] .knowledge-card-item:hover,
+:root[data-theme="light"] .operational-training-card:hover,
+:root[data-theme="light"] .medical-card:hover,
+:root[data-theme="light"] .related-card:hover,
+:root[data-theme="light"] .experience-card:hover {
+  background: var(--main-hover) !important;
+}
+
+:root[data-theme="light"] .operational-sector-overview p,
+:root[data-theme="light"] .operational-sector-detail p,
+:root[data-theme="light"] .operational-sector-detail li,
+:root[data-theme="light"] .sector-training-material .detail-section-heading h2,
+:root[data-theme="light"] .sector-training-material .operational-training-card h3,
+:root[data-theme="light"] .detail-introduction,
+:root[data-theme="light"] .detail-sinhala-title,
+:root[data-theme="light"] .information-card p,
+:root[data-theme="light"] .related-card p,
+:root[data-theme="light"] .process-body p,
+:root[data-theme="light"] .resource-copy p,
+:root[data-theme="light"] .knowledge-note p,
+:root[data-theme="light"] .hero-description,
+:root[data-theme="light"] .card-item-desc,
+:root[data-theme="light"] .medical-hero p,
+:root[data-theme="light"] .hero-desc,
+:root[data-theme="light"] .step-info p,
+:root[data-theme="light"] .card-desc,
+:root[data-theme="light"] .resource-unavailable,
+:root[data-theme="light"] .quiz-container .quiz-hero p,
+:root[data-theme="light"] .quiz-container .quiz-choice-card p,
+:root[data-theme="light"] .quiz-container .quiz-result p,
+:root[data-theme="light"] .quiz-container .quiz-feedback p,
+:root[data-theme="light"] .quiz-container .quiz-safety-note p,
+:root[data-theme="light"] .quiz-container .quiz-option,
+:root[data-theme="light"] .quiz-container .quiz-assigned-card p,
+:root[data-theme="light"] .security-container .security-table td,
+:root[data-theme="light"] .security-container .log-item,
+:root[data-theme="light"] .security-container .security-subtitle {
+  color: var(--text) !important;
+}
+
+:root[data-theme="light"] .knowledge-hub-hero .hero-title,
+:root[data-theme="light"] .knowledge-card-item .card-item-title,
+:root[data-theme="light"] .operational-sector-overview h2,
+:root[data-theme="light"] .operational-sector-overview .operational-sector-title,
+:root[data-theme="light"] .operational-detailed-heading h2,
+:root[data-theme="light"] .operational-sector-detail h3,
+:root[data-theme="light"] .operational-sector-detail ol li strong,
+:root[data-theme="light"] .detail-content-section h2,
+:root[data-theme="light"] .detail-content-section h3,
+:root[data-theme="light"] .information-card h3,
+:root[data-theme="light"] .related-card h3,
+:root[data-theme="light"] .process-body h3,
+:root[data-theme="light"] .resource-copy h2,
+:root[data-theme="light"] .resource-copy h3,
+:root[data-theme="light"] .knowledge-note h2,
+:root[data-theme="light"] .medical-hero h1,
+:root[data-theme="light"] .medical-card h2,
+:root[data-theme="light"] .medical-card h3,
+:root[data-theme="light"] .step-info h3,
+:root[data-theme="light"] .step-info h4,
+:root[data-theme="light"] .quiz-container .quiz-hero h1,
+:root[data-theme="light"] .quiz-container .quiz-selection h2,
+:root[data-theme="light"] .quiz-container .quiz-choice-card h3,
+:root[data-theme="light"] .quiz-container .quiz-question-card h2,
+:root[data-theme="light"] .quiz-container .quiz-result h2,
+:root[data-theme="light"] .quiz-container .quiz-assigned-section h2,
+:root[data-theme="light"] .quiz-container .quiz-assigned-card h3,
+:root[data-theme="light"] .security-container h2,
+:root[data-theme="light"] .security-container .security-section h3 {
+  color: var(--heading) !important;
+}
+
+:root[data-theme="light"] .knowledge-assistant-page .ka-chat-panel,
+:root[data-theme="light"] .knowledge-assistant-page .ka-input-form,
+:root[data-theme="light"] .knowledge-assistant-page .ka-header {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+
+:root[data-theme="light"] .knowledge-assistant-page .ka-header-copy h2,
+:root[data-theme="light"] .knowledge-assistant-page .ka-source-title,
+:root[data-theme="light"] .knowledge-assistant-page .ka-message-bubble.assistant,
+:root[data-theme="light"] .knowledge-assistant-page .ka-message-bubble.user,
+:root[data-theme="light"] .knowledge-assistant-page .ka-language-toggle,
+:root[data-theme="light"] .knowledge-assistant-page .ka-clear-button,
+:root[data-theme="light"] .knowledge-assistant-page .ka-suggestion-button,
+:root[data-theme="light"] .knowledge-assistant-page .ka-feedback-button,
+:root[data-theme="light"] .knowledge-assistant-page .ka-related-question {
+  background: var(--surface-soft) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+
+:root[data-theme="light"] .knowledge-assistant-page .ka-subtitle,
+:root[data-theme="light"] .knowledge-assistant-page .ka-section-label,
+:root[data-theme="light"] .knowledge-assistant-page .ka-source-title-si,
+:root[data-theme="light"] .knowledge-assistant-page .ka-message-bubble.assistant,
+:root[data-theme="light"] .knowledge-assistant-page .ka-text-input {
+  color: var(--text) !important;
+}
+
+:root[data-theme="light"] .knowledge-assistant-page .main-content .ka-text-input {
+  background: var(--input-bg) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+
+:root[data-theme="light"] .knowledge-assistant-page .ka-user-avatar {
+  background: var(--icon-bg) !important;
+  color: var(--teal) !important;
+}
+
+:root[data-theme="light"] .sector-training-material .operational-training-card a,
+:root[data-theme="light"] .sector-training-material .operational-training-card a:hover {
+  border-color: var(--border-strong) !important;
+  background: var(--surface-soft) !important;
+  color: var(--teal) !important;
+}
+
+:root[data-theme="light"] .search-main .results-count,
+:root[data-theme="light"] .knowledge-detail-main .detail-breadcrumb,
+:root[data-theme="light"] .quiz-container .quiz-question-toolbar,
+:root[data-theme="light"] .quiz-container .quiz-count,
+:root[data-theme="light"] .quiz-container .quiz-score-caption,
+:root[data-theme="light"] .quiz-container .quiz-option-letter {
+  color: var(--secondary) !important;
+}
+
+:root[data-theme="light"] .medical-warning,
+:root[data-theme="light"] .safety-panel {
+  background: color-mix(in srgb, var(--danger) 8%, var(--surface)) !important;
+  border-color: color-mix(in srgb, var(--danger) 28%, var(--border)) !important;
+}
+
+:root[data-theme="light"] .medical-warning p,
+:root[data-theme="light"] .safety-panel p {
+  color: var(--text) !important;
+}
+
+:root[data-theme="light"] .medical-safety-note h2,
+:root[data-theme="light"] .medical-safety-note > svg,
+:root[data-theme="light"] .knowledge-note h2 {
+  color: var(--teal) !important;
+}
+
+:root[data-theme="light"] .security-container .security-table th,
+:root[data-theme="light"] .security-container .security-table td,
+:root[data-theme="light"] .security-container .security-table tr,
+:root[data-theme="light"] .security-container .log-item {
+  border-color: var(--border) !important;
+}
+
+:root[data-theme="light"] .quiz-container .quiz-safety-note {
+  background: var(--surface-info) !important;
+  border-color: var(--border) !important;
+  color: var(--teal) !important;
+}
+
+:root[data-theme="light"] .quiz-container .quiz-safety-note h2,
+:root[data-theme="light"] .quiz-container .quiz-option.selected:not(.correct):not(.incorrect) .quiz-option-letter {
+  color: var(--teal) !important;
+}
+
+:root[data-theme="light"] .quiz-container .quiz-option.correct {
+  background: color-mix(in srgb, #10b981 10%, var(--surface)) !important;
+  color: #047857 !important;
+}
+
+:root[data-theme="light"] .quiz-container .quiz-option.incorrect {
+  background: color-mix(in srgb, #ef4444 8%, var(--surface)) !important;
+  color: #b91c1c !important;
+}
+
+:root[data-theme="light"] .quiz-container .quiz-option-letter {
+  color: var(--secondary) !important;
+}
+
+:root[data-theme="light"] .detail-hero:has(img) .detail-hero-content h1,
+:root[data-theme="light"] .detail-hero:has(img) .detail-hero-content .detail-sinhala-title,
+:root[data-theme="light"] .category-card h4,
+:root[data-theme="light"] .category-card p {
+  color: #ffffff !important;
+}
+
+:root[data-theme="light"] .dashboard-banner,
+:root[data-theme="light"] .stat-card,
+:root[data-theme="light"] .category-card,
+:root[data-theme="light"] .admin-section,
+:root[data-theme="light"] .admin-card,
+:root[data-theme="light"] .knowledge-hub-hero,
+:root[data-theme="light"] .knowledge-card-item,
+:root[data-theme="light"] .operational-sector-overview,
+:root[data-theme="light"] .operational-training-card,
+:root[data-theme="light"] .detail-introduction,
+:root[data-theme="light"] .information-card,
+:root[data-theme="light"] .related-card,
+:root[data-theme="light"] .process-step,
+:root[data-theme="light"] .medical-card,
+:root[data-theme="light"] .quiz-choice-card,
+:root[data-theme="light"] .quiz-question-card,
+:root[data-theme="light"] .quiz-result,
+:root[data-theme="light"] .experience-card,
+:root[data-theme="light"] .ar-mission-card,
+:root[data-theme="light"] .result-item {
+  border-color: #c6ddf7 !important;
+}
+
+:root[data-theme="light"] .app-layout .main-content .knowledge-card-item {
+  background: #f3f8ff !important;
+  border: 1px solid #b9d5f5 !important;
+  box-shadow: 0 10px 24px rgba(43, 82, 125, 0.1) !important;
+}
+
+:root[data-theme="light"] .dashboard-main .stat-icon,
+:root[data-theme="light"] .category-card .card-icon-wrapper,
+:root[data-theme="light"] .knowledge-card-item .card-icon-wrapper,
+:root[data-theme="light"] .operational-training-icon,
+:root[data-theme="light"] .medical-icon-box,
+:root[data-theme="light"] .quiz-choice-icon,
+:root[data-theme="light"] .admin-card .card-icon {
+  background: #eff6ff !important;
+  border-color: #d7e8fb !important;
+}
+
+:root[data-theme="light"] .app-layout .main-content .knowledge-card-item .card-action-indicator {
+  background: #fff7e6 !important;
+  color: #a66a00 !important;
+}
+
+:root[data-theme="light"] .dashboard-main .stat-card:hover,
+:root[data-theme="light"] .dashboard-main .category-card:hover,
+:root[data-theme="light"] .admin-card:hover,
+:root[data-theme="light"] .knowledge-card-item:hover,
+:root[data-theme="light"] .operational-training-card:hover,
+:root[data-theme="light"] .medical-card:hover,
+:root[data-theme="light"] .quiz-choice-card:hover,
+:root[data-theme="light"] .experience-card:hover {
+  background: #f7fbff !important;
+  border-color: #a9cbed !important;
+}
+
+:root[data-theme="light"] .app-layout .main-content .knowledge-card-item:hover,
+:root[data-theme="light"] .app-layout .main-content .knowledge-card-item:focus-visible {
+  background: #f7fbff !important;
+  border-color: #a9cbed !important;
+  box-shadow: 0 14px 28px rgba(43, 82, 125, 0.13) !important;
+}
+
+:root[data-theme="light"] .app-layout .main-content .knowledge-card-item:hover .card-action-indicator {
+  background: #ffefc2 !important;
+  color: #8d5a00 !important;
+}
+
+:root[data-theme="light"] .experience-card .header-text h3,
+:root[data-theme="light"] .experience-card .officer-name,
+:root[data-theme="light"] .experience-card .org-name,
+:root[data-theme="light"] .experience-card .service-years,
+:root[data-theme="light"] .experience-card .snippet,
+:root[data-theme="light"] .experience-card .type-badge,
+:root[data-theme="light"] .experience-card .read-more {
+  color: var(--text) !important;
+}
+
+:root[data-theme="light"] .experience-card .org-name,
+:root[data-theme="light"] .experience-card .read-more {
+  color: var(--teal) !important;
+}
+
+:root[data-theme="light"] .experience-card .card-footer {
+  border-color: var(--border) !important;
+}
+
+:root[data-theme="light"] .experience-card .type-badge {
+  border: 1px solid var(--border-strong) !important;
+  background: #eff6ff !important;
+}
+
+:root[data-theme="light"] .view-experience-main .ve-story-panel {
+  border-color: var(--border-strong) !important;
+  background: var(--surface) !important;
+  color: var(--text) !important;
+}
+
+:root[data-theme="light"] .view-experience-main .ve-story-panel h2,
+:root[data-theme="light"] .view-experience-main .ve-story-panel h3,
+:root[data-theme="light"] .view-experience-main .ve-story-panel p,
+:root[data-theme="light"] .view-experience-main .ve-story-panel li,
+:root[data-theme="light"] .view-experience-main .ve-story-panel span {
+  color: var(--text) !important;
+}
+
+:root[data-theme="light"] .view-experience-main .ve-story-panel h2,
+:root[data-theme="light"] .view-experience-main .ve-story-panel h3 {
+  color: var(--heading) !important;
+}
+
+:root[data-theme="light"] .view-experience-main .ve-story-heading {
+  border-left-color: var(--teal) !important;
+  background: var(--surface-info) !important;
+}
+
+:root[data-theme="light"] .view-experience-main .ve-story-challenges,
+:root[data-theme="light"] .view-experience-main .ve-story-actions,
+:root[data-theme="light"] .view-experience-main .ve-story-lessons,
+:root[data-theme="light"] .view-experience-main .ve-story-recommendations {
+  background: var(--surface) !important;
 }

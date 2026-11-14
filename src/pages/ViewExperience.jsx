@@ -132,7 +132,7 @@ export default function ViewExperience() {
         ? "අභියෝගාත්මක නායකත්වය, විශේෂිත පුහුණු සම්බන්ධීකරණය සහ අවදානම් සහගත පරිසරයන්හි ගැලවුම්කරණ ක්‍රමවේද ලබා දෙන පළපුරුදු පුහුණු නිලධාරී." 
         : "Experienced Training Officer In Charge providing critical leadership, specialized training coordination, and rescue protocols in high-risk urban environments.",
       type: locale === "si" ? "පුහුණු සහ මෙහෙයුම්" : "Training & Operations",
-      location: locale === "si" ? "ශ්‍රී ලංකාව" : "Sri Lanka",
+      location: "Colombo Dock Yard",
       image: ranjanImg,
       storyDetailsList: [
         {
@@ -790,7 +790,7 @@ export default function ViewExperience() {
               <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
                 
                 {/* Incident Main Title */}
-                <div style={{ background: "rgba(245, 158, 11, 0.05)", borderLeft: "4px solid #f59e0b", padding: "16px 20px", borderRadius: "0 8px 8px 0" }}>
+                <div className="ve-story-panel ve-story-heading" style={{ background: "rgba(245, 158, 11, 0.05)", borderLeft: "4px solid #f59e0b", padding: "16px 20px", borderRadius: "0 8px 8px 0" }}>
                   <span style={{ fontSize: "12px", color: "#f59e0b", fontWeight: "bold", textTransform: "uppercase", letterSpacing: "1px" }}>
                     {locale === "si" ? `වසර ${currentStory.incidentYear} • ${currentStory.incidentType}` : `Year ${currentStory.incidentYear} • ${currentStory.incidentType}`}
                   </span>
@@ -865,7 +865,7 @@ export default function ViewExperience() {
                 )}
 
                 {/* The Story Section */}
-                <div style={{ background: "rgba(255,255,255,0.02)", padding: "20px", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.04)" }}>
+                <div className="ve-story-panel" style={{ background: "rgba(255,255,255,0.02)", padding: "20px", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.04)" }}>
                   <h3 style={{ fontSize: "16px", color: "#f1f5f9", marginBottom: "12px", display: "flex", alignItems: "center", gap: "8px" }}>
                     📖 {t[locale].theStory}
                   </h3>
@@ -876,7 +876,7 @@ export default function ViewExperience() {
 
                 {/* Challenges Faced */}
                 {currentStory.challenges && currentStory.challenges.length > 0 && (
-                  <div style={{ background: "rgba(239, 68, 68, 0.03)", padding: "20px", borderRadius: "10px", border: "1px solid rgba(239, 68, 68, 0.1)" }}>
+                  <div className="ve-story-panel ve-story-challenges" style={{ background: "rgba(239, 68, 68, 0.03)", padding: "20px", borderRadius: "10px", border: "1px solid rgba(239, 68, 68, 0.1)" }}>
                     <h3 style={{ fontSize: "16px", color: "#f87171", marginBottom: "12px", display: "flex", alignItems: "center", gap: "8px" }}>
                       <AlertTriangle size={18} /> {t[locale].challenges}
                     </h3>
@@ -890,7 +890,7 @@ export default function ViewExperience() {
 
                 {/* Actions Taken */}
                 {currentStory.actions && currentStory.actions.length > 0 && (
-                  <div style={{ background: "rgba(59, 130, 246, 0.03)", padding: "20px", borderRadius: "10px", border: "1px solid rgba(59, 130, 246, 0.1)" }}>
+                  <div className="ve-story-panel ve-story-actions" style={{ background: "rgba(59, 130, 246, 0.03)", padding: "20px", borderRadius: "10px", border: "1px solid rgba(59, 130, 246, 0.1)" }}>
                     <h3 style={{ fontSize: "16px", color: "#60a5fa", marginBottom: "12px", display: "flex", alignItems: "center", gap: "8px" }}>
                       <CheckCircle size={18} /> {t[locale].actions}
                     </h3>
@@ -904,7 +904,7 @@ export default function ViewExperience() {
 
                 {/* Key Lessons Learned */}
                 {currentStory.lessons && currentStory.lessons.length > 0 && (
-                  <div style={{ background: "rgba(52, 211, 153, 0.03)", padding: "20px", borderRadius: "10px", border: "1px solid rgba(52, 211, 153, 0.1)" }}>
+                  <div className="ve-story-panel ve-story-lessons" style={{ background: "rgba(52, 211, 153, 0.03)", padding: "20px", borderRadius: "10px", border: "1px solid rgba(52, 211, 153, 0.1)" }}>
                     <h3 style={{ fontSize: "16px", color: "#34d399", marginBottom: "12px", display: "flex", alignItems: "center", gap: "8px" }}>
                       <Lightbulb size={18} /> {t[locale].lessons}
                     </h3>
@@ -918,7 +918,7 @@ export default function ViewExperience() {
 
                 {/* Recommendations */}
                 {currentStory.recommendations && currentStory.recommendations.length > 0 && (
-                  <div style={{ background: "rgba(245, 158, 11, 0.03)", padding: "20px", borderRadius: "10px", border: "1px solid rgba(245, 158, 11, 0.1)" }}>
+                  <div className="ve-story-panel ve-story-recommendations" style={{ background: "rgba(245, 158, 11, 0.03)", padding: "20px", borderRadius: "10px", border: "1px solid rgba(245, 158, 11, 0.1)" }}>
                     <h3 style={{ fontSize: "16px", color: "#f59e0b", marginBottom: "12px", display: "flex", alignItems: "center", gap: "8px" }}>
                       <Shield size={18} /> {t[locale].recommendations}
                     </h3>

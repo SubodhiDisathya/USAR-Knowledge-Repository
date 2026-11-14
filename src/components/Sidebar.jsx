@@ -12,6 +12,7 @@ import {
 import { useAuth } from "../context/AuthContext";
 import { useLocale } from "../context/LocaleContext";
 import translations from "../i18n/translations";
+import usarLogo from "../assets/usar-logo.png";
 import "./Sidebar.css";
 
 export default function Sidebar() {
@@ -21,7 +22,10 @@ export default function Sidebar() {
 
   return (
     <aside className="sidebar">
-      <div className="sidebar-header"><h1>USAR</h1></div>
+      <div className="sidebar-header">
+        <img className="sidebar-logo" src={usarLogo} alt="USAR Sri Lanka logo" />
+        <h1>USAR</h1>
+      </div>
 
       <div className="sidebar-nav">
         

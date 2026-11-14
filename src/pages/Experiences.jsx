@@ -8,7 +8,6 @@ import ExperienceCard from "../components/ExperienceCard";
 import PageBackButton from "../components/PageBackButton";
 import { useLocale } from "../context/LocaleContext";
 import translations from "../i18n/translations";
-import { Filter } from "lucide-react";
 import { fieldExperiences } from "../data/experienceData";
 import "./Experiences.css";
 
@@ -76,12 +75,6 @@ export default function Experiences() {
               />
             </div>
 
-            <div className="filter-section">
-              <button className="filter-btn">
-                <Filter size={18} />
-                {t.filter}
-              </button>
-            </div>
           </div>
 
           <div className="experiences-grid">
