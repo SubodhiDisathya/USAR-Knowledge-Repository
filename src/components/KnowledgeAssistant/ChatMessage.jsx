@@ -37,7 +37,7 @@ export default function ChatMessage({ message, onFeedback, onRelatedQuestion, lo
           </div>
         )}
 
-        {!isUser && !message.welcome && (
+        {!isUser && (
           <div className="ka-feedback-row">
             <button
               type="button"

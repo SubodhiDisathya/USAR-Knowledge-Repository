@@ -144,7 +144,7 @@ export default function ViewExperience() {
             { img: newspaperImg, caption: locale === "si" ? "සිදුවීම පිළිබඳ පුවත්පත් මාධ්‍ය ආවරණය" : "Newspaper Media Coverage of the Incident" }
           ],
           storyText: locale === "si" 
-            ? "සීමිත පයිප්පයක් වැනි අවකාශයක් තුළ පුද්ගලයන් දෙදෙනෙකු සිරවීමෙන් පසු මෙම ගැලවුම්කරණ මෙහෙයුම ක්‍රියාත්මක කරන ලදී. එම ප්‍රදේශය පටු සහ ළඟා වීමට අපහසු වූ බැවින් තත්ත්වය අභියෝගාත්මක විය. ගිනි නිවීම් සහ ගැලවුම්කරණ පිරිස පැමිණ තත්ත්වය හොඳින් පරීක්ෂා කර මෙහෙයුම ඇරඹීය. ආරක්‍ෂිත උපකරණ භාවිත කරමින් කණ්ඩායමේ සාමාජිකයෙක් ඇතුළු විය. මෙහෙයුමේදී සිරවී සිටි එක් අයෙක් කලබලකාරී සහ විරුද්ධ වන ස්වභාවයකින් පසුවිය. දුෂ්කරතා මැද වුවද, කණ්ඩායම ඉතා පරිස්සමින් එම පුද්ගලයන් දෙදෙනා ආරක්ෂිතව මුදා ගන්නා ලදී."
+            ? "සීමිත පයිප්පයක් වැනි අවකාශයක් තුළ පුද්ගලයන් දෙදෙනෙකු සිරවීමෙන් පසු මෙම ගැලවුම්කරණ මෙහෙයුම ක්‍රියාත්මක කරන ලදී. එම ප්‍රදේශය පටු සහ ළඟා වීමට අපහසු වූ බැවින් තත්ත්වය අභියෝගාත්මක විය. ගිනි නිවීම් සහ ගැලවුම්කරණ පිරිස පැමිණ තත්ත්වය හොඳින් පරීක්ෂා කර මෙහෙයුම ඇරඹීය. ආරක්‍ෂිත උපකරණ භාවිත කරමින් කණ්ඩායමේ සාමාජිකයෙක් ඇතුළු විය. මෙහෙයුමේදී සිරවී සිටි එක් පුද්ගලයෙක් කලබලකාරී සහ විරුද්ධ වන ස්වභාවයකින් පසුවිය. දුෂ්කරතා මැද වුවද, කණ්ඩායම ඉතා පරිස්සමින් එම පුද්ගලයා ආරක්ෂිතව මුදා ගන්නා ලදී."
             : "A rescue operation was carried out after two people became trapped inside a confined pipe-like space. The situation was challenging because the space was narrow and difficult to access. Fire and rescue personnel arrived at the scene and carefully assessed the situation before beginning the rescue. A rescue team member entered the confined space using appropriate protective equipment and rescue procedures. During the operation, one of the trapped persons was reportedly in a confused and distressed condition and attempted to resist the rescuer. Despite the difficult conditions, the rescue team continued the operation carefully and successfully brought the trapped persons out of the confined space.",
           challenges: [
             locale === "si" ? "සීමිත සහ පටු වැඩ කරන අවකාශය" : "Restricted and confined working space",
@@ -156,7 +156,7 @@ export default function ViewExperience() {
           actions: [
             locale === "si" ? "තත්ත්වය තක්සේරු කිරීම: සීමිත අවකාශය සහ සිරවූවන්ගේ තත්ත්වය පරීක්ෂා කිරීම." : "Situation Assessment: The rescue team assessed the confined space and the condition of the trapped persons.",
             locale === "si" ? "අපද්‍රව්‍ය හඳුනාගැනීම: ඇතුළු වීමට පෙර පරිසරයේ ඇති විය හැකි අවදානම් සලකා බැලීම." : "Hazard Identification: Potential hazards associated with the restricted environment were considered before entry.",
-            locale === "si" ? "පුද්ගලයන් මුදාගැනීමේ සූදානම: සුදුසු ගැලවුම්කරණ සහ ආරක්ෂක උපකරණ සූදානම් කිරීම." : "Rescue Preparation: Appropriate rescue equipment and protective equipment were prepared.",
+            locale === "si" ? "පුද්ගලයන් මුදාගැනීමේ සූදානම: සුදුසු ගැලවුම්කරණ සහ ආරක්ෂක උපකරණ සූදානම් කිරීම." : "Rescue Preparation: nmpAppropriate rescue equipment and protective equipment were prepared.",
             locale === "si" ? "සීමිත අවකාශයට ඇතුළු වීම: පුහුණු ගැලවුම්කරුවෙක් අදාළ ප්‍රදේශයට ඇතුළු වීම." : "Confined-Space Entry: A trained rescuer entered the restricted area to reach the trapped person.",
             locale === "si" ? "වින්දිතයන් මුදාගැනීම: සිරවූවන් ආරක්ෂිතව ඉවතට ගැනීම." : "Victim Rescue: The trapped persons were carefully assisted and brought out of the confined space."
           ],
@@ -199,7 +199,6 @@ export default function ViewExperience() {
       year: locale === "si" ? "වසර 23 ක සේවය" : "23 Years Service",
       snippet: locale === "si" ? "බිම් මට්ටමේ මෙහෙයුම් සහ උපකරණ සූදානම පාලනය කරන අංශ ප්‍රධානියා." : "Section Officer managing ground operations, equipment readiness, and rapid response deployment.",
       type: locale === "si" ? "නගර සෙවීම සහ ගැලවීම" : "Urban Search & Rescue",
-      location: locale === "si" ? "කොළඹ" : "Colombo",
       image: sunimalImg,
       storyDetailsList: [
         {
@@ -303,10 +302,11 @@ export default function ViewExperience() {
             { img: story4Img, caption: locale === "si" ? "මරදාන දුම්රිය ස්ථාන සිදුවීම් දර්ශනය" : "Maradana Railway Station Incident Visual" }
           ],
           storyText: locale === "si" 
-            ? "මරදාන දුම්රිය ස්ථානයේදී පුද්ගලයෙකු චලනය වන දුම්රියක් සමඟ ගැටීමෙන් ඛේදනීය සිදුවීමක් සිදු විය. තුවාල ලැබූ පුද්ගලයාට සහය වීමට සහ මුදා ගැනීමට ගැලවුම්කරණ කණ්ඩායමක් එම ස්ථානයට කැඳවන ලදී.\n\nගැලවුම්කරණ කණ්ඩායම වහාම එම ස්ථානයට ගොස් සහය වීමට උත්සාහ කළේය. කෙසේ වෙතත්, එම පුද්ගලයාගේ තත්ත්වය ඉතා අසතුටුදායක (දේශසීමා/අවදානම්) වූ අතර, ඔහුට හදිසි වෛද්‍ය ප්‍රතිකාර අවශ්‍ය විය. අත්‍යවශ්‍ය ඖෂධ සහ වෛද්‍ය සැපයුම් එම ස්ථානයේ නොතිබීම හේතුවෙන් කණ්ඩායමට දුෂ්කරතාවන්ට මුහුණ දීමට සිදු විය. අවශ්‍ය එන්නත් සහ අනෙකුත් හදිසි වෛද්‍ය සම්පත් ද ලබා ගැනීමට නොහැකි විය.\n\nගැලවුම්කරණ කණ්ඩායමේ උත්සාහය නොතකා, ඔවුන්ට එම පුද්ගලයාගේ ජීවිතය බේරා ගැනීමට නොහැකි විය. දුම්රිය හදිසි අවස්ථාවන්හිදී අත්‍යවශ්‍ය වෛද්‍ය සැපයුම්, පුහුණු වෛද්‍ය කාර්ය මණ්ඩලය සහ ඵලදායී හදිසි ප්‍රතිචාර ක්‍රියා පටිපාටි තිබීමේ වැදගත්කම මෙම සිදුවීම මගින් මනාව පෙන්නුම් කරන ලදී."
-            : "A tragic incident occurred at Maradana Railway Station when a man came into contact with a moving train. A rescue team was called to the scene to assist and rescue the injured person.\n\nThe rescue team immediately went to the location and attempted to provide assistance. However, the man's condition was critical, and he required urgent medical attention. The team faced difficulties because the necessary medicines and medical supplies were not available at the scene. Some required injections and other emergency medical resources were also unavailable.\n\nDespite the rescue team's efforts, they were unable to save the man's life. The incident highlighted the importance of having essential medical supplies, trained medical personnel, and effective emergency response procedures available during railway emergencies.",
+            ? "මරදාන දුම්රිය ස්ථානයේදී පුද්ගලයෙකු ධාවනය වෙමින් පවතින දුම්රියක් සමඟ ගැටීමෙන් ඛේදනීය සිදුවීමක් සිදු විය. තුවාල ලැබූ පුද්ගලයාට සහය වීමට සහ මුදා ගැනීමට ගැලවුම්කරණ කණ්ඩායමක් එම ස්ථානයට කැඳවන ලදී.\n\nගැලවුම්කරණ කණ්ඩායම වහාම එම ස්ථානයට ගොස් සහය වීමට උත්සාහ කළේය. තුවාලකරු පසුව කොළඹ දුම්රිය ස්ථානය වෙත රැගෙන ගිය අතර, ඔහුගේ එක් පාදයක් මරදාන දුම්රිය ස්ථානයේ ඉතිරිව තිබූ බව දැනගන්නට ලැබුණි. එම පාදය රැගෙන යාම සඳහා ගිනි නිවන සේවයේ නිලධාරීන්ට මරදාන දුම්රිය ස්ථානයට ආපසු යාමට සිදු විය.\n\nඑම පුද්ගලයාගේ තත්ත්වය බරපතල වූ අතර ඔහුට හදිසි වෛද්‍ය ප්‍රතිකාර අවශ්‍ය විය. අත්‍යවශ්‍ය ඖෂධ සහ වෛද්‍ය සැපයුම් එම ස්ථානයේ නොතිබීම හේතුවෙන් කණ්ඩායමට දුෂ්කරතාවන්ට මුහුණ දීමට සිදු විය. අවශ්‍ය එන්නත් සහ අනෙකුත් හදිසි වෛද්‍ය සම්පත් ද ලබා ගැනීමට නොහැකි විය."
+            : "A tragic incident occurred at Maradana Railway Station when a man came into contact with a moving train. A rescue team was called to assist him. The team responded at the scene, and the injured man was later taken to Colombo Railway Station. Responders then learned that one of his legs had been left at Maradana, so Fire Brigade personnel had to return to Maradana Railway Station to retrieve it.\n\nThe man's condition was critical and he required urgent medical attention. The team faced difficulties because essential medicines and medical supplies were not available. Some required injections and other emergency medical resources were also unavailable.",
           challenges: [
-            locale === "si" ? "මෙම සිදුවීම චලනය වන දුම්රියක් සහ ඉතා අවදානම් සහගත ගැලවුම්කරණ පරිසරයක් සම්බන්ධ විය." : "The incident involved a moving train and a highly dangerous rescue environment.",
+            locale === "si" ? "මෙම සිදුවීම ධාවනය වෙමින් පවතින දුම්රියක් සහ ඉතා අවදානම් සහගත ගැලවුම්කරණ පරිසරයක් සම්බන්ධ විය." : "The incident involved a moving train and a highly dangerous rescue environment.",
+            locale === "si" ? "තුවාලකරු කොළඹ දුම්රිය ස්ථානයට රැගෙන ගිය පසු, ඔහුගේ වෙන්වූ පාදය මරදානේ තිබීම නිසා අමතර ප්‍රවාහන සහ සම්බන්ධීකරණයක් අවශ්‍ය විය." : "After the injured man was taken to Colombo Railway Station, his separated leg remained at Maradana, requiring additional transport and coordination.",
             locale === "si" ? "තුවාල ලැබූ පුද්ගලයාට වහාම වෛද්‍ය ප්‍රතිකාර අවශ්‍ය විය." : "The injured person required immediate medical attention.",
             locale === "si" ? "වින්දිතයාගේ තත්ත්වය බරපතල වීම නිසා ගැලවුම්කරණ කණ්ඩායමට දුෂ්කරතාවන්ට මුහුණ දීමට සිදු විය." : "The rescue team faced difficulties due to the critical condition of the victim.",
             locale === "si" ? "අත්‍යවශ්‍ය ඖෂධ සහ හදිසි වෛද්‍ය සැපයුම් එම ස්ථානයේ නොතිබුණි." : "Essential medicines and emergency medical supplies were not available at the scene.",
@@ -319,6 +319,9 @@ export default function ViewExperience() {
             locale === "si" ? "කණ්ඩායම වහාම මරදාන දුම්රිය ස්ථානය වෙත ගියේය." : "The team immediately went to Maradana Railway Station.",
             locale === "si" ? "තත්ත්වයට අනුව පීඩාවට පත් වූ පුද්ගලයා තක්සේරු කරන ලදී." : "The affected person was assessed according to the situation.",
             locale === "si" ? "තුවාල ලැබූ පුද්ගලයාට සහය වීමට සහ මුදා ගැනීමට ගැලවුම්කරණ කණ්ඩායම උත්සාහ කළේය." : "The rescue team attempted to provide assistance and rescue the injured man.",
+            locale === "si" ? "තුවාලකරු කොළඹ දුම්රිය ස්ථානය වෙත රැගෙන යන ලදී." : "The injured man was taken to Colombo Railway Station.",
+            locale === "si" ? "ඔහුගේ වෙන්වූ පාදය මරදාන දුම්රිය ස්ථානයේ තිබූ බව හඳුනා ගන්නා ලදී." : "Responders identified that his separated leg remained at Maradana Railway Station.",
+            locale === "si" ? "එම පාදය රැගෙන ඒම සඳහා ගිනි නිවන සේවයේ නිලධාරීන් මරදාන දුම්රිය ස්ථානයට ආපසු ගියහ." : "Fire Brigade personnel returned to Maradana Railway Station to retrieve the leg.",
             locale === "si" ? "හදිසි වෛද්‍ය ප්‍රතිකාරවල අවශ්‍යතාව හඳුනා ගන්නා ලදී." : "The need for urgent medical treatment was identified.",
             locale === "si" ? "පවතින වෛද්‍ය සම්පත් සහ අදාළ පුද්ගලයාගේ තත්ත්වය කණ්ඩායම විසින් සලකා බලන ලදී." : "The team considered the available medical resources and the person's condition.",
             locale === "si" ? "හදිසි සහය සම්බන්ධීකරණය සඳහා අදාළ කාර්ය මණ්ඩලය සම්බන්ධ කර ගන්නා ලදී." : "Relevant personnel were involved in coordinating emergency assistance."
@@ -328,12 +331,14 @@ export default function ViewExperience() {
             locale === "si" ? "ක්ෂණික වෛද්‍ය ආධාර වැදගත් වේ: බරපතල ලෙස තුවාල ලැබූවන්ට පුහුණු වෛද්‍ය වෘත්තිකයන්ගෙන් ක්ෂණික ප්‍රතිකාර අවශ්‍ය විය හැක." : "Rapid medical assistance matters: Critically injured persons may require immediate treatment from trained medical professionals.",
             locale === "si" ? "හදිසි සැපයුම් ලබා ගත හැකි විය යුතුය: අවශ්‍ය විටෙක ඖෂධ සහ සුදුසු වෛද්‍ය සම්පත් ප්‍රවේශ විය හැකි මට්ටමේ තිබිය යුතුය." : "Emergency supplies should be available: Medicines and appropriate medical resources should be accessible when required.",
             locale === "si" ? "ගැලවුම්කරණ සහ වෛද්‍ය කණ්ඩායම් සම්බන්ධීකරණය විය යුතුය: ඵලදායී සහයෝගීතාව කාලෝචිත හදිසි සත්කාර සඳහා උපකාරී වේ." : "Rescue and medical teams should coordinate: Effective cooperation can support timely emergency care.",
+            locale === "si" ? "ස්ථාන අතර සම්බන්ධීකරණය පැහැදිලි විය යුතුය: තුවාලකරු වෙනත් ස්ථානයකට රැගෙන ගිය විට, මරදානේ ඉතිරි වූ ඔහුගේ පාදය ලබා ගැනීම වැනි අවශ්‍ය කටයුතු සම්බන්ධීකරණය කළ යුතුය." : "Coordination between locations must be clear: When a casualty is moved, responders must coordinate necessary follow-up, such as retrieving his leg left at Maradana.",
             locale === "si" ? "දුම්රිය හදිසි අවස්ථා සඳහා විශේෂ සූදානමක් අවශ්‍ය වේ: අවදානම් සහිත දුම්රිය පරිසරයන් තුළ ආරක්ෂිතව ප්‍රතිචාර දැක්වීමට කණ්ඩායම් පුහුණු කළ යුතුය." : "Railway emergencies require special preparation: Teams should be trained to respond safely in hazardous railway environments.",
             locale === "si" ? "සිදුවීම් වාර්තා කිරීම වැදගත් වේ: අභියෝග සහ සම්පත් හිඟයන් සටහන් කර ගැනීම අනාගත හදිසි මෙහෙයුම් වැඩිදියුණු කිරීමට උපකාරී වේ." : "Incident documentation is important: Recording challenges and resource shortages can help improve future emergency operations."
           ],
           recommendations: [
             locale === "si" ? "ගැලවුම්කරණ කණ්ඩායම් සතුව සුදුසු හදිසි ප්‍රථමාධාර කට්ටල සහ වෛද්‍ය උපකරණ ඇති බව තහවුරු කිරීම." : "Ensure rescue teams have appropriate emergency first-aid kits and medical equipment.",
             locale === "si" ? "දුම්රිය හදිසි අවස්ථාවන්හිදී සුදුසුකම් ලත් වෛද්‍ය කාර්ය මණ්ඩලයකට ප්‍රවේශ වීමට පහසුකම් සැලසීම." : "Establish access to qualified medical personnel during railway emergencies.",
+            locale === "si" ? "තුවාලකරුවන් වෙනත් ස්ථානවලට මාරු කිරීමේදී දුම්රිය කාර්ය මණ්ඩලය, ගිනි නිවන සේවය සහ වෛද්‍ය කණ්ඩායම් අතර පැහැදිලි සම්බන්ධීකරණ ක්‍රමයක් පවත්වා ගැනීම." : "Maintain a clear coordination process between railway staff, Fire Brigade personnel, and medical teams when casualties are transferred between locations.",
             locale === "si" ? "අදාළ දුම්රිය ස්ථානවල අත්‍යවශ්‍ය හදිසි සැපයුම් පවත්වාගෙන යාම." : "Maintain essential emergency supplies at railway stations where appropriate.",
             locale === "si" ? "දුම්රිය කාර්ය මණ්ඩලය, ගැලවුම්කරණ කණ්ඩායම් සහ වෛද්‍ය සේවා අතර සම්බන්ධීකරණය වැඩිදියුණු කිරීම." : "Improve coordination between railway staff, rescue teams, and medical services.",
             locale === "si" ? "නිయමිත පරිදි දුම්රිය හදිසි ප්‍රතිචාර පුහුණු සහ අභ්‍යාස පැවැත්වීම." : "Conduct regular railway emergency-response training and drills.",
@@ -735,13 +740,15 @@ export default function ViewExperience() {
                 </div>
               </div>
               
-              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                <MapPin size={18} style={{ color: "#f87171" }} />
-                <div>
-                  <span style={{ fontSize: "11px", color: "#64748b", display: "block" }}>{t[locale].location}</span>
-                  <span style={{ fontSize: "13px", color: "#e2e8f0" }}>{officer.location}</span>
+              {officer.location && (
+                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                  <MapPin size={18} style={{ color: "#f87171" }} />
+                  <div>
+                    <span style={{ fontSize: "11px", color: "#64748b", display: "block" }}>{t[locale].location}</span>
+                    <span style={{ fontSize: "13px", color: "#e2e8f0" }}>{officer.location}</span>
+                  </div>
                 </div>
-              </div>
+              )}
 
               <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 <Award size={18} style={{ color: "#34d399" }} />

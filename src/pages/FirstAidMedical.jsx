@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { AlertTriangle, Ambulance, ArrowLeft, ArrowRight, Bandage, CheckCircle, ExternalLink, Heart, Search, ShieldAlert, Stethoscope, UserX } from "lucide-react";
+import { AlertTriangle, Ambulance, ArrowLeft, ArrowRight, Bandage, CheckCircle, ExternalLink, FileText, Heart, Search, ShieldAlert, Stethoscope, UserX } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 import TopHeader from "../components/TopHeader";
 import { useLocale } from "../context/LocaleContext";
@@ -14,7 +14,8 @@ const medicalDetails = {
     description: "Learn the basic actions for providing safe and appropriate assistance during an emergency.",
     sinhalaDescription: "හදිසි අවස්ථාවකදී ආරක්ෂිතව සහ සුදුසු ලෙස සහාය ලබාදීමේ මූලික පියවර ඉගෙන ගන්න.",
     resourceKey: "basicMedicalRescuePDF",
-    resourceUrl: "https://drive.google.com/file/d/1EfBmHdSqimkeX0C1w-YojDjJd16GDSZn/view?usp=sharing",
+    sinhalaResourceUrl: "https://drive.google.com/file/d/1EfBmHdSqimkeX0C1w-YojDjJd16GDSZn/view?usp=sharing",
+    englishResourceUrl: "https://drive.google.com/file/d/1RKg7Wjrgf3ndDLrbLVAgbbzlJ69dF-eW/preview?usp=sharing",
     items: [
       ["🛡️", "Safety First", "ආරක්ෂාව ප්‍රථමයෙන්", "Ensure personal safety before providing assistance.", "සහාය ලබා දීමට පෙර ඔබේ පෞද්ගලික ආරක්ෂාව තහවුරු කරගන්න."],
       ["🔍", "Assess the Situation", "තත්ත්වය තක්සේරු කරන්න", "Assess the situation and identify immediate risks.", "තත්ත්වය තක්සේරු කර ක්ෂණික අවදානම් හඳුනාගන්න."],
@@ -30,7 +31,8 @@ const medicalDetails = {
     description: "Check the scene systematically and make safety the first priority before approaching a patient.",
     sinhalaDescription: "රෝගියා වෙත ළඟාවීමට පෙර සිද්ධි ස්ථානය ක්‍රමානුකූලව පරීක්ෂා කර ආරක්ෂාවට ප්‍රමුඛත්වය දෙන්න.",
     resourceKey: "sceneAssessmentPDF",
-    resourceUrl: "https://drive.google.com/file/d/1Itm299GxgoXpUvwi-9AY40IZTwqc-1xC/view?usp=sharing",
+    sinhalaResourceUrl: "https://drive.google.com/file/d/1Itm299GxgoXpUvwi-9AY40IZTwqc-1xC/view?usp=sharing",
+    englishResourceUrl: "https://drive.google.com/file/d/1CO9VUa7jrETz1fBVJTUPd8hxMISl6kAB/preview?usp=sharing",
     warning: ["Never become another victim while trying to help someone.", "කෙනෙකුට උදව් කිරීමට උත්සාහ කරන අතරතුර තවත් විපතට පත් පුද්ගලයෙකු නොවන්න."],
     items: [
       ["👤", "Your Safety", "ඔබේ ආරක්ෂාව", "Check your own safety before taking action.", "ක්‍රියා කිරීමට පෙර ඔබේම ආරක්ෂාව පරීක්ෂා කරන්න."],
@@ -47,7 +49,8 @@ const medicalDetails = {
     description: "Use calm communication and the AVPU method to make an initial assessment of the patient.",
     sinhalaDescription: "සන්සුන් සන්නිවේදනය සහ AVPU ක්‍රමය භාවිතයෙන් රෝගියාගේ මූලික තත්ත්ව ඇගයීම සිදු කරන්න.",
     resourceKey: "patientAssessmentPDF",
-    resourceUrl: "https://drive.google.com/file/d/1lWdK_EvzlZgSjaKp_yqSNoSRdVFX0M9B/view?usp=sharing",
+    sinhalaResourceUrl: "https://drive.google.com/file/d/1lWdK_EvzlZgSjaKp_yqSNoSRdVFX0M9B/view?usp=sharing",
+    englishResourceUrl: "https://drive.google.com/file/d/1GFWtVRL-yi-D44y2y9Zbp98M5tHNavdz/preview?usp=sharing",
     items: [
       ["👁️", "Check for Hazards", "උපද්‍රව පරීක්ෂා කරන්න", "Check for hazards before approaching the patient.", "රෝගියා වෙත ළඟාවීමට පෙර අවදානම් පරීක්ෂා කරන්න."],
       ["🗣️", "Communicate with the Patient", "රෝගියා සමඟ සන්නිවේදනය කරන්න", "Speak calmly and observe the patient's response.", "සන්සුන්ව කතා කර රෝගියාගේ ප්‍රතිචාරය නිරීක්ෂණය කරන්න."],
@@ -65,7 +68,8 @@ const medicalDetails = {
     description: "Recognize common injury warning signs and provide simplified basic responses while awaiting qualified help.",
     sinhalaDescription: "සුදුසුකම් ලත් සහාය ලැබෙන තෙක් සාමාන්‍ය තුවාලවල අනතුරු සංඥා හඳුනාගෙන සරල මූලික ප්‍රතිචාර ලබාදෙන්න.",
     resourceKey: "patientTreatmentPDF",
-    resourceUrl: "https://drive.google.com/file/d/1PvGu9HT-sk1sBcKLDhO63yFM07uYd2Vh/view?usp=sharing",
+    sinhalaResourceUrl: "https://drive.google.com/file/d/1PvGu9HT-sk1sBcKLDhO63yFM07uYd2Vh/view?usp=sharing",
+    englishResourceUrl: "https://drive.google.com/file/d/1ZvqbAK0Z6rlytRLfNTOGtJYhzX5RGZj7/preview?usp=sharing",
     items: [
       ["🩸", "Bleeding", "රුධිර වහනය", "Warning signs: persistent heavy bleeding or signs of shock. Basic response: apply direct pressure and use appropriate bleeding-control methods.", "අනතුරු ලකුණු: අධික රුධිර වහනය දිගටම පැවතීම හෝ කම්පන තත්ත්වයක ලක්ෂණ. මූලික ප්‍රතිචාරය: තුවාලයට සෘජු පීඩනය යොදා සුදුසු රුධිර වහනය පාලන ක්‍රම භාවිත කරන්න."],
       ["🦴", "Fractures", "අස්ථි බිඳීම්", "Warning signs: deformity, swelling, or inability to move. Basic response: immobilize or support the injury and do not attempt to straighten it.", "අනතුරු ලකුණු: විකෘති වීම, ඉදිමීම හෝ චලනය කිරීමට නොහැකි වීම. මූලික ප්‍රතිචාරය: තුවාල වූ කොටස නොසෙල්වෙන ලෙස ආධාර කරන්න; එය සෘජු කිරීමට උත්සාහ නොකරන්න."],
@@ -81,7 +85,8 @@ const medicalDetails = {
     description: "Use careful, coordinated movement practices that protect the patient's condition during rescue operations.",
     sinhalaDescription: "ගලවා ගැනීමේ මෙහෙයුම් අතරතුර රෝගියාගේ තත්ත්වය ආරක්ෂා කරන, සැලකිලිමත් සහ සම්බන්ධීකරණය කළ චලන ක්‍රම භාවිතා කරන්න.",
     resourceKey: "patientHandlingPDF",
-    resourceUrl: "https://drive.google.com/file/d/1Tvak74xauHgEHQjnGUbQmYcnVfo8oD32/view?usp=sharing",
+    sinhalaResourceUrl: "https://drive.google.com/file/d/1Tvak74xauHgEHQjnGUbQmYcnVfo8oD32/view?usp=sharing",
+    englishResourceUrl: "https://drive.google.com/file/d/12AT_0FbYARCNK1JKtQFtWriS12dwB30G/preview?usp=sharing",
     items: [
       ["🔍", "Assess Before Moving", "චලනය කිරීමට පෙර තක්සේරු කරන්න", "Assess the patient and the environment before moving.", "රෝගියා චලනය කිරීමට පෙර ඔහුගේ හෝ ඇයගේ තත්ත්වය සහ අවට පරිසරය තක්සේරු කරන්න."],
       ["👐", "Use Appropriate Techniques", "සුදුසු ක්‍රම භාවිතා කරන්න", "Use appropriate lifting and moving techniques.", "එසවීමේ සහ චලනය කිරීමේ සුදුසු ක්‍රම භාවිත කරන්න."],
@@ -98,7 +103,8 @@ const medicalDetails = {
     description: "Follow compassionate, safe, and respectful guidance when handling deceased persons.",
     sinhalaDescription: "මියගිය පුද්ගලයන් සමඟ කටයුතු කිරීමේදී කරුණාවන්ත, ආරක්ෂිත සහ ගෞරවනීය මාර්ගෝපදේශ අනුගමනය කරන්න.",
     resourceKey: "deceasedHandlingPDF",
-    resourceUrl: "https://drive.google.com/file/d/1vhzshtTmy6gPY6B36Yo7u8WISph1Xnnv/view?usp=sharing",
+    sinhalaResourceUrl: "https://drive.google.com/file/d/1vhzshtTmy6gPY6B36Yo7u8WISph1Xnnv/view?usp=sharing",
+    englishResourceUrl: "https://drive.google.com/file/d/1qyzzpaWjXiLGYp0yYA7QaIABkyZb41LS/preview?usp=sharing",
     items: [
       ["🕊️", "Handle with Dignity and Respect", "ගෞරවයෙන් සහ අභිමානයෙන් හසුරුවන්න", "Handle deceased persons with dignity and respect.", "මියගිය පුද්ගලයන්ගේ ගෞරවය සහ අභිමානය රැකෙන අයුරින් කටයුතු කරන්න."],
       ["🧤", "Use Appropriate PPE", "සුදුසු ආරක්ෂක උපකරණ භාවිතා කරන්න", "Use appropriate personal protective equipment.", "සුදුසු පුද්ගලික ආරක්ෂක උපකරණ භාවිත කරන්න."],
@@ -119,7 +125,9 @@ const labels = {
     back: "Back to First Aid & Medical",
     learn: "Learn More",
     guidelines: "Simplified Educational Guidance",
-    viewDoc: "View Document",
+    relatedDocuments: "Related Documents",
+    englishPdf: "English PDF",
+    sinhalaPdf: "Sinhala PDF",
     unavailable: "Resource not available yet",
     safety: "Safety Notice",
     safetyText: "This content is simplified educational guidance. During actual emergencies, follow authorized medical protocols and instructions from qualified emergency or medical personnel."
@@ -132,20 +140,44 @@ const labels = {
     back: "පළමු ප්‍රතිකාර සහ වෛද්‍ය ප්‍රතිචාර වෙත ආපසු",
     learn: "තවත් කියවන්න",
     guidelines: "සරල අධ්‍යාපනික මාර්ගෝපදේශ",
-    viewDoc: "ලේඛනය බලන්න",
+    relatedDocuments: "අදාළ ලේඛන",
+    englishPdf: "ඉංග්‍රීසි PDF",
+    sinhalaPdf: "සිංහල PDF",
     unavailable: "සම්පත තවමත් නොමැත",
     safety: "ආරක්ෂක දැනුම්දීම",
     safetyText: "මෙම අන්තර්ගතය සරල අධ්‍යාපනික මාර්ගෝපදේශයකි. සැබෑ හදිසි අවස්ථාවලදී බලයලත් වෛද්‍ය ක්‍රියා පටිපාටි සහ සුදුසුකම් ලත් හදිසි හෝ වෛද්‍ය නිලධාරීන්ගේ උපදෙස් අනුගමනය කරන්න."
   }
 };
 
-function ResourcePanel({ detail, text }) {
+function ResourcePanel({ detail, text, locale }) {
+  const documents = [
+    {
+      title: locale === "si" ? `${detail.sinhalaTitle} — ඉංග්‍රීසි` : `${detail.title} — English`,
+      url: detail.englishResourceUrl,
+      label: text.englishPdf
+    },
+    {
+      title: locale === "si" ? `${detail.sinhalaTitle} — සිංහල` : `${detail.title} — Sinhala`,
+      url: detail.sinhalaResourceUrl,
+      label: text.sinhalaPdf
+    }
+  ].filter((document) => document.url);
+
   return (
     <section className="medical-resource-panel">
-      {detail.resourceUrl ? (
-        <a className="view-doc-btn" href={detail.resourceUrl} target="_blank" rel="noopener noreferrer">
-          {text.viewDoc} <ExternalLink size={16} />
-        </a>
+      <h2 className="medical-documents-heading">{text.relatedDocuments}</h2>
+      {documents.length > 0 ? (
+        <div className="medical-documents-grid">
+          {documents.map((document) => (
+            <article className="medical-document-card" key={document.url}>
+              <div className="medical-document-icon"><FileText size={20} /></div>
+              <h3>{document.title}</h3>
+              <a href={document.url} target="_blank" rel="noopener noreferrer">
+                {document.label} <ExternalLink size={15} />
+              </a>
+            </article>
+          ))}
+        </div>
       ) : (
         <span className="resource-unavailable">{text.unavailable}</span>
       )}
@@ -181,7 +213,7 @@ export default function FirstAidMedical() {
                 </div>
                 <p>{locale === "si" ? detail.sinhalaDescription : detail.description}</p>
               </section>
-              <ResourcePanel detail={detail} text={text} />
+              <ResourcePanel detail={detail} text={text} locale={locale} />
               <section className="detail-content-section">
                 <h2 className="medical-section-heading"><CheckCircle size={20} /> {text.guidelines}</h2>
                 <div className="steps-grid">

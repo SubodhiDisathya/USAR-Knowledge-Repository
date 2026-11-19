@@ -393,7 +393,6 @@ body {
 .form-options,
 .toggle-auth,
 .stat-label,
-.ka-subtitle,
 .ka-message-bubble.assistant,
 .ka-source-title,
 .ka-text-input::placeholder {
@@ -500,7 +499,6 @@ a,
 .dashboard-main .stat-icon,
 .dashboard-main .stat-icon svg,
 .dashboard-main .category-card svg,
-.ka-eyebrow,
 .ka-related-label,
 .ka-avatar,
 .information-icon,
@@ -1233,7 +1231,6 @@ body .main-content h6 {
   background: linear-gradient(135deg, rgba(221, 167, 25, 0.1), rgba(15, 23, 42, 0.85)) !important;
 }
 
-.knowledge-assistant-page .ka-eyebrow,
 .knowledge-assistant-page .ka-related-label,
 .knowledge-assistant-page .ka-language-toggle .active {
   color: #edb83f !important;
@@ -1243,7 +1240,6 @@ body .main-content h6 {
   color: #ffffff !important;
 }
 
-.knowledge-assistant-page .ka-subtitle,
 .knowledge-assistant-page .ka-section-label,
 .knowledge-assistant-page .ka-source-title-si {
   color: #94a3b8 !important;
@@ -1571,7 +1567,6 @@ body .main-content h6 {
   color: var(--text) !important;
 }
 
-:root[data-theme="light"] .knowledge-assistant-page .ka-subtitle,
 :root[data-theme="light"] .knowledge-assistant-page .ka-section-label,
 :root[data-theme="light"] .knowledge-assistant-page .ka-source-title-si,
 :root[data-theme="light"] .knowledge-assistant-page .ka-message-bubble.assistant,

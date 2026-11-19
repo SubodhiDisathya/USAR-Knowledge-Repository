@@ -12,21 +12,11 @@ import { useLocale } from "../../context/LocaleContext";
 import PageBackButton from "../PageBackButton";
 import "./KnowledgeAssistant.css";
 
-function createWelcomeMessage(locale) {
-  return {
-    id: `welcome-${locale}`,
-    role: "assistant",
-    content: assistantWelcome[locale]?.subtitle || assistantWelcome.en.subtitle,
-    welcome: true,
-    matched: true
-  };
-}
-
 export default function KnowledgeAssistant() {
   const { locale, toggleLocale } = useLocale();
   const [messageInput, setMessageInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [messages, setMessages] = useState(() => [createWelcomeMessage(locale)]);
+  const [messages, setMessages] = useState([]);
 
   const suggestions = useMemo(
     () => suggestedQuestionSet[locale] || suggestedQuestionSet.en,
@@ -36,7 +26,7 @@ export default function KnowledgeAssistant() {
   const activeContent = assistantWelcome[locale] || assistantWelcome.en;
 
   const handleClearChat = () => {
-    setMessages([createWelcomeMessage(locale)]);
+    setMessages([]);
   };
 
   const handleFeedback = (messageId, type) => {
@@ -104,26 +94,30 @@ export default function KnowledgeAssistant() {
           <PageBackButton />
           <ChatHeader
               title={activeContent.title}
-              subtitle={activeContent.subtitle}
               locale={locale}
               onToggleLocale={toggleLocale}
               onClearChat={handleClearChat}
             />
 
             <div className="ka-chat-panel">
+              <ChatInput
+                value={messageInput}
+                onChange={(event) => setMessageInput(event.target.value)}
+                onSubmit={handleSubmit}
+                placeholder={activeContent.placeholder}
+                locale={locale}
+              />
+
               <div className="ka-chat-messages">
-                {messages.map((storedMessage) => {
-                  const message = storedMessage.welcome ? createWelcomeMessage(locale) : storedMessage;
-                  return (
-                    <ChatMessage
-                      key={message.id}
-                      message={message}
-                      onFeedback={handleFeedback}
-                      onRelatedQuestion={submitQuestion}
-                      locale={locale}
-                    />
-                  );
-                })}
+                {messages.map((message) => (
+                  <ChatMessage
+                    key={message.id}
+                    message={message}
+                    onFeedback={handleFeedback}
+                    onRelatedQuestion={submitQuestion}
+                    locale={locale}
+                  />
+                ))}
 
                 {isLoading && <TypingIndicator locale={locale} />}
               </div>
@@ -132,14 +126,6 @@ export default function KnowledgeAssistant() {
                 items={suggestions}
                 locale={locale}
                 onSelect={(question) => submitQuestion(question)}
-              />
-
-              <ChatInput
-                value={messageInput}
-                onChange={(event) => setMessageInput(event.target.value)}
-                onSubmit={handleSubmit}
-                placeholder={activeContent.placeholder}
-                locale={locale}
               />
             </div>
           </div>

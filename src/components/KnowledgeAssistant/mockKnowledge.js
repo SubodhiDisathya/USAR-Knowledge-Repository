@@ -199,12 +199,10 @@ export const suggestedQuestionSet = {
 export const assistantWelcome = {
   en: {
     title: "USAR Knowledge Assistant",
-    subtitle: "Generative AI-Based Intelligent Knowledge Retrieval for Inter-Agency USAR Operations",
     placeholder: "Ask about rescue procedures, search operations, or safety protocols..."
   },
   si: {
     title: "USAR දැනුම් සහායක",
-    subtitle: "අන්තර්-ආයතන USAR මෙහෙයුම් සඳහා ජනනය වන AI-ආධාරිත බුද්ධිමත් දැනුම් උකහාගැනීම",
     placeholder: "ගලවා ගැනීමේ ක්‍රියා පටිපාටි, සෙවීමේ මෙහෙයුම් හෝ ආරක්ෂක නීති පිළිබඳ ප්‍රශ්න අසන්න..."
   }
 };

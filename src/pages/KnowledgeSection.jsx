@@ -13,6 +13,34 @@ const trainingDocument = (fileId, titleEn, titleSi) => ({
   label: { en: "View Training Material", si: "පුහුණු ද්‍රව්‍ය බලන්න" }
 });
 
+const pdfDocument = (fileId, titleEn, titleSi, language) => {
+  const languageEn = language === "English" ? "English" : "Sinhala";
+  const languageSi = language === "English" ? "ඉංග්‍රීසි" : "සිංහල";
+
+  return {
+    title: {
+      en: `${titleEn} — ${languageEn}`,
+      si: `${titleSi} — ${languageSi}`
+    },
+    url: `https://drive.google.com/file/d/${fileId}/preview?usp=sharing`,
+    label: {
+      en: `${languageEn} PDF`,
+      si: `${languageSi} PDF`
+    }
+  };
+};
+
+const sharedPdfDocument = (fileId, titleEn, titleSi) => ({
+  title: { en: titleEn, si: titleSi },
+  url: `https://drive.google.com/file/d/${fileId}/preview?usp=sharing`,
+  label: { en: "View PDF", si: "PDF බලන්න" }
+});
+
+const pairedPdfDocuments = (englishId, sinhalaId, titleEn, titleSi) => [
+  pdfDocument(englishId, titleEn, titleSi, "English"),
+  pdfDocument(sinhalaId, titleEn, titleSi, "Sinhala")
+];
+
 const operationalModuleEnglishData = [
   {
     id: "module-1",
@@ -25,7 +53,7 @@ const operationalModuleEnglishData = [
         title: "Introduction to First Response",
         overview: "Introduction to Urban Search and Rescue (USAR), the role of first responders, and the importance of early response in saving lives after a disaster.",
         documents: [
-          trainingDocument("1y_SIse7jrcVGKIMRAXQMJmaDcdU_xtAt", "FR-Presentation-1.1 – Introduction to First Response", "FR-Presentation-1.1 – ප්‍රථම ප්‍රතිචාරය පිළිබඳ හැඳින්වීම")
+          ...pairedPdfDocuments("1y_SIse7jrcVGKIMRAXQMJmaDcdU_xtAt", "1YRpyQKK3bNwKsB0RmvGHBZx3RRBrlKGZ", "FR-Presentation-1.1 – Introduction to First Response", "FR-Presentation-1.1 – ප්‍රථම ප්‍රතිචාරය පිළිබඳ හැඳින්වීම")
         ],
         details: [
           { heading: "Goals & Learning Outcomes", text: "Development of a shared understanding regarding the role of first responders and their importance in saving lives during the early phases of an event." },
@@ -39,7 +67,7 @@ const operationalModuleEnglishData = [
         title: "National Disaster & Response Capability",
         overview: "Discussion of disasters that may affect the country, existing first-responder capabilities, response during the first 24 hours, and identified response gaps.",
         documents: [
-          trainingDocument("1jS70Rjp3UqXAik4No7-dFzcA_BudrOyn", "FR-Presentation-1.2 – National Disaster & Response Capability", "FR-Presentation-1.2 – ජාතික ආපදා සහ ප්‍රතිචාර ධාරිතාව")
+          ...pairedPdfDocuments("1jS70Rjp3UqXAik4No7-dFzcA_BudrOyn", "10p7fPOYjpTp7kvJtXM3Ob6TVm_nvHxFh", "FR-Presentation-1.2 – National Disaster & Response Capability", "FR-Presentation-1.2 – ජාතික ආපදා සහ ප්‍රතිචාර ධාරිතාව")
         ],
         details: [
           { heading: "Learning Outcomes", text: "Participants develop a clear awareness of the rescue and response capacities available within their city, region, and country." },
@@ -62,7 +90,7 @@ const operationalModuleEnglishData = [
         title: "Disaster Environment",
         overview: "Introduction to the urban disaster environment, building and construction types, infrastructure, types of disasters, structural collapse patterns, and common hazards.",
         documents: [
-          trainingDocument("1YqjOYPwstz5_FHjIWz2pcAOVK1tKBM3x", "FR-Presentation-2.1 – Disaster Environment", "FR-Presentation-2.1 – ආපදා පරිසරය")
+          ...pairedPdfDocuments("1YqjOYPwstz5_FHjIWz2pcAOVK1tKBM3x", "15GwDtdRA960bkJPf7X99rOKHImWLfF1M", "FR-Presentation-2.1 – Disaster Environment", "FR-Presentation-2.1 – ආපදා පරිසරය")
         ],
         details: [
           { heading: "Learning Outcomes", text: "Understand the consequences of disasters on the urban environment, identify main building types, and understand the basic types of collapse." },
@@ -75,7 +103,7 @@ const operationalModuleEnglishData = [
         title: "Overview of Rescue Operations",
         overview: "Introduction to the main stages of rescue operations: reconnaissance, search, and rescue, including how these activities are planned and carried out.",
         documents: [
-          trainingDocument("1baQS_BV_BlT6fphN_vwyjfux7i39Rkyq", "FR-Presentation-2.2 – Overview of Rescue Operations", "FR-Presentation-2.2 – මුදාගැනීමේ මෙහෙයුම් පිළිබඳ දළ විශ්ලේෂණය")
+          ...pairedPdfDocuments("1555bcfhzSfWTKDhg9QJzp-GAwKs-5cMc", "1MsovvwmLFAdAgBpe5B3WPl-026G9YxCS", "FR-Presentation-2.2 – Overview of Rescue Operations", "FR-Presentation-2.2 – මුදාගැනීමේ මෙහෙයුම් පිළිබඳ දළ විශ්ලේෂණය")
         ],
         details: [
           { heading: "Aims", items: ["Save lives", "Reduce suffering", "Minimize damage", "Stabilize the situation", "Prepare the community for recovery"] },
@@ -95,7 +123,7 @@ const operationalModuleEnglishData = [
         title: "Reconnaissance & Survey",
         overview: "Collection and presentation of information about the affected area, including sectorisation, maps, photographs, observations, interviews, and situational awareness.",
         documents: [
-          trainingDocument("16QX1BBGd81m6_Y99QxfymQAKZB3GuEz9", "FR-Presentation-2.3 – Reconnaissance & Survey", "FR-Presentation-2.3 – Reconnaissance සහ සමීක්ෂණය")
+          ...pairedPdfDocuments("1dkNf1gyQUNrCs9zGgiEBc89F3RRgmrH_", "1mN2bVi0UuHSrioqcd0wlujPl3cZBAAgx", "FR-Presentation-2.3 – Reconnaissance & Survey", "FR-Presentation-2.3 – Reconnaissance සහ සමීක්ෂණය")
         ],
         details: [
           { heading: "Aims & Goals", text: "Gather information on victims, damage, and hazards, divide the region into sectors, and develop an action plan." },
@@ -108,7 +136,7 @@ const operationalModuleEnglishData = [
         title: "Reconnaissance Exercise",
         overview: "Practical application of reconnaissance skills through area assessment, sectorisation, information gathering, mapping, photography, and reporting.",
         documents: [
-          trainingDocument("1SgcMzZRbI7j8FTA0f99xNEcvjebuGFEe", "FR-Presentation-2.4 – Reconnaissance Exercise", "FR-Presentation-2.4 – Reconnaissance අභ්‍යාසය")
+          ...pairedPdfDocuments("1wRw4k3uWLNODy-6v3ofqzWukyzWR6WIT", "1iCRiRBtjZDLhPmneITyiMF3Q3oZqJSVP", "FR-Presentation-2.4 – Reconnaissance Exercise", "FR-Presentation-2.4 – Reconnaissance අභ්‍යාසය")
         ],
         details: [
           { heading: "Exercise Goals", text: "Practice information gathering in a realistic environment, combine notes and maps, and create an action plan based on the collected information." },
@@ -129,7 +157,9 @@ const operationalModuleEnglishData = [
         overview: "Identification of hazards and risks in the disaster environment and application of safety measures such as cordons, barriers, access control, safe areas, evacuation procedures, and site security.",
         documents: [
           trainingDocument("1tfgYOWgXQ5hjoNbVv_C5L7z3bPArSRnZ", "3.1a – Scene Management – Situational & Environmental Hazards", "3.1a – සිද්ධි ස්ථාන කළමනාකරණය – තත්ත්ව සහ පාරිසරික උපද්‍රව"),
-          trainingDocument("1mKhN_4n9q7YSDzFUY129wQenjJy50cHx", "3.1b – Scene Management – Hazard Control & Site Management", "3.1b – සිද්ධි ස්ථාන කළමනාකරණය – උපද්‍රව පාලනය සහ ස්ථාන කළමනාකරණය")
+          trainingDocument("1mKhN_4n9q7YSDzFUY129wQenjJy50cHx", "3.1b – Scene Management – Hazard Control & Site Management", "3.1b – සිද්ධි ස්ථාන කළමනාකරණය – උපද්‍රව පාලනය සහ ස්ථාන කළමනාකරණය"),
+          pdfDocument("1ycyRK-mB58Yo4_h4EuOnJBTP1VnrYi8p", "FR-Presentation-3 – Scene Management", "FR-Presentation-3 – සිද්ධි ස්ථාන කළමනාකරණය", "Sinhala"),
+          pdfDocument("1U-J4tY6qgfaWynDz6CgmocmU5NLAplqR", "FR-Presentation-3.2 – Scene Management", "FR-Presentation-3.2 – සිද්ධි ස්ථාන කළමනාකරණය", "Sinhala")
         ],
         details: [
           { heading: "Main Hazard Categories", items: ["Damaged infrastructure", "Unstable structures", "Damaged utilities", "Fire, smoke, and gases", "Chemical hazards", "Environmental hazards such as weather and contaminated water"] },
@@ -151,7 +181,8 @@ const operationalModuleEnglishData = [
         title: "Surface Search",
         overview: "Introduction to organised search operations, including hasty/initial searches and secondary/extensive searches to locate casualties in accessible areas and beneath debris.",
         documents: [
-          trainingDocument("1F1B-WR5j8IHEj8F-0dlXZJRg85un8BEr", "FR-Presentation-4.1 – Surface Search", "FR-Presentation-4.1 – මතුපිට සෙවීම")
+          pdfDocument("1F1B-WR5j8IHEj8F-0dlXZJRg85un8BEr", "FR-Presentation-4.1 – Surface Search", "FR-Presentation-4.1 – මතුපිට සෙවීම", "English"),
+          sharedPdfDocument("1ZzLtP6HI1miO3hhkdO99IoyCG5-GXnxu", "Module 4 – Search Reference PDF", "මොඩියුලය 4 – සෙවීම් යොමු PDF")
         ],
         details: [
           { heading: "Goals", text: "Employ structured search techniques to locate the most victims in the shortest time with minimal effort." },
@@ -165,7 +196,8 @@ const operationalModuleEnglishData = [
         title: "Search Exercise",
         overview: "Practical application of primary/hasty and secondary/extensive search techniques, including searching for visible and sub-surface casualties.",
         documents: [
-          trainingDocument("19iZEC4lGQwdgkS02lMBP4XZdOGvxYyYB", "FR-Presentation-4.2 – Search Exercise", "FR-Presentation-4.2 – Search අභ්‍යාසය")
+          trainingDocument("19iZEC4lGQwdgkS02lMBP4XZdOGvxYyYB", "FR-Presentation-4.2 – Search Exercise", "FR-Presentation-4.2 – Search අභ්‍යාසය"),
+          sharedPdfDocument("1ZzLtP6HI1miO3hhkdO99IoyCG5-GXnxu", "Module 4 – Search Reference PDF", "මොඩියුලය 4 – සෙවීම් යොමු PDF")
         ],
         details: [
           { heading: "Exercise Goals", text: "Practice structured search techniques in a realistic environment." },
@@ -185,7 +217,7 @@ const operationalModuleEnglishData = [
         title: "Practical Rescue Operations",
         overview: "Introduction to safe rescue operations, including the basic sequence of rescue activities, rescue equipment, surface rescue techniques, and safety considerations.",
         documents: [
-          trainingDocument("1YPiE4sT5WsHm6sKS8nyJgdwllMREOYJ3", "FR-Presentation-5.1 – Practical Rescue Operations", "FR-Presentation-5.1 – ප්‍රායෝගික Rescue මෙහෙයුම්")
+          ...pairedPdfDocuments("19L-ZMKtxuNnm_ImX57wu6R3b7FSrInzZ", "1-kH2MY7wARhwWyU2VLiqkwiC81QvS0GJ", "FR-Presentation-5.1 – Practical Rescue Operations", "FR-Presentation-5.1 – ප්‍රායෝගික මුදාගැනීමේ මෙහෙයුම්")
         ],
         details: [
           { heading: "Learning Outcomes", text: "Understand the principles and practices of safe rescue operations and receive an overview of available tools and equipment." },
@@ -198,7 +230,7 @@ const operationalModuleEnglishData = [
         title: "Shoring Operations",
         overview: "Techniques for reducing the risk of secondary collapse, including overhead hazard mitigation, safe-distance principles, and construction of a simple shore to support damaged structures.",
         documents: [
-          trainingDocument("1ZcdKmMmgXiVo70_3BZ-Ov6I4xHlsSbet", "FR-Presentation-5.2 – Shoring Operations", "FR-Presentation-5.2 – Shoring මෙහෙයුම්")
+          ...pairedPdfDocuments("1VFKbU86rQF_LFc0YGtdoezQn1snD-g_9", "1CoCwXXQfTzzVocQCf2F3v1LYWH6IAHJK", "FR-Presentation-5.2 – Shoring Operations", "FR-Presentation-5.2 – ආධාරක ඉදිකිරීමේ මෙහෙයුම්")
         ],
         details: [
           { heading: "Learning Outcomes", text: "Learn how to make overhead hazards safe and how to construct a simple shore." },
@@ -218,7 +250,7 @@ const operationalModuleEnglishData = [
         title: "Lifting & Moving Operations",
         overview: "Safe methods for lifting and moving heavy debris during rescue operations. This includes assessing terrain, avoiding unnecessary movement, using gravity and terrain to assist movement, using levers, rollers, blocks and wedges, and safely supporting debris with cribbing.",
         documents: [
-          trainingDocument("1YCSkMFWVaGB0YxW8oYUJEGpYEJY3rFhp", "FR-Presentation-5.3 – Lifting & Moving Operations", "FR-Presentation-5.3 – එසවීම සහ ගෙනයාමේ මෙහෙයුම්")
+          ...pairedPdfDocuments("12kfdDnYO4tOMrRTPcPCTIJeFexNNXbXK", "1m1jTdae6EmSN6ri2sVfNQeoksq93qJJw", "FR-Presentation-5.3 – Lifting & Moving Operations", "FR-Presentation-5.3 – එසවීම සහ ගෙනයාමේ මෙහෙයුම්")
         ],
         details: [
           { heading: "Learning Outcomes", text: "Learn how to safely lift and move heavy debris, understand terrain effects, and use safety precautions such as cribbing." },
@@ -238,7 +270,7 @@ const operationalModuleEnglishData = [
         title: "Cutting & Breaking Operations",
         overview: "Safe methods for cutting or breaking debris found in collapsed structures. This includes assessing the wider impact on the debris pile, identifying weak points and hazards, securing the debris, and using appropriate tools and shoring techniques to safely complete cutting and breaking operations.",
         documents: [
-          trainingDocument("1JCL7tyloDX3GQIwrqDbLk8sl3f5aFm3P", "FR-Presentation-5.4 – Cutting & Breaking Operations", "FR-Presentation-5.4 – කැපීම සහ බිඳ දැමීමේ මෙහෙයුම්")
+          ...pairedPdfDocuments("1MU6BS2PN9gOLyyr399czkpkl7NKEB5BQ", "1CPoOy6qg7Uo2IdsULsTtAXX6LQn5AKnb", "FR-Presentation-5.4 – Cutting & Breaking Operations", "FR-Presentation-5.4 – කැපීම සහ බිඳ දැමීමේ මෙහෙයුම්")
         ],
         details: [
           { heading: "Learning Outcomes", text: "Learn how to safely cut or break through debris in a collapsed building and understand the wider impacts on the debris pile." },
@@ -391,28 +423,28 @@ const operationalModuleSinhala = {
     }
   },
   "module-5": {
-    title: "Rescue මොඩියුලය",
+    title: "මුදාගැනීමේ මොඩියුලය",
     sectors: {
       "practical-rescue-operations": {
-        title: "ප්‍රායෝගික Rescue මෙහෙයුම්",
-        overview: "Rescue ක්‍රියාකාරකම්වල මූලික අනුපිළිවෙළ, Rescue උපකරණ, මතුපිට Rescue ක්‍රම සහ ආරක්ෂක කරුණු ඇතුළුව, ආරක්ෂිත මුදාගැනීමේ මෙහෙයුම් පිළිබඳ හැඳින්වීම.",
+        title: "ප්‍රායෝගික මුදාගැනීමේ මෙහෙයුම්",
+        overview: "මුදාගැනීමේ ක්‍රියාකාරකම්වල මූලික අනුපිළිවෙළ, උපකරණ, මතුපිට මුදාගැනීමේ ක්‍රම සහ ආරක්ෂක කරුණු ඇතුළුව, ආරක්ෂිත මුදාගැනීමේ මෙහෙයුම් පිළිබඳ හැඳින්වීම.",
         details: [
-          { heading: "ඉගෙනුම් ප්‍රතිඵල", text: "ආරක්ෂිත Rescue මෙහෙයුම්වල මූලධර්ම සහ භාවිතයන් අවබෝධ කර ගැනීම සහ පවතින මෙවලම් හා උපකරණ පිළිබඳ දළ විශ්ලේෂණයක් ලබා ගැනීම." },
-          { heading: "මූලික ආරක්ෂක නීති", items: ["ගමන් කිරීමට පෙර ඉහළ සහ පහළ පරීක්ෂා කරන්න.", "සම්බන්ධතා ස්ථාන තුනක් පවත්වා ගන්න.", "විපතට පත්වූවන්ගේ සහ උපද්‍රවවල ශබ්දවලට සවන් දෙන්න.", "දෙදෙනෙකු හෝ කණ්ඩායමක් ලෙස වැඩ කරන්න.", "සුදුසු ආරක්ෂක ඇඳුම් පළඳින්න.", "උපදෙස් අනුගමනය කරන්න.", "නිශ්ශබ්දව සහ ක්‍රමානුකූලව වැඩ කරන්න.", "ක්‍රියාකාරී සැලැස්මට (Plan of Action) අනුව වැඩ කරන්න."] },
-          { heading: "Rescue උපකරණ පිළිබඳ හැඳින්වීම", text: "උපදේශකයන් පවතින Rescue උපකරණ හඳුන්වා දී, එක් එක් මෙවලම භාවිත කරන ආකාරය සහ එහි විශේෂිත යෙදුම පැහැදිලි කරයි." }
+          { heading: "ඉගෙනුම් ප්‍රතිඵල", text: "ආරක්ෂිත මුදාගැනීමේ මෙහෙයුම්වල මූලධර්ම සහ භාවිතයන් අවබෝධ කර ගැනීම සහ පවතින මෙවලම් හා උපකරණ පිළිබඳ දළ විශ්ලේෂණයක් ලබා ගැනීම." },
+          { heading: "මූලික ආරක්ෂක නීති", items: ["ගමන් කිරීමට පෙර ඉහළ සහ පහළ පරීක්ෂා කරන්න.", "සම්බන්ධතා ස්ථාන තුනක් පවත්වා ගන්න.", "විපතට පත්වූවන්ගේ සහ උපද්‍රවවල ශබ්දවලට සවන් දෙන්න.", "දෙදෙනෙකු හෝ කණ්ඩායමක් ලෙස වැඩ කරන්න.", "සුදුසු ආරක්ෂක ඇඳුම් පළඳින්න.", "උපදෙස් අනුගමනය කරන්න.", "නිශ්ශබ්දව සහ ක්‍රමානුකූලව වැඩ කරන්න.", "ක්‍රියාකාරී සැලැස්මට අනුව වැඩ කරන්න."] },
+          { heading: "මුදාගැනීමේ උපකරණ පිළිබඳ හැඳින්වීම", text: "උපදේශකයන් පවතින මුදාගැනීමේ උපකරණ හඳුන්වා දී, එක් එක් මෙවලම භාවිත කරන ආකාරය සහ එහි විශේෂිත යෙදුම පැහැදිලි කරයි." }
         ]
       },
       "shoring-operations": {
-        title: "Shoring මෙහෙයුම්",
-        overview: "ද්විතීයික කඩා වැටීමේ අවදානම අඩු කිරීමේ ක්‍රම. මෙයට ඉහළින් ඇති උපද්‍රව අවම කිරීම, ආරක්ෂිත දුර පිළිබඳ මූලධර්ම සහ හානි වූ ව්‍යුහයකට ආධාර කිරීම සඳහා සරල Shoring එකක් ඉදිකිරීම ඇතුළත් වේ.",
+        title: "ආධාරක ඉදිකිරීමේ මෙහෙයුම්",
+        overview: "ද්විතීයික කඩා වැටීමේ අවදානම අඩු කිරීමේ ක්‍රම. මෙයට ඉහළින් ඇති උපද්‍රව අවම කිරීම, ආරක්ෂිත දුර පිළිබඳ මූලධර්ම සහ හානි වූ ව්‍යුහයකට ආධාර කිරීම සඳහා සරල ආධාරකයක් ඉදිකිරීම ඇතුළත් වේ.",
         details: [
-          { heading: "ඉගෙනුම් ප්‍රතිඵල", text: "ඉහළින් ඇති උපද්‍රව ආරක්ෂිත කිරීම සහ සරල Shoring ආධාරකයක් ඉදිකිරීම ඉගෙන ගැනීම." },
+          { heading: "ඉගෙනුම් ප්‍රතිඵල", text: "ඉහළින් ඇති උපද්‍රව ආරක්ෂිත කිරීම සහ සරල ආධාරකයක් ඉදිකිරීම ඉගෙන ගැනීම." },
           {
             heading: "උපද්‍රව සඳහා වඩාත් සුදුසු විකල්ප",
             steps: [
               { title: "වළකින්න", text: "බාධක සහ අනතුරු ඇඟවීමේ සලකුණු යොදන්න." },
               { title: "ඉවත් කරන්න", text: "කඹ හෝ සුදුසු යන්ත්‍රෝපකරණ භාවිතයෙන් සුන්බුන් පහළට ඇද ඉවත් කරන්න." },
-              { title: "ආරක්ෂිත කරන්න", text: "ආධාරක හෝ Shoring ආරක්ෂිත ස්ථානයක මැන සකස් කර, බරට යටින් සවිකරන්න." }
+              { title: "ආරක්ෂිත කරන්න", text: "ආධාරක ආරක්ෂිත ස්ථානයක මැන සකස් කර, බරට යටින් සවිකරන්න." }
             ]
           },
           { heading: "ප්‍රධාන මාර්ගෝපදේශ", items: ["ද්විතීයික කඩා වැටීමේ හැකියාව සලකා බලන්න.", "ආරක්ෂිත ප්‍රදේශ සඳහා 1:1.5 නීතිය අනුගමනය කරන්න.", "නිරීක්ෂකයන් පත් කරන්න.", "ඉවත් කිරීමේ සැලැස්මක් පවත්වා ගන්න."] }
@@ -420,9 +452,9 @@ const operationalModuleSinhala = {
       },
       "lifting-moving-operations": {
         title: "එසවීම සහ ගෙනයාමේ මෙහෙයුම්",
-        overview: "Rescue මෙහෙයුම් අතරතුර බර සුන්බුන් ආරක්ෂිතව එසවීම සහ ගෙනයාමේ ක්‍රම. භූමිය තක්සේරු කිරීම, අනවශ්‍ය චලනය වළක්වා ගැනීම, චලනයට ගුරුත්වය සහ භූමිය උපකාරී කරගැනීම, ලීවර, රෝලර්, කුට්ටි සහ කුඤ්ඤ භාවිත කිරීම සහ Cribbing මඟින් සුන්බුන් ආරක්ෂිතව රඳවා තැබීම මෙයට ඇතුළත් වේ.",
+        overview: "මුදාගැනීමේ මෙහෙයුම් අතරතුර බර සුන්බුන් ආරක්ෂිතව එසවීම සහ ගෙනයාමේ ක්‍රම. භූමිය තක්සේරු කිරීම, අනවශ්‍ය චලනය වළක්වා ගැනීම, චලනයට ගුරුත්වය සහ භූමිය උපකාරී කරගැනීම, ලීවර, රෝලර්, කුට්ටි සහ කුඤ්ඤ භාවිත කිරීම සහ ආධාරක කුට්ටි මඟින් සුන්බුන් ආරක්ෂිතව රඳවා තැබීම මෙයට ඇතුළත් වේ.",
         details: [
-          { heading: "ඉගෙනුම් ප්‍රතිඵල", text: "බර සුන්බුන් ආරක්ෂිතව එසවීම සහ ගෙනයාම, භූමියේ බලපෑම අවබෝධ කරගැනීම සහ Cribbing වැනි ආරක්ෂක පියවර භාවිත කිරීම ඉගෙන ගැනීම." },
+          { heading: "ඉගෙනුම් ප්‍රතිඵල", text: "බර සුන්බුන් ආරක්ෂිතව එසවීම සහ ගෙනයාම, භූමියේ බලපෑම අවබෝධ කරගැනීම සහ ආධාරක කුට්ටි වැනි ආරක්ෂක පියවර භාවිත කිරීම ඉගෙන ගැනීම." },
           {
             heading: "වඩාත් සුදුසු විකල්ප",
             steps: [
@@ -430,13 +462,13 @@ const operationalModuleSinhala = {
               { title: "ගෙනයන්න", text: "ආරක්ෂිත නම් චලනයට ගුරුත්වය සහ භූමිය උපකාරී කරගන්න." },
               { title: "ඔසවන්න", text: "පහත දෑ භාවිතයෙන් සුන්බුන් ඔසවා ආධාර කරන්න හෝ ආරක්ෂිතව රඳවා තබන්න:" }
             ],
-            items: ["ලීවර", "කුට්ටි", "කුඤ්ඤ", "රෝලර්", "Crib පද්ධති"]
+            items: ["ලීවර", "කුට්ටි", "කුඤ්ඤ", "රෝලර්", "ආධාරක කුට්ටි පද්ධති"]
           }
         ]
       },
       "cutting-breaking-operations": {
         title: "කැපීම සහ බිඳ දැමීමේ මෙහෙයුම්",
-        overview: "කඩා වැටුණු ව්‍යුහවල සුන්බුන් කැපීම හෝ බිඳ දැමීම සඳහා ආරක්ෂිත ක්‍රම. සුන්බුන් ගොඩට ඇති පුළුල් බලපෑම තක්සේරු කිරීම, දුර්වල ස්ථාන සහ උපද්‍රව හඳුනා ගැනීම, සුන්බුන් ආරක්ෂිත කිරීම සහ කැපීම හා බිඳ දැමීම ආරක්ෂිතව සිදු කිරීමට සුදුසු මෙවලම් සහ Shoring ක්‍රම භාවිත කිරීම මෙයට ඇතුළත් වේ.",
+        overview: "කඩා වැටුණු ව්‍යුහවල සුන්බුන් කැපීම හෝ බිඳ දැමීම සඳහා ආරක්ෂිත ක්‍රම. සුන්බුන් ගොඩට ඇති පුළුල් බලපෑම තක්සේරු කිරීම, දුර්වල ස්ථාන සහ උපද්‍රව හඳුනා ගැනීම, සුන්බුන් ආරක්ෂිත කිරීම සහ කැපීම හා බිඳ දැමීම ආරක්ෂිතව සිදු කිරීමට සුදුසු මෙවලම් සහ ආධාරක ක්‍රම භාවිත කිරීම මෙයට ඇතුළත් වේ.",
         details: [
           { heading: "ඉගෙනුම් ප්‍රතිඵල", text: "කඩා වැටුණු ගොඩනැගිල්ලක සුන්බුන් ආරක්ෂිතව කැපීම හෝ බිඳ දැමීම සහ සුන්බුන් ගොඩට ඇති පුළුල් බලපෑම් අවබෝධ කරගැනීම." },
           {
@@ -446,7 +478,7 @@ const operationalModuleSinhala = {
               { title: "ගෙනයන්න", text: "ආරක්ෂිත නම් ගුරුත්වය හෝ භූමිය භාවිතයෙන් සුන්බුන් ගෙනයන්න." },
               { title: "කපන්න / බිඳ දමන්න", text: "අවශ්‍ය වූ විට පමණක් පහත පියවර අනුගමනය කරමින් කපන්න හෝ බිඳ දමන්න:" }
             ],
-            items: ["දුර්වල ස්ථාන හඳුනා ගැනීම", "උපද්‍රව හඳුනා ගැනීම", "දුර්වලතා රේඛා සකස් කිරීම", "සුන්බුන් ආරක්ෂිත කිරීම", "සුදුසු මෙවලම් සහ Shoring ක්‍රම භාවිත කිරීම"]
+            items: ["දුර්වල ස්ථාන හඳුනා ගැනීම", "උපද්‍රව හඳුනා ගැනීම", "දුර්වලතා රේඛා සකස් කිරීම", "සුන්බුන් ආරක්ෂිත කිරීම", "සුදුසු මෙවලම් සහ ආධාරක ක්‍රම භාවිත කිරීම"]
           }
         ]
       }
@@ -460,7 +492,7 @@ const operationalModuleSinhala = {
         overview: "ප්‍රථම ප්‍රතිචාරක වැඩසටහන පුරා ඉගෙනගත් දැනුම සහ කුසලතා ඒකාබද්ධ කරන ප්‍රායෝගික අභ්‍යාසයකි. මෙයට සිද්ධි ස්ථාන තක්සේරුව, සෙවීම, මුදාගැනීම, රෝගී තක්සේරුව, ප්‍රතිකාර, ඇසුරුම් කිරීම සහ ඉවත් කිරීම ඇතුළත් වේ.",
         details: [
           { heading: "අරමුණ", text: "සැබෑ පරිසරයක කුසලතා සහ දැනුම පුහුණු කිරීමට සහ වැඩිදියුණු කිරීමට සහභාගිවන්නන්ට අවස්ථාවක් ලබා දීම." },
-          { heading: "අභ්‍යාස අවස්ථා විස්තරය", text: "පහත දෑ අවශ්‍ය වන සැබෑ ඉගෙනුම් අවස්ථා අනුකරණය කිරීම:", items: ["සිද්ධි ස්ථාන තක්සේරුව", "සෙවීම් සැලසුම් කිරීම සහ ක්‍රම", "Rescue මෙහෙයුම්", "රෝගී තක්සේරුව", "රෝගී ප්‍රතිකාර", "රෝගී ඇසුරුම් කිරීම", "ඉවත් කිරීම"] },
+          { heading: "අභ්‍යාස අවස්ථා විස්තරය", text: "පහත දෑ අවශ්‍ය වන සැබෑ ඉගෙනුම් අවස්ථා අනුකරණය කිරීම:", items: ["සිද්ධි ස්ථාන තක්සේරුව", "සෙවීම් සැලසුම් කිරීම සහ ක්‍රම", "මුදාගැනීමේ මෙහෙයුම්", "රෝගී තක්සේරුව", "රෝගී ප්‍රතිකාර", "රෝගී ඇසුරුම් කිරීම", "ඉවත් කිරීම"] },
           { heading: "අභ්‍යාස සීමා සහ කොන්දේසි", text: "පුහුණුකරුවන් විසින් නිර්වචනය කරන සංවිධාන ව්‍යුහ, ආරක්ෂක නීති සහ අභ්‍යාස සීමා මෙයට ඇතුළත් වේ." }
         ]
       }
@@ -990,7 +1022,7 @@ export default function KnowledgeSection({ section }) {
                     <section className="operational-training-material sector-training-material">
                       <div className="detail-section-heading">
                         <span className="detail-section-line" />
-                        <h2>{isSinhala ? "අදාළ පුහුණු ද්‍රව්‍ය" : "Related Training Material"}</h2>
+                        <h2>{isSinhala ? "අදාළ ලේඛන" : "Related Documents"}</h2>
                       </div>
                       <div className="operational-training-grid">
                         {selectedSector.documents.map((document) => (

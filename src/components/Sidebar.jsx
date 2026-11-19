@@ -42,7 +42,7 @@ export default function Sidebar() {
         {/* After the Rescue Form */}
         <NavLink to="/after-rescue" className={({ isActive }) => `nav-item${isActive ? " active" : ""}`}>
           <ClipboardList size={20} />
-          <span>{t.afterRescueForm || " Rescue Report"}</span>
+          <span>{t.afterRescueReport}</span>
         </NavLink>
 
         {/* Admin Feature */}

@@ -33,10 +33,14 @@
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 24px 28px 18px;
+  gap: 12px;
+  padding: 4px 28px 18px;
   min-height: 0;
   overflow: hidden;
+}
+
+.knowledge-assistant-shell > .page-back-button {
+  margin-bottom: 0;
 }
 
 .ka-header {
@@ -60,28 +64,11 @@
   gap: 2px;
 }
 
-.ka-eyebrow {
-  margin: 0;
-  font-size: 0.62rem;
-  letter-spacing: 0.1rem;
-  text-transform: uppercase;
-  color: #fbbf24;
-  font-weight: 700;
-}
-
 .ka-header-copy h2 {
   margin: 0;
   font-size: clamp(1.2rem, 1.8vw, 1.7rem);
   color: #ffffff;
   font-weight: 800;
-}
-
-.ka-subtitle {
-  margin: 0;
-  max-width: 420px;
-  color: rgba(226, 232, 240, 0.82);
-  line-height: 1.25;
-  font-size: 0.78rem;
 }
 
 .ka-header-actions {
@@ -355,13 +342,11 @@
 }
 
 .ka-input-form {
-  position: sticky;
-  bottom: 0;
-  z-index: 2;
+  flex: 0 0 auto;
   display: flex;
   gap: 12px;
   padding: 16px 18px 18px;
-  border-top: 1px solid rgba(148, 163, 184, 0.1);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
   background: rgba(15, 23, 42, 0.86);
   backdrop-filter: blur(8px);
 }
@@ -443,7 +428,7 @@
 
 @media (max-width: 880px) {
   .knowledge-assistant-shell {
-    padding: 16px 14px 12px;
+    padding: 8px 14px 12px;
   }
 
   .ka-header {
@@ -467,7 +452,7 @@
 
 @media (max-width: 640px) {
   .knowledge-assistant-shell {
-    padding: 12px 10px 10px;
+    padding: 4px 10px 10px;
   }
 
   .ka-header {

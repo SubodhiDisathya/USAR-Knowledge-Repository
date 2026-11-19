@@ -1,12 +1,10 @@
 import React from "react";
 
-export default function ChatHeader({ title, subtitle, locale, onToggleLocale, onClearChat }) {
+export default function ChatHeader({ title, locale, onToggleLocale, onClearChat }) {
   return (
     <div className="ka-header">
       <div className="ka-header-copy">
-        <p className="ka-eyebrow">USAR / AI</p>
         <h2>{title}</h2>
-        <p className="ka-subtitle">{subtitle}</p>
       </div>
 
       <div className="ka-header-actions">
